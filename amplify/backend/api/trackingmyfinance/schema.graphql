@@ -1,0 +1,988 @@
+enum KindE{
+  PERSONAL
+  GYFT
+}
+
+enum CategoryE {
+  HOUSING
+  PHONE
+  INSURANCE
+  LEGAL
+  GROCERY
+  COMMUTE
+  EDUCATION
+  PERSONALCARE
+  PET
+  ENTERTAINMENT
+  LOAN
+  TAXES
+  INVESTMENT
+
+}
+
+type Period 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  billingStart: AWSDate
+  billingEnd: AWSDate
+}
+
+# interface Expense
+# {
+#   id: ID!
+#   kind: KindE!
+#   amount: Float!
+#   dueDate: AWSDate!
+# }
+
+enum UtilitySelectionE {
+  WATER
+  POWER
+  GAS
+  INTERNET
+  CABLE
+  PHONE
+}
+
+type Utility 
+  @model 
+  @auth(rules: [{allow: owner}])
+{
+  id:ID!
+  selection: UtilitySelectionE
+  company: String
+  title: String
+  notes: String
+  period: Period @connection
+  reading: Float
+  images: [S3Object]
+}
+
+enum SupplyForE { 
+  WORKSHOP
+  KITCHEN
+  BEDROOM
+  DINNERROOM
+  OFFICE
+  HOBBY
+  OTHER
+}
+
+type Supply
+  @model 
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  supplyFor: SupplyForE
+  title: String
+  notes: String
+  brand: String
+  model: String
+  images: [S3Object]
+}
+
+enum HomeTypeE {
+  MORTGAGE
+  RENT
+}
+
+type Home
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  mortgage: HomeTypeE
+  title: String
+  notes: String
+  address: Address
+  images: [S3Object]
+}
+
+type Repair 
+  @model 
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  title: String!
+  notes: String
+  images: [S3Object]
+}
+
+type OtherHousing 
+  @model 
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  title: String!
+  notes: String
+  images: [S3Object]
+}
+
+enum HousingE {
+  UTILITY
+  SUPPLY
+  REPAIR
+  HOME
+  OTHER
+}
+
+type HousingExpense
+  @model 
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float!
+  category: CategoryE
+  dueDate: AWSDate!
+  nature: HousingE!
+  utility: Utility @connection
+  supply: Supply @connection
+  home: Home @connection
+  repair: Repair @connection
+  otherHousing: OtherHousing @connection
+  tags: [String]
+  client: Client @connection(name: "ClientHousingExpense", sortField: "dueDate")
+}
+
+type Plan
+  @model 
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  title: String
+  notes: String
+  billing: Period @connection
+}
+
+type Aditional 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  title: String
+  notes: String
+}
+
+enum PhonePlanE {
+  PLAN
+  ADITIONAL
+}
+
+type PhoneExpense 
+  @model 
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  dueDate: AWSDate!
+  amount: Float!
+  category: CategoryE
+  phonePlan: PhonePlanE
+  tags: [String]
+  images: [S3Object]
+  plan: Plan @connection
+  aditional: Aditional @connection
+  client: Client @connection(name: "ClientPhoneExpense", sortField: "dueDate")
+}
+
+enum InsuranceE {
+  HOME
+  CAR
+  HEALTH
+  DENTAL
+  VISION
+  LIFE
+  DISABILITY
+  OTHER
+}
+
+type Beneficiary 
+  @model 
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  name: String!
+  lastName: String!
+  address: Address
+  images: [S3Object]
+  insurance: InsuranceExpense @connection (name: "BeneficiaryInsuranceExpense")
+}
+
+type InsuranceExpense 
+  @model 
+  @auth(rules: [{allow: owner}])
+ {
+  id: ID!
+  kind: KindE!
+  amount: Float! #cost
+  dueDate: AWSDate!
+  category: CategoryE!
+  nature: InsuranceE!
+  startDate: AWSDate!
+  title: String!
+  notes: String
+  tags: [String]
+  coverage: String!
+  yearDeductions: Int
+  company: String
+  images: [S3Object]
+  beneficiaries: [Beneficiary] @connection (name: "BeneficiaryInsuranceExpense")
+  client: Client @connection (name: "ClientInsuranceExpense", sortField: "dueDate")
+}
+
+type Lawyer
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  phone: AWSPhone!
+  address: Address @connection
+  name: String!
+  lastName: String!
+  email: AWSEmail
+  fee: Float
+  firm: String
+  legal: LegalExpense @connection (name: "LawyerLegalExpense")
+}
+
+enum LegalE {
+  DOCUMENTS
+  INMIGRATION
+  WORK
+  ACCIDENT
+  HOME
+  PERSONAL
+  OTHER
+}
+
+type LegalExpense  
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float! #fee // dont include lawyer fee
+  dueDate: AWSDate!
+  category: CategoryE!
+  nature: LegalE!
+  title: String
+  notes: String
+  tags: [String]
+  images: [S3Object]
+  lawyers: [Lawyer] @connection (name: "LawyerLegalExpense")
+  client: Client @connection (name: "ClientLegalExpense", sortField: "dueDate")
+}
+
+enum GroceryInfoE {
+  TOTAL
+  DETAILS
+}
+
+type Product
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  name: String
+  price: Float!
+  quantity: Int!
+  frequency: FrequencyE
+  tags: [String]
+  grocery: Grocery @connection (name: "ProductGrocery")
+  images: [S3Object]
+}
+
+type Grocery
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  store: String
+  title: String
+  notes: String
+  info: GroceryInfoE
+  products: [Product] @connection (name: "ProductGrocery")
+}
+
+type DinningOut
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  place: String
+  title: String
+  notes: String
+  images: [S3Object]
+}
+
+enum FoodE {
+  GROCERY
+  DINNINGOUT
+}
+
+type FoodExpense 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float! #total or calculate later based on the price and quantity
+  dueDate: AWSDate!
+  category: CategoryE!
+  nature: FoodE!
+  grocery: Grocery @connection
+  dinningOut: DinningOut @connection
+  tags: [String]
+  client: Client @connection(name: "ClientFoodExpense", sortField: "dueDate")
+}
+
+enum ServiceE { 
+  OWN
+  UBER
+  LIFT
+  TAXI
+  SCOOTER
+  BUS
+  FRIEND
+  PLANE
+  TRAIN
+  SHIP
+  OTHER
+}
+
+enum EventE {
+  GAS
+  LICENCING
+  REPAIR
+  MAINTENANCE
+  OTHER
+}
+
+type CommuteExpense
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float!
+  dueDate: AWSDate!
+  category: CategoryE!
+  service: ServiceE!
+  event: EventE
+  title: String
+  tags: [String]
+  notes: String
+  images: [S3Object]
+  client: Client @connection (name: "ClientCommuteExpense", sortField: "dueDate")
+}
+
+enum ProgramE {
+  PHD
+  MAMS
+  BABS
+  AAAN
+  NONE
+}
+
+type AcademicFee 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  tuitionAndFees: Float
+  booksAndSupplies: Float
+  roomAndBoard: Float
+  transportation: Float
+  personal: Float
+  college: College @connection (name: "CollegeAcademicFee")
+  communityCollege: CommunityCollege @connection (name: "CommunityCollegeAcademicFee")
+}
+
+type College
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  program: ProgramE!
+  title: String
+  notes: String
+  images: [S3Object]
+  period: Period @connection
+  fees: [AcademicFee] @connection (name: "CollegeAcademicFee")
+}
+
+type CommunityCollege
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  program: ProgramE!
+  title: String
+  notes: String
+  images: [S3Object]
+  period: Period @connection
+  fees: [AcademicFee] @connection (name: "CommunityCollegeAcademicFee")
+}
+
+type Instructor
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  phone: AWSPhone!
+  tweeter: String
+  name: String!
+  email: AWSEmail
+  webPage: AWSURL
+  images: [S3Object]
+  teachOn: OnlineCourse @connection (name: "InstructorOnlineCourse")
+}
+
+type OnlineCourse
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  title: String!
+  description: String
+  notes: String
+  platform: String
+  url: AWSURL
+  images: [S3Object]
+  period: Period @connection
+  instructors: [Instructor] @connection (name: "InstructorOnlineCourse")
+}
+
+type Training
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  title: String!
+  notes: String
+  school: String
+  images: [S3Object]
+  period: Period @connection
+}
+
+enum DeferredE {
+  YES
+  NO
+}
+
+type Bootcamp
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  title: String
+  notes: String
+  costDeferred: DeferredE!
+  images: [S3Object]
+  period: Period @connection
+}
+
+enum EducationE {
+  COLLEGE
+  ONLINECURSE
+  COMUNITYCOLLEGE
+  TRAINING
+  BOOTCAMP
+}
+
+type EducationExpense 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float! # Sum of different fees
+  classification: EducationE!
+  dueDate: AWSDate!
+  category: CategoryE!
+  nature: EducationE!
+  college: College @connection
+  onlineCourse: OnlineCourse @connection
+  communityCollege: CommunityCollege @connection
+  training: Training @connection
+  bootcamp: Bootcamp @connection
+  tags: [String]
+  client: Client @connection (name: "ClientEducationExpense", sortField: "dueDate")
+}
+
+enum PersonalCareE {
+  HAIRCUT
+  GIMN
+  EMERGENCY
+  TRAVEL
+  CLOTHING
+  CLUBS
+}
+
+type PersonalCareExpense
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float!
+  dueDate: AWSDate!
+  category: CategoryE!
+  nature: PersonalCareE
+  title: String
+  tags: [String]
+  notes: String
+  images: [S3Object]
+  client: Client @connection (name: "ClientPersonalCareExpense", sortField: "dueDate")
+}
+
+enum PetE {
+  FOOD
+  MEDICINE
+  EQUIPMENT
+  PET
+}
+
+type PetExpense 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float!
+  dueDate: AWSDate!
+  category: CategoryE!
+  nature: PetE
+  title: String
+  tags: [String]
+  notes: String
+  images: [S3Object]
+  client: Client @connection (name: "ClientPetExpense", sortField: "dueDate")
+}
+
+enum EntertainmentE {
+  CONCERT
+  SPORTINGEVENTS
+  LIVETHEATER
+  MOVIES
+  SUBSCRIPTION
+  OTHER
+}
+
+type EntertainmentExpense 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float!
+  dueDate: AWSDate!
+  category: CategoryE!
+  natute: EntertainmentE
+  title: String
+  tags: [String]
+  notes:String
+  images: [S3Object]
+  client: Client @connection (name: "ClientEntertainmentExpense", sortField: "dueDate")
+}
+
+enum LoanE {
+  PERSONAL
+  HOUSE
+  CAR
+  STUDENT
+}
+
+type LoanExpense 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float!
+  dueDate: AWSDate!
+  category: CategoryE!
+  natute: LoanE
+  title: String
+  tags: [String]
+  notes:String
+  images: [S3Object]
+  client: Client @connection (name: "ClientLoanExpense", sortField: "dueDate")
+}
+
+type W2Summary 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  year: String! # Correct type
+  grossPay: Float
+  federal: Float
+  state: Float
+  local: Float
+  tax: TaxExpense @connection (name: "W2SummaryTaxExpense")
+}
+
+type TaxExpense 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float! #Process fee + taxDebt - reimburse
+  dueDate: AWSDate!
+  category: CategoryE!
+  w2: W2Summary @connection (name: "W2SummaryTaxExpense")
+  #reimburse:Float It should behave like an income
+  taxDebt: Float
+  fee: Float
+  title: String
+  tags: [String]
+  notes: String
+  images: [S3Object]
+  client: Client @connection (name: "ClientTaxExpense", sortField: "dueDate")
+}
+
+enum AccountE {
+  I401K
+  IRA
+  ROTHIRA
+  TRF
+  VTSAX
+}
+
+type InvestmentExpense 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  account: AccountE!
+  amount: Float!
+  dueDate: AWSDate!
+  category: CategoryE!
+  title: String
+  tags: [String]
+  notes:String
+  images: [S3Object]
+  client: Client @connection(name: "ClientInvestmentExpense", sortField: "dueDate")
+}
+
+enum GyftEventE {
+  PHONERECHARGE
+  MONEYSENDED
+  PRESENT
+  BIRTHDAY
+  CHARITY
+  OTHER  
+}
+
+type Recipient
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  name: String!
+  images: [S3Object]
+  gyft: GyftExpense @connection (name: "RecipientGyftExpense")
+}
+
+type GyftExpense 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  kind: KindE!
+  amount: Float!
+  dueDate: AWSDate!
+  event: GyftEventE!
+  recipient: Recipient! @connection (name: "RecipientGyftExpense")
+  title: String
+  tags: [String]
+  notes: String
+  images: [S3Object]
+  client: Client @connection (name: "ClientGyftExpense", sortField: "dueDate")
+}
+
+type Budget
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  amount: Float!
+  spent: Float!
+  period: Period! @connection
+  createdAt: AWSDate
+  updatedAt: AWSDate
+  category: CategoryE!
+  title: String
+  tags: [String]
+  notes: String
+  client: Client @connection (name: "ClientBudget")
+}
+
+enum FrequencyE {
+  YEARLY
+  MONTHLY
+  WEEKLY
+  BEWEEKLY
+  DAYLY
+  HOURLY
+  ONETIME
+  OTHER
+}
+
+enum IncomeE {
+  JOB
+  TAX
+  GIG
+  SELL
+  RENT
+  EXTRA
+}
+
+type Income
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  amount: Float!
+  dueDate: AWSDate!
+  nature: IncomeE
+  frequency: FrequencyE! 
+  title: String
+  notes: String
+  tags: [String]
+  images: [S3Object]
+  client: Client @connection (name: "ClientIncome", sortField: "dueDate")
+}
+enum CardE {
+  CREDIT
+  CHECKING
+  SAVING
+  ACCESS360
+}
+
+type CreditCardDetail
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  limit: Float!
+  dueDate: AWSDate
+  interestRate: Float
+  interestFee: Float
+  minPayment: Float!
+  currentPurchaseAPR: Float!
+  currentAdvanceAPR: Float!
+  images: [S3Object]
+}
+
+type DebitCardDetail
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  dueDate: AWSDate
+  overdraftFee: Float
+  images: [S3Object]
+}
+
+type Card
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID
+  nature: CardE!
+  last4Digit:Int! 
+  amount: Float
+  tags: [String]
+  creditCardDetail: CreditCardDetail @connection
+  debitCardDetail: DebitCardDetail @connection
+  client: Client @connection (name: "ClientCard", sortField: "dueDate")
+}
+
+type CreditReport 
+  @model
+  @auth(rules: [{allow: owner}]) 
+{
+  id: ID!
+  issuer: String
+  creditScore: Int!
+  createdAt: AWSDate
+  onTimePayments: Float #%
+  creditUsage: Float #%
+  creditInqueries: Int
+  derogatoryMarks: Int
+  accounts: Int
+  tags: [String]
+  client: Client @connection (name: "ClientCreditReport")
+}
+
+type PriorityPayment 
+  @model 
+  @auth(rules: [{allow: owner}]) 
+{
+  id: ID!
+  percent: Float
+  createdAt: AWSDate
+  updatedAt: AWSDate
+}
+
+type FinantialIndependence
+  @model
+  @auth(rules: [{allow: owner}]){
+    id: ID!
+    targetAmount: Float
+    targetYears: Int #25 4% rule
+    createdAt: AWSDate
+    updatedAt: AWSDate
+    projectedExpenseByYear: Float
+  }
+
+enum AccountE {
+  I401K
+  IRA
+  ROTHIRA
+  TRF
+  VTSAX
+}
+
+type Investment
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  account: AccountE!
+  title: String
+  notes:String
+  roi: Float
+  fee: Float
+  value: Float
+  gain: Float
+  loss: Float
+  target: Float
+  period: Period @connection
+  createdAt: AWSDate
+  updatedAt: AWSDate
+  tags: [String]
+  images: [S3Object]
+  client: Client @connection (name: "ClientInvestment", sortField: "dueDate")
+}
+
+type Loan
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  amount: Float!
+  terms: String! #12 months 60 months 12x(15 year) 12x(30 year)
+  natute: LoanE
+  apr: Float
+  interest: Float!
+  monthPay: Float!
+  dueDate: AWSDate
+  title: String
+  notes:String
+  createdAt: AWSDate
+  updatedAt: AWSDate
+  tags: [String]
+  period: Period @connection
+  images: [S3Object]
+}
+
+type Property
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  amount: Float!
+  title: String
+  notes: String
+  purchaseDate: AWSDate
+  tags: [String]
+  images: [S3Object]
+  client: Client @connection (name: "ClientProperty", sortField: "name")
+}
+
+type Address 
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  number: String
+  street: String
+  postCode: String
+  country: String
+  state: String
+  region: String
+  county: String
+}
+
+type Client
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  id: ID!
+  username: String!
+  name: String
+  address: Address @connection
+  email: AWSEmail
+  phone: AWSPhone
+  avatar: S3Object
+  images: [S3Object]
+  creditReports: [CreditReport] @connection (name: "ClientCreditReport", sortField: "createdAt")
+  priorityPayment: PriorityPayment @connection
+  fi: FinantialIndependence @connection
+  properties: [Property] @connection (name: "ClientProperty", sortField: "purchaseDate")
+  investments: [Investment] @connection (name: "ClientInvestment", sortField: "createdAt")
+  incomes: [Income] @connection (name: "ClientIncome", sortField: "dueDate")
+  budgets: [Budget] @connection (name: "ClientBudget")
+  cards: [Card] @connection (name: "ClientCard", sortField: "last4Digit")
+  housingExpenses: [HousingExpense] @connection (name: "ClientHousingExpense", sortField: "dueDate")
+  phoneExpenses: [PhoneExpense] @connection (name: "ClientPhoneExpense", sortField: "dueDate")
+  insuranceExpenses: [InsuranceExpense] @connection (name: "ClientInsuranceExpense", sortField: "dueDate")
+  legalExpenses: [LegalExpense] @connection (name: "ClientLegalExpense", sortField: "dueDate")
+  foodExpenses: [FoodExpense] @connection (name: "ClientFoodExpense", sortField: "dueDate")
+  commuteExpenses: [CommuteExpense] @connection (name: "ClientCommuteExpense", sortField: "dueDate")
+  educationExpenses: [EducationExpense] @connection (name: "ClientEducationExpense", sortField: "dueDate")
+  personalCareExpenses: [PersonalCareExpense] @connection (name: "ClientPersonalCareExpense", sortField: "dueDate")
+  petExpenses: [PetExpense] @connection (name: "ClientPetExpense", sortField: "dueDate")
+  entertainmentExpenses: [EntertainmentExpense] @connection(name: "ClientEntertainmentExpense", sortField: "dueDate")
+  loanExpenses: [LoanExpense] @connection(name: "ClientLoanExpense", sortField: "dueDate")
+  taxExpenses: [TaxExpense] @connection(name: "ClientTaxExpense", sortField: "dueDate")
+  investmentExpenses: [InvestmentExpense] @connection(name: "ClientInvestmentExpense", sortField: "dueDate")
+  gyftExpenses: [GyftExpense] @connection(name: "ClientGyftExpense", sortField: "dueDate")
+}
+
+type S3Object
+{
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+
+
+
+# type Asset
+#   @model
+# @auth(rules: [{allow: owner}])
+# {
+#   id: ID!
+#   cards: [Card] #Savings + Debit cards only
+#   investments: [Investment]
+#   properties: [Property] #Only if it give you money
+# }
+
+# type Liability 
+#   @model
+# @auth(rules: [{allow: owner}])
+# {
+#   id: ID!
+#   credits: [Card]
+#   loans: [Loan]
+# }
