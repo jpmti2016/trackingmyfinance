@@ -1,0 +1,9 @@
+If you are using the hosted sign-in UI, you can configure your callback url on the AWS Cognito console:
+
+Services > Cognito > Manage User Pools > [Your user pool] > App Integration > App Client Settings
+
+You should add the full url of the callback you're using for your hosted website, for example: https://example.com/
+
+
+https://read.acloud.guru/how-to-deploy-a-custom-domain-with-the-amplify-console-a884b6a3c0fc
+

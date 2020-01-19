@@ -5468,112 +5468,329 @@ export const listClients = `query ListClients(
   $nextToken: String
 ) {
   listClients(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
+    items{
       id
       username
       name
-      address {
+      owner
+      address{
         id
-        number
-        street
-        postCode
-        country
-        state
-        region
-        county
-        owner
       }
-      email
       phone
-      avatar {
-        bucket
-        region
-        key
-      }
-      images {
-        bucket
-        region
-        key
-      }
-      creditReports {
+      
+      creditReports(limit: 10){
+        items{
+          id
+          creditScore
+        }
         nextToken
       }
-      priorityPayment {
+      
+      priorityPayment{
         id
         percent
-        createdAt
-        updatedAt
-        owner
       }
-      fi {
+      
+      fi{
         id
         targetAmount
         targetYears
-        createdAt
-        updatedAt
-        projectedExpenseByYear
-        owner
       }
-      properties {
+      
+      properties (limit: 10){
+        items{
+          id
+          title
+          amount
+        }
         nextToken
       }
-      investments {
+      
+      incomes (limit: 10){
+        items{
+          id
+          amount
+          dueDate
+          frequency
+        }
         nextToken
       }
-      incomes {
+      
+      budgets (limit: 10){
+        items{
+          id
+          amount
+          title
+          period{
+            id
+            billingStart
+            billingEnd
+          }
+        }
         nextToken
       }
-      budgets {
+      
+      cards (limit: 10){
+        items{
+          id
+          nature
+          last4Digit
+          amount
+          creditCardDetail{
+            id
+            dueDate
+            minPayment
+            currentPurchaseAPR
+            currentAdvanceAPR
+          }
+        }
         nextToken
       }
-      cards {
+      
+      housingExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          utility{
+            id
+            title
+            notes
+          }
+          supply{
+            id
+            title
+            notes
+          }
+          home{
+            id
+            title
+            notes
+          }
+          repair{
+            id
+            title
+            notes
+          }
+          otherHousing{
+            id
+            title
+            notes
+          }
+        }
         nextToken
       }
-      housingExpenses {
+      
+      phoneExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          phonePlan
+          plan{
+            id
+            title
+            notes
+          }
+          aditional{
+            id
+            title
+            notes
+          }
+        }
         nextToken
       }
-      phoneExpenses {
+      
+      insuranceExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          category
+          dueDate
+          title
+          notes
+        }
         nextToken
       }
-      insuranceExpenses {
+      
+      legalExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          title
+          notes
+        }
         nextToken
       }
-      legalExpenses {
+      
+      foodExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          grocery{
+            id
+            title
+            notes
+          }
+          dinningOut{
+            title
+            notes
+          }
+        }
         nextToken
       }
-      foodExpenses {
+      
+      commuteExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          category
+          dueDate
+          title
+          notes
+        }
         nextToken
       }
-      commuteExpenses {
+      
+      educationExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          college{
+            id
+            title
+            notes
+          }
+          onlineCourse{
+            id
+            title
+            notes
+          }
+          communityCollege{
+            id
+            title
+            notes
+          }
+          training{
+            id
+            title
+            notes
+          }
+          bootcamp{
+            id
+            title
+            notes
+          }
+        }
         nextToken
       }
-      educationExpenses {
+      personalCareExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          title
+          notes
+        }
         nextToken
       }
-      personalCareExpenses {
+      petExpenses (limit:10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          title
+          notes
+        }
         nextToken
       }
-      petExpenses {
+      entertainmentExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          title
+          notes
+        }
         nextToken
       }
-      entertainmentExpenses {
+      loanExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          title
+          notes
+        }
         nextToken
       }
-      loanExpenses {
+      taxExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          category
+          title
+          notes
+        }
         nextToken
       }
-      taxExpenses {
+      investmentExpenses (limit: 10){
+        items{
+          id
+          __typename
+          account
+          dueDate
+          category
+          title
+          notes
+        }
         nextToken
       }
-      investmentExpenses {
+      gyftExpenses (limit: 10){
+        items{
+          id
+          __typename
+          amount
+          dueDate
+          event
+          title
+          notes
+          event
+          recipient{
+            id
+            name
+          }
+        }
         nextToken
       }
-      gyftExpenses {
-        nextToken
-      }
-      owner
     }
     nextToken
   }
 }
+
 `;

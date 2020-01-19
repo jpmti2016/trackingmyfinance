@@ -1,0 +1,19 @@
+.hero-image {
+  background-image: url(../img/IMG_20191020_134438.jpg);
+  background-color: #fff;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.fancy-effect {
+  transition: all 0.5s ease; /* back to normal */
+}
+
+.fancy-effect:hover {
+  box-shadow: 0 0.5em 1em -0.125em rgba(59, 85, 120, 1),
+    0 0 0 1px rgba(10, 10, 10, 0.02);
+  transform: translate3D(0, -1px, 0) scale(1.03); /* move up slightly and zoom in */
+  transition: all 0.4s ease; /* zoom in */
+  cursor: pointer;
+}

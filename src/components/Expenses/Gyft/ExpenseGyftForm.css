@@ -1,0 +1,23 @@
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  border: 1px solid #baa949;
+  margin: 3rem 0 5rem 0;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+  border-color: #baa949;
+}
+
+.button.cta {
+  background-color: #baa949;
+}
+
+.error{
+  color: red;
+  margin: .3rem 0 .3rem 0;
+  padding: 0.5rem;
+}
