@@ -9,7 +9,7 @@ export default function ExpenseTable({ expenses, handleDeleteExpense, expenseTyp
       <div className="level">
         <div className="level-left" style={{ marginRight: "1rem" }}>
           <div className="level-item">
-            <Link className="button is-small" to={{ pathname: `${url}/edit/${expense.id}`, state: { expense: expense } }}>
+            <Link className="button is-small" to={{ pathname: `${url}/edit/${expense.id}`, state: { expense } }}>
               <i className="far fa-edit"></i>
             </Link>
           </div>

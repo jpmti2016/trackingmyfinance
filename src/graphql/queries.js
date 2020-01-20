@@ -5763,7 +5763,7 @@ export const listClients = `query ListClients(
         items{
           id
           __typename
-          account
+          amount
           dueDate
           category
           title

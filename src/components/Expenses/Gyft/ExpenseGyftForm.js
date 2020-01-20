@@ -25,7 +25,7 @@ const gyftDefault = (gyft) => {
 
   return {
     amount: Number(gyft.amount) || 0.00,
-    dueDate: dayjs(gyft.date).format('YYYY-MM-DD') || dayjs().format('YYYY-MM-DD'),
+    // dueDate: dayjs(gyft.date).format('YYYY-MM-DD') || dayjs().format('YYYY-MM-DD'),
     event: gyft.event || 'Phone Recharge',
     recipient: gyft.recipient.name || 'Mima',
     title: gyft.title || '',
@@ -100,10 +100,13 @@ export default function ExpenseGyftForm(props) {
       const gyftUpdated = await API.graphql(graphqlOperation(updateGyftExpense, { input: gyftToUpdate }));
 
       console.log('gyft updated', gyftUpdated.data.updateGyftExpense);
+      // const updateList = props.location.state.handleUpdate;
+      // gyftUpdated && updateList(gyfts => gyfts.map((g) => g.id === gyftUpdated.data.updateGyftExpense.id ? gyftUpdated.data.updateGyftExpense : g))
 
       // gyftUpdated && setGyfts(gyfts => gyfts.map((g) => g.id === gyftUpdated.id ? gyftUpdated.data.updateGyftExpense : g));
 
       // setGyft(null);
+      history.push("/expenses/gyft");
 
     } catch (error) {
       console.error('handle update', error);
@@ -116,6 +119,7 @@ export default function ExpenseGyftForm(props) {
       const result = await API.graphql(graphqlOperation(createGyftExpense, { input: { ...formatedInputGyft, gyftExpenseClientId: clientId, } }));
 
       console.log('new added gyft', result.data.createGyftExpense);
+      history.push("/expenses/gyft");
     } catch (error) {
       console.error('handle create gyft', error);
     }
@@ -126,7 +130,9 @@ export default function ExpenseGyftForm(props) {
       const kind = "GYFT"; // 'Gyft' because each the field kind is based on the current tab position
 
       const { amount, dueDate, recipient, event, notes, title } = data;
+      console.log('duedate from data', dueDate);
       const formatedDueDate = dayjs(dueDate).format('YYYY-MM-DD');
+      console.log('formated dueDate', formatedDueDate);
       const formatedAmount = Number(amount);
       const titleEmpty = title === '' ? null : title;
       const notesEmpty = notes === '' ? null : notes;
@@ -146,7 +152,7 @@ export default function ExpenseGyftForm(props) {
     e.target.reset(); // reset after form submit
     // alert(JSON.stringify(data));
 
-    history.push("/expenses/gyft");
+
 
   };
 
@@ -187,7 +193,7 @@ export default function ExpenseGyftForm(props) {
                 placeholder="11/25/2019"
                 name="dueDate"
                 ref={register}
-                defaultValue={(gyft && gyft.dueDate) || dayjs().format('YYYY-MM-DD')}
+                defaultValue={((props.location.pathname.includes('edit') && props.location.state.expense.dueDate))}
               />
               {errors.dueDate && <p className="error">{errors.dueDate.message}</p>}
             </div>
