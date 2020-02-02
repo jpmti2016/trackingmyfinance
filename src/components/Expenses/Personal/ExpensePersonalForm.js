@@ -28,6 +28,7 @@ import PetFields from "./Pet/Pet";
 import LoanFields from "./Loan/Loan";
 import TaxesFields from "./Taxes/Taxes";
 import InvestmentFields from "./Investment/Investment";
+import { getOtherHousing } from "../../../graphql/queries";
 
 // const personalSchema = yup.object().shape({
 //   housing: yup.object.shape({
@@ -78,32 +79,44 @@ export default function ExpensePersonalForm(props) {
   //                     props.location.state.expense.category) ||
   //                   ""
   //                 }
+
   useEffect(() => {
     reset({
       personal: isUpdating && expense ? expense.category : "",
-      housing: isUpdating && expense ? housingTypeToUpdate(expense) : "",
+      housing: isUpdating && expense ? housingEnumT(expense).typeToUpdate : "",
       utility:
         isUpdating && expense && expense.utility
           ? expense.utility.selection.toLowerCase()
           : "",
-      dueDate: isUpdating && expense ? expense.dueDate : "",
-      amount: isUpdating && expense ? expense.amount : "",
-      company:
+      utilityDueDate: isUpdating && expense ? expense.dueDate : "",
+      supplyDueDate: isUpdating && expense ? expense.dueDate : "",
+      utilityAmount: isUpdating && expense ? expense.amount : "",
+      supplyAmount: isUpdating && expense ? expense.amount : "",
+      utilityCompany:
         isUpdating && expense && expense.utility ? expense.utility.company : "",
-      title:
+      utilityTitle:
         isUpdating && expense && expense.utility ? expense.utility.title : "",
-      notes:
+      supplyTitle:
+        isUpdating && expense && expense.supply ? expense.supply.title : "",
+      utilityNotes:
         isUpdating && expense && expense.utility ? expense.utility.notes : "",
-      billingStart:
+      supplyNotes:
+        isUpdating && expense && expense.supply ? expense.supply.notes : "",
+      utilityBillingStart:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingStart
           : "",
-      billingEnd:
+      utilityBillingEnd:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingEnd
           : "",
-      reading:
-        isUpdating && expense && expense.utility ? expense.utility.reading : ""
+      utilityReading:
+        isUpdating && expense && expense.utility ? expense.utility.reading : "",
+      supplyFor:
+        isUpdating && expense && expense.supply ? expense.supply.supplyFor : "",
+      brand:
+        isUpdating && expense && expense.supply ? expense.supply.brand : "",
+      model: isUpdating && expense && expense.supply ? expense.supply.model : ""
     });
   }, [expense, reset, isUpdating]);
 
@@ -115,25 +128,24 @@ export default function ExpensePersonalForm(props) {
   const watchHousing = watch("housing");
   console.log("watchHousing", watchHousing);
 
-  const housingTypeToUpdate = expense => {
+  const watchUtility = watch("utility");
+  console.log("watchUtility", watchUtility);
+
+  const housingEnumT = expense => {
     if (expense) {
       if (expense.home) {
-        return "HOME";
+        return { typeToUpdate: "HOME", title: "" };
       } else if (expense.otherHousing) {
-        return "OTHER";
+        return { typeToUpdate: "OTHER", title: "" };
       } else if (expense.repair) {
-        return "REPAIR";
+        return { typeToUpdate: "REPAIR", title: "" };
       } else if (expense.supply) {
-        return "SUPPLIES";
+        return { typeToUpdate: "SUPPLIES", title: "" };
       } else if (expense.utility) {
-        console.log("toUpdateHSelect", "UTILITIES");
-        return "UTILITIES";
+        return { typeToUpdate: "UTILITIES", title: "" };
       }
     }
   };
-
-  const watchUtility = watch("utility");
-  console.log("watchUtility", watchUtility);
 
   const watchLawyerOption = watch("lawyerOption");
 

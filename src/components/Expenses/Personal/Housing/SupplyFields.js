@@ -1,66 +1,101 @@
 import React from "react";
 
-export default function SupplyFields({ register }) {
+export default function SupplyFields({ register, errors }) {
   return (
     <>
       <div className="field">
-        <label htmlFor="supply" className="label">
+        <label htmlFor="supplyFor" className="label">
           Supply For
         </label>
         <div className="control">
           <div className="select">
             <select
-              name="supply"
-              id="supply"
+              name="supplyFor"
+              id="supplyFor"
               ref={register({ required: true })}
             >
-              <option value="Select">Select</option>
-              <option value="Workshop">Workshop</option>
-              <option value="Kitchen">Kitchen</option>
-              <option value="Bedroom">Bedroom</option>
-              <option value="Dinnerroom">Dinnerroom</option>
-              <option value="Office">Office</option>
-              <option value="Hobby">Hobby</option>
-              <option value="Other">Other</option>
+              <option value="">Select</option>
+              <option value="WORKSHOP">Workshop</option>
+              <option value="KITCHEN">Kitchen</option>
+              <option value="BEDROOM">Bedroom</option>
+              <option value="DINNERROOM">Dinnerroom</option>
+              <option value="OFFICE">Office</option>
+              <option value="HOBBY">Hobby</option>
+              <option value="OTHER">Other</option>
             </select>
           </div>
+          {errors && errors.supplyFor && (
+            <p className="error">
+              {"Please select a the target of the supply"}
+            </p>
+          )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="dateOfPurchase" className="label">
+        <label htmlFor="supplyDueDate" className="label">
           Date of Purchase
         </label>
         <div className="control">
           <input
             type="date"
             className="input"
-            name="dateOfPurchase"
+            name="supplyDueDate"
+            id="supplyDueDate"
             ref={register}
           />
+          {errors && errors.supplyDueDate && (
+            <p className="error">{"Please select a the supply's dueDate"}</p>
+          )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="amount" className="label">
+        <label htmlFor="supplyAmount" className="label">
           Amount
         </label>
         <div className="control">
-          <input type="number" className="input" name="amount" id="amount" ref={register} />
+          <input
+            type="number"
+            className="input"
+            name="supplyAmount"
+            id="supplyAmount"
+            ref={register}
+          />
+          {errors && errors.supplyAmount && (
+            <p className="error">{"Please select a the supply's amount"}</p>
+          )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="title" className="label">
+        <label htmlFor="supplyTitle" className="label">
           Title
         </label>
         <div className="control">
-          <input type="text" className="input" name="title" ref={register} />
+          <input
+            type="text"
+            className="input"
+            name="supplyTitle"
+            id="supplyTitle"
+            ref={register}
+          />
+          {errors && errors.supplyTitle && (
+            <p className="error">{"Please check the supply's title"}</p>
+          )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="notes" className="label">
+        <label htmlFor="supplyNotes" className="label">
           Notes
         </label>
         <div className="control">
-          <textarea className="textarea" name="notes" ref={register} />
+          <textarea
+            className="textarea"
+            name="supplyNotes"
+            id="supplyNotes"
+            ref={register}
+          />
+          {errors && errors.supplyNotes && (
+            <p className="error">{"Please check the supply's notes"}</p>
+          )}
         </div>
       </div>
       <div className="field">
@@ -68,7 +103,16 @@ export default function SupplyFields({ register }) {
           Brand
         </label>
         <div className="control">
-          <input type="text" className="input" name="brand" ref={register} />
+          <input
+            type="text"
+            className="input"
+            name="brand"
+            id="brand"
+            ref={register}
+          />
+          {errors && errors.brand && (
+            <p className="error">{"Please check the supply's brand"}</p>
+          )}
         </div>
       </div>
       <div className="field">
@@ -76,7 +120,16 @@ export default function SupplyFields({ register }) {
           Model
         </label>
         <div className="control">
-          <input type="text" className="input" name="model" ref={register} />
+          <input
+            type="text"
+            className="input"
+            name="model"
+            id="model"
+            ref={register}
+          />
+          {errors && errors.model && (
+            <p className="error">{"Please check the supply's model"}</p>
+          )}
         </div>
       </div>
     </>

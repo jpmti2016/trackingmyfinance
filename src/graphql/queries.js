@@ -5574,8 +5574,11 @@ export const listClients = `query ListClients(
           }
           supply{
             id
+            supplyFor
             title
             notes
+            brand
+            model
           }
           home{
             id

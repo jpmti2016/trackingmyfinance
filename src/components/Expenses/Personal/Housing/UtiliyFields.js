@@ -10,22 +10,22 @@ export default function UtiliyFields({
   return (
     <>
       <div className="field">
-        <label htmlFor="dueDate" className="label">
+        <label htmlFor={`utilityDueDate`} className="label">
           Due Date
         </label>
         <input
           type="date"
           className="input"
-          name="dueDate"
-          id="dueDate"
+          name={`utilityDueDate`}
+          id={`utilityDueDate`}
           ref={register({ required: true })}
         />
-        {errors && errors["DueDate"] && (
+        {errors && errors[`utilityDueDate`] && (
           <p className="error">{"Please select a due date"}</p>
         )}
       </div>
       <div className="field">
-        <label htmlFor={"amount"} className="label">
+        <label htmlFor={`utilityAmount`} className="label">
           Amount
         </label>
         <div className="control">
@@ -33,18 +33,18 @@ export default function UtiliyFields({
             className="input"
             type="number"
             placeholder="25"
-            name={"amount"}
-            id={"amount"}
+            name={`utilityAmount`}
+            id={`utilityAmount`}
             ref={register({ required: true, min: 1 })}
           />
-          {errors && errors["amount"] && (
+          {errors && errors[`utilityBill`] && (
             <p className="error">{"Please enter the amount"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor={"company"} className="label">
+        <label htmlFor={`utilityCompany`} className="label">
           Company
         </label>
         <div className="control">
@@ -52,18 +52,18 @@ export default function UtiliyFields({
             className="input"
             type="text"
             placeholder="Late water bill"
-            name={"company"}
-            id={"company"}
+            name={`utilityCompany`}
+            id={`utilityCompany`}
             ref={register({ min: 2 })}
           />
-          {errors && errors["company"] && (
+          {errors && errors[`utilityCompany`] && (
             <p className="error">{"Please check the company"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor={"title"} className="label">
+        <label htmlFor={`utilityTitle`} className="label">
           Title
         </label>
         <div className="control">
@@ -71,29 +71,29 @@ export default function UtiliyFields({
             className="input"
             type="text"
             placeholder="Title"
-            name={"title"}
-            id={"title"}
+            name={`utilityTitle`}
+            id={`utilityTitle`}
             ref={register({ min: 2 })}
           />
-          {errors && errors["title"] && (
+          {errors && errors[`utilityTitle`] && (
             <p className="error">{"Please check the title"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor={"notes"} className="label">
+        <label htmlFor={`utilityNotes`} className="label">
           Notes
         </label>
         <div className="control">
           <textarea
             className="textarea"
-            name={"notes"}
-            id={"notes"}
+            name={`utilityNotes`}
+            id={`utilityNotes`}
             ref={register}
           />
         </div>
-        {errors && errors["notes"] && (
+        {errors && errors[`utilityNotes`] && (
           <p className="error">{"Please check the notes"}</p>
         )}
       </div>
@@ -103,40 +103,35 @@ export default function UtiliyFields({
         </label>
 
         <div className="control">
-          <label htmlFor={"billingStart"} className="label">
+          <label htmlFor={`utilityBillingStart`} className="label">
             Start
           </label>
           <input
             type="date"
             className="input"
             placeholder="Start"
-            name={"billingStart"}
-            id={"billingStart"}
+            name={`utilityBillingStart`}
+            id={`utilityBillingStart`}
             ref={register}
           />
-          {errors && errors["billingStart"] && (
+          {errors && errors[`utilityBillingStart`] && (
             <p className="error">{"Please check the Start Period"}</p>
           )}
         </div>
 
         <div className="control">
-          <label htmlFor={"billingEnd"} className="label">
+          <label htmlFor={`utilityBillingEnd`} className="label">
             End
           </label>
           <input
             type="date"
             className="input"
             placeholder="End"
-            name={"billingEnd"}
-            id={"billingEnd"}
+            name={`utilityBillingEnd`}
+            id={`utilityBillingEnd`}
             ref={register}
-            defaultValue={
-              isUpdating && expense && expense.utility && expense.utility.period
-                ? expense.utility.period.billigEnd
-                : ""
-            }
           />
-          {errors && errors["billingEnd"] && (
+          {errors && errors["utilityBillingEnd"] && (
             <p className="error">{"Please check the End Period"}</p>
           )}
         </div>
@@ -145,7 +140,7 @@ export default function UtiliyFields({
         watchUtility === "power" ||
         watchUtility === "gas") && (
         <div className="field">
-          <label htmlFor={"reading"} className="label">
+          <label htmlFor={`utilityReading`} className="label">
             Reading
           </label>
           <div className="control">
@@ -153,12 +148,12 @@ export default function UtiliyFields({
               type="text"
               className="input"
               placeholder="123"
-              name={"reading"}
-              id={"reading"}
+              name={`utilityReading`}
+              id={`utilityReading`}
               ref={register}
             />
           </div>
-          {errors && errors["reading"] && (
+          {errors && errors[`utilityReading`] && (
             <p className="error">{"Please check the Reading"}</p>
           )}
         </div>
