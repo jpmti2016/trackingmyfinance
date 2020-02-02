@@ -18,8 +18,6 @@ const gyftSchema = yup.object().shape({
   notes: yup.string()
 });
 
-
-
 const gyftDefault = (gyft) => {
   console.log('default values event', gyft.event)
 
@@ -61,7 +59,7 @@ export default function ExpenseGyftForm(props) {
     let result = null;
     let recipCreate = null;
     try {
-      const listResult = await API.graphql(graphqlOperation(listRecipients));
+      const listResult = await API.graphql(graphqlOperation(listRecipients, { input: { name: recipient } }));
 
       if (listResult) {
         result = listResult.data.listRecipients.items.find((r) => r.name === recipient);

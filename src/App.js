@@ -38,6 +38,7 @@ function App() {
           <Route path="/expenses/personal/add" component={ExpensePersonalForm} />
           <Route path="/expenses/gyft/add" component={ExpenseGyftForm} />
           <Route path="/expenses/gyft/edit/:id" component={ExpenseGyftForm} />
+          <Route path="/expenses/personal/edit/:id" component={ExpensePersonalForm} />
 
 
           <Route path="/expenses" component={Expenses} user={user} />

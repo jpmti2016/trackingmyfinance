@@ -1,17 +1,17 @@
 import React from "react";
 
-export default function UtilityRadioGroup({ register }) {
+export default function UtilityRadioGroup({ register, expense, isUpdating }) {
   return (
     <div className="field is-grouped is-grouped-multiline">
       <div className="control">
         <label htmlFor="water" className="label">
-          <input type="radio" name="utility" value="water" ref={register} />
+          <input type="radio" name="utility" value="water" ref={register} defaultChecked={isUpdating && expense && expense.utility && expense.utility.selection.toLowerCase() === 'water' ? "water" : false} />
           Water
         </label>
       </div>
       <div className="control">
         <label htmlFor="power" className="label">
-          <input type="radio" name="utility" value="power" ref={register} />
+          <input type="radio" name="utility" value="power" ref={register} defaultChecked={isUpdating && expense && expense.utility && expense.utility.selection.toLowerCase() === 'power' ? "power" : false} />
           Power
         </label>
       </div>
@@ -23,6 +23,7 @@ export default function UtilityRadioGroup({ register }) {
             name="utility"
             value="gas"
             ref={register}
+            defaultChecked={isUpdating && expense && expense.utility ? expense.utility.selection.toLowerCase() === 'gas' : false}
           />
           Gas
         </label>
@@ -35,6 +36,7 @@ export default function UtilityRadioGroup({ register }) {
             name="utility"
             value="internet"
             ref={register}
+            defaultChecked={isUpdating && expense && expense.utility ? expense.utility.selection.toLowerCase() === 'internet' : false}
           />
           Internet
         </label>
@@ -47,6 +49,7 @@ export default function UtilityRadioGroup({ register }) {
             name="utility"
             value="cable"
             ref={register}
+            defaultChecked={isUpdating && expense && expense.utility ? expense.utility.selection.toLowerCase() === 'cable' : false}
           />
           Cable
         </label>
@@ -59,6 +62,7 @@ export default function UtilityRadioGroup({ register }) {
             name="utility"
             value="phone"
             ref={register}
+            defaultChecked={isUpdating && expense && expense.utility ? expense.utility.selection.toLowerCase() === 'phone' : false}
           />
           Phone
         </label>

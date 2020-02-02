@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import * as yup from 'yup';
+// import * as yup from 'yup';
 import dayjs from 'dayjs';
 import { useHistory } from "react-router-dom";
 import { API, graphqlOperation } from 'aws-amplify';
+import { createPeriod, updatePeriod, createUtility, updateUtility, updateHousingExpense } from '../../../graphql/mutations';
 import "./ExpensePersonalForm.css";
+
+import { asEnumeration } from '../../helpers/noswitch';
 
 import HousingFields from "./Housing/Housing";
 import InsuranceFields from "./Insurance/Insurance";
@@ -20,30 +23,57 @@ import LoanFields from "./Loan/Loan";
 import TaxesFields from "./Taxes/Taxes";
 import InvestmentFields from "./Investment/Investment";
 
-const personalSchema = yup.object().shape({
+// const personalSchema = yup.object().shape({
+//   housing: yup.object.shape({
+//     personal: yup.string().required('Must select a category'),
+//     housing: yup.string().required('Must select a housing type'),
+//     utility: yup.bool().required('Must select an utility service'),
+//     `${watchUtility}DueDate`: yup.string().required('Must enter the due date'),
+//   })
 
-});
+// });
 
-export default function ExpensePersonalForm() {
+export default function ExpensePersonalForm(props) {
+  const [expense, setExpense] = useState(null);
+  const [isAdding, setIsAdding] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [clientId, setClientId] = useState("");
+
+  console.log('props', props);
+
   let history = useHistory();
 
+  useEffect(() => {
+    props.location.pathname.includes('edit') && setExpense(props.location.state.expense);
+    props.location.pathname.includes('add') && setClientId(props.location.state.clientId);
+
+    setIsAdding(props.location.pathname.includes('add'));
+    setIsUpdating(props.location.pathname.includes('edit'));
+  }, [props]);
+
+  console.log('expense to fill', expense);
+
   const { register, handleSubmit, errors, watch, reset } = useForm({
-    defaultValues: {
-      personal: "Select",
-      housing: "Select",
-      utility: "water",
-      payType: "mortgage",
-      event: "Select",
-      phonePlan: "Plan",
-      groceryCost: "Total"
-    }
+    // defaultValues: {
+    //   personal: "Select",
+    //   housing: "Select",
+    //   utility: isUpdating && expense && expense.utility ? expense.utility.selection : "",
+    //   payType: "mortgage",
+    //   event: "Select",
+    //   phonePlan: "Plan",
+    //   groceryCost: "Total"
+    // }
   });
+
   const watchPersonal = watch("personal");
+  console.log('watchPersonal', watchPersonal);
 
   const watchInsurance = watch("nature");
 
   const watchHousing = watch("housing");
+  console.log('watchHousing', watchHousing);
   const watchUtility = watch("utility");
+  console.log('watchUtility', watchUtility);
 
   const watchLawyerOption = watch("lawyerOption");
 
@@ -61,14 +91,202 @@ export default function ExpensePersonalForm() {
 
   const watchEnterMent = watch("nature");
 
-  const cta = `Add my ${
+  const ctaElement = `${
     watchPersonal !== "Select" ? watchPersonal : ""
     } expense`;
+  const cta = isAdding ? `Add my ${ctaElement}` : `Update my ${ctaElement}`;
 
   const handleCancel = () => {
     reset();
     history.push("/expenses/personal");
   }
+
+  const managePeriod = async ({ periodStartEmpty, periodEndingEmpty }) => {
+    try {
+      let periodId = null;
+      if (isAdding) {
+        const result = await API.graphql(graphqlOperation(createPeriod, { input: { billingStart: periodStartEmpty, billingEnd: periodEndingEmpty } }));
+
+        result && (periodId = result.data.createPeriod.id);
+        console.log('period created', periodId);
+      } else if (isUpdating) {
+        const result = await API.graphql(graphqlOperation(updatePeriod, { input: { billingStart: periodStartEmpty, billingEnd: periodEndingEmpty } }));
+
+        result && (periodId = result.data.createPeriod.id);
+        console.log('period updated', periodId);
+      }
+
+      return periodId;
+    } catch (error) {
+      console.error('Validate period', error);
+    }
+
+  }
+
+  const formatUtilities = async (newData) => {
+
+    // "id": "3e5d9085-7698-49d9-a441-ebcddd87d118",
+    //   "kind": "PERSONAL",
+    //     "amount": 500,
+    //       "category": "HOUSING",
+    //         "dueDate": "2020-02-01",
+    //           "utility": {
+    //   "id": "21261129-4bcb-47a3-9a29-564c647cd1fe",
+    //     "selection": "WATER",
+    //       "company": "ss",
+    //         "title": "tt",
+    //           "notes": "nott",
+    //             "period": {
+    //     "id": "25804f0b-1cc7-4629-957c-c15ddf1e695e",
+    //       "billingStart": "2019-07-02",
+    //         "billingEnd": "2019-07-29"
+    //   },
+    //   "reading": 12,
+    //     "images": null
+    try {
+      const { kind, personal, housing, utility, waterDueDate, waterBill, waterTitle, waterCompany, waterNotes, waterPeriodStart, waterPeriodEnding, waterReading } = newData;
+      const formatedDueDate = dayjs(waterDueDate).format('YYYY-MM-DD');
+      const formatedAmount = waterBill === '' ? null : Number(waterBill);
+
+      const titleBeNotEmpty = waterTitle === '' ? null : waterTitle;
+      const notesBeNotEmpty = waterNotes === '' ? null : waterNotes;
+      const companyBeNotEmpty = waterCompany === '' ? null : waterCompany;
+      const readingBeNotEmpty = waterReading === '' ? null : waterReading;
+
+      // const categoryBeNotEmpty = 
+
+      const periodStartBeNotEmpty = waterPeriodStart === '' ? null : dayjs(waterPeriodStart).format('YYYY-MM-DD');
+      const periodEndingBeNotEmpty = waterPeriodEnding === '' ? null : dayjs(waterPeriodEnding).format('YYYY-MM-DD');
+      const utilityPeriodId = await managePeriod({ periodStartBeNotEmpty, periodEndingBeNotEmpty });
+
+      // isUpdating && (const {selection, company, title, tit})
+      const formatedUtility = { company: companyBeNotEmpty, notes: notesBeNotEmpty, reading: readingBeNotEmpty, selection: utility, title: titleBeNotEmpty, utilityPeriodId };
+
+      if (isUpdating) {
+        // const {}
+        let existingUtilityId = null;
+        expense && (existingUtilityId = expense.utility.id);
+        const utilityToUpdate = { id: existingUtilityId, ...formatedUtility };
+        const utilityUpdated = await API.graphql(graphqlOperation(updateUtility, { input: utilityToUpdate }));
+        const utilityId = utilityUpdated && utilityUpdated.data.updateUtility.id;
+
+        const housingExpenseToUpdate = { ...expense, housingExpenseUtilityId: utilityId, kind, category: personal, nature: housing, dueDate: formatedDueDate, amount: formatedAmount };
+
+        const updatedHousingExpense = await API.graphql(graphqlOperation(updateHousingExpense, { input: housingExpenseToUpdate }));
+        console.log('updated housing', updatedHousingExpense);
+
+      } else if (isAdding) {
+
+      }
+
+    } catch (error) {
+      console.error('Format housing utility period', error)
+    }
+  }
+
+  const formatHousing = (data) => {
+
+    switch (watchHousing) {
+      case 'Utilities':
+        return formatUtilities(data);
+      default:
+        throw new Error('Must select a housing')
+    }
+  }
+
+  const formatInsurance = (data) => {
+
+  }
+
+  const formatLegal = (data) => {
+
+  }
+
+  const formatPhone = (data) => {
+
+  }
+
+  const formatFood = (data) => {
+
+  }
+
+  const formatCommute = (data) => {
+
+  }
+
+  const formatEducation = (data) => {
+
+  }
+
+  const formatPersonalCare = (data) => {
+
+  }
+
+  const formatEntertainment = (data) => {
+
+  }
+
+  const formatPet = (data) => {
+
+  }
+
+  const formatLoan = (data) => {
+
+  }
+
+  const formatTaxes = (data) => {
+
+  }
+
+  const formatInvestment = (data) => {
+
+  }
+
+  const formatPesonalExpense = (data) => {
+    switch (watchPersonal) {
+      case 'Housing':
+        return formatHousing(data);
+      case 'Insurance':
+        return formatInsurance(data);
+      case 'Legal':
+        return formatLegal(data);
+      case 'Phone':
+        return formatPhone(data);
+      case 'Food':
+        return formatFood(data);
+      case 'Commute':
+        return formatCommute(data);
+      case 'Education':
+        return formatEducation(data);
+      case 'Personal Care':
+        return formatPersonalCare(data);
+      case 'Entertainment':
+        return formatEntertainment(data);
+      case 'Pet':
+        return formatPet(data);
+      case 'Loan':
+        return formatLoan(data);
+      case 'Taxes':
+        return formatTaxes(data);
+      case 'Investment':
+        return formatInvestment(data);
+      default:
+        throw new Error('An expense must be selected');
+    }
+  }
+
+  const handleUpdatePersonalExpense = (formatedExpense) => {
+    formatPesonalExpense(formatedExpense);
+  }
+
+  const handleCreatePersonalExpense = (formatedExpense) => {
+    try {
+
+    } catch (error) {
+
+    }
+  }
+
 
   const onSubmit = (data, e) => {
     //  !!!! Add a field kind: 'Personal' to the object before send
@@ -76,15 +294,15 @@ export default function ExpensePersonalForm() {
 
     try {
       const kind = "PERSONAL"; //'Personal' because each the field kind is based on the current tab position
+      const formatedExpense = formatPesonalExpense({ ...data, kind });
 
-      const { amount, dueDate, category, event, notes, title } = data;
-      const formatedDueDate = dayjs(dueDate).format('YYYY-MM-DD');
-      const formatedAmount = Number(amount);
-      const titleEmpty = title === '' ? null : title;
-      const notesEmpty = notes === '' ? null : notes;
+      isAdding && handleCreatePersonalExpense(formatedExpense);
+
+      isUpdating && handleUpdatePersonalExpense(formatedExpense);
+
 
     } catch (error) {
-
+      console.error('CU personal expense', error);
     }
 
     e.target.reset(); // reset after form submit
@@ -128,91 +346,101 @@ export default function ExpensePersonalForm() {
                   name="personal"
                   id="personal"
                   ref={register({ required: true })}
-                >
-                  <option value="Select">Select</option>
-                  <option value="Housing">Housing</option>
-                  <option value="Phone">Phone</option>
-                  <option value="Insurance">Insurance</option>
-                  <option value="Legal">Legal</option>
-                  <option value="Food">Food</option>
-                  <option value="Commute">Commute</option>
-                  <option value="Education">Education</option>
-                  <option value="Personal Care">Personal Care</option>
-                  <option value="Pet">Pet</option>
-                  <option value="Entertainment">Entertainment</option>
-                  <option value="Loan">Loan</option>
-                  <option value="Taxes">Taxes</option>
-                  <option value="Investment">Investment</option>
+                  defaultValue={(props.location.pathname.includes('edit') && props.location.state.expense.category) || ""}>
+                  >
+                  <option value="">--Select--</option>
+                  <option value="HOUSING">Housing</option>
+                  <option value="PHONE">Phone</option>
+                  <option value="INSURANCE">Insurance</option>
+                  <option value="LEGAL">Legal</option>
+                  <option value="FOOD">Food</option>
+                  <option value="COMMUTE">Commute</option>
+                  <option value="EDUCATION">Education</option>
+                  <option value="PERSONALCARE">Personal Care</option>
+                  <option value="PET">Pet</option>
+                  <option value="ENTERTAINMENT">Entertainment</option>
+                  <option value="LOAN">Loan</option>
+                  <option value="TAXES">Taxes</option>
+                  <option value="INVESTMENT">Investment</option>
                 </select>
               </div>
+              {errors.personal && <p className="error">{"Please select a catregory"}</p>}
             </div>
           </div>
 
-          {watchPersonal === "Housing" && (
+          {watchPersonal === "HOUSING" && (
             <HousingFields
               watchHousing={watchHousing}
               watchUtility={watchUtility}
               register={register}
+              errors={errors}
+              expense={expense}
+              isUpdating={isUpdating}
             />
           )}
 
-          {watchPersonal === "Insurance" && (
+          {watchPersonal === "INSURANCE" && (
             <InsuranceFields
               watchInsurance={watchInsurance}
               register={register}
+              errors={errors}
             />
           )}
 
-          {watchPersonal === "Legal" && (
+          {watchPersonal === "LEGAL" && (
             <LegalFields
               register={register}
               watchLawyerOption={watchLawyerOption}
+              errors={errors}
             />
           )}
 
-          {watchPersonal === "Phone" && (
-            <PhoneFields register={register} watchPhonePlan={watchPhonePlan} />
+          {watchPersonal === "PHONE" && (
+            <PhoneFields register={register} watchPhonePlan={watchPhonePlan} errors={errors} />
           )}
 
-          {watchPersonal === "Food" && (
-            <FoodFields register={register} watchFood={watchFood} watchGroceryCost={watchGroceryCost} />
+          {watchPersonal === "FOOD" && (
+            <FoodFields register={register} watchFood={watchFood} watchGroceryCost={watchGroceryCost} errors={errors} />
           )}
 
-          {watchPersonal === "Commute" && (
+          {watchPersonal === "COMMUTE" && (
             <CommuteFields
               register={register}
               watchCommuteService={watchCommuteService}
+              errors={errors}
             />
           )}
 
-          {watchPersonal === "Education" && (
+          {watchPersonal === "EDUCATION" && (
             <EducationFields
               register={register}
               watchEducation={watchEducation}
               watchEdOnlinePeriod={watchEdOnlinePeriod}
               watchBCampPriceDeferred={watchBCampPriceDeferred}
+              errors={errors}
             />
           )}
 
-          {watchPersonal === "Personal Care" && (
-            <PersonalCareFields register={register} />
+          {watchPersonal === "PERSONALCARE" && (
+            <PersonalCareFields register={register} errors={errors} />
           )}
 
-          {watchPersonal === "Entertainment" && (
+          {watchPersonal === "ENTERTAINMENT" && (
             <EntertainmentFields
               register={register}
               watchEnterMent={watchEnterMent}
+              errors={errors}
             />
           )}
 
-          {watchPersonal === "Pet" && <PetFields register={register} />}
+          {watchPersonal === "PET" && <PetFields register={register} errors={errors} />}
 
-          {watchPersonal === "Loan" && <LoanFields register={register} />}
+          {watchPersonal === "LOAN" && <LoanFields register={register} errors={errors} />}
 
-          {watchPersonal === "Taxes" && <TaxesFields register={register} />}
+          {watchPersonal === "TAXES" && <TaxesFields register={register} errors={errors} />}
 
-          {watchPersonal === "Investment" && (
-            <InvestmentFields register={register} />
+          {watchPersonal === "INVESTMENT" && (
+            <InvestmentFields register={register} errors={errors} />
           )}
 
           <div className="field">

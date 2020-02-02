@@ -5547,7 +5547,7 @@ export const listClients = `query ListClients(
         nextToken
       }
       
-      housingExpenses (limit: 10){
+      housingExpenses (limit: 50){
         items{
           id
           __typename
@@ -5556,8 +5556,21 @@ export const listClients = `query ListClients(
           category
           utility{
             id
+            selection
+            company
             title
             notes
+            period{
+              id
+              billingStart
+              billingEnd
+            }
+            reading
+            images{
+              bucket
+              region
+              key
+            }
           }
           supply{
             id

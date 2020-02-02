@@ -31,6 +31,7 @@ export default function Personal({ client }) {
         loanExpenses,
         taxExpenses
       } = client;
+
       setExpenses([
         ...legalExpenses.items,
         ...investmentExpenses.items,
