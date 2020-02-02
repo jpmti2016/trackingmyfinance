@@ -14,23 +14,6 @@ export default function HousingFields({
   expense,
   isUpdating
 }) {
-
-  const housingTypeToUpdate = (expense) => {
-    if (expense) {
-      if (expense.home) {
-        return 'HOME';
-      } else if (expense.otherHousing) {
-        return 'OTHER';
-      } else if (expense.repair) {
-        return 'REPAIR';
-      } else if (expense.supply) {
-        return 'SUPPLIES';
-      } else if (expense.utility) {
-        console.log('toUpdateHSelect', 'UTILITIES');
-        return 'UTILITIES';
-      }
-    }
-  }
   return (
     <>
       <div className="field">
@@ -39,8 +22,8 @@ export default function HousingFields({
         </label>
         <div className="control">
           <div className="select">
-            <select name="housing" ref={register({ required: true })} defaultValue={isUpdating && expense ? housingTypeToUpdate(expense) : ''}>>
-              <option value="">--Select--</option>
+            <select name="housing" ref={register({ required: true })}>
+              ><option value="">--Select--</option>
               <option value="UTILITIES">Utilities</option>
               <option value="SUPPLIES">Supplies</option>
               <option value="HOME">Home</option>
@@ -48,22 +31,36 @@ export default function HousingFields({
               <option value="OTHER">Other</option>
             </select>
           </div>
-          {(errors && errors.housing) && <p className="error">{"Please select a housing type"}</p>}
+          {errors && errors.housing && (
+            <p className="error">{"Please select a housing type"}</p>
+          )}
         </div>
       </div>
 
       {watchHousing === "UTILITIES" && (
-        <UtilityRadioGroup register={register} expense={expense} isUpdating={isUpdating} />
+        <UtilityRadioGroup register={register} />
       )}
       {watchHousing === "UTILITIES" && watchUtility && (
-        <UtiliyFields watchUtility={watchUtility} register={register} expense={expense} errors={errors} />
+        <UtiliyFields
+          watchUtility={watchUtility}
+          register={register}
+          expense={expense}
+          isUpdating={isUpdating}
+          errors={errors}
+        />
       )}
 
-      {watchHousing === "SUPPLIES" && <SupplyFields register={register} expense={expense} errors={errors} />}
+      {watchHousing === "SUPPLIES" && (
+        <SupplyFields register={register} expense={expense} errors={errors} />
+      )}
 
-      {watchHousing === "Home" && <HomeFields register={register} expense={expense} errors={errors} />}
+      {watchHousing === "Home" && (
+        <HomeFields register={register} expense={expense} errors={errors} />
+      )}
 
-      {watchHousing === "HOME" && <OtherFields register={register} expense={expense} errors={errors} />}
+      {watchHousing === "HOME" && (
+        <OtherFields register={register} expense={expense} errors={errors} />
+      )}
     </>
   );
 }

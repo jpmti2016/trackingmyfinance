@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 // import * as yup from 'yup';
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import { useHistory } from "react-router-dom";
-import { API, graphqlOperation } from 'aws-amplify';
-import { createPeriod, updatePeriod, createUtility, updateUtility, updateHousingExpense } from '../../../graphql/mutations';
+import { API, graphqlOperation } from "aws-amplify";
+import {
+  createPeriod,
+  updatePeriod,
+  createUtility,
+  updateUtility,
+  updateHousingExpense
+} from "../../../graphql/mutations";
 import "./ExpensePersonalForm.css";
 
-import { asEnumeration } from '../../helpers/noswitch';
+import { asEnumeration } from "../../helpers/noswitch";
 
 import HousingFields from "./Housing/Housing";
 import InsuranceFields from "./Insurance/Insurance";
 import LegalFields from "./Legal/Legal";
 import PhoneFields from "./Phone/Phone";
-import FoodFields from './Food/Food'
+import FoodFields from "./Food/Food";
 import CommuteFields from "./Commute/Commute";
 import EducationFields from "./Education/Education";
 import PersonalCareFields from "./Personal-Care/PersonalCare";
@@ -39,19 +45,21 @@ export default function ExpensePersonalForm(props) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [clientId, setClientId] = useState("");
 
-  console.log('props', props);
+  console.log("props", props);
 
   let history = useHistory();
 
   useEffect(() => {
-    props.location.pathname.includes('edit') && setExpense(props.location.state.expense);
-    props.location.pathname.includes('add') && setClientId(props.location.state.clientId);
+    props.location.pathname.includes("edit") &&
+      setExpense(props.location.state.expense);
+    props.location.pathname.includes("add") &&
+      setClientId(props.location.state.clientId);
 
-    setIsAdding(props.location.pathname.includes('add'));
-    setIsUpdating(props.location.pathname.includes('edit'));
+    setIsAdding(props.location.pathname.includes("add"));
+    setIsUpdating(props.location.pathname.includes("edit"));
   }, [props]);
 
-  console.log('expense to fill', expense);
+  console.log("expense to fill", expense);
 
   const { register, handleSubmit, errors, watch, reset } = useForm({
     // defaultValues: {
@@ -65,21 +73,73 @@ export default function ExpensePersonalForm(props) {
     // }
   });
 
+  // defaultValue={
+  //                   (props.location.pathname.includes("edit") &&
+  //                     props.location.state.expense.category) ||
+  //                   ""
+  //                 }
+  useEffect(() => {
+    reset({
+      personal: isUpdating && expense ? expense.category : "",
+      housing: isUpdating && expense ? housingTypeToUpdate(expense) : "",
+      utility:
+        isUpdating && expense && expense.utility
+          ? expense.utility.selection.toLowerCase()
+          : "",
+      dueDate: isUpdating && expense ? expense.dueDate : "",
+      amount: isUpdating && expense ? expense.amount : "",
+      company:
+        isUpdating && expense && expense.utility ? expense.utility.company : "",
+      title:
+        isUpdating && expense && expense.utility ? expense.utility.title : "",
+      notes:
+        isUpdating && expense && expense.utility ? expense.utility.notes : "",
+      billingStart:
+        isUpdating && expense && expense.utility && expense.utility.period
+          ? expense.utility.period.billingStart
+          : "",
+      billingEnd:
+        isUpdating && expense && expense.utility && expense.utility.period
+          ? expense.utility.period.billingEnd
+          : "",
+      reading:
+        isUpdating && expense && expense.utility ? expense.utility.reading : ""
+    });
+  }, [expense, reset, isUpdating]);
+
   const watchPersonal = watch("personal");
-  console.log('watchPersonal', watchPersonal);
+  console.log("watchPersonal", watchPersonal);
 
   const watchInsurance = watch("nature");
 
   const watchHousing = watch("housing");
-  console.log('watchHousing', watchHousing);
+  console.log("watchHousing", watchHousing);
+
+  const housingTypeToUpdate = expense => {
+    if (expense) {
+      if (expense.home) {
+        return "HOME";
+      } else if (expense.otherHousing) {
+        return "OTHER";
+      } else if (expense.repair) {
+        return "REPAIR";
+      } else if (expense.supply) {
+        return "SUPPLIES";
+      } else if (expense.utility) {
+        console.log("toUpdateHSelect", "UTILITIES");
+        return "UTILITIES";
+      }
+    }
+  };
+
   const watchUtility = watch("utility");
-  console.log('watchUtility', watchUtility);
+  console.log("watchUtility", watchUtility);
 
   const watchLawyerOption = watch("lawyerOption");
 
   const watchPhonePlan = watch("plan");
 
-  const watchFood = watch('nature');
+  const watchFood = watch("nature");
 
   const watchGroceryCost = watch("groceryCost");
 
@@ -93,38 +153,50 @@ export default function ExpensePersonalForm(props) {
 
   const ctaElement = `${
     watchPersonal !== "Select" ? watchPersonal : ""
-    } expense`;
+  } expense`;
   const cta = isAdding ? `Add my ${ctaElement}` : `Update my ${ctaElement}`;
 
   const handleCancel = () => {
     reset();
     history.push("/expenses/personal");
-  }
+  };
 
   const managePeriod = async ({ periodStartEmpty, periodEndingEmpty }) => {
     try {
       let periodId = null;
       if (isAdding) {
-        const result = await API.graphql(graphqlOperation(createPeriod, { input: { billingStart: periodStartEmpty, billingEnd: periodEndingEmpty } }));
+        const result = await API.graphql(
+          graphqlOperation(createPeriod, {
+            input: {
+              billingStart: periodStartEmpty,
+              billingEnd: periodEndingEmpty
+            }
+          })
+        );
 
         result && (periodId = result.data.createPeriod.id);
-        console.log('period created', periodId);
+        console.log("period created", periodId);
       } else if (isUpdating) {
-        const result = await API.graphql(graphqlOperation(updatePeriod, { input: { billingStart: periodStartEmpty, billingEnd: periodEndingEmpty } }));
+        const result = await API.graphql(
+          graphqlOperation(updatePeriod, {
+            input: {
+              billingStart: periodStartEmpty,
+              billingEnd: periodEndingEmpty
+            }
+          })
+        );
 
         result && (periodId = result.data.createPeriod.id);
-        console.log('period updated', periodId);
+        console.log("period updated", periodId);
       }
 
       return periodId;
     } catch (error) {
-      console.error('Validate period', error);
+      console.error("Validate period", error);
     }
+  };
 
-  }
-
-  const formatUtilities = async (newData) => {
-
+  const formatUtilities = async newData => {
     // "id": "3e5d9085-7698-49d9-a441-ebcddd87d118",
     //   "kind": "PERSONAL",
     //     "amount": 500,
@@ -144,149 +216,161 @@ export default function ExpensePersonalForm(props) {
     //   "reading": 12,
     //     "images": null
     try {
-      const { kind, personal, housing, utility, waterDueDate, waterBill, waterTitle, waterCompany, waterNotes, waterPeriodStart, waterPeriodEnding, waterReading } = newData;
-      const formatedDueDate = dayjs(waterDueDate).format('YYYY-MM-DD');
-      const formatedAmount = waterBill === '' ? null : Number(waterBill);
+      const {
+        kind,
+        personal,
+        housing,
+        utility,
+        waterDueDate,
+        waterBill,
+        waterTitle,
+        waterCompany,
+        waterNotes,
+        waterPeriodStart,
+        waterPeriodEnding,
+        waterReading
+      } = newData;
+      const formatedDueDate = dayjs(waterDueDate).format("YYYY-MM-DD");
+      const formatedAmount = waterBill === "" ? null : Number(waterBill);
 
-      const titleBeNotEmpty = waterTitle === '' ? null : waterTitle;
-      const notesBeNotEmpty = waterNotes === '' ? null : waterNotes;
-      const companyBeNotEmpty = waterCompany === '' ? null : waterCompany;
-      const readingBeNotEmpty = waterReading === '' ? null : waterReading;
+      const titleBeNotEmpty = waterTitle === "" ? null : waterTitle;
+      const notesBeNotEmpty = waterNotes === "" ? null : waterNotes;
+      const companyBeNotEmpty = waterCompany === "" ? null : waterCompany;
+      const readingBeNotEmpty = waterReading === "" ? null : waterReading;
 
-      // const categoryBeNotEmpty = 
+      // const categoryBeNotEmpty =
 
-      const periodStartBeNotEmpty = waterPeriodStart === '' ? null : dayjs(waterPeriodStart).format('YYYY-MM-DD');
-      const periodEndingBeNotEmpty = waterPeriodEnding === '' ? null : dayjs(waterPeriodEnding).format('YYYY-MM-DD');
-      const utilityPeriodId = await managePeriod({ periodStartBeNotEmpty, periodEndingBeNotEmpty });
+      const periodStartBeNotEmpty =
+        waterPeriodStart === ""
+          ? null
+          : dayjs(waterPeriodStart).format("YYYY-MM-DD");
+      const periodEndingBeNotEmpty =
+        waterPeriodEnding === ""
+          ? null
+          : dayjs(waterPeriodEnding).format("YYYY-MM-DD");
+      const utilityPeriodId = await managePeriod({
+        periodStartBeNotEmpty,
+        periodEndingBeNotEmpty
+      });
 
       // isUpdating && (const {selection, company, title, tit})
-      const formatedUtility = { company: companyBeNotEmpty, notes: notesBeNotEmpty, reading: readingBeNotEmpty, selection: utility, title: titleBeNotEmpty, utilityPeriodId };
+      const formatedUtility = {
+        company: companyBeNotEmpty,
+        notes: notesBeNotEmpty,
+        reading: readingBeNotEmpty,
+        selection: utility,
+        title: titleBeNotEmpty,
+        utilityPeriodId
+      };
 
       if (isUpdating) {
         // const {}
         let existingUtilityId = null;
         expense && (existingUtilityId = expense.utility.id);
         const utilityToUpdate = { id: existingUtilityId, ...formatedUtility };
-        const utilityUpdated = await API.graphql(graphqlOperation(updateUtility, { input: utilityToUpdate }));
-        const utilityId = utilityUpdated && utilityUpdated.data.updateUtility.id;
+        const utilityUpdated = await API.graphql(
+          graphqlOperation(updateUtility, { input: utilityToUpdate })
+        );
+        const utilityId =
+          utilityUpdated && utilityUpdated.data.updateUtility.id;
 
-        const housingExpenseToUpdate = { ...expense, housingExpenseUtilityId: utilityId, kind, category: personal, nature: housing, dueDate: formatedDueDate, amount: formatedAmount };
+        const housingExpenseToUpdate = {
+          ...expense,
+          housingExpenseUtilityId: utilityId,
+          kind,
+          category: personal,
+          nature: housing,
+          dueDate: formatedDueDate,
+          amount: formatedAmount
+        };
 
-        const updatedHousingExpense = await API.graphql(graphqlOperation(updateHousingExpense, { input: housingExpenseToUpdate }));
-        console.log('updated housing', updatedHousingExpense);
-
+        const updatedHousingExpense = await API.graphql(
+          graphqlOperation(updateHousingExpense, {
+            input: housingExpenseToUpdate
+          })
+        );
+        console.log("updated housing", updatedHousingExpense);
       } else if (isAdding) {
-
       }
-
     } catch (error) {
-      console.error('Format housing utility period', error)
+      console.error("Format housing utility period", error);
     }
-  }
+  };
 
-  const formatHousing = (data) => {
-
+  const formatHousing = data => {
     switch (watchHousing) {
-      case 'Utilities':
+      case "Utilities":
         return formatUtilities(data);
       default:
-        throw new Error('Must select a housing')
+        throw new Error("Must select a housing");
     }
-  }
+  };
 
-  const formatInsurance = (data) => {
+  const formatInsurance = data => {};
 
-  }
+  const formatLegal = data => {};
 
-  const formatLegal = (data) => {
+  const formatPhone = data => {};
 
-  }
+  const formatFood = data => {};
 
-  const formatPhone = (data) => {
+  const formatCommute = data => {};
 
-  }
+  const formatEducation = data => {};
 
-  const formatFood = (data) => {
+  const formatPersonalCare = data => {};
 
-  }
+  const formatEntertainment = data => {};
 
-  const formatCommute = (data) => {
+  const formatPet = data => {};
 
-  }
+  const formatLoan = data => {};
 
-  const formatEducation = (data) => {
+  const formatTaxes = data => {};
 
-  }
+  const formatInvestment = data => {};
 
-  const formatPersonalCare = (data) => {
-
-  }
-
-  const formatEntertainment = (data) => {
-
-  }
-
-  const formatPet = (data) => {
-
-  }
-
-  const formatLoan = (data) => {
-
-  }
-
-  const formatTaxes = (data) => {
-
-  }
-
-  const formatInvestment = (data) => {
-
-  }
-
-  const formatPesonalExpense = (data) => {
+  const formatPesonalExpense = data => {
     switch (watchPersonal) {
-      case 'Housing':
+      case "Housing":
         return formatHousing(data);
-      case 'Insurance':
+      case "Insurance":
         return formatInsurance(data);
-      case 'Legal':
+      case "Legal":
         return formatLegal(data);
-      case 'Phone':
+      case "Phone":
         return formatPhone(data);
-      case 'Food':
+      case "Food":
         return formatFood(data);
-      case 'Commute':
+      case "Commute":
         return formatCommute(data);
-      case 'Education':
+      case "Education":
         return formatEducation(data);
-      case 'Personal Care':
+      case "Personal Care":
         return formatPersonalCare(data);
-      case 'Entertainment':
+      case "Entertainment":
         return formatEntertainment(data);
-      case 'Pet':
+      case "Pet":
         return formatPet(data);
-      case 'Loan':
+      case "Loan":
         return formatLoan(data);
-      case 'Taxes':
+      case "Taxes":
         return formatTaxes(data);
-      case 'Investment':
+      case "Investment":
         return formatInvestment(data);
       default:
-        throw new Error('An expense must be selected');
+        throw new Error("An expense must be selected");
     }
-  }
+  };
 
-  const handleUpdatePersonalExpense = (formatedExpense) => {
+  const handleUpdatePersonalExpense = formatedExpense => {
     formatPesonalExpense(formatedExpense);
-  }
+  };
 
-  const handleCreatePersonalExpense = (formatedExpense) => {
+  const handleCreatePersonalExpense = formatedExpense => {
     try {
-
-    } catch (error) {
-
-    }
-  }
-
+    } catch (error) {}
+  };
 
   const onSubmit = (data, e) => {
     //  !!!! Add a field kind: 'Personal' to the object before send
@@ -299,10 +383,8 @@ export default function ExpensePersonalForm(props) {
       isAdding && handleCreatePersonalExpense(formatedExpense);
 
       isUpdating && handleUpdatePersonalExpense(formatedExpense);
-
-
     } catch (error) {
-      console.error('CU personal expense', error);
+      console.error("CU personal expense", error);
     }
 
     e.target.reset(); // reset after form submit
@@ -346,8 +428,7 @@ export default function ExpensePersonalForm(props) {
                   name="personal"
                   id="personal"
                   ref={register({ required: true })}
-                  defaultValue={(props.location.pathname.includes('edit') && props.location.state.expense.category) || ""}>
-                  >
+                >
                   <option value="">--Select--</option>
                   <option value="HOUSING">Housing</option>
                   <option value="PHONE">Phone</option>
@@ -364,7 +445,9 @@ export default function ExpensePersonalForm(props) {
                   <option value="INVESTMENT">Investment</option>
                 </select>
               </div>
-              {errors.personal && <p className="error">{"Please select a catregory"}</p>}
+              {errors.personal && (
+                <p className="error">{"Please select a catregory"}</p>
+              )}
             </div>
           </div>
 
@@ -373,9 +456,6 @@ export default function ExpensePersonalForm(props) {
               watchHousing={watchHousing}
               watchUtility={watchUtility}
               register={register}
-              errors={errors}
-              expense={expense}
-              isUpdating={isUpdating}
             />
           )}
 
@@ -396,11 +476,20 @@ export default function ExpensePersonalForm(props) {
           )}
 
           {watchPersonal === "PHONE" && (
-            <PhoneFields register={register} watchPhonePlan={watchPhonePlan} errors={errors} />
+            <PhoneFields
+              register={register}
+              watchPhonePlan={watchPhonePlan}
+              errors={errors}
+            />
           )}
 
           {watchPersonal === "FOOD" && (
-            <FoodFields register={register} watchFood={watchFood} watchGroceryCost={watchGroceryCost} errors={errors} />
+            <FoodFields
+              register={register}
+              watchFood={watchFood}
+              watchGroceryCost={watchGroceryCost}
+              errors={errors}
+            />
           )}
 
           {watchPersonal === "COMMUTE" && (
@@ -433,11 +522,17 @@ export default function ExpensePersonalForm(props) {
             />
           )}
 
-          {watchPersonal === "PET" && <PetFields register={register} errors={errors} />}
+          {watchPersonal === "PET" && (
+            <PetFields register={register} errors={errors} />
+          )}
 
-          {watchPersonal === "LOAN" && <LoanFields register={register} errors={errors} />}
+          {watchPersonal === "LOAN" && (
+            <LoanFields register={register} errors={errors} />
+          )}
 
-          {watchPersonal === "TAXES" && <TaxesFields register={register} errors={errors} />}
+          {watchPersonal === "TAXES" && (
+            <TaxesFields register={register} errors={errors} />
+          )}
 
           {watchPersonal === "INVESTMENT" && (
             <InvestmentFields register={register} errors={errors} />
@@ -452,7 +547,12 @@ export default function ExpensePersonalForm(props) {
           </div>
           <div className="field">
             <div className="control">
-              <button className="button is-link is-fullwidth" type="submit" onClick={handleCancel} style={{ backgroundColor: "#fafafa", color: "#BAA949" }}>
+              <button
+                className="button is-link is-fullwidth"
+                type="submit"
+                onClick={handleCancel}
+                style={{ backgroundColor: "#fafafa", color: "#BAA949" }}
+              >
                 Cancel
               </button>
             </div>
