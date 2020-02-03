@@ -5615,6 +5615,10 @@ export const listClients = `query ListClients(
             id
             title
             notes
+            billing{
+              billingStart
+              billingEnd
+            }
           }
           aditional{
             id

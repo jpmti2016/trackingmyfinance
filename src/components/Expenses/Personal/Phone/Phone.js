@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PhoneFields({ register, watchPhonePlan }) {
+export default function PhoneFields({ register, watchPhonePlan, errors }) {
   return (
     <>
       <div className="field is-grouped is-grouped-multiline">
@@ -9,8 +9,8 @@ export default function PhoneFields({ register, watchPhonePlan }) {
             <input
               id="Plan"
               type="radio"
-              name="plan"
-              value="Plan"
+              name="phonePlan"
+              value="plan"
               ref={register}
             />
             Plan
@@ -22,8 +22,8 @@ export default function PhoneFields({ register, watchPhonePlan }) {
             <input
               id="Aditional"
               type="radio"
-              name="plan"
-              value="Aditional"
+              name="phonePlan"
+              value="aditional"
               ref={register}
             />
             Aditional
@@ -32,19 +32,22 @@ export default function PhoneFields({ register, watchPhonePlan }) {
       </div>
 
       <div className="field">
-        <label htmlFor="dueDate" className="label">
+        <label htmlFor="phoneDueDate" className="label">
           {watchPhonePlan === "Plan" ? "Due Date" : "Date"}
         </label>
         <input
           type="date"
           className="input"
-          name="dueDate"
+          name="phoneDueDate"
           ref={register}
-          id="dueDate"
+          id="phoneDueDate"
         />
+        {errors && errors[`phoneDueDate`] && (
+          <p className="error">{"Please select a due date"}</p>
+        )}
       </div>
       <div className="field">
-        <label htmlFor="amount" className="label">
+        <label htmlFor="phoneAmount" className="label">
           Amount
         </label>
         <div className="control">
@@ -52,15 +55,18 @@ export default function PhoneFields({ register, watchPhonePlan }) {
             className="input"
             type="number"
             placeholder="43"
-            name="amount"
-            id="amount"
+            name="phoneAmount"
+            id="phoneAmount"
             ref={register({ required: true, min: 0 })}
           />
+          {errors && errors[`phoneAmount`] && (
+            <p className="error">{"Please check the amount"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="title" className="label">
+        <label htmlFor="phoneTitle" className="label">
           Title
         </label>
         <div className="control">
@@ -68,54 +74,71 @@ export default function PhoneFields({ register, watchPhonePlan }) {
             className="input"
             type="text"
             placeholder="Some uncovered international call"
-            name="title"
-            id="title"
+            name="phoneTitle"
+            id="phoneTitle"
             ref={register({ required: true })}
           />
+          {errors && errors[`phoneTitle`] && (
+            <p className="error">{"Please check the title"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="notes" className="label">
+        <label htmlFor="phoneNotes" className="label">
           Notes
         </label>
         <div className="control">
-          <textarea className="textarea" name="notes" id="notes" ref={register} />
+          <textarea
+            className="textarea"
+            name="phoneNotes"
+            id="phoneNotes"
+            ref={register}
+          />
         </div>
+        {errors && errors[`phoneNotes`] && (
+          <p className="error">{"Please check the notes"}</p>
+        )}
       </div>
 
-      {watchPhonePlan === "Plan" && (
+      {watchPhonePlan === "plan" && (
         <div className="field">
           <label htmlFor="" className="label">
             Billing Period
           </label>
 
           <div className="control">
-            <label htmlFor="start" className="label">
+            <label htmlFor="phonePlanBillingStart" className="label">
               Start
             </label>
             <input
               type="date"
               className="input"
               placeholder="Start"
-              name="start"
-              id="start"
+              name="phonePlanBillingStart"
+              id="phonePlanBillingStart"
               ref={register}
             />
+            {errors && errors[`phonePlanBillingStart`] && (
+              <p className="error">{"Please the plan's billing first date"}</p>
+            )}
           </div>
 
           <div className="control">
-            <label htmlFor="end" className="label">
+            <label htmlFor="phonePlanBillingEnd" className="label">
               End
             </label>
             <input
               type="date"
               className="input"
               placeholder="End"
-              name="end"
-              id="end"
+              name="phonePlanBillingEnd"
+              id="phonePlanBillingEnd"
               ref={register}
             />
+            {errors && errors[`phonePlanBillingEnd`] && (
+              <p className="error">{"Please the plan's billing end date"}</p>
+            )}
           </div>
         </div>
       )}

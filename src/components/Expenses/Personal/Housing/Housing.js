@@ -24,7 +24,7 @@ export default function HousingFields({
         <div className="control">
           <div className="select">
             <select name="housing" ref={register({ required: true })}>
-              ><option value="">--Select--</option>
+              <option value="">--Select--</option>
               <option value="UTILITIES">Utilities</option>
               <option value="SUPPLIES">Supplies</option>
               <option value="HOME">Home</option>

@@ -83,7 +83,10 @@ export default function ExpensePersonalForm(props) {
   useEffect(() => {
     reset({
       personal: isUpdating && expense ? expense.category : "",
-      housing: isUpdating && expense ? housingEnumT(expense).typeToUpdate : "",
+      housing:
+        isUpdating && expense && expense.category === "HOUSING"
+          ? housingEnumT(expense).typeToUpdate
+          : "",
       utility:
         isUpdating && expense && expense.utility
           ? expense.utility.selection.toLowerCase()
@@ -91,9 +94,11 @@ export default function ExpensePersonalForm(props) {
       utilityDueDate: isUpdating && expense ? expense.dueDate : "",
       supplyDueDate: isUpdating && expense ? expense.dueDate : "",
       homeDueDate: isUpdating && expense ? expense.dueDate : "",
+      phoneDueDate: isUpdating && expense ? expense.dueDate : "",
       otherHousingDueDate: isUpdating && expense ? expense.dueDate : "",
       utilityAmount: isUpdating && expense ? expense.amount : "",
       supplyAmount: isUpdating && expense ? expense.amount : "",
+      phoneAmount: isUpdating && expense ? expense.amount : "",
       homeAmount: isUpdating && expense ? expense.amount : "",
       repairAmount: isUpdating && expense ? expense.amount : "",
       otherHousingAmount: isUpdating && expense ? expense.amount : "",
@@ -112,6 +117,12 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.otherHousing
           ? expense.otherHousing.title
           : "",
+      phoneTitle:
+        isUpdating && expense && (expense.plan || expense.aditional)
+          ? expense.plan
+            ? expense.plan.title
+            : expense.aditional.title
+          : "",
       utilityNotes:
         isUpdating && expense && expense.utility ? expense.utility.notes : "",
       supplyNotes:
@@ -124,13 +135,27 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.otherHousing
           ? expense.otherHousing.notes
           : "",
+      phoneNotes:
+        isUpdating && expense && (expense.plan || expense.aditional)
+          ? expense.plan
+            ? expense.plan.notes
+            : expense.aditional.notes
+          : "",
       utilityBillingStart:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingStart
           : "",
+      phonePlanBillingStart:
+        isUpdating && expense && expense.plan && expense.plan.billing
+          ? expense.plan.billing.billingStart
+          : "",
       utilityBillingEnd:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingEnd
+          : "",
+      phonePlanBillingEnd:
+        isUpdating && expense && expense.plan && expense.plan.billing
+          ? expense.plan.billing.billingEnd
           : "",
       utilityReading:
         isUpdating && expense && expense.utility ? expense.utility.reading : "",
@@ -147,7 +172,8 @@ export default function ExpensePersonalForm(props) {
       homeAddress:
         isUpdating && expense && expense.home && expense.home.address
           ? `You must add the other side of the relations`
-          : `You must add the other side of the relations`
+          : `You must add the other side of the relations`,
+      phonePlan: isUpdating && expense ? expense.phonePlan.toLowerCase() : ""
     });
   }, [expense, reset, isUpdating]);
 
@@ -180,7 +206,8 @@ export default function ExpensePersonalForm(props) {
 
   const watchLawyerOption = watch("lawyerOption");
 
-  const watchPhonePlan = watch("plan");
+  const watchPhonePlan = watch("phonePlan");
+  console.log("watchPhonePlan", watchPhonePlan);
 
   const watchFood = watch("nature");
 

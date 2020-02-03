@@ -2,12 +2,23 @@ import React, { useState, useEffect } from "react";
 
 import ExpenseTable from "../ExpenseTable";
 import ExpenseTableNav from "../ExpenseTableNav";
-import { API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation } from "aws-amplify";
 
 import {
-  deleteLegalExpense, deleteInvestmentExpense, deleteHousingExpense, deletePhoneExpense, deleteInsuranceExpense, deleteFoodExpense, deleteCommuteExpense, deleteEducationExpense,
-  deletePersonalCareExpense, deletePetExpense, deleteEntertainmentExpense, deleteLoanExpense, deleteTaxExpense
-} from '../../../graphql/mutations';
+  deleteLegalExpense,
+  deleteInvestmentExpense,
+  deleteHousingExpense,
+  deletePhoneExpense,
+  deleteInsuranceExpense,
+  deleteFoodExpense,
+  deleteCommuteExpense,
+  deleteEducationExpense,
+  deletePersonalCareExpense,
+  deletePetExpense,
+  deleteEntertainmentExpense,
+  deleteLoanExpense,
+  deleteTaxExpense
+} from "../../../graphql/mutations";
 
 export default function Personal({ client }) {
   const [expenses, setExpenses] = useState([]);
@@ -49,87 +60,94 @@ export default function Personal({ client }) {
       ]);
       setClientId(id);
     }
-
   }, [client]);
 
-  const MethodToDeleteExpense = (__typename) => {
+  const MethodToDeleteExpense = __typename => {
     switch (__typename) {
-      case 'PetExpense':
+      case "PetExpense":
         return deletePetExpense;
-      case 'EntertainmentExpense':
+      case "EntertainmentExpense":
         return deleteEntertainmentExpense;
-      case 'PersonalCareExpense':
+      case "PersonalCareExpense":
         return deletePersonalCareExpense;
-      case 'TaxExpense':
+      case "TaxExpense":
         return deleteTaxExpense;
-      case 'LoanExpense':
+      case "LoanExpense":
         return deleteLoanExpense;
-      case 'EducationExpense':
+      case "EducationExpense":
         return deleteEducationExpense;
-      case 'InvestmentExpense':
+      case "InvestmentExpense":
         return deleteInvestmentExpense;
-      case 'HousingExpense':
+      case "HousingExpense":
         return deleteHousingExpense;
-      case 'PhoneExpense':
+      case "PhoneExpense":
         return deletePhoneExpense;
-      case 'InsuranceExpense':
+      case "InsuranceExpense":
         return deleteInsuranceExpense;
-      case 'FoodExpense':
+      case "FoodExpense":
         return deleteFoodExpense;
-      case 'CommuteExpense':
+      case "CommuteExpense":
         return deleteCommuteExpense;
-      case 'LegalExpense':
+      case "LegalExpense":
         return deleteLegalExpense;
       default:
-        throw new Error("The expense type provided don't have a delete method", __typename);
+        throw new Error(
+          "The expense type provided don't have a delete method",
+          __typename
+        );
     }
-  }
+  };
 
-  const MethodToDeleteExpenseName = (__typename) => {
+  const MethodToDeleteExpenseName = __typename => {
     switch (__typename) {
-      case 'PetExpense':
+      case "PetExpense":
         return "deletePetExpense";
-      case 'EntertainmentExpense':
+      case "EntertainmentExpense":
         return "deleteEntertainmentExpense";
-      case 'PersonalCareExpense':
+      case "PersonalCareExpense":
         return "deletePersonalCareExpense";
-      case 'TaxExpense':
+      case "TaxExpense":
         return "deleteTaxExpense";
-      case 'LoanExpense':
+      case "LoanExpense":
         return "deleteLoanExpense";
-      case 'EducationExpense':
+      case "EducationExpense":
         return "deleteEducationExpense";
-      case 'InvestmentExpense':
+      case "InvestmentExpense":
         return "deleteInvestmentExpense";
-      case 'HousingExpense':
+      case "HousingExpense":
         return "deleteHousingExpense";
-      case 'PhoneExpense':
+      case "PhoneExpense":
         return "deletePhoneExpense";
-      case 'InsuranceExpense':
+      case "InsuranceExpense":
         return "deleteInsuranceExpense";
-      case 'FoodExpense':
+      case "FoodExpense":
         return "deleteFoodExpense";
-      case 'CommuteExpense':
+      case "CommuteExpense":
         return "deleteCommuteExpense";
-      case 'LegalExpense':
+      case "LegalExpense":
         return "deleteLegalExpense";
       default:
         return "NA";
     }
-  }
+  };
 
   const handleDeleteExpense = async (id, __typename) => {
-
     try {
-      const result = await API.graphql(graphqlOperation(MethodToDeleteExpense(__typename), { input: { id } }));
-      result && setExpenses(expenses => expenses.filter((e) => {
-        return e.id !== result.data[MethodToDeleteExpenseName(__typename)].id;
-      }));
+      const result = await API.graphql(
+        graphqlOperation(MethodToDeleteExpense(__typename), { input: { id } })
+      );
+      result &&
+        setExpenses(expenses =>
+          expenses.filter(e => {
+            return (
+              e.id !== result.data[MethodToDeleteExpenseName(__typename)].id
+            );
+          })
+        );
     } catch (error) {
-      console.error('handle delete personal expense', error);
+      console.error("handle delete personal expense", error);
     }
-
-  }
+  };
   // console.log('object transform flat', [expenses.legalExpenses, expenses.investmentExpenses].flat(Infinity));
 
   return (
@@ -137,7 +155,12 @@ export default function Personal({ client }) {
       <section className="section">
         <div className="container">
           <ExpenseTableNav clientId={clientId} />
-          <ExpenseTable expenses={expenses} handleDeleteExpense={handleDeleteExpense} expenseType="Personal" clientId={clientId} />
+          <ExpenseTable
+            expenses={expenses}
+            handleDeleteExpense={handleDeleteExpense}
+            expenseType="Personal"
+            clientId={clientId}
+          />
         </div>
       </section>
     </>
