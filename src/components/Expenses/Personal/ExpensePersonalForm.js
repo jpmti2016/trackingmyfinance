@@ -90,18 +90,25 @@ export default function ExpensePersonalForm(props) {
           : "",
       utilityDueDate: isUpdating && expense ? expense.dueDate : "",
       supplyDueDate: isUpdating && expense ? expense.dueDate : "",
+      homeDueDate: isUpdating && expense ? expense.dueDate : "",
       utilityAmount: isUpdating && expense ? expense.amount : "",
       supplyAmount: isUpdating && expense ? expense.amount : "",
+      homeAmount: isUpdating && expense ? expense.amount : "",
+
       utilityCompany:
         isUpdating && expense && expense.utility ? expense.utility.company : "",
       utilityTitle:
         isUpdating && expense && expense.utility ? expense.utility.title : "",
       supplyTitle:
         isUpdating && expense && expense.supply ? expense.supply.title : "",
+      homeTitle:
+        isUpdating && expense && expense.home ? expense.home.title : "",
       utilityNotes:
         isUpdating && expense && expense.utility ? expense.utility.notes : "",
       supplyNotes:
         isUpdating && expense && expense.supply ? expense.supply.notes : "",
+      homeNotes:
+        isUpdating && expense && expense.home ? expense.home.notes : "",
       utilityBillingStart:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingStart
@@ -116,7 +123,16 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.supply ? expense.supply.supplyFor : "",
       brand:
         isUpdating && expense && expense.supply ? expense.supply.brand : "",
-      model: isUpdating && expense && expense.supply ? expense.supply.model : ""
+      model:
+        isUpdating && expense && expense.supply ? expense.supply.model : "",
+      payType:
+        isUpdating && expense && expense.home
+          ? expense.home.mortgage.toLowerCase()
+          : "",
+      homeAddress:
+        isUpdating && expense && expense.home && expense.home.address
+          ? `You must add the other side of the relations`
+          : `You must add the other side of the relations`
     });
   }, [expense, reset, isUpdating]);
 

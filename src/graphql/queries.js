@@ -5582,8 +5582,12 @@ export const listClients = `query ListClients(
           }
           home{
             id
+            mortgage
             title
             notes
+            address{
+              id
+            }
           }
           repair{
             id

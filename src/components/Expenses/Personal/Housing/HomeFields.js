@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function HomeFields({ register }) {
+export default function HomeFields({ register, errors }) {
   return (
     <>
       <div className="field is-grouped is-grouped-multiline">
@@ -30,16 +30,34 @@ export default function HomeFields({ register }) {
         </div>
       </div>
       <div className="field">
-        <label htmlFor="amount" className="label">
+        <label htmlFor="homeAmount" className="label">
           Amount
         </label>
-        <input type="number" className="input" name="amount" id="amount" ref={register} />
+        <input
+          type="number"
+          className="input"
+          name="homeAmount"
+          id="homeAmount"
+          ref={register}
+        />
+        {errors && errors[`homeAmount`] && (
+          <p className="error">{"Please check the amount"}</p>
+        )}
       </div>
       <div className="field">
-        <label htmlFor="dueDate" className="label">
+        <label htmlFor="homeDueDate" className="label">
           Due Date
         </label>
-        <input type="date" className="input" name="dueDate" id="dueDate" ref={register} />
+        <input
+          type="date"
+          className="input"
+          name="homeDueDate"
+          id="homeDueDate"
+          ref={register}
+        />
+        {errors && errors[`homeDueDate`] && (
+          <p className="error">{"Please select a due date"}</p>
+        )}
       </div>
       <div className="field">
         <label htmlFor="homeAddress" className="label">
@@ -52,29 +70,38 @@ export default function HomeFields({ register }) {
           id="homeAddress"
           ref={register}
         />
+        {errors && errors[`homeAddress`] && (
+          <p className="error">{"Please check the address"}</p>
+        )}
       </div>
       <div className="field">
-        <label htmlFor="title" className="label">
+        <label htmlFor="homeTitle" className="label">
           Title
         </label>
         <input
           type="text"
           className="input"
-          name="title"
-          id="title"
+          name="homeTitle"
+          id="homeTitle"
           ref={register}
         />
+        {errors && errors[`homeTitle`] && (
+          <p className="error">{"Please check the title"}</p>
+        )}
       </div>
       <div className="field">
-        <label htmlFor="notes" className="label">
+        <label htmlFor="homeNotes" className="label">
           Notes
         </label>
         <textarea
           className="textarea"
-          name="notes"
-          id="notes"
+          name="homeNotes"
+          id="homeNotes"
           ref={register}
         />
+        {errors && errors[`homeNotes`] && (
+          <p className="error">{"Please check the notes"}</p>
+        )}
       </div>
     </>
   );

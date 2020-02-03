@@ -54,11 +54,11 @@ export default function HousingFields({
         <SupplyFields register={register} expense={expense} errors={errors} />
       )}
 
-      {watchHousing === "Home" && (
+      {watchHousing === "HOME" && (
         <HomeFields register={register} expense={expense} errors={errors} />
       )}
 
-      {watchHousing === "HOME" && (
+      {watchHousing === "OTHER" && (
         <OtherFields register={register} expense={expense} errors={errors} />
       )}
     </>
