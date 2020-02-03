@@ -91,9 +91,12 @@ export default function ExpensePersonalForm(props) {
       utilityDueDate: isUpdating && expense ? expense.dueDate : "",
       supplyDueDate: isUpdating && expense ? expense.dueDate : "",
       homeDueDate: isUpdating && expense ? expense.dueDate : "",
+      otherHousingDueDate: isUpdating && expense ? expense.dueDate : "",
       utilityAmount: isUpdating && expense ? expense.amount : "",
       supplyAmount: isUpdating && expense ? expense.amount : "",
       homeAmount: isUpdating && expense ? expense.amount : "",
+      repairAmount: isUpdating && expense ? expense.amount : "",
+      otherHousingAmount: isUpdating && expense ? expense.amount : "",
 
       utilityCompany:
         isUpdating && expense && expense.utility ? expense.utility.company : "",
@@ -103,12 +106,24 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.supply ? expense.supply.title : "",
       homeTitle:
         isUpdating && expense && expense.home ? expense.home.title : "",
+      repairTitle:
+        isUpdating && expense && expense.repair ? expense.repair.title : "",
+      otherHousingTitle:
+        isUpdating && expense && expense.otherHousing
+          ? expense.otherHousing.title
+          : "",
       utilityNotes:
         isUpdating && expense && expense.utility ? expense.utility.notes : "",
       supplyNotes:
         isUpdating && expense && expense.supply ? expense.supply.notes : "",
       homeNotes:
         isUpdating && expense && expense.home ? expense.home.notes : "",
+      repairNotes:
+        isUpdating && expense && expense.repair ? expense.repair.notes : "",
+      otherHousingNotes:
+        isUpdating && expense && expense.otherHousing
+          ? expense.otherHousing.notes
+          : "",
       utilityBillingStart:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingStart

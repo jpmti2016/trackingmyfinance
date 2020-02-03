@@ -4,6 +4,7 @@ import SupplyFields from "./SupplyFields";
 import UtilityRadioGroup from "./UtilityRadioGroup";
 import UtiliyFields from "./UtiliyFields";
 import HomeFields from "./HomeFields";
+import RepairFields from "./RepairFields";
 import OtherFields from "./OtherFields";
 
 export default function HousingFields({
@@ -27,7 +28,7 @@ export default function HousingFields({
               <option value="UTILITIES">Utilities</option>
               <option value="SUPPLIES">Supplies</option>
               <option value="HOME">Home</option>
-              <option value="REPAIR">REPAIR</option>
+              <option value="REPAIR">Repair</option>
               <option value="OTHER">Other</option>
             </select>
           </div>
@@ -56,6 +57,10 @@ export default function HousingFields({
 
       {watchHousing === "HOME" && (
         <HomeFields register={register} expense={expense} errors={errors} />
+      )}
+
+      {watchHousing === "REPAIR" && (
+        <RepairFields register={register} expense={expense} errors={errors} />
       )}
 
       {watchHousing === "OTHER" && (
