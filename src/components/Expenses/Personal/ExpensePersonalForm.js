@@ -64,11 +64,6 @@ export default function ExpensePersonalForm(props) {
 
   const { register, handleSubmit, errors, watch, reset, control } = useForm({});
 
-  // const { fields, append, remove } = useFieldArray({
-  //   control,
-  //   name: "beneficiaries"
-  // });
-
   useEffect(() => {
     reset({
       personal: isUpdating && expense ? expense.category : "",
@@ -526,6 +521,7 @@ export default function ExpensePersonalForm(props) {
               watchHousing={watchHousing}
               watchUtility={watchUtility}
               register={register}
+              errors={errors}
             />
           )}
           {watchPersonal === "INSURANCE" && (
@@ -534,12 +530,6 @@ export default function ExpensePersonalForm(props) {
               register={register}
               errors={errors}
               control={control}
-              fields={"fields"}
-              append={"append"}
-              remove={"remove"}
-              reset={reset}
-              expense={expense}
-              isUpdating={isUpdating}
             />
           )}
 

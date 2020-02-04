@@ -65,6 +65,27 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
             </div>
 
             <div className="field">
+              <label htmlFor={`${fieldName}.lastName`} className="label">
+                Name
+              </label>
+              <div className="control">
+                <input
+                  id={`${fieldName}.lastName`}
+                  type="text"
+                  className="input"
+                  name={`${fieldName}.lastName`}
+                  ref={register({ required: true })}
+                  defaultValue={`${item.name}`}
+                />
+                {errors && errors[`${fieldName}.lastName`] && (
+                  <p className="error">
+                    {"Please check the lawyer's lastName"}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="field">
               <label htmlFor={`${fieldName}.phone`} className="label">
                 Phone
               </label>
@@ -157,7 +178,16 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
         <button
           type="button"
           className="button is-outlined cta-sec"
-          onClick={() => append({ name: `$beneficiaries{fields.length}.name` })}
+          onClick={() =>
+            append({
+              fee: "",
+              name: "",
+              lastName: "",
+              phone: "",
+              email: "",
+              firm: ""
+            })
+          }
         >
           Add Lawyer
         </button>

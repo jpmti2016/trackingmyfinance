@@ -1,7 +1,12 @@
 import React from "react";
 import LegalLawyerFieldsArray from "./LegalLawyerFieldsArray";
 
-export default function LegalFields({ register, watchLawyerOption, control }) {
+export default function LegalFields({
+  register,
+  watchLawyerOption,
+  control,
+  errors
+}) {
   return (
     <>
       <div className="field">
@@ -25,6 +30,9 @@ export default function LegalFields({ register, watchLawyerOption, control }) {
               <option value="OTHER">Other</option>
             </select>
           </div>
+          {errors && errors[`nature`] && (
+            <p className="error">{"Please select the legal nature"}</p>
+          )}
         </div>
       </div>
 
@@ -32,6 +40,9 @@ export default function LegalFields({ register, watchLawyerOption, control }) {
         <label className="label">Due Date</label>
         <div className="control">
           <input type="date" className="input" name="dueDate" ref={register} />
+          {errors && errors[`dueDate`] && (
+            <p className="error">{"Please select the due date"}</p>
+          )}
         </div>
       </div>
 
@@ -47,6 +58,9 @@ export default function LegalFields({ register, watchLawyerOption, control }) {
             name="amount"
             ref={register({ required: true })}
           />
+          {errors && errors[`amount`] && (
+            <p className="error">{"Please check the amount"}</p>
+          )}
         </div>
       </div>
 
@@ -62,6 +76,9 @@ export default function LegalFields({ register, watchLawyerOption, control }) {
             name="title"
             ref={register({ required: true })}
           />
+          {errors && errors[`title`] && (
+            <p className="error">{"Please check the title"}</p>
+          )}
         </div>
       </div>
 
@@ -77,9 +94,16 @@ export default function LegalFields({ register, watchLawyerOption, control }) {
             ref={register}
           />
         </div>
+        {errors && errors[`notes`] && (
+          <p className="error">{"Please check the notes"}</p>
+        )}
       </div>
 
-      <LegalLawyerFieldsArray register={register} control={control} />
+      <LegalLawyerFieldsArray
+        register={register}
+        control={control}
+        errors={errors}
+      />
     </>
   );
 }

@@ -4,12 +4,7 @@ export default function InsuranceFields({
   watchInsurance,
   register,
   errors,
-  fields,
-  append,
-  remove,
-  reset,
-  expense,
-  isUpdating
+  control
 }) {
   return (
     <>
@@ -186,12 +181,7 @@ export default function InsuranceFields({
         <InsuranceBeneficiariesFieldsArray
           register={register}
           errors={errors}
-          fields={fields}
-          append={append}
-          remove={remove}
-          reset={reset}
-          expense={expense}
-          isUpdating={isUpdating}
+          control={control}
         />
       )}
     </>

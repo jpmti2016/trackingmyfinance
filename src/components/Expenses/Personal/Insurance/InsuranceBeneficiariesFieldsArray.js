@@ -1,12 +1,16 @@
 import React from "react";
 import "./InsuranceBeneficiariesFieldsArray.css";
+import { useFieldArray } from "react-hook-form";
 
 export default function InsuranceBeneficiariesFieldsArray({
   register,
-  fields,
-  append,
-  remove
+  control,
+  errors
 }) {
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "beneficiaries"
+  });
   return (
     <>
       {fields.length > 0 && (
@@ -36,6 +40,11 @@ export default function InsuranceBeneficiariesFieldsArray({
                     ref={register({})}
                     defaultValue={`${item.name}`}
                   />
+                  {errors && errors[`${fieldName}.name`] && (
+                    <p className="error">
+                      {"Please check the beneficiary's name"}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -50,6 +59,11 @@ export default function InsuranceBeneficiariesFieldsArray({
                   ref={register({})}
                   defaultValue={`${item.lastName}`}
                 />
+                {errors && errors[`${fieldName}.lastName`] && (
+                  <p className="error">
+                    {"Please check the beneficiary's lastName"}
+                  </p>
+                )}
               </div>
 
               <button
@@ -69,7 +83,8 @@ export default function InsuranceBeneficiariesFieldsArray({
           className="button is-outlined cta-sec"
           onClick={() =>
             append({
-              name: `$beneficiaries{fields.length}.name`
+              name: "",
+              lastName: ""
             })
           }
         >
@@ -88,91 +103,4 @@ export default function InsuranceBeneficiariesFieldsArray({
       </div>
     </>
   );
-  // const [indexes, setIndexes] = React.useState([]);
-  // const [counter, setCounter] = React.useState(0);
-  // const addBeneficiaries = () => {
-  //   setIndexes(prevIndexes => [...prevIndexes, counter]);
-  //   setCounter(prevCounter => prevCounter + 1);
-  // };
-  // const removeBeneficiaries = index => () => {
-  //   setIndexes(prevIndexes => [...prevIndexes.filter(item => item !== index)]);
-  //   setCounter(prevCounter => prevCounter - 1);
-  // };
-  // const clearBeneficiaries = () => {
-  //   setIndexes([]);
-  // };
-  // return (
-  //   <>
-  //     {counter > 0 && (
-  //       <div className="field">
-  //         <div className="control">
-  //           <label className="label" htmlFor="">
-  //             Beneficiaries List
-  //           </label>
-  //         </div>
-  //       </div>
-  //     )}
-  //     {indexes.map(index => {
-  //       const fieldName = `beneficiaries${index}`;
-  //       return (
-  //         <fieldset name={fieldName} key={fieldName}>
-  //           <legend>{`Beneficiaries ${index + 1}`}</legend>
-  //           <div className="field">
-  //             <label htmlFor={`${fieldName}.name`} className="label">
-  //               Name
-  //             </label>
-  //             <div className="control">
-  //               <input
-  //                 id={`${fieldName}.name`}
-  //                 type="text"
-  //                 className="input"
-  //                 name={`${fieldName}.name`}
-  //                 ref={register({ required: true })}
-  //               />
-  //             </div>
-  //           </div>
-  //           <div className="field">
-  //             <label htmlFor={`${fieldName}.lastName`} className="label">
-  //               Last Name
-  //             </label>
-  //             <div className="control">
-  //               <input
-  //                 id={`${fieldName}.lastName`}
-  //                 type="text"
-  //                 className="input"
-  //                 name={`${fieldName}.lastName`}
-  //                 ref={register({ required: true })}
-  //               />
-  //             </div>
-  //           </div>
-  //           <button
-  //             type="button"
-  //             className="button is-danger is-outlined"
-  //             onClick={removeBeneficiaries(index)}
-  //           >
-  //             Remove
-  //           </button>
-  //         </fieldset>
-  //       );
-  //     })}
-  //     <div className="buttoms">
-  //       <button
-  //         type="button"
-  //         className="button is-outlined cta-sec"
-  //         onClick={addBeneficiaries}
-  //       >
-  //         Add Beneficiaries
-  //       </button>
-  //       {counter > 0 && (
-  //         <button
-  //           type="button"
-  //           className="button is-danger is-outlined"
-  //           onClick={clearBeneficiaries}
-  //         >
-  //           Empty List
-  //         </button>
-  //       )}
-  //     </div>
-  //   </>
-  // );
 }
