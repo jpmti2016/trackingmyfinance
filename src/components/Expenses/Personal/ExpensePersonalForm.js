@@ -64,10 +64,10 @@ export default function ExpensePersonalForm(props) {
 
   const { register, handleSubmit, errors, watch, reset, control } = useForm({});
 
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "beneficiaries"
-  });
+  // const { fields, append, remove } = useFieldArray({
+  //   control,
+  //   name: "beneficiaries"
+  // });
 
   useEffect(() => {
     reset({
@@ -80,11 +80,14 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.utility
           ? expense.utility.selection.toLowerCase()
           : "",
+      dueDate: isUpdating && expense ? expense.dueDate : "",
+
       utilityDueDate: isUpdating && expense ? expense.dueDate : "",
       supplyDueDate: isUpdating && expense ? expense.dueDate : "",
       homeDueDate: isUpdating && expense ? expense.dueDate : "",
       phoneDueDate: isUpdating && expense ? expense.dueDate : "",
       otherHousingDueDate: isUpdating && expense ? expense.dueDate : "",
+      amount: isUpdating && expense ? expense.amount : "",
       utilityAmount: isUpdating && expense ? expense.amount : "",
       supplyAmount: isUpdating && expense ? expense.amount : "",
       phoneAmount: isUpdating && expense ? expense.amount : "",
@@ -95,6 +98,7 @@ export default function ExpensePersonalForm(props) {
 
       utilityCompany:
         isUpdating && expense && expense.utility ? expense.utility.company : "",
+      title: isUpdating && expense && expense.title ? expense.title : "",
       utilityTitle:
         isUpdating && expense && expense.utility ? expense.utility.title : "",
       supplyTitle:
@@ -115,6 +119,7 @@ export default function ExpensePersonalForm(props) {
           : "",
       insuranceTitle:
         isUpdating && expense && expense.title ? expense.title : "",
+      notes: isUpdating && expense && expense.title ? expense.title : "",
       utilityNotes:
         isUpdating && expense && expense.utility ? expense.utility.notes : "",
       supplyNotes:
@@ -184,7 +189,12 @@ export default function ExpensePersonalForm(props) {
       beneficiaries:
         isUpdating && expense && expense.beneficiaries
           ? [...expense.beneficiaries.items]
-          : []
+          : [],
+      //legal
+      lawyers:
+        isUpdating && expense && expense.lawyers
+          ? [...expense.lawyers.items]
+          : ""
     });
   }, [expense, reset, isUpdating]);
 
@@ -218,6 +228,7 @@ export default function ExpensePersonalForm(props) {
   const watchPhonePlan = watch("phonePlan");
 
   const watchFood = watch("nature");
+  console.log("watchFood", watchFood);
 
   const watchGroceryCost = watch("groceryCost");
 
@@ -517,16 +528,15 @@ export default function ExpensePersonalForm(props) {
               register={register}
             />
           )}
-
           {watchPersonal === "INSURANCE" && (
             <InsuranceFields
               watchInsurance={watchInsurance}
               register={register}
               errors={errors}
               control={control}
-              fields={fields}
-              append={append}
-              remove={remove}
+              fields={"fields"}
+              append={"append"}
+              remove={"remove"}
               reset={reset}
               expense={expense}
               isUpdating={isUpdating}
@@ -538,6 +548,7 @@ export default function ExpensePersonalForm(props) {
               register={register}
               watchLawyerOption={watchLawyerOption}
               errors={errors}
+              control={control}
             />
           )}
 

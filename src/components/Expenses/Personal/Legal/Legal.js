@@ -1,7 +1,7 @@
 import React from "react";
-import LegalLawyerFieldsArray from './LegalLawyerFieldsArray'
+import LegalLawyerFieldsArray from "./LegalLawyerFieldsArray";
 
-export default function LegalFields({ register, watchLawyerOption }) {
+export default function LegalFields({ register, watchLawyerOption, control }) {
   return (
     <>
       <div className="field">
@@ -10,15 +10,19 @@ export default function LegalFields({ register, watchLawyerOption }) {
         </label>
         <div className="control">
           <div className="select">
-            <select name="nature" id="nature" ref={register({ required: true })}>
-              <option value="Select">Select</option>
-              <option value="Documents">Documents</option>
-              <option value="Inmigration">Inmigration</option>
-              <option value="Work">Work</option>
-              <option value="Accident">Accident</option>
-              <option value="Home">Home</option>
-              <option value="Personal">Personal</option>
-              <option value="Other">Other</option>
+            <select
+              name="nature"
+              id="nature"
+              ref={register({ required: true })}
+            >
+              <option value="">--Select--</option>
+              <option value="DOCUMENTS">Documents</option>
+              <option value="INMIGRATION">Inmigration</option>
+              <option value="WORK">Work</option>
+              <option value="ACCIDENT">Accident</option>
+              <option value="HOME">Home</option>
+              <option value="PERSONAL">Personal</option>
+              <option value="OTHER">Other</option>
             </select>
           </div>
         </div>
@@ -75,8 +79,7 @@ export default function LegalFields({ register, watchLawyerOption }) {
         </div>
       </div>
 
-      <LegalLawyerFieldsArray register={register} />
-
+      <LegalLawyerFieldsArray register={register} control={control} />
     </>
   );
 }
