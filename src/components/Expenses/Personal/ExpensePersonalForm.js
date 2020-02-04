@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 // import * as yup from 'yup';
 import dayjs from "dayjs";
 import { useHistory } from "react-router-dom";
@@ -62,23 +62,12 @@ export default function ExpensePersonalForm(props) {
 
   console.log("expense to fill", expense);
 
-  const { register, handleSubmit, errors, watch, reset } = useForm({
-    // defaultValues: {
-    //   personal: "Select",
-    //   housing: "Select",
-    //   utility: isUpdating && expense && expense.utility ? expense.utility.selection : "",
-    //   payType: "mortgage",
-    //   event: "Select",
-    //   phonePlan: "Plan",
-    //   groceryCost: "Total"
-    // }
-  });
+  const { register, handleSubmit, errors, watch, reset, control } = useForm({});
 
-  // defaultValue={
-  //                   (props.location.pathname.includes("edit") &&
-  //                     props.location.state.expense.category) ||
-  //                   ""
-  //                 }
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "beneficiaries"
+  });
 
   useEffect(() => {
     reset({
@@ -102,6 +91,7 @@ export default function ExpensePersonalForm(props) {
       homeAmount: isUpdating && expense ? expense.amount : "",
       repairAmount: isUpdating && expense ? expense.amount : "",
       otherHousingAmount: isUpdating && expense ? expense.amount : "",
+      insuranceAmount: isUpdating && expense ? expense.amount : "",
 
       utilityCompany:
         isUpdating && expense && expense.utility ? expense.utility.company : "",
@@ -123,6 +113,8 @@ export default function ExpensePersonalForm(props) {
             ? expense.plan.title
             : expense.aditional.title
           : "",
+      insuranceTitle:
+        isUpdating && expense && expense.title ? expense.title : "",
       utilityNotes:
         isUpdating && expense && expense.utility ? expense.utility.notes : "",
       supplyNotes:
@@ -141,6 +133,8 @@ export default function ExpensePersonalForm(props) {
             ? expense.plan.notes
             : expense.aditional.notes
           : "",
+      insuranceNotes:
+        isUpdating && expense && expense.notes ? expense.notes : "",
       utilityBillingStart:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingStart
@@ -173,7 +167,24 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.home && expense.home.address
           ? `You must add the other side of the relations`
           : `You must add the other side of the relations`,
-      phonePlan: isUpdating && expense ? expense.phonePlan.toLowerCase() : ""
+      phonePlan:
+        isUpdating && expense && expense.phonePlan
+          ? expense.phonePlan.toLowerCase()
+          : "",
+      //insurance
+      nature: isUpdating && expense && expense.nature ? expense.nature : "",
+      startDate: isUpdating && expense ? expense.startDate : "",
+      coverage: isUpdating && expense ? expense.coverage : "",
+      yearDeductions:
+        isUpdating && expense && expense.yearDeductions
+          ? expense.yearDeductions
+          : "",
+      insuranceComapny:
+        isUpdating && expense && expense.company ? expense.company : "",
+      beneficiaries:
+        isUpdating && expense && expense.beneficiaries
+          ? [...expense.beneficiaries.items]
+          : []
     });
   }, [expense, reset, isUpdating]);
 
@@ -183,10 +194,8 @@ export default function ExpensePersonalForm(props) {
   const watchInsurance = watch("nature");
 
   const watchHousing = watch("housing");
-  console.log("watchHousing", watchHousing);
 
   const watchUtility = watch("utility");
-  console.log("watchUtility", watchUtility);
 
   const housingEnumT = expense => {
     if (expense) {
@@ -207,7 +216,6 @@ export default function ExpensePersonalForm(props) {
   const watchLawyerOption = watch("lawyerOption");
 
   const watchPhonePlan = watch("phonePlan");
-  console.log("watchPhonePlan", watchPhonePlan);
 
   const watchFood = watch("nature");
 
@@ -227,7 +235,7 @@ export default function ExpensePersonalForm(props) {
   const cta = isAdding ? `Add my ${ctaElement}` : `Update my ${ctaElement}`;
 
   const handleCancel = () => {
-    reset();
+    // reset();
     history.push("/expenses/personal");
   };
 
@@ -267,24 +275,6 @@ export default function ExpensePersonalForm(props) {
   };
 
   const formatUtilities = async newData => {
-    // "id": "3e5d9085-7698-49d9-a441-ebcddd87d118",
-    //   "kind": "PERSONAL",
-    //     "amount": 500,
-    //       "category": "HOUSING",
-    //         "dueDate": "2020-02-01",
-    //           "utility": {
-    //   "id": "21261129-4bcb-47a3-9a29-564c647cd1fe",
-    //     "selection": "WATER",
-    //       "company": "ss",
-    //         "title": "tt",
-    //           "notes": "nott",
-    //             "period": {
-    //     "id": "25804f0b-1cc7-4629-957c-c15ddf1e695e",
-    //       "billingStart": "2019-07-02",
-    //         "billingEnd": "2019-07-29"
-    //   },
-    //   "reading": 12,
-    //     "images": null
     try {
       const {
         kind,
@@ -323,7 +313,6 @@ export default function ExpensePersonalForm(props) {
         periodEndingBeNotEmpty
       });
 
-      // isUpdating && (const {selection, company, title, tit})
       const formatedUtility = {
         company: companyBeNotEmpty,
         notes: notesBeNotEmpty,
@@ -334,7 +323,6 @@ export default function ExpensePersonalForm(props) {
       };
 
       if (isUpdating) {
-        // const {}
         let existingUtilityId = null;
         expense && (existingUtilityId = expense.utility.id);
         const utilityToUpdate = { id: existingUtilityId, ...formatedUtility };
@@ -448,16 +436,17 @@ export default function ExpensePersonalForm(props) {
 
     try {
       const kind = "PERSONAL"; //'Personal' because each the field kind is based on the current tab position
-      const formatedExpense = formatPesonalExpense({ ...data, kind });
+      // const formatedExpense = formatPesonalExpense({ ...data, kind });
 
-      isAdding && handleCreatePersonalExpense(formatedExpense);
+      // isAdding && handleCreatePersonalExpense(formatedExpense);
 
-      isUpdating && handleUpdatePersonalExpense(formatedExpense);
+      // isUpdating && handleUpdatePersonalExpense(formatedExpense);
+      alert(JSON.stringify(data));
     } catch (error) {
       console.error("CU personal expense", error);
     }
 
-    e.target.reset(); // reset after form submit
+    // e.target.reset(); // reset after form submit
     alert(JSON.stringify(data));
 
     history.push("/expenses/personal");
@@ -516,7 +505,7 @@ export default function ExpensePersonalForm(props) {
                 </select>
               </div>
               {errors.personal && (
-                <p className="error">{"Please select a catregory"}</p>
+                <p className="error">{"Please select a category"}</p>
               )}
             </div>
           </div>
@@ -534,6 +523,13 @@ export default function ExpensePersonalForm(props) {
               watchInsurance={watchInsurance}
               register={register}
               errors={errors}
+              control={control}
+              fields={fields}
+              append={append}
+              remove={remove}
+              reset={reset}
+              expense={expense}
+              isUpdating={isUpdating}
             />
           )}
 

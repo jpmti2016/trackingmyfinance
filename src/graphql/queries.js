@@ -5630,16 +5630,30 @@ export const listClients = `query ListClients(
       }
       
       insuranceExpenses (limit: 10){
-        items{
+         items{
           id
           __typename
+          kind
           amount
-          category
           dueDate
+          category
+          nature
+          startDate
           title
           notes
+          coverage
+          yearDeductions
+          company
+          beneficiaries{
+            items{
+              name
+              lastName
+              address{
+                id
+              }
+            }
+          }
         }
-        nextToken
       }
       
       legalExpenses (limit: 10){

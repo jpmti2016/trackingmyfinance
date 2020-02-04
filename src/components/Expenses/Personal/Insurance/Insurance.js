@@ -1,6 +1,16 @@
 import React from "react";
 import InsuranceBeneficiariesFieldsArray from "./InsuranceBeneficiariesFieldsArray";
-export default function InsuranceFields({ watchInsurance, register }) {
+export default function InsuranceFields({
+  watchInsurance,
+  register,
+  errors,
+  fields,
+  append,
+  remove,
+  reset,
+  expense,
+  isUpdating
+}) {
   return (
     <>
       <div className="field">
@@ -10,17 +20,20 @@ export default function InsuranceFields({ watchInsurance, register }) {
         <div className="control">
           <div className="select">
             <select name="nature" id="nature" ref={register}>
-              <option value="Select">Select</option>
-              <option value="Home">Home</option>
-              <option value="Car">Car</option>
-              <option value="Health">Health</option>
-              <option value="Dental">Dental</option>
-              <option value="Vision">Vision</option>
-              <option value="Life">Life</option>
-              <option value="Disability">Disability</option>
-              <option value="Other">Other</option>
+              <option value="">Select</option>
+              <option value="HOME">Home</option>
+              <option value="CAR">Car</option>
+              <option value="HEALTH">Health</option>
+              <option value="DENTAL">Dental</option>
+              <option value="VISION">Vision</option>
+              <option value="LIFE">Life</option>
+              <option value="DISABILITY">Disability</option>
+              <option value="OTHER">Other</option>
             </select>
           </div>
+          {errors.nature && (
+            <p className="error">{"Please select a insurance type"}</p>
+          )}
         </div>
       </div>
 
@@ -33,14 +46,18 @@ export default function InsuranceFields({ watchInsurance, register }) {
             type="date"
             className="input"
             name="startDate"
+            id="startDate"
             placeholder="10/01/2018"
             ref={register({ required: true })}
           />
+          {errors.startDate && (
+            <p className="error">{"Please select the start date"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="title" className="label">
+        <label htmlFor="insuranceTitle" className="label">
           Plan Title
         </label>
         <div className="control">
@@ -52,15 +69,18 @@ export default function InsuranceFields({ watchInsurance, register }) {
                 ? "Property insurance"
                 : "Vision Insurance"
             }
-            name="title"
-            id="title"
+            name="insuranceTitle"
+            id="insuranceTitle"
             ref={register({ required: true })}
           />
+          {errors.insuranceTitle && (
+            <p className="error">{"Please check the title"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="notes" className="label">
+        <label htmlFor="insuranceNotes" className="label">
           Notes
         </label>
         <div className="control">
@@ -71,11 +91,14 @@ export default function InsuranceFields({ watchInsurance, register }) {
                 ? "Property insurance Personal Notes"
                 : "Vision Insurance Personal Notes"
             }
-            name="notes"
-            id="notes"
+            name="insuranceNotes"
+            id="insuranceNotes"
             ref={register({ required: true })}
           />
         </div>
+        {errors.insuranceNotes && (
+          <p className="error">{"Please check the notes"}</p>
+        )}
       </div>
 
       <div className="field">
@@ -95,6 +118,9 @@ export default function InsuranceFields({ watchInsurance, register }) {
             }
             ref={register({ required: true })}
           />
+          {errors.coverage && (
+            <p className="error">{"Please check the coverage"}</p>
+          )}
         </div>
       </div>
 
@@ -108,14 +134,17 @@ export default function InsuranceFields({ watchInsurance, register }) {
             className="input"
             name="yearDeductions"
             id="yearDeductions"
-            placeholder="26 Deduction(s)/Year"
+            placeholder="26 (Deduction(s)/Year)"
             ref={register({ required: true })}
           />
+          {errors.yearDeductions && (
+            <p className="error">{"Please check the year deductions"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="cost" className="label">
+        <label htmlFor="insuranceAmount" className="label">
           Personal Cost
         </label>
         <div className="control">
@@ -123,14 +152,18 @@ export default function InsuranceFields({ watchInsurance, register }) {
             type="number"
             className="input"
             placeholder="30.49"
-            name="cost"
+            name="insuranceAmount"
+            id="insuranceAmount"
             ref={register}
           />
+          {errors.insuranceAmount && (
+            <p className="error">{"Please check the personal cost"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="company" className="label">
+        <label htmlFor="insuranceComapny" className="label">
           Insurance Company
         </label>
         <div className="control">
@@ -138,20 +171,29 @@ export default function InsuranceFields({ watchInsurance, register }) {
             type="text"
             className="input"
             placeholder="Mutual of Omaha"
-            name="company"
-            id="company"
+            name="insuranceComapny"
+            id="insuranceComapny"
             ref={register({ required: true })}
           />
         </div>
       </div>
 
-      {(watchInsurance === "Life" ||
-        watchInsurance === "Disability" ||
-        watchInsurance === "Home" ||
-        watchInsurance === "Car" ||
-        watchInsurance === "Other") && (
-          <InsuranceBeneficiariesFieldsArray register={register} />
-        )}
+      {(watchInsurance === "LIFE" ||
+        watchInsurance === "DISABILITY" ||
+        watchInsurance === "HOME" ||
+        watchInsurance === "CAR" ||
+        watchInsurance === "OTHER") && (
+        <InsuranceBeneficiariesFieldsArray
+          register={register}
+          errors={errors}
+          fields={fields}
+          append={append}
+          remove={remove}
+          reset={reset}
+          expense={expense}
+          isUpdating={isUpdating}
+        />
+      )}
     </>
   );
 }
