@@ -1,4 +1,4 @@
-enum KindE{
+enum KindE {
   PERSONAL
   GYFT
 }
@@ -8,7 +8,7 @@ enum CategoryE {
   PHONE
   INSURANCE
   LEGAL
-  GROCERY
+  FOOD
   COMMUTE
   EDUCATION
   PERSONALCARE
@@ -17,13 +17,9 @@ enum CategoryE {
   LOAN
   TAXES
   INVESTMENT
-
 }
 
-type Period 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Period @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   billingStart: AWSDate
   billingEnd: AWSDate
@@ -46,11 +42,8 @@ enum UtilitySelectionE {
   PHONE
 }
 
-type Utility 
-  @model 
-  @auth(rules: [{allow: owner}])
-{
-  id:ID!
+type Utility @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
   selection: UtilitySelectionE
   company: String
   title: String
@@ -60,7 +53,7 @@ type Utility
   images: [S3Object]
 }
 
-enum SupplyForE { 
+enum SupplyForE {
   WORKSHOP
   KITCHEN
   BEDROOM
@@ -70,10 +63,7 @@ enum SupplyForE {
   OTHER
 }
 
-type Supply
-  @model 
-  @auth(rules: [{allow: owner}])
-{
+type Supply @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   supplyFor: SupplyForE
   title: String
@@ -88,32 +78,23 @@ enum HomeTypeE {
   RENT
 }
 
-type Home
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Home @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   mortgage: HomeTypeE
   title: String
   notes: String
-  address: Address
+  address: Address @connection
   images: [S3Object]
 }
 
-type Repair 
-  @model 
-  @auth(rules: [{allow: owner}])
-{
+type Repair @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
   notes: String
   images: [S3Object]
 }
 
-type OtherHousing 
-  @model 
-  @auth(rules: [{allow: owner}])
-{
+type OtherHousing @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
   notes: String
@@ -128,10 +109,7 @@ enum HousingE {
   OTHER
 }
 
-type HousingExpense
-  @model 
-  @auth(rules: [{allow: owner}])
-{
+type HousingExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float!
@@ -147,20 +125,14 @@ type HousingExpense
   client: Client @connection(name: "ClientHousingExpense", sortField: "dueDate")
 }
 
-type Plan
-  @model 
-  @auth(rules: [{allow: owner}])
-{
+type Plan @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String
   notes: String
   billing: Period @connection
 }
 
-type Aditional 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Aditional @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String
   notes: String
@@ -171,10 +143,7 @@ enum PhonePlanE {
   ADITIONAL
 }
 
-type PhoneExpense 
-  @model 
-  @auth(rules: [{allow: owner}])
-{
+type PhoneExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   dueDate: AWSDate!
@@ -199,22 +168,16 @@ enum InsuranceE {
   OTHER
 }
 
-type Beneficiary 
-  @model 
-  @auth(rules: [{allow: owner}])
-{
+type Beneficiary @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
   lastName: String!
-  address: Address
+  address: Address @connection
   images: [S3Object]
-  insurance: InsuranceExpense @connection (name: "BeneficiaryInsuranceExpense")
+  insurance: InsuranceExpense @connection(name: "BeneficiaryInsuranceExpense")
 }
 
-type InsuranceExpense 
-  @model 
-  @auth(rules: [{allow: owner}])
- {
+type InsuranceExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float! #cost
@@ -229,14 +192,12 @@ type InsuranceExpense
   yearDeductions: Int
   company: String
   images: [S3Object]
-  beneficiaries: [Beneficiary] @connection (name: "BeneficiaryInsuranceExpense")
-  client: Client @connection (name: "ClientInsuranceExpense", sortField: "dueDate")
+  beneficiaries: [Beneficiary] @connection(name: "BeneficiaryInsuranceExpense")
+  client: Client
+    @connection(name: "ClientInsuranceExpense", sortField: "dueDate")
 }
 
-type Lawyer
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Lawyer @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   phone: AWSPhone!
   address: Address @connection
@@ -245,7 +206,7 @@ type Lawyer
   email: AWSEmail
   fee: Float
   firm: String
-  legal: LegalExpense @connection (name: "LawyerLegalExpense")
+  legal: LegalExpense @connection(name: "LawyerLegalExpense")
 }
 
 enum LegalE {
@@ -258,10 +219,7 @@ enum LegalE {
   OTHER
 }
 
-type LegalExpense  
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type LegalExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float! #fee // dont include lawyer fee
@@ -272,8 +230,8 @@ type LegalExpense
   notes: String
   tags: [String]
   images: [S3Object]
-  lawyers: [Lawyer] @connection (name: "LawyerLegalExpense")
-  client: Client @connection (name: "ClientLegalExpense", sortField: "dueDate")
+  lawyers: [Lawyer] @connection(name: "LawyerLegalExpense")
+  client: Client @connection(name: "ClientLegalExpense", sortField: "dueDate")
 }
 
 enum GroceryInfoE {
@@ -281,36 +239,27 @@ enum GroceryInfoE {
   DETAILS
 }
 
-type Product
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Product @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String
   price: Float!
   quantity: Int!
   frequency: FrequencyE
   tags: [String]
-  grocery: Grocery @connection (name: "ProductGrocery")
+  grocery: Grocery @connection(name: "ProductGrocery")
   images: [S3Object]
 }
 
-type Grocery
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Grocery @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   store: String
   title: String
   notes: String
   info: GroceryInfoE
-  products: [Product] @connection (name: "ProductGrocery")
+  products: [Product] @connection(name: "ProductGrocery")
 }
 
-type DinningOut
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type DinningOut @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   place: String
   title: String
@@ -323,10 +272,7 @@ enum FoodE {
   DINNINGOUT
 }
 
-type FoodExpense 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type FoodExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float! #total or calculate later based on the price and quantity
@@ -339,7 +285,7 @@ type FoodExpense
   client: Client @connection(name: "ClientFoodExpense", sortField: "dueDate")
 }
 
-enum ServiceE { 
+enum ServiceE {
   OWN
   UBER
   LIFT
@@ -361,10 +307,7 @@ enum EventE {
   OTHER
 }
 
-type CommuteExpense
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type CommuteExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float!
@@ -376,7 +319,7 @@ type CommuteExpense
   tags: [String]
   notes: String
   images: [S3Object]
-  client: Client @connection (name: "ClientCommuteExpense", sortField: "dueDate")
+  client: Client @connection(name: "ClientCommuteExpense", sortField: "dueDate")
 }
 
 enum ProgramE {
@@ -387,50 +330,39 @@ enum ProgramE {
   NONE
 }
 
-type AcademicFee 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type AcademicFee @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   tuitionAndFees: Float
   booksAndSupplies: Float
   roomAndBoard: Float
   transportation: Float
   personal: Float
-  college: College @connection (name: "CollegeAcademicFee")
-  communityCollege: CommunityCollege @connection (name: "CommunityCollegeAcademicFee")
+  college: College @connection(name: "CollegeAcademicFee")
+  communityCollege: CommunityCollege
+    @connection(name: "CommunityCollegeAcademicFee")
 }
 
-type College
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type College @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   program: ProgramE!
   title: String
   notes: String
   images: [S3Object]
   period: Period @connection
-  fees: [AcademicFee] @connection (name: "CollegeAcademicFee")
+  fees: [AcademicFee] @connection(name: "CollegeAcademicFee")
 }
 
-type CommunityCollege
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type CommunityCollege @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   program: ProgramE!
   title: String
   notes: String
   images: [S3Object]
   period: Period @connection
-  fees: [AcademicFee] @connection (name: "CommunityCollegeAcademicFee")
+  fees: [AcademicFee] @connection(name: "CommunityCollegeAcademicFee")
 }
 
-type Instructor
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Instructor @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   phone: AWSPhone!
   tweeter: String
@@ -438,13 +370,10 @@ type Instructor
   email: AWSEmail
   webPage: AWSURL
   images: [S3Object]
-  teachOn: OnlineCourse @connection (name: "InstructorOnlineCourse")
+  teachOn: OnlineCourse @connection(name: "InstructorOnlineCourse")
 }
 
-type OnlineCourse
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type OnlineCourse @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
   description: String
@@ -453,13 +382,10 @@ type OnlineCourse
   url: AWSURL
   images: [S3Object]
   period: Period @connection
-  instructors: [Instructor] @connection (name: "InstructorOnlineCourse")
+  instructors: [Instructor] @connection(name: "InstructorOnlineCourse")
 }
 
-type Training
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Training @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
   notes: String
@@ -473,10 +399,7 @@ enum DeferredE {
   NO
 }
 
-type Bootcamp
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Bootcamp @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String
   notes: String
@@ -493,10 +416,7 @@ enum EducationE {
   BOOTCAMP
 }
 
-type EducationExpense 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type EducationExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float! # Sum of different fees
@@ -510,7 +430,8 @@ type EducationExpense
   training: Training @connection
   bootcamp: Bootcamp @connection
   tags: [String]
-  client: Client @connection (name: "ClientEducationExpense", sortField: "dueDate")
+  client: Client
+    @connection(name: "ClientEducationExpense", sortField: "dueDate")
 }
 
 enum PersonalCareE {
@@ -522,10 +443,7 @@ enum PersonalCareE {
   CLUBS
 }
 
-type PersonalCareExpense
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type PersonalCareExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float!
@@ -536,7 +454,8 @@ type PersonalCareExpense
   tags: [String]
   notes: String
   images: [S3Object]
-  client: Client @connection (name: "ClientPersonalCareExpense", sortField: "dueDate")
+  client: Client
+    @connection(name: "ClientPersonalCareExpense", sortField: "dueDate")
 }
 
 enum PetE {
@@ -546,10 +465,7 @@ enum PetE {
   PET
 }
 
-type PetExpense 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type PetExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float!
@@ -560,7 +476,7 @@ type PetExpense
   tags: [String]
   notes: String
   images: [S3Object]
-  client: Client @connection (name: "ClientPetExpense", sortField: "dueDate")
+  client: Client @connection(name: "ClientPetExpense", sortField: "dueDate")
 }
 
 enum EntertainmentE {
@@ -572,10 +488,7 @@ enum EntertainmentE {
   OTHER
 }
 
-type EntertainmentExpense 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type EntertainmentExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float!
@@ -584,9 +497,10 @@ type EntertainmentExpense
   natute: EntertainmentE
   title: String
   tags: [String]
-  notes:String
+  notes: String
   images: [S3Object]
-  client: Client @connection (name: "ClientEntertainmentExpense", sortField: "dueDate")
+  client: Client
+    @connection(name: "ClientEntertainmentExpense", sortField: "dueDate")
 }
 
 enum LoanE {
@@ -596,10 +510,7 @@ enum LoanE {
   STUDENT
 }
 
-type LoanExpense 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type LoanExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float!
@@ -608,34 +519,28 @@ type LoanExpense
   natute: LoanE
   title: String
   tags: [String]
-  notes:String
+  notes: String
   images: [S3Object]
-  client: Client @connection (name: "ClientLoanExpense", sortField: "dueDate")
+  client: Client @connection(name: "ClientLoanExpense", sortField: "dueDate")
 }
 
-type W2Summary 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type W2Summary @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   year: String! # Correct type
   grossPay: Float
   federal: Float
   state: Float
   local: Float
-  tax: TaxExpense @connection (name: "W2SummaryTaxExpense")
+  tax: TaxExpense @connection(name: "W2SummaryTaxExpense")
 }
 
-type TaxExpense 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type TaxExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float! #Process fee + taxDebt - reimburse
   dueDate: AWSDate!
   category: CategoryE!
-  w2: W2Summary @connection (name: "W2SummaryTaxExpense")
+  w2: W2Summary @connection(name: "W2SummaryTaxExpense")
   #reimburse:Float It should behave like an income
   taxDebt: Float
   fee: Float
@@ -643,7 +548,7 @@ type TaxExpense
   tags: [String]
   notes: String
   images: [S3Object]
-  client: Client @connection (name: "ClientTaxExpense", sortField: "dueDate")
+  client: Client @connection(name: "ClientTaxExpense", sortField: "dueDate")
 }
 
 enum AccountE {
@@ -654,10 +559,7 @@ enum AccountE {
   VTSAX
 }
 
-type InvestmentExpense 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type InvestmentExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   account: AccountE!
@@ -666,9 +568,10 @@ type InvestmentExpense
   category: CategoryE!
   title: String
   tags: [String]
-  notes:String
+  notes: String
   images: [S3Object]
-  client: Client @connection(name: "ClientInvestmentExpense", sortField: "dueDate")
+  client: Client
+    @connection(name: "ClientInvestmentExpense", sortField: "dueDate")
 }
 
 enum GyftEventE {
@@ -677,40 +580,31 @@ enum GyftEventE {
   PRESENT
   BIRTHDAY
   CHARITY
-  OTHER  
+  OTHER
 }
 
-type Recipient
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Recipient @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
   images: [S3Object]
-  gyft: GyftExpense @connection (name: "RecipientGyftExpense")
+  gyft: GyftExpense @connection(name: "RecipientGyftExpense")
 }
 
-type GyftExpense 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type GyftExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float!
   dueDate: AWSDate!
   event: GyftEventE!
-  recipient: Recipient! @connection (name: "RecipientGyftExpense")
+  recipient: Recipient! @connection(name: "RecipientGyftExpense")
   title: String
   tags: [String]
   notes: String
   images: [S3Object]
-  client: Client @connection (name: "ClientGyftExpense", sortField: "dueDate")
+  client: Client @connection(name: "ClientGyftExpense", sortField: "dueDate")
 }
 
-type Budget
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Budget @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   amount: Float!
   spent: Float!
@@ -721,7 +615,7 @@ type Budget
   title: String
   tags: [String]
   notes: String
-  client: Client @connection (name: "ClientBudget")
+  client: Client @connection(name: "ClientBudget")
 }
 
 enum FrequencyE {
@@ -744,20 +638,17 @@ enum IncomeE {
   EXTRA
 }
 
-type Income
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Income @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   amount: Float!
   dueDate: AWSDate!
   nature: IncomeE
-  frequency: FrequencyE! 
+  frequency: FrequencyE!
   title: String
   notes: String
   tags: [String]
   images: [S3Object]
-  client: Client @connection (name: "ClientIncome", sortField: "dueDate")
+  client: Client @connection(name: "ClientIncome", sortField: "dueDate")
 }
 enum CardE {
   CREDIT
@@ -766,10 +657,7 @@ enum CardE {
   ACCESS360
 }
 
-type CreditCardDetail
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type CreditCardDetail @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   limit: Float!
   dueDate: AWSDate
@@ -781,34 +669,25 @@ type CreditCardDetail
   images: [S3Object]
 }
 
-type DebitCardDetail
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type DebitCardDetail @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   dueDate: AWSDate
   overdraftFee: Float
   images: [S3Object]
 }
 
-type Card
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Card @model @auth(rules: [{ allow: owner }]) {
   id: ID
   nature: CardE!
-  last4Digit:Int! 
+  last4Digit: Int!
   amount: Float
   tags: [String]
   creditCardDetail: CreditCardDetail @connection
   debitCardDetail: DebitCardDetail @connection
-  client: Client @connection (name: "ClientCard", sortField: "dueDate")
+  client: Client @connection(name: "ClientCard", sortField: "dueDate")
 }
 
-type CreditReport 
-  @model
-  @auth(rules: [{allow: owner}]) 
-{
+type CreditReport @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   issuer: String
   creditScore: Int!
@@ -819,29 +698,24 @@ type CreditReport
   derogatoryMarks: Int
   accounts: Int
   tags: [String]
-  client: Client @connection (name: "ClientCreditReport")
+  client: Client @connection(name: "ClientCreditReport")
 }
 
-type PriorityPayment 
-  @model 
-  @auth(rules: [{allow: owner}]) 
-{
+type PriorityPayment @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   percent: Float
   createdAt: AWSDate
   updatedAt: AWSDate
 }
 
-type FinantialIndependence
-  @model
-  @auth(rules: [{allow: owner}]){
-    id: ID!
-    targetAmount: Float
-    targetYears: Int #25 4% rule
-    createdAt: AWSDate
-    updatedAt: AWSDate
-    projectedExpenseByYear: Float
-  }
+type FinantialIndependence @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  targetAmount: Float
+  targetYears: Int #25 4% rule
+  createdAt: AWSDate
+  updatedAt: AWSDate
+  projectedExpenseByYear: Float
+}
 
 enum AccountE {
   I401K
@@ -851,14 +725,11 @@ enum AccountE {
   VTSAX
 }
 
-type Investment
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Investment @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   account: AccountE!
   title: String
-  notes:String
+  notes: String
   roi: Float
   fee: Float
   value: Float
@@ -870,13 +741,10 @@ type Investment
   updatedAt: AWSDate
   tags: [String]
   images: [S3Object]
-  client: Client @connection (name: "ClientInvestment", sortField: "dueDate")
+  client: Client @connection(name: "ClientInvestment", sortField: "dueDate")
 }
 
-type Loan
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Loan @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   amount: Float!
   terms: String! #12 months 60 months 12x(15 year) 12x(30 year)
@@ -886,7 +754,7 @@ type Loan
   monthPay: Float!
   dueDate: AWSDate
   title: String
-  notes:String
+  notes: String
   createdAt: AWSDate
   updatedAt: AWSDate
   tags: [String]
@@ -894,10 +762,7 @@ type Loan
   images: [S3Object]
 }
 
-type Property
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Property @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   amount: Float!
   title: String
@@ -905,13 +770,10 @@ type Property
   purchaseDate: AWSDate
   tags: [String]
   images: [S3Object]
-  client: Client @connection (name: "ClientProperty", sortField: "name")
+  client: Client @connection(name: "ClientProperty", sortField: "name")
 }
 
-type Address 
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Address @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   number: String
   street: String
@@ -922,10 +784,7 @@ type Address
   county: String
 }
 
-type Client
-  @model
-  @auth(rules: [{allow: owner}])
-{
+type Client @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   username: String!
   name: String
@@ -934,39 +793,52 @@ type Client
   phone: AWSPhone
   avatar: S3Object
   images: [S3Object]
-  creditReports: [CreditReport] @connection (name: "ClientCreditReport", sortField: "createdAt")
+  creditReports: [CreditReport]
+    @connection(name: "ClientCreditReport", sortField: "createdAt")
   priorityPayment: PriorityPayment @connection
   fi: FinantialIndependence @connection
-  properties: [Property] @connection (name: "ClientProperty", sortField: "purchaseDate")
-  investments: [Investment] @connection (name: "ClientInvestment", sortField: "createdAt")
-  incomes: [Income] @connection (name: "ClientIncome", sortField: "dueDate")
-  budgets: [Budget] @connection (name: "ClientBudget")
-  cards: [Card] @connection (name: "ClientCard", sortField: "last4Digit")
-  housingExpenses: [HousingExpense] @connection (name: "ClientHousingExpense", sortField: "dueDate")
-  phoneExpenses: [PhoneExpense] @connection (name: "ClientPhoneExpense", sortField: "dueDate")
-  insuranceExpenses: [InsuranceExpense] @connection (name: "ClientInsuranceExpense", sortField: "dueDate")
-  legalExpenses: [LegalExpense] @connection (name: "ClientLegalExpense", sortField: "dueDate")
-  foodExpenses: [FoodExpense] @connection (name: "ClientFoodExpense", sortField: "dueDate")
-  commuteExpenses: [CommuteExpense] @connection (name: "ClientCommuteExpense", sortField: "dueDate")
-  educationExpenses: [EducationExpense] @connection (name: "ClientEducationExpense", sortField: "dueDate")
-  personalCareExpenses: [PersonalCareExpense] @connection (name: "ClientPersonalCareExpense", sortField: "dueDate")
-  petExpenses: [PetExpense] @connection (name: "ClientPetExpense", sortField: "dueDate")
-  entertainmentExpenses: [EntertainmentExpense] @connection(name: "ClientEntertainmentExpense", sortField: "dueDate")
-  loanExpenses: [LoanExpense] @connection(name: "ClientLoanExpense", sortField: "dueDate")
-  taxExpenses: [TaxExpense] @connection(name: "ClientTaxExpense", sortField: "dueDate")
-  investmentExpenses: [InvestmentExpense] @connection(name: "ClientInvestmentExpense", sortField: "dueDate")
-  gyftExpenses: [GyftExpense] @connection(name: "ClientGyftExpense", sortField: "dueDate")
+  properties: [Property]
+    @connection(name: "ClientProperty", sortField: "purchaseDate")
+  investments: [Investment]
+    @connection(name: "ClientInvestment", sortField: "createdAt")
+  incomes: [Income] @connection(name: "ClientIncome", sortField: "dueDate")
+  budgets: [Budget] @connection(name: "ClientBudget")
+  cards: [Card] @connection(name: "ClientCard", sortField: "last4Digit")
+  housingExpenses: [HousingExpense]
+    @connection(name: "ClientHousingExpense", sortField: "dueDate")
+  phoneExpenses: [PhoneExpense]
+    @connection(name: "ClientPhoneExpense", sortField: "dueDate")
+  insuranceExpenses: [InsuranceExpense]
+    @connection(name: "ClientInsuranceExpense", sortField: "dueDate")
+  legalExpenses: [LegalExpense]
+    @connection(name: "ClientLegalExpense", sortField: "dueDate")
+  foodExpenses: [FoodExpense]
+    @connection(name: "ClientFoodExpense", sortField: "dueDate")
+  commuteExpenses: [CommuteExpense]
+    @connection(name: "ClientCommuteExpense", sortField: "dueDate")
+  educationExpenses: [EducationExpense]
+    @connection(name: "ClientEducationExpense", sortField: "dueDate")
+  personalCareExpenses: [PersonalCareExpense]
+    @connection(name: "ClientPersonalCareExpense", sortField: "dueDate")
+  petExpenses: [PetExpense]
+    @connection(name: "ClientPetExpense", sortField: "dueDate")
+  entertainmentExpenses: [EntertainmentExpense]
+    @connection(name: "ClientEntertainmentExpense", sortField: "dueDate")
+  loanExpenses: [LoanExpense]
+    @connection(name: "ClientLoanExpense", sortField: "dueDate")
+  taxExpenses: [TaxExpense]
+    @connection(name: "ClientTaxExpense", sortField: "dueDate")
+  investmentExpenses: [InvestmentExpense]
+    @connection(name: "ClientInvestmentExpense", sortField: "dueDate")
+  gyftExpenses: [GyftExpense]
+    @connection(name: "ClientGyftExpense", sortField: "dueDate")
 }
 
-type S3Object
-{
+type S3Object {
   bucket: String!
   region: String!
   key: String!
 }
-
-
-
 
 # type Asset
 #   @model
@@ -978,7 +850,7 @@ type S3Object
 #   properties: [Property] #Only if it give you money
 # }
 
-# type Liability 
+# type Liability
 #   @model
 # @auth(rules: [{allow: owner}])
 # {
