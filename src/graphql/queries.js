@@ -5554,6 +5554,7 @@ export const listClients = `query ListClients(
           amount
           dueDate
           category
+          nature
           utility{
             id
             selection
@@ -5724,9 +5725,12 @@ export const listClients = `query ListClients(
         items{
           id
           __typename
+          kind
           amount
-          category
           dueDate
+          category
+          service
+          event
           title
           notes
         }
