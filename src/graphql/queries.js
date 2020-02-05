@@ -5710,12 +5710,9 @@ export const listClients = `query ListClients(
               }
             }
           }
-          grocery{
-            id
-            title
-            notes
-          }
           dinningOut{
+            id
+            place
             title
             notes
           }

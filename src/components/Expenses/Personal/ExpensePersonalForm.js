@@ -210,7 +210,11 @@ export default function ExpensePersonalForm(props) {
       place:
         isUpdating && expense && expense.dinningOut
           ? expense.dinningOut.place
-          : ""
+          : "",
+      products:
+        isUpdating && expense && expense.grocery && expense.grocery.products
+          ? [...expense.grocery.products.items]
+          : []
     });
   }, [expense, reset, isUpdating]);
 

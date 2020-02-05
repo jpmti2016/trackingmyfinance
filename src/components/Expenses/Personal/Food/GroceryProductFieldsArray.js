@@ -69,18 +69,19 @@ export default function GroceryProductFieldsArray({
             </div>
 
             <div className="field">
-              <label htmlFor={`${fieldName}.count`} className="label">
+              <label htmlFor={`${fieldName}.quantity`} className="label">
                 Quantity
               </label>
               <div className="control">
                 <input
-                  id={`${fieldName}.count`}
+                  id={`${fieldName}.quantity`}
                   type="number"
                   className="input"
-                  name={`${fieldName}.count`}
+                  name={`${fieldName}.quantity`}
                   ref={register({ required: true })}
+                  defaultValue={`${item.quantity}`}
                 />
-                {errors && errors[`${fieldName}.count`] && (
+                {errors && errors[`${fieldName}.quantity`] && (
                   <p className="error">{"Please check the product's count"}</p>
                 )}
               </div>
@@ -96,6 +97,7 @@ export default function GroceryProductFieldsArray({
                     name="frequency"
                     id="frequency"
                     ref={register({ required: true })}
+                    defaultValue={`${item.frequency}`}
                   >
                     <option value="">--Select--</option>
                     <option value="YEARLY">Yearly</option>
