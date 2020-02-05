@@ -1,20 +1,28 @@
 import React from "react";
 import GroceryProductFieldsArray from "./GroceryProductFieldsArray";
-export default function GroceryFields({ watchGroceryCost, register }) {
+export default function GroceryFields({
+  watchGroceryInfo,
+  register,
+  control,
+  errors
+}) {
   return (
     <>
       <div className="field">
-        <label htmlFor="groceryDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Date
         </label>
         <div className="control">
           <input
             type="date"
             className="input"
-            name="groceryDate"
-            id="groceryDate"
+            name="dueDate"
+            id="dueDate"
             ref={register({ required: true })}
           />
+          {errors && errors[`dueDate`] && (
+            <p className="error">{"Please select the food expense date"}</p>
+          )}
         </div>
       </div>
 
@@ -30,21 +38,47 @@ export default function GroceryFields({ watchGroceryCost, register }) {
             id="groceryStore"
             ref={register({ required: true })}
           />
+          {errors && errors[`groceryStore`] && (
+            <p className="error">
+              {"Please select the food expense store field"}
+            </p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="notes" className="label">
+        <label htmlFor="groceryTitle" className="label">
+          Title
+        </label>
+        <div className="control">
+          <input
+            type="text"
+            className="input"
+            name="groceryTitle"
+            id="groceryTitle"
+            ref={register({ required: true })}
+          />
+          {errors && errors[`groceryTitle`] && (
+            <p className="error">{"Please check the title"}</p>
+          )}
+        </div>
+      </div>
+
+      <div className="field">
+        <label htmlFor="groceryNotes" className="label">
           Notes
         </label>
         <div className="control">
           <textarea
             className="textarea"
-            name="notes"
-            id="notes"
+            name="groceryNotes"
+            id="groceryNotes"
             ref={register({ required: true })}
           />
         </div>
+        {errors && errors[`groceryNotes`] && (
+          <p className="error">{"Please check the notes"}</p>
+        )}
       </div>
 
       <div className="field is-grouped is-grouped-multiline">
@@ -53,8 +87,8 @@ export default function GroceryFields({ watchGroceryCost, register }) {
             <input
               id="Total"
               type="radio"
-              name="groceryCost"
-              value="Total"
+              name="groceryInfo"
+              value="TOTAL"
               ref={register}
             />
             Total
@@ -65,8 +99,8 @@ export default function GroceryFields({ watchGroceryCost, register }) {
             <input
               id="Details"
               type="radio"
-              name="groceryCost"
-              value="Details"
+              name="groceryInfo"
+              value="DETAILS"
               ref={register}
             />
             Details
@@ -74,9 +108,11 @@ export default function GroceryFields({ watchGroceryCost, register }) {
         </div>
       </div>
 
-      {watchGroceryCost === "Total" ? (
+      {watchGroceryInfo === "TOTAL" ? (
         <div className="field">
-          <label htmlFor="groceryTotal" className="label">Amount</label>
+          <label htmlFor="groceryTotal" className="label">
+            Amount
+          </label>
           <div className="control">
             <input
               id="groceryTotal"
@@ -86,10 +122,17 @@ export default function GroceryFields({ watchGroceryCost, register }) {
               ref={register}
             />
           </div>
+          {errors && errors[`groceryTotal`] && (
+            <p className="error">{"Please check the total"}</p>
+          )}
         </div>
       ) : (
-          <GroceryProductFieldsArray register={register} />
-        )}
+        <GroceryProductFieldsArray
+          register={register}
+          control={control}
+          errors={errors}
+        />
+      )}
     </>
   );
 }

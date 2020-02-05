@@ -114,7 +114,13 @@ export default function ExpensePersonalForm(props) {
           : "",
       insuranceTitle:
         isUpdating && expense && expense.title ? expense.title : "",
-      notes: isUpdating && expense && expense.title ? expense.title : "",
+      groceryTitle:
+        isUpdating && expense && expense.grocery ? expense.grocery.title : "",
+      dinningOutTitle:
+        isUpdating && expense && expense.dinningOut
+          ? expense.dinningOut.title
+          : "",
+      notes: isUpdating && expense && expense.notes ? expense.notes : "",
       utilityNotes:
         isUpdating && expense && expense.utility ? expense.utility.notes : "",
       supplyNotes:
@@ -135,6 +141,12 @@ export default function ExpensePersonalForm(props) {
           : "",
       insuranceNotes:
         isUpdating && expense && expense.notes ? expense.notes : "",
+      groceryNotes:
+        isUpdating && expense && expense.grocery ? expense.grocery.notes : "",
+      dinningOutNotes:
+        isUpdating && expense && expense.dinningOut
+          ? expense.dinningOut.notes
+          : "",
       utilityBillingStart:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingStart
@@ -189,6 +201,15 @@ export default function ExpensePersonalForm(props) {
       lawyers:
         isUpdating && expense && expense.lawyers
           ? [...expense.lawyers.items]
+          : "",
+      groceryStore:
+        isUpdating && expense && expense.grocery ? expense.grocery.store : "",
+      groceryInfo:
+        isUpdating && expense && expense.grocery ? expense.grocery.info : "",
+      groceryTotal: isUpdating && expense ? expense.amount : "",
+      place:
+        isUpdating && expense && expense.dinningOut
+          ? expense.dinningOut.place
           : ""
     });
   }, [expense, reset, isUpdating]);
@@ -225,7 +246,8 @@ export default function ExpensePersonalForm(props) {
   const watchFood = watch("nature");
   console.log("watchFood", watchFood);
 
-  const watchGroceryCost = watch("groceryCost");
+  const watchGroceryInfo = watch("groceryInfo");
+  console.log("watchGroceryInfo", watchGroceryInfo);
 
   const watchCommuteService = watch("commuteService");
 
@@ -554,7 +576,8 @@ export default function ExpensePersonalForm(props) {
             <FoodFields
               register={register}
               watchFood={watchFood}
-              watchGroceryCost={watchGroceryCost}
+              watchGroceryInfo={watchGroceryInfo}
+              control={control}
               errors={errors}
             />
           )}

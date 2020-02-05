@@ -5689,9 +5689,27 @@ export const listClients = `query ListClients(
         items{
           id
           __typename
+          kind
           amount
           dueDate
           category
+          nature
+          grocery{
+            id
+            store
+            title
+            notes
+            info
+            products{
+              items{
+                id
+                name
+                price
+                quantity
+                frequency
+              }
+            }
+          }
           grocery{
             id
             title
