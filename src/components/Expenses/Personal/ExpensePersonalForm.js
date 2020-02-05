@@ -214,7 +214,10 @@ export default function ExpensePersonalForm(props) {
       products:
         isUpdating && expense && expense.grocery && expense.grocery.products
           ? [...expense.grocery.products.items]
-          : []
+          : [],
+      //Commute
+      commuteService: isUpdating && expense ? expense.service : "",
+      commuteEvent: isUpdating && expense ? expense.event : ""
     });
   }, [expense, reset, isUpdating]);
 

@@ -1,7 +1,11 @@
 import React from "react";
 
-export default function CommuteFields({ register, watchCommuteService }) {
-  let rideTitle = watchCommuteService !== 'Own' ? 'Ride' : 'Cost';
+export default function CommuteFields({
+  register,
+  watchCommuteService,
+  errors
+}) {
+  let rideTitle = watchCommuteService !== "Own" ? "Ride" : "Cost";
   return (
     <>
       <div className="field">
@@ -15,39 +19,43 @@ export default function CommuteFields({ register, watchCommuteService }) {
               id="commuteService"
               ref={register({ required: true })}
             >
-              <option value="Select">Select</option>
-              <option value="Own">Own</option>
-              <option value="Uber">Uber</option>
-              <option value="Lift">Lift</option>
-              <option value="Taxi">Taxi</option>
-              <option value="Scooter">Scooter</option>
-              <option value="Bus">Bus</option>
-              <option value="Friend">Friend</option>
-              <option value="Plane">Plane</option>
-              <option value="Train">Train</option>
-              <option value="Ship">Ship</option>
-              <option value="Other">Other</option>
+              <option value="">--Select--</option>
+              <option value="OWN">Own</option>
+              <option value="UBER">Uber</option>
+              <option value="LIFT">Lift</option>
+              <option value="TAXI">Taxi</option>
+              <option value="SCOOTER">Scooter</option>
+              <option value="BUS">Bus</option>
+              <option value="FRIEND">Friend</option>
+              <option value="PLANE">Plane</option>
+              <option value="TRAIN">Train</option>
+              <option value="SHIP">Ship</option>
+              <option value="OTHER">Other</option>
             </select>
           </div>
+          {errors.commuteService && (
+            <p className="error">{"Please select a commute service"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="commuteDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Date
         </label>
         <div className="control">
           <input
-            id="commuteDate"
+            id="dueDate"
             type="date"
             className="input"
-            name="commuteDate"
+            name="dueDate"
             ref={register}
           />
+          {errors.dueDate && <p className="error">{"Please select a date"}</p>}
         </div>
       </div>
 
-      {watchCommuteService !== "Own" && (
+      {watchCommuteService !== "OWN" && (
         <div className="field">
           <label htmlFor="amount" className="label">
             {rideTitle}
@@ -60,11 +68,12 @@ export default function CommuteFields({ register, watchCommuteService }) {
               name="amount"
               ref={register({ required: true })}
             />
+            {errors.amount && <p className="error">{"Please select a date"}</p>}
           </div>
         </div>
       )}
 
-      {watchCommuteService === "Own" && (
+      {watchCommuteService === "OWN" && (
         <>
           <div className="field">
             <label htmlFor="commuteEvent" className="label">
@@ -77,14 +86,17 @@ export default function CommuteFields({ register, watchCommuteService }) {
                   id="commuteEvent"
                   ref={register({ required: true })}
                 >
-                  <option value="Select">Select</option>
-                  <option value="Gas">Gas</option>
-                  <option value="Licencing">Licencing</option>
-                  <option value="Repair">Repair</option>
-                  <option value="Maintenance">Maintenance</option>
-                  <option value="Other">Other</option>
+                  <option value="">--Select--</option>
+                  <option value="GAS">Gas</option>
+                  <option value="LICENCING">Licencing</option>
+                  <option value="REPAIR">Repair</option>
+                  <option value="MAINTENANCE">Maintenance</option>
+                  <option value="OTHER">Other</option>
                 </select>
               </div>
+              {errors.commuteEvent && (
+                <p className="error">{"Please select a date"}</p>
+              )}
             </div>
           </div>
 
@@ -100,6 +112,9 @@ export default function CommuteFields({ register, watchCommuteService }) {
                 name="amount"
                 ref={register({ required: true })}
               />
+              {errors.amount && (
+                <p className="error">{"Please select a date"}</p>
+              )}
             </div>
           </div>
         </>
@@ -117,13 +132,14 @@ export default function CommuteFields({ register, watchCommuteService }) {
             name="title"
             ref={register({ required: true })}
           />
+          {errors.title && <p className="error">{"Please select a date"}</p>}
         </div>
       </div>
 
       <div className="field">
         <label htmlFor="notes" className="label">
           Notes
-          </label>
+        </label>
         <div className="control">
           <textarea
             id="notes"
@@ -132,6 +148,7 @@ export default function CommuteFields({ register, watchCommuteService }) {
             ref={register}
           />
         </div>
+        {errors.notes && <p className="error">{"Please select a date"}</p>}
       </div>
     </>
   );
