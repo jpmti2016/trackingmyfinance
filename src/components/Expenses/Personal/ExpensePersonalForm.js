@@ -65,7 +65,6 @@ export default function ExpensePersonalForm(props) {
   const { register, handleSubmit, errors, watch, reset, control } = useForm({});
 
   useEffect(() => {
-  
     reset({
       personal: isUpdating && expense ? expense.category : "",
       housing:
@@ -252,7 +251,16 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense ? educationFormat(expense).roomAndBoard : "",
       edTransportation:
         isUpdating && expense ? educationFormat(expense).transportation : "",
-      edPersonal: isUpdating && expense ? educationFormat(expense).personal : ""
+      edPersonal:
+        isUpdating && expense ? educationFormat(expense).personal : "",
+      //Taxes
+      year: isUpdating && expense && expense.w2 ? expense.w2.year : "",
+      grossPay: isUpdating && expense && expense.w2 ? expense.w2.grossPay : "",
+      federal: isUpdating && expense && expense.w2 ? expense.w2.federal : "",
+      state: isUpdating && expense && expense.w2 ? expense.w2.state : "",
+      local: isUpdating && expense && expense.w2 ? expense.w2.local : "",
+      taxDebt: isUpdating && expense ? expense.taxDebt : "",
+      fee: isUpdating && expense ? expense.fee : "",
     });
   }, [expense, reset, isUpdating]);
 
@@ -393,8 +401,9 @@ export default function ExpensePersonalForm(props) {
         return {
           title: expense.bootcamp.title,
           notes: expense.bootcamp.notes,
-          costDeferred:
-            expense.bootcamp.costDeferred ? expense.bootcamp.costDeferred === "NO" : expense.bootcamp.costDeferred === 'YES'
+          costDeferred: expense.bootcamp.costDeferred
+            ? expense.bootcamp.costDeferred === "NO"
+            : expense.bootcamp.costDeferred === "YES"
         };
       } else {
         return {

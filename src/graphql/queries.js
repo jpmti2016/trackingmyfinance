@@ -5894,9 +5894,20 @@ export const listClients = `query ListClients(
         items{
           id
           __typename
+          kind
           amount
           dueDate
           category
+          w2{
+            id
+            year
+            grossPay
+            federal
+            state
+            local       
+          }
+          taxDebt
+          fee
           title
           notes
         }

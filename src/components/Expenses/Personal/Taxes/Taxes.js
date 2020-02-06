@@ -94,18 +94,16 @@ export default function TaxesFields({ register }) {
         </div>
       </div>
 
-
-
       <div className="field">
-        <label htmlFor="taxDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Due Date
         </label>
         <div className="control">
           <input
-            id="taxDate"
+            id="dueDate"
             type="date"
             className="input"
-            name="taxDate"
+            name="dueDate"
             ref={register}
           />
         </div>
