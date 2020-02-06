@@ -1,7 +1,11 @@
 import React from "react";
 import EnterMentOther from "./EnterMentOther";
 
-export default function EntertainmentFields({ register, watchEnterMent }) {
+export default function EntertainmentFields({
+  register,
+  watchEnterMent,
+  errors
+}) {
   return (
     <>
       <div className="field">
@@ -16,88 +20,81 @@ export default function EntertainmentFields({ register, watchEnterMent }) {
               ref={register({ required: true })}
             >
               <option value="Select">Select</option>
-              <option value="Concerts">Concerts</option>
-              <option value="Sporting Events">Sporting Events</option>
-              <option value="Live Theater">Live Theater</option>
-              <option value="Movies">Movies</option>
-              <option value="Subscription">Subscription</option>
-              <option value="Other">Other</option>
+              <option value="CONCERT">Concerts</option>
+              <option value="SPORTINGEVENTS">Sporting Events</option>
+              <option value="LIVETHEATER">Live Theater</option>
+              <option value="MOVIES">Movies</option>
+              <option value="SUBSCRIPTION">Subscription</option>
+              <option value="OTHER">Other</option>
             </select>
           </div>
         </div>
       </div>
 
-      {(watchEnterMent === "Subscription" ||
-        watchEnterMent === "Concerts" ||
-        watchEnterMent === "Sporting Events" ||
-        watchEnterMent === "Live Theater" ||
-        watchEnterMent === "Movies") && (
-          <>
-            {watchEnterMent === "Subscription" && (
-              <div className="field">
-                <label htmlFor="enterMentSubcripTitle" className="label">
-                  Title
-              </label>
-                <div className="control">
-                  <input
-                    id="enterMentSubcripTitle"
-                    type="text"
-                    className="input"
-                    name="enterMentSubcripTitle"
-                    ref={register}
-                  />
-                </div>
-              </div>
-            )}
+      <div className="field">
+        <label htmlFor="title" className="label">
+          Title
+        </label>
+        <div className="control">
+          <input
+            id="title"
+            type="text"
+            className="input"
+            name="title"
+            ref={register({ required: true })}
+          />
+          {errors.title && <p className="error">{"Please check the title"}</p>}
+        </div>
+      </div>
 
-            <div className="field">
-              <label htmlFor="enterMentAmount" className="label">
-                Amount
-            </label>
-              <div className="control">
-                <input
-                  id="enterMentAmount"
-                  type="text"
-                  className="input"
-                  name="enterMentAmount"
-                  ref={register}
-                />
-              </div>
-            </div>
+      <div className="field">
+        <label htmlFor="notes" className="label">
+          Notes
+        </label>
+        <div className="control">
+          <textarea
+            id="notes"
+            className="textarea"
+            name="notes"
+            ref={register}
+          />
+        </div>
+        {errors.notes && <p className="error">{"Please check the notes"}</p>}
+      </div>
 
-            <div className="field">
-              <label htmlFor="enterMentDate" className="label">
-                {watchEnterMent === "Subscription" ? `Due Date` : "Date"}
-              </label>
-              <div className="control">
-                <input
-                  id="enterMentDate"
-                  type="date"
-                  className="input"
-                  name="enterMentDate"
-                  ref={register}
-                />
-              </div>
-            </div>
+      <div className="field">
+        <label htmlFor="amount" className="label">
+          Amount
+        </label>
+        <div className="control">
+          <input
+            id="amount"
+            type="text"
+            className="input"
+            name="amount"
+            ref={register}
+          />
+        </div>
+      </div>
 
-            <div className="field">
-              <label htmlFor="enterMentDesc" className="label">
-                Notes
-            </label>
-              <div className="control">
-                <textarea
-                  name="enterMentDesc"
-                  id="enterMentDesc"
-                  className="textarea"
-                ></textarea>
-              </div>
-            </div>
-          </>
-        )}
+      <div className="field">
+        <label htmlFor="dueDate" className="label">
+          {watchEnterMent === "Subscription" ? `Due Date` : "Date"}
+        </label>
+        <div className="control">
+          <input
+            id="dueDate"
+            type="date"
+            className="input"
+            name="dueDate"
+            ref={register}
+          />
+        </div>
+      </div>
 
-      {watchEnterMent === "Other" && (
+      {/* {watchEnterMent === "OTHER" && (
         <EnterMentOther register={register} watchEnterMent={watchEnterMent} />
-      )}
+      )} */}
     </>
   );
 }
