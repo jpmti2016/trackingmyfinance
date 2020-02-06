@@ -66,7 +66,7 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
 
             <div className="field">
               <label htmlFor={`${fieldName}.lastName`} className="label">
-                Name
+                Last Name
               </label>
               <div className="control">
                 <input
