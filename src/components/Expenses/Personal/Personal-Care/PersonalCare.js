@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PersonalCareFields({ register }) {
+export default function PersonalCareFields({ register, errors }) {
   return (
     <>
       <div className="field">
@@ -14,15 +14,16 @@ export default function PersonalCareFields({ register }) {
               id="nature"
               ref={register({ required: true })}
             >
-              <option value="Select">Select</option>
-              <option value="Haircuts">Haircuts</option>
-              <option value="Gimn">Gimn</option>
-              <option value="Emergency">Emergency</option>
-              <option value="Travel">Travel</option>
-              <option value="Clothing">Clothing</option>
-              <option value="Clubs">Clubs</option>
+              <option value="">--Select--</option>
+              <option value="HAIRCUT">Haircuts</option>
+              <option value="GIMN">Gimn</option>
+              <option value="EMERGENCY">Emergency</option>
+              <option value="TRAVEL">Travel</option>
+              <option value="CLOTHING">Clothing</option>
+              <option value="CLUBS">Clubs</option>
             </select>
           </div>
+          {errors.amount && <p className="error">{"Please check the type"}</p>}
         </div>
       </div>
 
@@ -38,34 +39,59 @@ export default function PersonalCareFields({ register }) {
             name="amount"
             ref={register}
           />
+
+          {errors.amount && (
+            <p className="error">{"Please check the amount"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="pCareDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Date
         </label>
         <div className="control">
           <input
-            id="pCareDate"
+            id="dueDate"
             type="date"
             className="input"
-            name="pCareDate"
+            name="dueDate"
             ref={register}
           />
+          {errors.dueDate && (
+            <p className="error">{"Please select the date"}</p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="pCareDesc" className="label">
+        <label htmlFor="title" className="label">
+          Title
+        </label>
+        <div className="control">
+          <input
+            id="title"
+            type="text"
+            className="input"
+            name="title"
+            ref={register({ required: true })}
+          />
+          {errors.title && <p className="error">{"Please check the title"}</p>}
+        </div>
+      </div>
+
+      <div className="field">
+        <label htmlFor="notes" className="label">
           Notes
         </label>
         <div className="control">
           <textarea
-            name="pCareDesc"
-            id="pCareDesc"
+            name="notes"
+            id="notes"
             className="textarea"
-          ></textarea>
+            ref={register}
+          />
+          {errors.notes && <p className="error">{"Please check the notes"}</p>}
         </div>
       </div>
     </>

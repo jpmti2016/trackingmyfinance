@@ -5841,9 +5841,11 @@ export const listClients = `query ListClients(
         items{
           id
           __typename
+          kind
           amount
           dueDate
           category
+          nature
           title
           notes
         }
