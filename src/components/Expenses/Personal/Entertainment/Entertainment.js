@@ -28,6 +28,9 @@ export default function EntertainmentFields({
               <option value="OTHER">Other</option>
             </select>
           </div>
+          {errors.nature && (
+            <p className="error">{"Please check the nature"}</p>
+          )}
         </div>
       </div>
 
@@ -74,6 +77,9 @@ export default function EntertainmentFields({
             name="amount"
             ref={register}
           />
+          {errors.amount && (
+            <p className="error">{"Please check the amount"}</p>
+          )}
         </div>
       </div>
 
@@ -89,6 +95,7 @@ export default function EntertainmentFields({
             name="dueDate"
             ref={register}
           />
+          {errors.dueDate && <p className="error">{"Please check the date"}</p>}
         </div>
       </div>
 

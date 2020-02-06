@@ -5884,6 +5884,7 @@ export const listClients = `query ListClients(
           amount
           dueDate
           category
+          natute
           title
           notes
         }

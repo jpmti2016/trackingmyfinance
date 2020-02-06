@@ -132,7 +132,7 @@ export default function CommuteFields({
             name="title"
             ref={register({ required: true })}
           />
-          {errors.title && <p className="error">{"Please select a date"}</p>}
+          {errors.title && <p className="error">{"Please check the title"}</p>}
         </div>
       </div>
 
@@ -148,7 +148,7 @@ export default function CommuteFields({
             ref={register}
           />
         </div>
-        {errors.notes && <p className="error">{"Please select a date"}</p>}
+        {errors.notes && <p className="error">{"Please check the notes"}</p>}
       </div>
     </>
   );
