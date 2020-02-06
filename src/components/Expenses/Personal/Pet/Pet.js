@@ -9,27 +9,31 @@ export default function PetFields({ register }) {
         </label>
         <div className="control">
           <div className="select">
-            <select name="nature" id="nature" ref={register({ required: true })}>
-              <option value="Select">Select</option>
-              <option value="Food">Food</option>
-              <option value="Medicine">Medicine</option>
-              <option value="Equipment">Equipment</option>
-              <option value="Pet">Pet</option>
+            <select
+              name="nature"
+              id="nature"
+              ref={register({ required: true })}
+            >
+              <option value="">--Select--</option>
+              <option value="FOOD">Food</option>
+              <option value="MEDICINE">Medicine</option>
+              <option value="EQUIPMENT">Equipment</option>
+              <option value="PET">Pet</option>
             </select>
           </div>
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="pDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Date
         </label>
         <div className="control">
           <input
-            date="pDate"
+            date="dueDate"
             type="date"
             className="input"
-            name="pDate"
+            name="dueDate"
             ref={register}
           />
         </div>

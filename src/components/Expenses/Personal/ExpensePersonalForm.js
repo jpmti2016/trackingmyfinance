@@ -65,7 +65,7 @@ export default function ExpensePersonalForm(props) {
   const { register, handleSubmit, errors, watch, reset, control } = useForm({});
 
   useEffect(() => {
-    console.log("EFE", isUpdating && expense && educationFormat(expense));
+  
     reset({
       personal: isUpdating && expense ? expense.category : "",
       housing:
