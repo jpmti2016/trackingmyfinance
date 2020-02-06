@@ -1813,6 +1813,8 @@ export const getAcademicFee = `query GetAcademicFee($id: ID!) {
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -1834,6 +1836,8 @@ export const getAcademicFee = `query GetAcademicFee($id: ID!) {
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -1872,6 +1876,8 @@ export const listAcademicFees = `query ListAcademicFees(
       college {
         id
         program
+        university
+        school
         title
         notes
         owner
@@ -1879,6 +1885,8 @@ export const listAcademicFees = `query ListAcademicFees(
       communityCollege {
         id
         program
+        university
+        school
         title
         notes
         owner
@@ -1893,6 +1901,8 @@ export const getCollege = `query GetCollege($id: ID!) {
   getCollege(id: $id) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -1931,6 +1941,8 @@ export const listColleges = `query ListColleges(
     items {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -1957,6 +1969,8 @@ export const getCommunityCollege = `query GetCommunityCollege($id: ID!) {
   getCommunityCollege(id: $id) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -1995,6 +2009,8 @@ export const listCommunityColleges = `query ListCommunityColleges(
     items {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -2023,6 +2039,7 @@ export const getInstructor = `query GetInstructor($id: ID!) {
     phone
     tweeter
     name
+    lastName
     email
     webPage
     images {
@@ -2033,6 +2050,8 @@ export const getInstructor = `query GetInstructor($id: ID!) {
     teachOn {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -2068,6 +2087,7 @@ export const listInstructors = `query ListInstructors(
       phone
       tweeter
       name
+      lastName
       email
       webPage
       images {
@@ -2078,6 +2098,8 @@ export const listInstructors = `query ListInstructors(
       teachOn {
         id
         title
+        university
+        school
         description
         notes
         platform
@@ -2094,6 +2116,8 @@ export const getOnlineCourse = `query GetOnlineCourse($id: ID!) {
   getOnlineCourse(id: $id) {
     id
     title
+    university
+    school
     description
     notes
     platform
@@ -2115,6 +2139,7 @@ export const getOnlineCourse = `query GetOnlineCourse($id: ID!) {
         phone
         tweeter
         name
+        lastName
         email
         webPage
         owner
@@ -2134,6 +2159,8 @@ export const listOnlineCourses = `query ListOnlineCourses(
     items {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -2261,13 +2288,14 @@ export const getEducationExpense = `query GetEducationExpense($id: ID!) {
     id
     kind
     amount
-    classification
     dueDate
     category
     nature
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -2289,6 +2317,8 @@ export const getEducationExpense = `query GetEducationExpense($id: ID!) {
     onlineCourse {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -2312,6 +2342,8 @@ export const getEducationExpense = `query GetEducationExpense($id: ID!) {
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -2486,13 +2518,14 @@ export const listEducationExpenses = `query ListEducationExpenses(
       id
       kind
       amount
-      classification
       dueDate
       category
       nature
       college {
         id
         program
+        university
+        school
         title
         notes
         owner
@@ -2500,6 +2533,8 @@ export const listEducationExpenses = `query ListEducationExpenses(
       onlineCourse {
         id
         title
+        university
+        school
         description
         notes
         platform
@@ -2509,6 +2544,8 @@ export const listEducationExpenses = `query ListEducationExpenses(
       communityCollege {
         id
         program
+        university
+        school
         title
         notes
         owner
@@ -2873,7 +2910,7 @@ export const getEntertainmentExpense = `query GetEntertainmentExpense($id: ID!) 
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -3007,7 +3044,7 @@ export const listEntertainmentExpenses = `query ListEntertainmentExpenses(
       amount
       dueDate
       category
-      natute
+      nature
       title
       tags
       notes
@@ -3037,7 +3074,7 @@ export const getLoanExpense = `query GetLoanExpense($id: ID!) {
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -3167,7 +3204,7 @@ export const listLoanExpenses = `query ListLoanExpenses(
       amount
       dueDate
       category
-      natute
+      nature
       title
       tags
       notes
@@ -5344,7 +5381,6 @@ export const getClient = `query GetClient($id: ID!) {
         id
         kind
         amount
-        classification
         dueDate
         category
         nature
@@ -5390,7 +5426,7 @@ export const getClient = `query GetClient($id: ID!) {
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -5405,7 +5441,7 @@ export const getClient = `query GetClient($id: ID!) {
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -5743,7 +5779,6 @@ export const listClients = `query ListClients(
           __typename
           kind
           amount
-          classification
           dueDate
           category
           nature
@@ -5871,7 +5906,7 @@ export const listClients = `query ListClients(
           amount
           dueDate
           category
-          natute
+          nature
           title
           notes
         }
@@ -5884,7 +5919,7 @@ export const listClients = `query ListClients(
           amount
           dueDate
           category
-          natute
+          nature
           title
           notes
         }

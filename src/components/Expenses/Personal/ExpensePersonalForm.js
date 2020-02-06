@@ -267,9 +267,6 @@ export default function ExpensePersonalForm(props) {
   }, [expense, reset, isUpdating]);
 
   const watchPersonal = watch("personal");
-  console.log("watchPersonal", watchPersonal);
-  const watchedNotes = watch("edNotes");
-  console.log("edNotes", watchedNotes);
 
   const watchInsurance = watch("nature");
 
@@ -421,10 +418,8 @@ export default function ExpensePersonalForm(props) {
   const watchPhonePlan = watch("phonePlan");
 
   const watchFood = watch("nature");
-  console.log("watchFood", watchFood);
 
   const watchGroceryInfo = watch("groceryInfo");
-  console.log("watchGroceryInfo", watchGroceryInfo);
 
   const watchCommuteService = watch("commuteService");
 

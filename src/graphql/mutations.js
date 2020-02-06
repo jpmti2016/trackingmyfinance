@@ -3735,6 +3735,8 @@ export const createAcademicFee = `mutation CreateAcademicFee(
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3756,6 +3758,8 @@ export const createAcademicFee = `mutation CreateAcademicFee(
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3792,6 +3796,8 @@ export const updateAcademicFee = `mutation UpdateAcademicFee(
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3813,6 +3819,8 @@ export const updateAcademicFee = `mutation UpdateAcademicFee(
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3849,6 +3857,8 @@ export const deleteAcademicFee = `mutation DeleteAcademicFee(
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3870,6 +3880,8 @@ export const deleteAcademicFee = `mutation DeleteAcademicFee(
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3899,6 +3911,8 @@ export const createCollege = `mutation CreateCollege(
   createCollege(input: $input, condition: $condition) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -3935,6 +3949,8 @@ export const updateCollege = `mutation UpdateCollege(
   updateCollege(input: $input, condition: $condition) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -3971,6 +3987,8 @@ export const deleteCollege = `mutation DeleteCollege(
   deleteCollege(input: $input, condition: $condition) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -4007,6 +4025,8 @@ export const createCommunityCollege = `mutation CreateCommunityCollege(
   createCommunityCollege(input: $input, condition: $condition) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -4043,6 +4063,8 @@ export const updateCommunityCollege = `mutation UpdateCommunityCollege(
   updateCommunityCollege(input: $input, condition: $condition) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -4079,6 +4101,8 @@ export const deleteCommunityCollege = `mutation DeleteCommunityCollege(
   deleteCommunityCollege(input: $input, condition: $condition) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -4117,6 +4141,7 @@ export const createInstructor = `mutation CreateInstructor(
     phone
     tweeter
     name
+    lastName
     email
     webPage
     images {
@@ -4127,6 +4152,8 @@ export const createInstructor = `mutation CreateInstructor(
     teachOn {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4160,6 +4187,7 @@ export const updateInstructor = `mutation UpdateInstructor(
     phone
     tweeter
     name
+    lastName
     email
     webPage
     images {
@@ -4170,6 +4198,8 @@ export const updateInstructor = `mutation UpdateInstructor(
     teachOn {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4203,6 +4233,7 @@ export const deleteInstructor = `mutation DeleteInstructor(
     phone
     tweeter
     name
+    lastName
     email
     webPage
     images {
@@ -4213,6 +4244,8 @@ export const deleteInstructor = `mutation DeleteInstructor(
     teachOn {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4244,6 +4277,8 @@ export const createOnlineCourse = `mutation CreateOnlineCourse(
   createOnlineCourse(input: $input, condition: $condition) {
     id
     title
+    university
+    school
     description
     notes
     platform
@@ -4265,6 +4300,7 @@ export const createOnlineCourse = `mutation CreateOnlineCourse(
         phone
         tweeter
         name
+        lastName
         email
         webPage
         owner
@@ -4282,6 +4318,8 @@ export const updateOnlineCourse = `mutation UpdateOnlineCourse(
   updateOnlineCourse(input: $input, condition: $condition) {
     id
     title
+    university
+    school
     description
     notes
     platform
@@ -4303,6 +4341,7 @@ export const updateOnlineCourse = `mutation UpdateOnlineCourse(
         phone
         tweeter
         name
+        lastName
         email
         webPage
         owner
@@ -4320,6 +4359,8 @@ export const deleteOnlineCourse = `mutation DeleteOnlineCourse(
   deleteOnlineCourse(input: $input, condition: $condition) {
     id
     title
+    university
+    school
     description
     notes
     platform
@@ -4341,6 +4382,7 @@ export const deleteOnlineCourse = `mutation DeleteOnlineCourse(
         phone
         tweeter
         name
+        lastName
         email
         webPage
         owner
@@ -4503,13 +4545,14 @@ export const createEducationExpense = `mutation CreateEducationExpense(
     id
     kind
     amount
-    classification
     dueDate
     category
     nature
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4531,6 +4574,8 @@ export const createEducationExpense = `mutation CreateEducationExpense(
     onlineCourse {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4554,6 +4599,8 @@ export const createEducationExpense = `mutation CreateEducationExpense(
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4726,13 +4773,14 @@ export const updateEducationExpense = `mutation UpdateEducationExpense(
     id
     kind
     amount
-    classification
     dueDate
     category
     nature
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4754,6 +4802,8 @@ export const updateEducationExpense = `mutation UpdateEducationExpense(
     onlineCourse {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4777,6 +4827,8 @@ export const updateEducationExpense = `mutation UpdateEducationExpense(
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4949,13 +5001,14 @@ export const deleteEducationExpense = `mutation DeleteEducationExpense(
     id
     kind
     amount
-    classification
     dueDate
     category
     nature
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4977,6 +5030,8 @@ export const deleteEducationExpense = `mutation DeleteEducationExpense(
     onlineCourse {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -5000,6 +5055,8 @@ export const deleteEducationExpense = `mutation DeleteEducationExpense(
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -5942,7 +5999,7 @@ export const createEntertainmentExpense = `mutation CreateEntertainmentExpense(
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -6070,7 +6127,7 @@ export const updateEntertainmentExpense = `mutation UpdateEntertainmentExpense(
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -6198,7 +6255,7 @@ export const deleteEntertainmentExpense = `mutation DeleteEntertainmentExpense(
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -6326,7 +6383,7 @@ export const createLoanExpense = `mutation CreateLoanExpense(
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -6454,7 +6511,7 @@ export const updateLoanExpense = `mutation UpdateLoanExpense(
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -6582,7 +6639,7 @@ export const deleteLoanExpense = `mutation DeleteLoanExpense(
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -11212,7 +11269,6 @@ export const createClient = `mutation CreateClient(
         id
         kind
         amount
-        classification
         dueDate
         category
         nature
@@ -11258,7 +11314,7 @@ export const createClient = `mutation CreateClient(
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11273,7 +11329,7 @@ export const createClient = `mutation CreateClient(
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11558,7 +11614,6 @@ export const updateClient = `mutation UpdateClient(
         id
         kind
         amount
-        classification
         dueDate
         category
         nature
@@ -11604,7 +11659,7 @@ export const updateClient = `mutation UpdateClient(
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11619,7 +11674,7 @@ export const updateClient = `mutation UpdateClient(
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11904,7 +11959,6 @@ export const deleteClient = `mutation DeleteClient(
         id
         kind
         amount
-        classification
         dueDate
         category
         nature
@@ -11950,7 +12004,7 @@ export const deleteClient = `mutation DeleteClient(
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11965,7 +12019,7 @@ export const deleteClient = `mutation DeleteClient(
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes

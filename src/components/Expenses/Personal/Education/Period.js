@@ -19,7 +19,7 @@ export default function Period({ edType, register, errors }) {
           type="date"
           className="input"
           placeholder="Start"
-          name={`edPeriodStart`}
+          name="edPeriodStart"
           ref={register}
         />
         {errors.edPeriodStart && (

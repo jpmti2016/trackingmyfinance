@@ -326,7 +326,7 @@ enum ProgramE {
   PHD
   MAMS
   BABS
-  AAAN
+  AAAS
   NONE
 }
 
@@ -345,6 +345,8 @@ type AcademicFee @model @auth(rules: [{ allow: owner }]) {
 type College @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   program: ProgramE!
+  university: String
+  school: String
   title: String
   notes: String
   images: [S3Object]
@@ -355,6 +357,8 @@ type College @model @auth(rules: [{ allow: owner }]) {
 type CommunityCollege @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   program: ProgramE!
+  university: String
+  school: String
   title: String
   notes: String
   images: [S3Object]
@@ -366,7 +370,8 @@ type Instructor @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   phone: AWSPhone!
   tweeter: String
-  name: String!
+  name: String
+  lastName: String
   email: AWSEmail
   webPage: AWSURL
   images: [S3Object]
@@ -376,6 +381,8 @@ type Instructor @model @auth(rules: [{ allow: owner }]) {
 type OnlineCourse @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
+  university: String
+  school: String
   description: String
   notes: String
   platform: String
@@ -410,7 +417,7 @@ type Bootcamp @model @auth(rules: [{ allow: owner }]) {
 
 enum EducationE {
   COLLEGE
-  ONLINECURSE
+  ONLINECOURSE
   COMUNITYCOLLEGE
   TRAINING
   BOOTCAMP
@@ -420,7 +427,6 @@ type EducationExpense @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   kind: KindE!
   amount: Float! # Sum of different fees
-  classification: EducationE!
   dueDate: AWSDate!
   category: CategoryE!
   nature: EducationE!
@@ -494,7 +500,7 @@ type EntertainmentExpense @model @auth(rules: [{ allow: owner }]) {
   amount: Float!
   dueDate: AWSDate!
   category: CategoryE!
-  natute: EntertainmentE
+  nature: EntertainmentE
   title: String
   tags: [String]
   notes: String
@@ -516,7 +522,7 @@ type LoanExpense @model @auth(rules: [{ allow: owner }]) {
   amount: Float!
   dueDate: AWSDate!
   category: CategoryE!
-  natute: LoanE
+  nature: LoanE
   title: String
   tags: [String]
   notes: String

@@ -25,7 +25,7 @@ export default function EducationFields({
             >
               <option value="">--Select--</option>
               <option value="COLLEGE">College</option>
-              <option value="ONLINECURSE">Online Curse</option>
+              <option value="ONLINECOURSE">Online Course</option>
               <option value="COMUNITYCOLLEGE">Community College</option>
               <option value="TRAINING">Training</option>
               <option value="BOOTCAMP">Bootcamp</option>
@@ -96,7 +96,7 @@ export default function EducationFields({
                   <option value="PHD">PhD</option>
                   <option value="MAMS">MA/MS</option>
                   <option value="BABS">BA/BS</option>
-                  <option value="AAAN">AA/AS</option>
+                  <option value="AAAS">AA/AS</option>
                   <option value="NONE">NONE</option>
                 </select>
               </div>
@@ -134,7 +134,7 @@ export default function EducationFields({
             )}
           </div>
 
-          <Period edType={watchEducation} register={register} />
+          <Period edType={watchEducation} register={register} errors={errors} />
 
           <div className="field">
             <label htmlFor="" className="label">
@@ -339,11 +339,11 @@ export default function EducationFields({
               )}
             </div>
           </div>
-          <Period edType={watchEducation} register={register} />
+          <Period edType={watchEducation} register={register} errors={errors} />
         </>
       )}
 
-      {watchEducation === "ONLINECURSE" && (
+      {watchEducation === "ONLINECOURSE" && (
         <>
           <div className="field">
             <label htmlFor="edTitle" className="label">
@@ -466,7 +466,11 @@ export default function EducationFields({
           </div>
 
           {watchEdOnlinePeriod && (
-            <Period edType={watchEducation} register={register} />
+            <Period
+              edType={watchEducation}
+              register={register}
+              errors={errors}
+            />
           )}
 
           <EducationInstructorFieldsArray

@@ -3561,6 +3561,8 @@ export const onCreateAcademicFee = `subscription OnCreateAcademicFee($owner: Str
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3582,6 +3584,8 @@ export const onCreateAcademicFee = `subscription OnCreateAcademicFee($owner: Str
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3615,6 +3619,8 @@ export const onUpdateAcademicFee = `subscription OnUpdateAcademicFee($owner: Str
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3636,6 +3642,8 @@ export const onUpdateAcademicFee = `subscription OnUpdateAcademicFee($owner: Str
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3669,6 +3677,8 @@ export const onDeleteAcademicFee = `subscription OnDeleteAcademicFee($owner: Str
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3690,6 +3700,8 @@ export const onDeleteAcademicFee = `subscription OnDeleteAcademicFee($owner: Str
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -3716,6 +3728,8 @@ export const onCreateCollege = `subscription OnCreateCollege($owner: String!) {
   onCreateCollege(owner: $owner) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -3749,6 +3763,8 @@ export const onUpdateCollege = `subscription OnUpdateCollege($owner: String!) {
   onUpdateCollege(owner: $owner) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -3782,6 +3798,8 @@ export const onDeleteCollege = `subscription OnDeleteCollege($owner: String!) {
   onDeleteCollege(owner: $owner) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -3815,6 +3833,8 @@ export const onCreateCommunityCollege = `subscription OnCreateCommunityCollege($
   onCreateCommunityCollege(owner: $owner) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -3848,6 +3868,8 @@ export const onUpdateCommunityCollege = `subscription OnUpdateCommunityCollege($
   onUpdateCommunityCollege(owner: $owner) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -3881,6 +3903,8 @@ export const onDeleteCommunityCollege = `subscription OnDeleteCommunityCollege($
   onDeleteCommunityCollege(owner: $owner) {
     id
     program
+    university
+    school
     title
     notes
     images {
@@ -3916,6 +3940,7 @@ export const onCreateInstructor = `subscription OnCreateInstructor($owner: Strin
     phone
     tweeter
     name
+    lastName
     email
     webPage
     images {
@@ -3926,6 +3951,8 @@ export const onCreateInstructor = `subscription OnCreateInstructor($owner: Strin
     teachOn {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -3956,6 +3983,7 @@ export const onUpdateInstructor = `subscription OnUpdateInstructor($owner: Strin
     phone
     tweeter
     name
+    lastName
     email
     webPage
     images {
@@ -3966,6 +3994,8 @@ export const onUpdateInstructor = `subscription OnUpdateInstructor($owner: Strin
     teachOn {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -3996,6 +4026,7 @@ export const onDeleteInstructor = `subscription OnDeleteInstructor($owner: Strin
     phone
     tweeter
     name
+    lastName
     email
     webPage
     images {
@@ -4006,6 +4037,8 @@ export const onDeleteInstructor = `subscription OnDeleteInstructor($owner: Strin
     teachOn {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4034,6 +4067,8 @@ export const onCreateOnlineCourse = `subscription OnCreateOnlineCourse($owner: S
   onCreateOnlineCourse(owner: $owner) {
     id
     title
+    university
+    school
     description
     notes
     platform
@@ -4055,6 +4090,7 @@ export const onCreateOnlineCourse = `subscription OnCreateOnlineCourse($owner: S
         phone
         tweeter
         name
+        lastName
         email
         webPage
         owner
@@ -4069,6 +4105,8 @@ export const onUpdateOnlineCourse = `subscription OnUpdateOnlineCourse($owner: S
   onUpdateOnlineCourse(owner: $owner) {
     id
     title
+    university
+    school
     description
     notes
     platform
@@ -4090,6 +4128,7 @@ export const onUpdateOnlineCourse = `subscription OnUpdateOnlineCourse($owner: S
         phone
         tweeter
         name
+        lastName
         email
         webPage
         owner
@@ -4104,6 +4143,8 @@ export const onDeleteOnlineCourse = `subscription OnDeleteOnlineCourse($owner: S
   onDeleteOnlineCourse(owner: $owner) {
     id
     title
+    university
+    school
     description
     notes
     platform
@@ -4125,6 +4166,7 @@ export const onDeleteOnlineCourse = `subscription OnDeleteOnlineCourse($owner: S
         phone
         tweeter
         name
+        lastName
         email
         webPage
         owner
@@ -4266,13 +4308,14 @@ export const onCreateEducationExpense = `subscription OnCreateEducationExpense($
     id
     kind
     amount
-    classification
     dueDate
     category
     nature
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4294,6 +4337,8 @@ export const onCreateEducationExpense = `subscription OnCreateEducationExpense($
     onlineCourse {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4317,6 +4362,8 @@ export const onCreateEducationExpense = `subscription OnCreateEducationExpense($
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4486,13 +4533,14 @@ export const onUpdateEducationExpense = `subscription OnUpdateEducationExpense($
     id
     kind
     amount
-    classification
     dueDate
     category
     nature
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4514,6 +4562,8 @@ export const onUpdateEducationExpense = `subscription OnUpdateEducationExpense($
     onlineCourse {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4537,6 +4587,8 @@ export const onUpdateEducationExpense = `subscription OnUpdateEducationExpense($
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4706,13 +4758,14 @@ export const onDeleteEducationExpense = `subscription OnDeleteEducationExpense($
     id
     kind
     amount
-    classification
     dueDate
     category
     nature
     college {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -4734,6 +4787,8 @@ export const onDeleteEducationExpense = `subscription OnDeleteEducationExpense($
     onlineCourse {
       id
       title
+      university
+      school
       description
       notes
       platform
@@ -4757,6 +4812,8 @@ export const onDeleteEducationExpense = `subscription OnDeleteEducationExpense($
     communityCollege {
       id
       program
+      university
+      school
       title
       notes
       images {
@@ -5678,7 +5735,7 @@ export const onCreateEntertainmentExpense = `subscription OnCreateEntertainmentE
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -5803,7 +5860,7 @@ export const onUpdateEntertainmentExpense = `subscription OnUpdateEntertainmentE
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -5928,7 +5985,7 @@ export const onDeleteEntertainmentExpense = `subscription OnDeleteEntertainmentE
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -6053,7 +6110,7 @@ export const onCreateLoanExpense = `subscription OnCreateLoanExpense($owner: Str
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -6178,7 +6235,7 @@ export const onUpdateLoanExpense = `subscription OnUpdateLoanExpense($owner: Str
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -6303,7 +6360,7 @@ export const onDeleteLoanExpense = `subscription OnDeleteLoanExpense($owner: Str
     amount
     dueDate
     category
-    natute
+    nature
     title
     tags
     notes
@@ -10777,7 +10834,6 @@ export const onCreateClient = `subscription OnCreateClient($owner: String!) {
         id
         kind
         amount
-        classification
         dueDate
         category
         nature
@@ -10823,7 +10879,7 @@ export const onCreateClient = `subscription OnCreateClient($owner: String!) {
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -10838,7 +10894,7 @@ export const onCreateClient = `subscription OnCreateClient($owner: String!) {
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11120,7 +11176,6 @@ export const onUpdateClient = `subscription OnUpdateClient($owner: String!) {
         id
         kind
         amount
-        classification
         dueDate
         category
         nature
@@ -11166,7 +11221,7 @@ export const onUpdateClient = `subscription OnUpdateClient($owner: String!) {
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11181,7 +11236,7 @@ export const onUpdateClient = `subscription OnUpdateClient($owner: String!) {
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11463,7 +11518,6 @@ export const onDeleteClient = `subscription OnDeleteClient($owner: String!) {
         id
         kind
         amount
-        classification
         dueDate
         category
         nature
@@ -11509,7 +11563,7 @@ export const onDeleteClient = `subscription OnDeleteClient($owner: String!) {
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
@@ -11524,7 +11578,7 @@ export const onDeleteClient = `subscription OnDeleteClient($owner: String!) {
         amount
         dueDate
         category
-        natute
+        nature
         title
         tags
         notes
