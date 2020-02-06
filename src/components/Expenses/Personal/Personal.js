@@ -23,7 +23,6 @@ import {
 export default function Personal({ client }) {
   const [expenses, setExpenses] = useState([]);
   const [clientId, setClientId] = useState("");
-  console.log("expenses personal", expenses);
 
   useEffect(() => {
     if (client) {

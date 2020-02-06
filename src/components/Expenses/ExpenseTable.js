@@ -179,9 +179,6 @@ export default function ExpenseTable({
         </tr>
       );
     return expenses.map((expense, index) => {
-      console.log("type", expense.__typename);
-      console.log("expense", expense);
-      console.log("return", formatTitleAndNotes(expense));
       return (
         <tr key={expense.id}>
           <th>{index + 1}</th>

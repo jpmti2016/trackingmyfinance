@@ -1,12 +1,14 @@
 import React from "react";
 import Period from "./Period";
-import EducationInstructorFieldsArray from './EducationInstructorFieldsArray'
+import EducationInstructorFieldsArray from "./EducationInstructorFieldsArray";
 
 export default function EducationFields({
   register,
   watchEducation,
   watchEdOnlinePeriod,
-  watchBCampPriceDeferred
+  watchBCampPriceDeferred,
+  control,
+  errors
 }) {
   return (
     <>
@@ -21,23 +23,24 @@ export default function EducationFields({
               id="nature"
               ref={register({ required: true })}
             >
-              <option value="Select">Select</option>
-              <option value="College">College</option>
-              <option value="Online Curse">Online Curse</option>
-              <option value="Community College">
-                Community College
-              </option>
-              <option value="Training">Training</option>
-              <option value="Bootcamp">Bootcamp</option>
+              <option value="">--Select--</option>
+              <option value="COLLEGE">College</option>
+              <option value="ONLINECURSE">Online Curse</option>
+              <option value="COMUNITYCOLLEGE">Community College</option>
+              <option value="TRAINING">Training</option>
+              <option value="BOOTCAMP">Bootcamp</option>
             </select>
           </div>
+          {errors.nature && (
+            <p className="error">{"Please select a academic nature"}</p>
+          )}
         </div>
       </div>
 
-      {(watchEducation === "College" ||
-        watchEducation === "Community College") && (
-          <>
-            {/* <div className="field">
+      {(watchEducation === "COLLEGE" ||
+        watchEducation === "COMUNITYCOLLEGE") && (
+        <>
+          {/* <div className="field">
                            <label htmlFor="edMajor" className="label">
                              Major
                            </label>
@@ -82,184 +85,206 @@ export default function EducationFields({
                            </div>
                          </div> */}
 
-            <div className="field">
-              <label htmlFor="edProgram" className="label">
-                Program
-                           </label>
-              <div className="control">
-                <div className="select">
-                  <select
-                    name="edProgram"
-                    id="edProgram"
-                    ref={register}
-                  >
-                    <option value="Select">Select</option>
-                    <option value="PhD">PhD</option>
-                    <option value="MAMS">MA/MS</option>
-                    <option value="BABS">BA/BS</option>
-                    <option value="AAAS">AA/AS</option>
-                    <option value="NONE">NONE</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div className="field">
-              <label htmlFor="edTitle" className="label">
-                Title
-              </label>
-              <div className="control">
-                <input
-                  id="edTitle"
-                  type="text"
-                  className="input"
-                  name="edTitle"
-                  ref={register}
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <label htmlFor="edNotes" className="label">
-                Notes
-              </label>
-              <textarea
-                className="textarea"
-                name="edNotes"
-                ref={register}
-              />
-            </div>
-
-            <Period
-              edType={watchEducation}
-              register={register}
-            />
-
-            <div className="field">
-              <label htmlFor="" className="label">
-                Fees
-              </label>
-            </div>
-
-            <div className="field">
-              <label htmlFor="tuitionAndFees" className="label">
-                Tuition and fees
-              </label>
-              <div className="control">
-                <input
-                  id="tuitionAndFees"
-                  type="number"
-                  className="input"
-                  name="tuitionAndFees"
-                  ref={register}
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <label htmlFor="booksAndSupplies" className="label">
-                Books and supplies
-              </label>
-              <div className="control">
-                <input
-                  id="booksAndSupplies"
-                  type="number"
-                  className="input"
-                  name="booksAndSupplies"
-                  ref={register}
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <label htmlFor="roomAndBoard" className="label">
-                Room and board
-              </label>
-              <div className="control">
-                <input
-                  id="roomAndBoard"
-                  type="number"
-                  className="input"
-                  name="roomAndBoard"
-                  ref={register}
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <label htmlFor="edTransportation" className="label">
-                Transportation
-              </label>
-              <div className="control">
-                <input
-                  id="edTransportation"
-                  type="number"
-                  className="input"
-                  name="edTransportation"
-                  ref={register}
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <label htmlFor="edPersonal" className="label">
-                Personal
-              </label>
-              <div className="control">
-                <input
-                  id="edPersonal"
-                  type="number"
-                  className="input"
-                  name="edPersonal"
-                  ref={register}
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <label htmlFor="edDueDate" className="label">
-                Due Date
-                           </label>
-              <div className="control">
-                <input
-                  id="edDueDate"
-                  type="date"
-                  className="input"
-                  name="edDueDate"
-                  ref={register}
-                />
-              </div>
-            </div>
-          </>
-        )}
-      {watchEducation === "Training" && (
-        <>
           <div className="field">
-            <label htmlFor="edTrainingTitle" className="label">
-              Title
+            <label htmlFor="edProgram" className="label">
+              Program
             </label>
             <div className="control">
-              <input
-                id="edTrainingTitle"
-                type="number"
-                className="input"
-                name="edTrainingTitle"
-                ref={register}
-              />
+              <div className="select">
+                <select name="edProgram" id="edProgram" ref={register}>
+                  <option value="">--Select--</option>
+                  <option value="PHD">PhD</option>
+                  <option value="MAMS">MA/MS</option>
+                  <option value="BABS">BA/BS</option>
+                  <option value="AAAN">AA/AS</option>
+                  <option value="NONE">NONE</option>
+                </select>
+              </div>
+              {errors.edProgram && (
+                <p className="error">{"Please select a academic program"}</p>
+              )}
             </div>
           </div>
 
           <div className="field">
-            <label htmlFor="notes" className="label">
+            <label htmlFor="edTitle" className="label">
+              Title
+            </label>
+            <div className="control">
+              <input
+                id="edTitle"
+                type="text"
+                className="input"
+                name="edTitle"
+                ref={register}
+              />
+              {errors.edTitle && (
+                <p className="error">{"Please check the title"}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="edNotes" className="label">
+              Notes
+            </label>
+            <textarea className="textarea" name="edNotes" ref={register} />
+            {errors.edNotes && (
+              <p className="error">{"Please check the notes"}</p>
+            )}
+          </div>
+
+          <Period edType={watchEducation} register={register} />
+
+          <div className="field">
+            <label htmlFor="" className="label">
+              Fees
+            </label>
+          </div>
+
+          <div className="field">
+            <label htmlFor="tuitionAndFees" className="label">
+              Tuition and fees
+            </label>
+            <div className="control">
+              <input
+                id="tuitionAndFees"
+                type="number"
+                className="input"
+                name="tuitionAndFees"
+                ref={register}
+              />
+              {errors.tuitionAndFees && (
+                <p className="error">{"Please check the tuition and fees"}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="booksAndSupplies" className="label">
+              Books and supplies
+            </label>
+            <div className="control">
+              <input
+                id="booksAndSupplies"
+                type="number"
+                className="input"
+                name="booksAndSupplies"
+                ref={register}
+              />
+              {errors.booksAndSupplies && (
+                <p className="error">{"Please check the books and supplies"}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="roomAndBoard" className="label">
+              Room and board
+            </label>
+            <div className="control">
+              <input
+                id="roomAndBoard"
+                type="number"
+                className="input"
+                name="roomAndBoard"
+                ref={register}
+              />
+              {errors.roomAndBoard && (
+                <p className="error">{"Please check the room and board"}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="edTransportation" className="label">
+              Transportation
+            </label>
+            <div className="control">
+              <input
+                id="edTransportation"
+                type="number"
+                className="input"
+                name="edTransportation"
+                ref={register}
+              />
+              {errors.edTransportation && (
+                <p className="error">{"Please check the transportation"}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="edPersonal" className="label">
+              Personal
+            </label>
+            <div className="control">
+              <input
+                id="edPersonal"
+                type="number"
+                className="input"
+                name="edPersonal"
+                ref={register}
+              />
+              {errors.edPersonal && (
+                <p className="error">{"Please check the personal"}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="dueDate" className="label">
+              Due Date
+            </label>
+            <div className="control">
+              <input
+                id="dueDate"
+                type="date"
+                className="input"
+                name="dueDate"
+                ref={register}
+              />
+              {errors.dueDate && (
+                <p className="error">{"Please select the due date"}</p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      {watchEducation === "TRAINING" && (
+        <>
+          <div className="field">
+            <label htmlFor="edTitle" className="label">
+              Title
+            </label>
+            <div className="control">
+              <input
+                id="edTitle"
+                type="text"
+                className="input"
+                name="edTitle"
+                ref={register}
+              />
+              {errors.edTitle && (
+                <p className="error">{"Please check the title"}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="field">
+            <label htmlFor="edNotes" className="label">
               Notes
             </label>
             <div className="control">
               <textarea
-                id="notes"
+                id="edNotes"
                 className="textarea"
-                name="notes"
+                name="edNotes"
                 ref={register}
               />
+              {errors.edNotes && (
+                <p className="error">{"Please check the notes"}</p>
+              )}
             </div>
           </div>
 
@@ -275,20 +300,26 @@ export default function EducationFields({
                 name="amount"
                 ref={register}
               />
+              {errors.amount && (
+                <p className="error">{"Please check the amount"}</p>
+              )}
             </div>
           </div>
           <div className="field">
-            <label htmlFor="edTrainingDueDate" className="label">
+            <label htmlFor="dueDate" className="label">
               Due Date
             </label>
             <div className="control">
               <input
-                id="edTrainingDueDate"
+                id="dueDate"
                 type="date"
                 className="input"
-                name="edTrainingDueDate"
+                name="dueDate"
                 ref={register}
               />
+              {errors.dueDate && (
+                <p className="error">{"Please select the due date"}</p>
+              )}
             </div>
           </div>
           <div className="field">
@@ -303,29 +334,32 @@ export default function EducationFields({
                 name="edTrainingSchool"
                 ref={register}
               />
+              {errors.edTrainingSchool && (
+                <p className="error">{"Please check the training school"}</p>
+              )}
             </div>
           </div>
-          <Period
-            edType={watchEducation}
-            register={register}
-          />
+          <Period edType={watchEducation} register={register} />
         </>
       )}
 
-      {watchEducation === "Online Curse" && (
+      {watchEducation === "ONLINECURSE" && (
         <>
           <div className="field">
-            <label htmlFor="edOnlineTitle" className="label">
+            <label htmlFor="edTitle" className="label">
               Title
             </label>
             <div className="control">
               <input
-                id="edOnlineTitle"
+                id="edTitle"
                 type="text"
                 className="input"
-                name="edOnlineTitle"
+                name="edTitle"
                 ref={register}
               />
+              {errors.edTitle && (
+                <p className="error">{"Please check the title"}</p>
+              )}
             </div>
           </div>
 
@@ -340,6 +374,9 @@ export default function EducationFields({
                 name="edOnlineDesc"
                 ref={register}
               />
+              {errors.edOnlineDesc && (
+                <p className="error">{"Please check the online description"}</p>
+              )}
             </div>
           </div>
 
@@ -355,6 +392,9 @@ export default function EducationFields({
                 name="edOnlinePlatf"
                 ref={register}
               />
+              {errors.edOnlinePlatf && (
+                <p className="error">{"Please check the platform"}</p>
+              )}
             </div>
           </div>
 
@@ -370,6 +410,7 @@ export default function EducationFields({
                 name="url"
                 ref={register}
               />
+              {errors.url && <p className="error">{"Please check the url"}</p>}
             </div>
           </div>
 
@@ -385,24 +426,29 @@ export default function EducationFields({
                 name="amount"
                 ref={register}
               />
+              {errors.amount && (
+                <p className="error">{"Please check the amount"}</p>
+              )}
             </div>
           </div>
 
           <div className="field">
-            <label htmlFor="edOnlineDueDate" className="label">
+            <label htmlFor="dueDate" className="label">
               Due Date
             </label>
             <div className="control">
               <input
-                id="edOnlineDueDate"
+                id="dueDate"
                 type="date"
                 className="input"
-                name="edOnlineDueDate"
+                name="dueDate"
                 ref={register}
               />
+              {errors.dueDate && (
+                <p className="error">{"Please select the due date"}</p>
+              )}
             </div>
           </div>
-
 
           <div className="field" style={{ paddingTop: ".9rem" }}>
             <div className="control">
@@ -420,44 +466,51 @@ export default function EducationFields({
           </div>
 
           {watchEdOnlinePeriod && (
-            <Period
-              edType={watchEducation}
-              register={register}
-            />
+            <Period edType={watchEducation} register={register} />
           )}
 
-          <EducationInstructorFieldsArray register={register} />
-
+          <EducationInstructorFieldsArray
+            register={register}
+            control={control}
+            errors={errors}
+          />
         </>
       )}
 
-      {watchEducation === "Bootcamp" && (
+      {watchEducation === "BOOTCAMP" && (
         <>
           <div className="field">
-            <label htmlFor="bCampTitle" className="label">
+            <label htmlFor="edTitle" className="label">
               Title
             </label>
             <div className="control">
               <input
-                id="bCampTitle"
+                id="edTitle"
                 type="text"
                 className="input"
-                name="bCampTitle"
+                name="edTitle"
                 ref={register({ required: true })}
               />
+              {errors.edTitle && (
+                <p className="error">{"Please check the title"}</p>
+              )}
             </div>
           </div>
 
           <div className="field">
-            <label htmlFor="notes" className="label">
+            <label htmlFor="edNotes" className="label">
               Notes
             </label>
             <div className="control">
               <textarea
                 className="textarea"
-                name="notes"
-                id="notes"
-              ></textarea>
+                name="edNotes"
+                id="edNotes"
+                ref={register}
+              />
+              {errors.edNotes && (
+                <p className="error">{"Please check the notes"}</p>
+              )}
             </div>
           </div>
 
@@ -473,15 +526,15 @@ export default function EducationFields({
                 name="amount"
                 ref={register}
               />
+              {errors.amount && (
+                <p className="error">{"Please check the amount"}</p>
+              )}
             </div>
           </div>
 
           <div className="field" style={{ paddingTop: ".9rem" }}>
             <div className="control">
-              <label
-                htmlFor="bCampPriceDeferred"
-                className="label"
-              >
+              <label htmlFor="bCampPriceDeferred" className="label">
                 <input
                   type="checkbox"
                   id="bCampPriceDeferred"
@@ -496,16 +549,20 @@ export default function EducationFields({
 
           {!watchBCampPriceDeferred && (
             <div className="field">
-              <label htmlFor="bCampDueDate" className="label">
+              <label htmlFor="dueDate" className="label">
                 Due Date
               </label>
               <div className="control">
                 <input
                   type="date"
                   className="input"
-                  name="bCampDueDate"
+                  name="dueDate"
+                  id="dueDate"
                   ref={register}
                 />
+                {errors.amount && (
+                  <p className="error">{"Please select the date"}</p>
+                )}
               </div>
             </div>
           )}

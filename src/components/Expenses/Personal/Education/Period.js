@@ -1,40 +1,46 @@
 import React from "react";
 
-export default function Period({ edType, register }) {
+export default function Period({ edType, register, errors }) {
   return (
     <div className="field">
       <label htmlFor="" className="label">
-        {edType === "College" ||
-        edType === "Community College" ||
-        edType === "Training"
+        {edType === "COLLEGE" ||
+        edType === "COMUNITYCOLLEGE" ||
+        edType === "TRAINING"
           ? "Academic Period"
-          : `${edType} Period`}
+          : `Period`}
       </label>
 
       <div className="control">
-        <label htmlFor={`${edType}PeriodStart`} className="label">
+        <label htmlFor={`edPeriodStart`} className="label">
           Start
         </label>
         <input
           type="date"
           className="input"
           placeholder="Start"
-          name={`${edType}PeriodStart`}
+          name={`edPeriodStart`}
           ref={register}
         />
+        {errors.edPeriodStart && (
+          <p className="error">{"Please select a date"}</p>
+        )}
       </div>
 
       <div className="control">
-        <label htmlFor={`${edType}PeriodEnd`} className="label">
+        <label htmlFor={`edPeriodEnd`} className="label">
           End
         </label>
         <input
           type="date"
           className="input"
           placeholder="End"
-          name={`${edType}PeriodEnd`}
+          name={`edPeriodEnd`}
           ref={register}
         />
+        {errors.edPeriodEnd && (
+          <p className="error">{"Please select a date"}</p>
+        )}
       </div>
     </div>
   );

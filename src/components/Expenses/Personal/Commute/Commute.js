@@ -95,7 +95,7 @@ export default function CommuteFields({
                 </select>
               </div>
               {errors.commuteEvent && (
-                <p className="error">{"Please select a date"}</p>
+                <p className="error">{"Please select an event"}</p>
               )}
             </div>
           </div>

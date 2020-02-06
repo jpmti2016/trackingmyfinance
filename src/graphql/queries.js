@@ -5741,33 +5741,98 @@ export const listClients = `query ListClients(
         items{
           id
           __typename
+          kind
           amount
+          classification
           dueDate
           category
+          nature
           college{
             id
+            program
             title
             notes
+            period{
+              id
+              billingStart
+              billingEnd
+            }
+            fees{
+              items{
+                id
+                tuitionAndFees
+                booksAndSupplies
+                roomAndBoard
+                transportation
+                personal
+              }
+            }
           }
           onlineCourse{
-            id
-            title
-            notes
+              id
+              title
+              description
+              notes
+              platform
+              url
+              period{
+                id
+                billingStart
+                billingEnd
+              }
+              instructors{
+                items{
+                  id
+                  phone
+                  tweeter
+                  name
+                  email
+                  webPage
+                }
+              }
           }
           communityCollege{
             id
+            program
             title
             notes
+            period{
+              id
+              billingStart
+              billingEnd
+            }
+            fees{
+              items{
+                id
+                tuitionAndFees
+                booksAndSupplies
+                roomAndBoard
+                transportation
+                personal
+              }
+            }
           }
           training{
             id
             title
             notes
+            school
+            period{
+              id
+              billingStart
+              billingEnd
+            }
           }
           bootcamp{
             id
             title
             notes
+            costDeferred
+            period{
+              id
+              billingStart
+              billingEnd
+            }
           }
         }
         nextToken

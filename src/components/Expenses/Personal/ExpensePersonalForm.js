@@ -65,6 +65,7 @@ export default function ExpensePersonalForm(props) {
   const { register, handleSubmit, errors, watch, reset, control } = useForm({});
 
   useEffect(() => {
+    console.log("EFE", isUpdating && expense && educationFormat(expense));
     reset({
       personal: isUpdating && expense ? expense.category : "",
       housing:
@@ -120,6 +121,7 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.dinningOut
           ? expense.dinningOut.title
           : "",
+
       notes: isUpdating && expense && expense.notes ? expense.notes : "",
       utilityNotes:
         isUpdating && expense && expense.utility ? expense.utility.notes : "",
@@ -147,6 +149,7 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.dinningOut
           ? expense.dinningOut.notes
           : "",
+
       utilityBillingStart:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingStart
@@ -155,6 +158,7 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.plan && expense.plan.billing
           ? expense.plan.billing.billingStart
           : "",
+
       utilityBillingEnd:
         isUpdating && expense && expense.utility && expense.utility.period
           ? expense.utility.period.billingEnd
@@ -163,6 +167,7 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.plan && expense.plan.billing
           ? expense.plan.billing.billingEnd
           : "",
+
       utilityReading:
         isUpdating && expense && expense.utility ? expense.utility.reading : "",
       supplyFor:
@@ -217,12 +222,44 @@ export default function ExpensePersonalForm(props) {
           : [],
       //Commute
       commuteService: isUpdating && expense ? expense.service : "",
-      commuteEvent: isUpdating && expense ? expense.event : ""
+      commuteEvent: isUpdating && expense ? expense.event : "",
+      //education
+      bCampPriceDeferred:
+        isUpdating && expense ? educationFormat(expense).costDeferred : "",
+      edProgram: isUpdating && expense ? educationFormat(expense).program : "",
+      edTrainingSchool:
+        isUpdating && expense ? educationFormat(expense).school : "",
+      edNotes: isUpdating && expense ? educationFormat(expense).notes : "",
+      edTitle: isUpdating && expense ? educationFormat(expense).title : "",
+      edPeriodStart:
+        isUpdating && expense ? educationFormat(expense).edPeriodStart : "",
+      edPeriodEnd:
+        isUpdating && expense ? educationFormat(expense).edPeriodEnd : "",
+      instructors:
+        isUpdating && expense ? educationFormat(expense).instructors : [],
+      edOnlineDesc:
+        isUpdating && expense ? educationFormat(expense).description : "",
+      edOnlinePlatf:
+        isUpdating && expense ? educationFormat(expense).platform : "",
+      url: isUpdating && expense ? educationFormat(expense).url : "",
+      edOnlinePeriod:
+        isUpdating && expense ? educationFormat(expense).edOnlinePeriod : false,
+      tuitionAndFees:
+        isUpdating && expense ? educationFormat(expense).tuitionAndFees : "",
+      booksAndSupplies:
+        isUpdating && expense ? educationFormat(expense).booksAndSupplies : "",
+      roomAndBoard:
+        isUpdating && expense ? educationFormat(expense).roomAndBoard : "",
+      edTransportation:
+        isUpdating && expense ? educationFormat(expense).transportation : "",
+      edPersonal: isUpdating && expense ? educationFormat(expense).personal : ""
     });
   }, [expense, reset, isUpdating]);
 
   const watchPersonal = watch("personal");
   console.log("watchPersonal", watchPersonal);
+  const watchedNotes = watch("edNotes");
+  console.log("edNotes", watchedNotes);
 
   const watchInsurance = watch("nature");
 
@@ -242,6 +279,128 @@ export default function ExpensePersonalForm(props) {
         return { typeToUpdate: "SUPPLIES", title: "" };
       } else if (expense.utility) {
         return { typeToUpdate: "UTILITIES", title: "" };
+      }
+    }
+  };
+
+  const educationFormat = expense => {
+    if (expense) {
+      if (expense.college) {
+        return {
+          title: expense.college.title,
+          notes: expense.college.notes,
+          program: expense.college.program,
+          edPeriodStart: expense.college.period
+            ? expense.college.period.billingStart
+            : "",
+          edPeriodEnd: expense.college.period
+            ? expense.college.period.billingEnd
+            : "",
+          tuitionAndFees:
+            expense.college.fees && expense.college.fees.items.length > 0
+              ? expense.college.fees.items[0].tuitionAndFees
+              : "",
+          booksAndSupplies:
+            expense.college.fees && expense.college.fees.items.length > 0
+              ? expense.college.fees.items[0].booksAndSupplies
+              : "",
+          roomAndBoard:
+            expense.college.fees && expense.college.fees.items.length > 0
+              ? expense.college.fees.items[0].roomAndBoard
+              : "",
+          transportation:
+            expense.college.fees && expense.college.fees.items.length > 0
+              ? expense.college.fees.items[0].transportation
+              : "",
+          personal:
+            expense.college.fees && expense.college.fees.items.length > 0
+              ? expense.college.fees.items[0].personal
+              : ""
+        };
+      } else if (expense.onlineCourse) {
+        return {
+          title: expense.onlineCourse.title,
+          notes: expense.onlineCourse.notes,
+          instructors: expense.onlineCourse.instructors
+            ? [...expense.onlineCourse.instructors.items]
+            : [],
+          description: expense.onlineCourse.description,
+          platform: expense.onlineCourse.platform,
+          url: expense.onlineCourse.url,
+          edOnlinePeriod:
+            expense.onlineCourse.period &&
+            expense.onlineCourse.period.billingStart &&
+            expense.onlineCourse.period.billingEnd
+              ? true
+              : false,
+          edPeriodStart: expense.onlineCourse.period
+            ? expense.onlineCourse.period.billingStart
+            : "",
+          edPeriodEnd: expense.onlineCourse.period
+            ? expense.onlineCourse.period.billingEnd
+            : ""
+        };
+      } else if (expense.communityCollege) {
+        return {
+          title: expense.communityCollege.title,
+          notes: expense.communityCollege.notes,
+          program: expense.communityCollege.program,
+          edPeriodStart: expense.communityCollege.period
+            ? expense.communityCollege.period.billingStart
+            : "",
+          edPeriodEnd: expense.communityCollege.period
+            ? expense.communityCollege.period.billingEnd
+            : "",
+          tuitionAndFees:
+            expense.communityCollege.fees &&
+            expense.communityCollege.fees.items.length > 0
+              ? expense.communityCollege.fees.items[0].tuitionAndFees
+              : "",
+          booksAndSupplies:
+            expense.communityCollege.fees &&
+            expense.communityCollege.fees.items.length > 0
+              ? expense.communityCollege.fees.items[0].booksAndSupplies
+              : "",
+          roomAndBoard:
+            expense.communityCollege.fees &&
+            expense.communityCollege.fees.items.length > 0
+              ? expense.communityCollege.fees.items[0].roomAndBoard
+              : "",
+          transportation:
+            expense.communityCollege.fees &&
+            expense.communityCollege.fees.items.length > 0
+              ? expense.communityCollege.fees.items[0].transportation
+              : "",
+          personal:
+            expense.communityCollege.fees &&
+            expense.communityCollege.fees.items.length > 0
+              ? expense.communityCollege.fees.items[0].personal
+              : ""
+        };
+      } else if (expense.training) {
+        return {
+          title: expense.training.title,
+          notes: expense.training.notes,
+          school: expense.training.school,
+          edPeriodStart: expense.training.period
+            ? expense.training.period.billingStart
+            : "",
+          edPeriodEnd: expense.training.period
+            ? expense.training.period.billingEnd
+            : ""
+        };
+      } else if (expense.bootcamp) {
+        return {
+          title: expense.bootcamp.title,
+          notes: expense.bootcamp.notes,
+          costDeferred:
+            expense.bootcamp.costDeferred ? expense.bootcamp.costDeferred === "NO" : expense.bootcamp.costDeferred === 'YES'
+        };
+      } else {
+        return {
+          title: "NA",
+          notes: "NA"
+        };
       }
     }
   };
@@ -604,6 +763,7 @@ export default function ExpensePersonalForm(props) {
               watchEdOnlinePeriod={watchEdOnlinePeriod}
               watchBCampPriceDeferred={watchBCampPriceDeferred}
               errors={errors}
+              control={control}
             />
           )}
 
