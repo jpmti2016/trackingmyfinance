@@ -124,7 +124,10 @@ export default function ExpenseTable({
               title: expense.college.title,
               notes: expense.college.notes
             };
-          } else if (expense.nature === "ONLINECURSE" && expense.onlineCourse) {
+          } else if (
+            expense.nature === "ONLINECOURSE" &&
+            expense.onlineCourse
+          ) {
             return {
               title: expense.onlineCourse.title,
               notes: expense.onlineCourse.notes
