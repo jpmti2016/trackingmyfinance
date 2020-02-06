@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InvestmentFields({ register }) {
+export default function InvestmentFields({ register, errors }) {
   return (
     <>
       <div className="field">
@@ -10,55 +10,80 @@ export default function InvestmentFields({ register }) {
         <div className="control">
           <div className="select">
             <select name="investment" id="investment" ref={register}>
-              <option value="Select">Select</option>
-              <option value="401K">401K</option>
+              <option value="">--Select--</option>
+              <option value="I401K">401K</option>
               <option value="IRA">IRA</option>
               <option value="TRF">TRF</option>
               <option value="VTSAX">VTSAX</option>
               <option value="Roth IRA">Roth IRA</option>
             </select>
           </div>
+          {errors.investment && (
+            <p className="error">{"Please select a investment"}</p>
+          )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="investAmount" className="label">
+        <label htmlFor="amount" className="label">
           Amount
         </label>
         <div className="control">
           <input
-            id="investAmount"
+            id="amount"
             type="number"
             className="input"
-            name="investAmount"
+            name="amount"
             ref={register}
           />
+          {errors.amount && (
+            <p className="error">{"Please check the amount"}</p>
+          )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="investDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Date
         </label>
         <div className="control">
           <input
-            id="investDate"
+            id="dueDate"
             type="date"
             className="input"
-            name="investDate"
+            name="dueDate"
             ref={register}
           />
+          {errors.dueDate && (
+            <p className="error">{"Please select the due date"}</p>
+          )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="investNotes" className="label">
+        <label htmlFor="title" className="label">
+          Title
+        </label>
+        <div className="control">
+          <input
+            id="title"
+            type="text"
+            className="input"
+            name="title"
+            ref={register}
+          />
+          {errors.title && <p className="error">{"Please check the title"}</p>}
+        </div>
+      </div>
+      <div className="field">
+        <label htmlFor="notes" className="label">
           Notes
         </label>
         <div className="control">
           <textarea
             className="textarea"
-            name="investNotes"
-            id="investNotes"
+            name="notes"
+            id="notes"
             ref={register}
           />
+          {errors.notes && <p className="error">{"Please check the notes"}</p>}
         </div>
       </div>
     </>

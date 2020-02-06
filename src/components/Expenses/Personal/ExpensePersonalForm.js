@@ -261,6 +261,8 @@ export default function ExpensePersonalForm(props) {
       local: isUpdating && expense && expense.w2 ? expense.w2.local : "",
       taxDebt: isUpdating && expense ? expense.taxDebt : "",
       fee: isUpdating && expense ? expense.fee : "",
+      //investment
+      investment: isUpdating && expense ? expense.account : ""
     });
   }, [expense, reset, isUpdating]);
 
