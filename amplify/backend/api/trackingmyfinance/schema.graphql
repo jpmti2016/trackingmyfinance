@@ -337,6 +337,7 @@ type AcademicFee @model @auth(rules: [{ allow: owner }]) {
   roomAndBoard: Float
   transportation: Float
   personal: Float
+  period: Period @connection
   college: College @connection(name: "CollegeAcademicFee")
   communityCollege: CommunityCollege
     @connection(name: "CommunityCollegeAcademicFee")
@@ -350,7 +351,6 @@ type College @model @auth(rules: [{ allow: owner }]) {
   title: String
   notes: String
   images: [S3Object]
-  period: Period @connection
   fees: [AcademicFee] @connection(name: "CollegeAcademicFee")
 }
 
