@@ -25,7 +25,6 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
         return (
           <fieldset name={fieldName} key={fieldName}>
             <legend>{`Lawyer ${index + 1}`}</legend>
-
             <div className="field">
               <label htmlFor={`${fieldName}.fee`} className="label">
                 Fee
@@ -44,7 +43,6 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                 )}
               </div>
             </div>
-
             <div className="field">
               <label htmlFor={`${fieldName}.name`} className="label">
                 Name
@@ -63,7 +61,6 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                 )}
               </div>
             </div>
-
             <div className="field">
               <label htmlFor={`${fieldName}.lastName`} className="label">
                 Last Name
@@ -84,7 +81,6 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                 )}
               </div>
             </div>
-
             <div className="field">
               <label htmlFor={`${fieldName}.phone`} className="label">
                 Phone
@@ -103,7 +99,6 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                 )}
               </div>
             </div>
-
             <div className="field">
               <label htmlFor={`${fieldName}.email`} className="label">
                 Email
@@ -122,7 +117,6 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                 )}
               </div>
             </div>
-
             <div className="field">
               <label htmlFor={`${fieldName}.firm`} className="label">
                 Firm
@@ -141,28 +135,122 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                 )}
               </div>
             </div>
-
-            {/* Make address and lawyer editable in it own window portal ?? */}
-
-            {/* <div className="field">
-              <label htmlFor={`${fieldName}.address`} className="label">
-                Address
-              </label>
-              <div className="control">
-                <input
-                  id={`${fieldName}.address`}
-                  type="text"
-                  className="input"
-                  name={`${fieldName}.address`}
-                  ref={register({ required: true })}
-                  defaultValue={`${item.address["id"]}`}
-                />
-                {errors && errors[`${fieldName}.address`] && (
-                  <p className="error">{"Please check the lawyer's address"}</p>
-                )}
+            {/* Make address and lawyer editable in it own window portal ?? */}{" "}
+            <fieldset name="address">
+              <legend>Address</legend>
+              <div className="field">
+                <label
+                  htmlFor={`${fieldName}.address.number`}
+                  className="label"
+                >
+                  Number
+                </label>
+                <div className="control">
+                  <input
+                    id={`${fieldName}.address.number`}
+                    type="text"
+                    className="input"
+                    name={`${fieldName}.address.number`}
+                    ref={register({ required: true })}
+                    defaultValue={`${item.address.id}`}
+                  />
+                  {errors && errors[`${fieldName}.address.number`] && (
+                    <p className="error">
+                      {"Please check the lawyer's address"}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div> */}
-
+              <div className="field">
+                <label
+                  htmlFor={`${fieldName}.address.street`}
+                  className="label"
+                >
+                  Street
+                </label>
+                <div className="control">
+                  <input
+                    id={`${fieldName}.address.street`}
+                    type="text"
+                    className="input"
+                    name={`${fieldName}.address.street`}
+                    ref={register({ required: true })}
+                    defaultValue={`${item.address.street}`}
+                  />
+                  {errors && errors[`${fieldName}.address.street`] && (
+                    <p className="error">
+                      {"Please check the lawyer's address"}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="field">
+                <label
+                  htmlFor={`${fieldName}.address.county`}
+                  className="label"
+                >
+                  County
+                </label>
+                <div className="control">
+                  <input
+                    id={`${fieldName}.address.county`}
+                    type="text"
+                    className="input"
+                    name={`${fieldName}.address.county`}
+                    ref={register({ required: true })}
+                    defaultValue={`${item.address.county}`}
+                  />
+                  {errors && errors[`${fieldName}.address.county`] && (
+                    <p className="error">
+                      {"Please check the lawyer's address"}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="field">
+                <label htmlFor={`${fieldName}.address.state`} className="label">
+                  State
+                </label>
+                <div className="control">
+                  <input
+                    id={`${fieldName}.address.state`}
+                    type="text"
+                    className="input"
+                    name={`${fieldName}.address.state`}
+                    ref={register({ required: true })}
+                    defaultValue={`${item.address.state}`}
+                  />
+                  {errors && errors[`${fieldName}.address.state`] && (
+                    <p className="error">
+                      {"Please check the lawyer's address"}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="field">
+                <label
+                  htmlFor={`${fieldName}.address.country`}
+                  className="label"
+                >
+                  country
+                </label>
+                <div className="control">
+                  <input
+                    id={`${fieldName}.address.country`}
+                    type="text"
+                    className="input"
+                    name={`${fieldName}.address.country`}
+                    ref={register({ required: true })}
+                    defaultValue={`${item.address.country}`}
+                  />
+                  {errors && errors[`${fieldName}.address.country`] && (
+                    <p className="error">
+                      {"Please check the lawyer's address"}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </fieldset>
             <button
               type="button"
               className="button is-danger is-outlined"

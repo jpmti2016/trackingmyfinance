@@ -5715,6 +5715,12 @@ export const listClients = `query ListClients(
               firm
               address{
                 id
+                number
+                street
+                county
+                state
+                postCode
+                country
               }
             }
           }
