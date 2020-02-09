@@ -253,6 +253,7 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense ? educationFormat(expense).transportation : "",
       edPersonal:
         isUpdating && expense ? educationFormat(expense).personal : "",
+      fees: isUpdating && expense ? educationFormat(expense).fees : [],
       //Taxes
       year: isUpdating && expense && expense.w2 ? expense.w2.year : "",
       grossPay: isUpdating && expense && expense.w2 ? expense.w2.grossPay : "",
@@ -263,6 +264,7 @@ export default function ExpensePersonalForm(props) {
       fee: isUpdating && expense ? expense.fee : "",
       //investment
       investment: isUpdating && expense ? expense.account : ""
+      //
     });
   }, [expense, reset, isUpdating]);
 
@@ -303,26 +305,7 @@ export default function ExpensePersonalForm(props) {
           edPeriodEnd: expense.college.period
             ? expense.college.period.billingEnd
             : "",
-          tuitionAndFees:
-            expense.college.fees && expense.college.fees.items.length > 0
-              ? expense.college.fees.items[0].tuitionAndFees
-              : "",
-          booksAndSupplies:
-            expense.college.fees && expense.college.fees.items.length > 0
-              ? expense.college.fees.items[0].booksAndSupplies
-              : "",
-          roomAndBoard:
-            expense.college.fees && expense.college.fees.items.length > 0
-              ? expense.college.fees.items[0].roomAndBoard
-              : "",
-          transportation:
-            expense.college.fees && expense.college.fees.items.length > 0
-              ? expense.college.fees.items[0].transportation
-              : "",
-          personal:
-            expense.college.fees && expense.college.fees.items.length > 0
-              ? expense.college.fees.items[0].personal
-              : ""
+          fees: expense.college.fees ? [...expense.college.fees.items] : []
         };
       } else if (expense.onlineCourse) {
         return {
@@ -358,31 +341,9 @@ export default function ExpensePersonalForm(props) {
           edPeriodEnd: expense.communityCollege.period
             ? expense.communityCollege.period.billingEnd
             : "",
-          tuitionAndFees:
-            expense.communityCollege.fees &&
-            expense.communityCollege.fees.items.length > 0
-              ? expense.communityCollege.fees.items[0].tuitionAndFees
-              : "",
-          booksAndSupplies:
-            expense.communityCollege.fees &&
-            expense.communityCollege.fees.items.length > 0
-              ? expense.communityCollege.fees.items[0].booksAndSupplies
-              : "",
-          roomAndBoard:
-            expense.communityCollege.fees &&
-            expense.communityCollege.fees.items.length > 0
-              ? expense.communityCollege.fees.items[0].roomAndBoard
-              : "",
-          transportation:
-            expense.communityCollege.fees &&
-            expense.communityCollege.fees.items.length > 0
-              ? expense.communityCollege.fees.items[0].transportation
-              : "",
-          personal:
-            expense.communityCollege.fees &&
-            expense.communityCollege.fees.items.length > 0
-              ? expense.communityCollege.fees.items[0].personal
-              : ""
+          fees: expense.communityCollege.fees
+            ? [...expense.communityCollege.fees.items]
+            : []
         };
       } else if (expense.training) {
         return {

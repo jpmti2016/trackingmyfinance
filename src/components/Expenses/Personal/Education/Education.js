@@ -1,6 +1,7 @@
 import React from "react";
 import Period from "./Period";
 import EducationInstructorFieldsArray from "./EducationInstructorFieldsArray";
+import EducationAcademicFeeFieldsArray from "./EducationAcademicFeeFieldsArray";
 
 export default function EducationFields({
   register,
@@ -40,51 +41,6 @@ export default function EducationFields({
       {(watchEducation === "COLLEGE" ||
         watchEducation === "COMUNITYCOLLEGE") && (
         <>
-          {/* <div className="field">
-                           <label htmlFor="edMajor" className="label">
-                             Major
-                           </label>
-                           <div className="control">
-                             <input
-                               id="edMajor"
-                               type="text"
-                               className="input"
-                               name="edMajor"
-                               ref={register}
-                             />
-                           </div>
-                         </div>
-
-                         <div className="field">
-                           <label htmlFor="edMinor" className="label">
-                             Minor
-                           </label>
-                           <div className="control">
-                             <input
-                               id="edMinor"
-                               type="text"
-                               className="input"
-                               name="edMinor"
-                               ref={register}
-                             />
-                           </div>
-                         </div>
-
-                         <div className="field">
-                           <label htmlFor="edSpecialty" className="label">
-                             Specialty
-                           </label>
-                           <div className="control">
-                             <input
-                               id="edSpecialty"
-                               type="text"
-                               className="input"
-                               name="edSpecialty"
-                               ref={register}
-                             />
-                           </div>
-                         </div> */}
-
           <div className="field">
             <label htmlFor="edProgram" className="label">
               Program
@@ -105,7 +61,6 @@ export default function EducationFields({
               )}
             </div>
           </div>
-
           <div className="field">
             <label htmlFor="edTitle" className="label">
               Title
@@ -123,7 +78,6 @@ export default function EducationFields({
               )}
             </div>
           </div>
-
           <div className="field">
             <label htmlFor="edNotes" className="label">
               Notes
@@ -136,101 +90,11 @@ export default function EducationFields({
 
           <Period edType={watchEducation} register={register} errors={errors} />
 
-          <div className="field">
-            <label htmlFor="" className="label">
-              Fees
-            </label>
-          </div>
-
-          <div className="field">
-            <label htmlFor="tuitionAndFees" className="label">
-              Tuition and fees
-            </label>
-            <div className="control">
-              <input
-                id="tuitionAndFees"
-                type="number"
-                className="input"
-                name="tuitionAndFees"
-                ref={register}
-              />
-              {errors.tuitionAndFees && (
-                <p className="error">{"Please check the tuition and fees"}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="field">
-            <label htmlFor="booksAndSupplies" className="label">
-              Books and supplies
-            </label>
-            <div className="control">
-              <input
-                id="booksAndSupplies"
-                type="number"
-                className="input"
-                name="booksAndSupplies"
-                ref={register}
-              />
-              {errors.booksAndSupplies && (
-                <p className="error">{"Please check the books and supplies"}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="field">
-            <label htmlFor="roomAndBoard" className="label">
-              Room and board
-            </label>
-            <div className="control">
-              <input
-                id="roomAndBoard"
-                type="number"
-                className="input"
-                name="roomAndBoard"
-                ref={register}
-              />
-              {errors.roomAndBoard && (
-                <p className="error">{"Please check the room and board"}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="field">
-            <label htmlFor="edTransportation" className="label">
-              Transportation
-            </label>
-            <div className="control">
-              <input
-                id="edTransportation"
-                type="number"
-                className="input"
-                name="edTransportation"
-                ref={register}
-              />
-              {errors.edTransportation && (
-                <p className="error">{"Please check the transportation"}</p>
-              )}
-            </div>
-          </div>
-
-          <div className="field">
-            <label htmlFor="edPersonal" className="label">
-              Personal
-            </label>
-            <div className="control">
-              <input
-                id="edPersonal"
-                type="number"
-                className="input"
-                name="edPersonal"
-                ref={register}
-              />
-              {errors.edPersonal && (
-                <p className="error">{"Please check the personal"}</p>
-              )}
-            </div>
-          </div>
+          <EducationAcademicFeeFieldsArray
+            register={register}
+            control={control}
+            errors={errors}
+          />
 
           <div className="field">
             <label htmlFor="dueDate" className="label">
