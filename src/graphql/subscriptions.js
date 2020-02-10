@@ -3558,6 +3558,12 @@ export const onCreateAcademicFee = `subscription OnCreateAcademicFee($owner: Str
     roomAndBoard
     transportation
     personal
+    period {
+      id
+      billingStart
+      billingEnd
+      owner
+    }
     college {
       id
       program
@@ -3569,12 +3575,6 @@ export const onCreateAcademicFee = `subscription OnCreateAcademicFee($owner: Str
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3592,12 +3592,6 @@ export const onCreateAcademicFee = `subscription OnCreateAcademicFee($owner: Str
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3616,6 +3610,12 @@ export const onUpdateAcademicFee = `subscription OnUpdateAcademicFee($owner: Str
     roomAndBoard
     transportation
     personal
+    period {
+      id
+      billingStart
+      billingEnd
+      owner
+    }
     college {
       id
       program
@@ -3627,12 +3627,6 @@ export const onUpdateAcademicFee = `subscription OnUpdateAcademicFee($owner: Str
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3650,12 +3644,6 @@ export const onUpdateAcademicFee = `subscription OnUpdateAcademicFee($owner: Str
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3674,6 +3662,12 @@ export const onDeleteAcademicFee = `subscription OnDeleteAcademicFee($owner: Str
     roomAndBoard
     transportation
     personal
+    period {
+      id
+      billingStart
+      billingEnd
+      owner
+    }
     college {
       id
       program
@@ -3685,12 +3679,6 @@ export const onDeleteAcademicFee = `subscription OnDeleteAcademicFee($owner: Str
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3708,12 +3696,6 @@ export const onDeleteAcademicFee = `subscription OnDeleteAcademicFee($owner: Str
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3736,12 +3718,6 @@ export const onCreateCollege = `subscription OnCreateCollege($owner: String!) {
       bucket
       region
       key
-    }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
     }
     fees {
       items {
@@ -3772,12 +3748,6 @@ export const onUpdateCollege = `subscription OnUpdateCollege($owner: String!) {
       region
       key
     }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
-    }
     fees {
       items {
         id
@@ -3806,12 +3776,6 @@ export const onDeleteCollege = `subscription OnDeleteCollege($owner: String!) {
       bucket
       region
       key
-    }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
     }
     fees {
       items {
@@ -3842,12 +3806,6 @@ export const onCreateCommunityCollege = `subscription OnCreateCommunityCollege($
       region
       key
     }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
-    }
     fees {
       items {
         id
@@ -3877,12 +3835,6 @@ export const onUpdateCommunityCollege = `subscription OnUpdateCommunityCollege($
       region
       key
     }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
-    }
     fees {
       items {
         id
@@ -3911,12 +3863,6 @@ export const onDeleteCommunityCollege = `subscription OnDeleteCommunityCollege($
       bucket
       region
       key
-    }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
     }
     fees {
       items {
@@ -4323,12 +4269,6 @@ export const onCreateEducationExpense = `subscription OnCreateEducationExpense($
         region
         key
       }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
-      }
       fees {
         nextToken
       }
@@ -4370,12 +4310,6 @@ export const onCreateEducationExpense = `subscription OnCreateEducationExpense($
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -4548,12 +4482,6 @@ export const onUpdateEducationExpense = `subscription OnUpdateEducationExpense($
         region
         key
       }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
-      }
       fees {
         nextToken
       }
@@ -4595,12 +4523,6 @@ export const onUpdateEducationExpense = `subscription OnUpdateEducationExpense($
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -4773,12 +4695,6 @@ export const onDeleteEducationExpense = `subscription OnDeleteEducationExpense($
         region
         key
       }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
-      }
       fees {
         nextToken
       }
@@ -4820,12 +4736,6 @@ export const onDeleteEducationExpense = `subscription OnDeleteEducationExpense($
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken

@@ -152,7 +152,9 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                     className="input"
                     name={`${fieldName}.address.number`}
                     ref={register({ required: true })}
-                    defaultValue={`${item.address.id}`}
+                    defaultValue={`${
+                      item && item.address ? item.address.number : ""
+                    }`}
                   />
                   {errors && errors[`${fieldName}.address.number`] && (
                     <p className="error">
@@ -175,7 +177,9 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                     className="input"
                     name={`${fieldName}.address.street`}
                     ref={register({ required: true })}
-                    defaultValue={`${item.address.street}`}
+                    defaultValue={`${
+                      item && item.address ? item.address.street : ""
+                    }`}
                   />
                   {errors && errors[`${fieldName}.address.street`] && (
                     <p className="error">
@@ -198,7 +202,9 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                     className="input"
                     name={`${fieldName}.address.county`}
                     ref={register({ required: true })}
-                    defaultValue={`${item.address.county}`}
+                    defaultValue={`${
+                      item && item.address ? item.address.county : ""
+                    }`}
                   />
                   {errors && errors[`${fieldName}.address.county`] && (
                     <p className="error">
@@ -218,7 +224,9 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                     className="input"
                     name={`${fieldName}.address.state`}
                     ref={register({ required: true })}
-                    defaultValue={`${item.address.state}`}
+                    defaultValue={`${
+                      item && item.address ? item.address.state : ""
+                    }`}
                   />
                   {errors && errors[`${fieldName}.address.state`] && (
                     <p className="error">
@@ -241,7 +249,9 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                     className="input"
                     name={`${fieldName}.address.country`}
                     ref={register({ required: true })}
-                    defaultValue={`${item.address.country}`}
+                    defaultValue={`${
+                      item && item.address ? item.address.country : ""
+                    }`}
                   />
                   {errors && errors[`${fieldName}.address.country`] && (
                     <p className="error">
@@ -273,7 +283,12 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
               lastName: "",
               phone: "",
               email: "",
-              firm: ""
+              firm: "",
+              number: "",
+              street: "",
+              country: "",
+              state: "",
+              county: ""
             })
           }
         >

@@ -299,12 +299,12 @@ export default function ExpensePersonalForm(props) {
           title: expense.college.title,
           notes: expense.college.notes,
           program: expense.college.program,
-          edPeriodStart: expense.college.period
-            ? expense.college.period.billingStart
-            : "",
-          edPeriodEnd: expense.college.period
-            ? expense.college.period.billingEnd
-            : "",
+          // edPeriodStart: expense.college.period
+          //   ? expense.college.period.billingStart
+          //   : "",
+          // edPeriodEnd: expense.college.period
+          //   ? expense.college.period.billingEnd
+          //   : "",
           fees: expense.college.fees ? [...expense.college.fees.items] : []
         };
       } else if (expense.onlineCourse) {
@@ -335,12 +335,12 @@ export default function ExpensePersonalForm(props) {
           title: expense.communityCollege.title,
           notes: expense.communityCollege.notes,
           program: expense.communityCollege.program,
-          edPeriodStart: expense.communityCollege.period
-            ? expense.communityCollege.period.billingStart
-            : "",
-          edPeriodEnd: expense.communityCollege.period
-            ? expense.communityCollege.period.billingEnd
-            : "",
+          // edPeriodStart: expense.communityCollege.period
+          //   ? expense.communityCollege.period.billingStart
+          //   : "",
+          // edPeriodEnd: expense.communityCollege.period
+          //   ? expense.communityCollege.period.billingEnd
+          //   : "",
           fees: expense.communityCollege.fees
             ? [...expense.communityCollege.fees.items]
             : []

@@ -3732,6 +3732,12 @@ export const createAcademicFee = `mutation CreateAcademicFee(
     roomAndBoard
     transportation
     personal
+    period {
+      id
+      billingStart
+      billingEnd
+      owner
+    }
     college {
       id
       program
@@ -3743,12 +3749,6 @@ export const createAcademicFee = `mutation CreateAcademicFee(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3766,12 +3766,6 @@ export const createAcademicFee = `mutation CreateAcademicFee(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3793,6 +3787,12 @@ export const updateAcademicFee = `mutation UpdateAcademicFee(
     roomAndBoard
     transportation
     personal
+    period {
+      id
+      billingStart
+      billingEnd
+      owner
+    }
     college {
       id
       program
@@ -3804,12 +3804,6 @@ export const updateAcademicFee = `mutation UpdateAcademicFee(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3827,12 +3821,6 @@ export const updateAcademicFee = `mutation UpdateAcademicFee(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3854,6 +3842,12 @@ export const deleteAcademicFee = `mutation DeleteAcademicFee(
     roomAndBoard
     transportation
     personal
+    period {
+      id
+      billingStart
+      billingEnd
+      owner
+    }
     college {
       id
       program
@@ -3865,12 +3859,6 @@ export const deleteAcademicFee = `mutation DeleteAcademicFee(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3888,12 +3876,6 @@ export const deleteAcademicFee = `mutation DeleteAcademicFee(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -3919,12 +3901,6 @@ export const createCollege = `mutation CreateCollege(
       bucket
       region
       key
-    }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
     }
     fees {
       items {
@@ -3958,12 +3934,6 @@ export const updateCollege = `mutation UpdateCollege(
       region
       key
     }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
-    }
     fees {
       items {
         id
@@ -3995,12 +3965,6 @@ export const deleteCollege = `mutation DeleteCollege(
       bucket
       region
       key
-    }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
     }
     fees {
       items {
@@ -4034,12 +3998,6 @@ export const createCommunityCollege = `mutation CreateCommunityCollege(
       region
       key
     }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
-    }
     fees {
       items {
         id
@@ -4072,12 +4030,6 @@ export const updateCommunityCollege = `mutation UpdateCommunityCollege(
       region
       key
     }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
-    }
     fees {
       items {
         id
@@ -4109,12 +4061,6 @@ export const deleteCommunityCollege = `mutation DeleteCommunityCollege(
       bucket
       region
       key
-    }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
     }
     fees {
       items {
@@ -4560,12 +4506,6 @@ export const createEducationExpense = `mutation CreateEducationExpense(
         region
         key
       }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
-      }
       fees {
         nextToken
       }
@@ -4607,12 +4547,6 @@ export const createEducationExpense = `mutation CreateEducationExpense(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -4788,12 +4722,6 @@ export const updateEducationExpense = `mutation UpdateEducationExpense(
         region
         key
       }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
-      }
       fees {
         nextToken
       }
@@ -4835,12 +4763,6 @@ export const updateEducationExpense = `mutation UpdateEducationExpense(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -5016,12 +4938,6 @@ export const deleteEducationExpense = `mutation DeleteEducationExpense(
         region
         key
       }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
-      }
       fees {
         nextToken
       }
@@ -5063,12 +4979,6 @@ export const deleteEducationExpense = `mutation DeleteEducationExpense(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken

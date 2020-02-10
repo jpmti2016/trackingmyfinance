@@ -18,7 +18,7 @@ export default function EducationAcademicFeeFieldsArray({
         <div className="field">
           <div className="control">
             <label htmlFor="" className="label">
-              Fee List
+              Academic Fee List
             </label>
           </div>
         </div>
@@ -29,6 +29,59 @@ export default function EducationAcademicFeeFieldsArray({
         return (
           <fieldset name={fieldName} key={fieldName}>
             <legend>{`Fee ${index + 1}`}</legend>
+
+            <fieldset name={"period"}>
+              <legend>{`Period`}</legend>
+
+              <div className="field">
+                {/* <label htmlFor="" className="label">
+                Academic Period
+              </label> */}
+
+                <div className="control">
+                  <label
+                    htmlFor={`${fieldName}.billingStart`}
+                    className="label"
+                  >
+                    Start
+                  </label>
+                  <input
+                    type="date"
+                    className="input"
+                    placeholder="2020/01/15"
+                    name={`${fieldName}.billingStart`}
+                    id={`${fieldName}.billingStart`}
+                    ref={register}
+                    defaultValue={`${
+                      item && item.period ? item.period.billingStart : ""
+                    }`}
+                  />
+                  {errors.billingStart && (
+                    <p className="error">{"Please select a date"}</p>
+                  )}
+                </div>
+
+                <div className="control">
+                  <label htmlFor={`${fieldName}.billingEnd`} className="label">
+                    End
+                  </label>
+                  <input
+                    type="date"
+                    className="input"
+                    placeholder="End"
+                    name={`${fieldName}.billingEnd`}
+                    id={`${fieldName}.billingEnd`}
+                    ref={register}
+                    defaultValue={`${
+                      item && item.period ? item.period.billingEnd : ""
+                    }`}
+                  />
+                  {errors.edPeriodEnd && (
+                    <p className="error">{"Please select a date"}</p>
+                  )}
+                </div>
+              </div>
+            </fieldset>
 
             <div className="field">
               <label htmlFor={`${fieldName}.tuitionAndFees`} className="label">
@@ -144,6 +197,7 @@ export default function EducationAcademicFeeFieldsArray({
 
       <div className="buttoms">
         <button
+          type="button"
           className="button is-outlined cta-sec"
           onClick={() =>
             append({
@@ -151,7 +205,9 @@ export default function EducationAcademicFeeFieldsArray({
               booksAndSupplies: "",
               roomAndBoard: "",
               transportation: "",
-              personal: ""
+              personal: "",
+              billingStart: "",
+              billingEnd: ""
             })
           }
         >

@@ -1810,6 +1810,12 @@ export const getAcademicFee = `query GetAcademicFee($id: ID!) {
     roomAndBoard
     transportation
     personal
+    period {
+      id
+      billingStart
+      billingEnd
+      owner
+    }
     college {
       id
       program
@@ -1821,12 +1827,6 @@ export const getAcademicFee = `query GetAcademicFee($id: ID!) {
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -1844,12 +1844,6 @@ export const getAcademicFee = `query GetAcademicFee($id: ID!) {
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -1873,6 +1867,12 @@ export const listAcademicFees = `query ListAcademicFees(
       roomAndBoard
       transportation
       personal
+      period {
+        id
+        billingStart
+        billingEnd
+        owner
+      }
       college {
         id
         program
@@ -1910,12 +1910,6 @@ export const getCollege = `query GetCollege($id: ID!) {
       region
       key
     }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
-    }
     fees {
       items {
         id
@@ -1950,12 +1944,6 @@ export const listColleges = `query ListColleges(
         region
         key
       }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
-      }
       fees {
         nextToken
       }
@@ -1977,12 +1965,6 @@ export const getCommunityCollege = `query GetCommunityCollege($id: ID!) {
       bucket
       region
       key
-    }
-    period {
-      id
-      billingStart
-      billingEnd
-      owner
     }
     fees {
       items {
@@ -2017,12 +1999,6 @@ export const listCommunityColleges = `query ListCommunityColleges(
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -2303,12 +2279,6 @@ export const getEducationExpense = `query GetEducationExpense($id: ID!) {
         region
         key
       }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
-      }
       fees {
         nextToken
       }
@@ -2350,12 +2320,6 @@ export const getEducationExpense = `query GetEducationExpense($id: ID!) {
         bucket
         region
         key
-      }
-      period {
-        id
-        billingStart
-        billingEnd
-        owner
       }
       fees {
         nextToken
@@ -5791,13 +5755,10 @@ export const listClients = `query ListClients(
           college{
             id
             program
+            university
+            school
             title
             notes
-            period{
-              id
-              billingStart
-              billingEnd
-            }
             fees{
               items{
                 id
@@ -5806,7 +5767,13 @@ export const listClients = `query ListClients(
                 roomAndBoard
                 transportation
                 personal
+                period{
+                  id
+                  billingStart
+                  billingEnd
+                }
               }
+              nextToken
             }
           }
           onlineCourse{
@@ -5835,13 +5802,10 @@ export const listClients = `query ListClients(
           communityCollege{
             id
             program
+            university
+            school
             title
             notes
-            period{
-              id
-              billingStart
-              billingEnd
-            }
             fees{
               items{
                 id
@@ -5850,7 +5814,13 @@ export const listClients = `query ListClients(
                 roomAndBoard
                 transportation
                 personal
+                period{
+                  id
+                  billingStart
+                  billingEnd
+                }
               }
+              nextToken
             }
           }
           training{

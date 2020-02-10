@@ -88,8 +88,6 @@ export default function EducationFields({
             )}
           </div>
 
-          <Period edType={watchEducation} register={register} errors={errors} />
-
           <EducationAcademicFeeFieldsArray
             register={register}
             control={control}
