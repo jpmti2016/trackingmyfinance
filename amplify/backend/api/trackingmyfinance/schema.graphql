@@ -362,7 +362,6 @@ type CommunityCollege @model @auth(rules: [{ allow: owner }]) {
   title: String
   notes: String
   images: [S3Object]
-  period: Period @connection
   fees: [AcademicFee] @connection(name: "CommunityCollegeAcademicFee")
 }
 
