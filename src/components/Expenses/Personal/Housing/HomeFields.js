@@ -30,76 +30,172 @@ export default function HomeFields({ register, errors }) {
         </div>
       </div>
       <div className="field">
-        <label htmlFor="homeAmount" className="label">
+        <label htmlFor="amount" className="label">
           Amount
         </label>
         <input
           type="number"
           className="input"
-          name="homeAmount"
-          id="homeAmount"
+          name="amount"
+          id="amount"
           ref={register}
         />
-        {errors && errors[`homeAmount`] && (
+        {errors && errors[`amount`] && (
           <p className="error">{"Please check the amount"}</p>
         )}
       </div>
       <div className="field">
-        <label htmlFor="homeDueDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Due Date
         </label>
         <input
           type="date"
           className="input"
-          name="homeDueDate"
-          id="homeDueDate"
+          name="dueDate"
+          id="dueDate"
           ref={register}
         />
-        {errors && errors[`homeDueDate`] && (
+        {errors && errors[`dueDate`] && (
           <p className="error">{"Please select a due date"}</p>
         )}
       </div>
+
+      <fieldset name={"Address"}>
+        <legend>{`Address`}</legend>
+        <div className="field">
+          <label htmlFor="housingNumber" className="label">
+            Number
+          </label>
+          <input
+            type="text"
+            className="input"
+            name="housingNumber"
+            id="housingNumber"
+            ref={register}
+          />
+          {errors && errors[`housingNumber`] && (
+            <p className="error">{"Please check the street number"}</p>
+          )}
+        </div>
+        <div className="field">
+          <label htmlFor="housingStreet" className="label">
+            Street
+          </label>
+          <input
+            type="text"
+            className="input"
+            name="housingStreet"
+            id="housingStreet"
+            ref={register}
+          />
+          {errors && errors[`housingStreet`] && (
+            <p className="error">{"Please check the street name"}</p>
+          )}
+        </div>
+        <div className="field">
+          <label htmlFor="housingCounty" className="label">
+            County
+          </label>
+          <input
+            type="text"
+            className="input"
+            name="housingCounty"
+            id="housingCounty"
+            ref={register}
+          />
+          {errors && errors[`housingCounty`] && (
+            <p className="error">{"Please check the street name"}</p>
+          )}
+        </div>
+        <div className="field">
+          <label htmlFor="housingPostCode" className="label">
+            Postal Code
+          </label>
+          <input
+            type="text"
+            className="input"
+            name="housingPostCode"
+            id="housingPostCode"
+            ref={register}
+          />
+          {errors && errors[`housingPostCode`] && (
+            <p className="error">{"Please check the street name"}</p>
+          )}
+        </div>
+
+        <div className="field">
+          <label htmlFor="housingState" className="label">
+            State
+          </label>
+          <input
+            type="text"
+            className="input"
+            name="housingState"
+            id="housingState"
+            ref={register}
+          />
+          {errors && errors[`housingState`] && (
+            <p className="error">{"Please check the state"}</p>
+          )}
+        </div>
+        <div className="field">
+          <label htmlFor="housingRegion" className="label">
+            Region
+          </label>
+          <input
+            type="text"
+            className="input"
+            name="housingRegion"
+            id="housingRegion"
+            ref={register}
+          />
+          {errors && errors[`housingRegion`] && (
+            <p className="error">{"Please check the region"}</p>
+          )}
+        </div>
+        <div className="field">
+          <label htmlFor="housingCountry" className="label">
+            Postal Code
+          </label>
+          <input
+            type="text"
+            className="input"
+            name="housingCountry"
+            id="housingCountry"
+            ref={register}
+          />
+          {errors && errors[`housingCountry`] && (
+            <p className="error">{"Please check the postal code"}</p>
+          )}
+        </div>
+      </fieldset>
+
       <div className="field">
-        <label htmlFor="homeAddress" className="label">
-          Address
-        </label>
-        <input
-          type="text"
-          className="input"
-          name="homeAddress"
-          id="homeAddress"
-          ref={register}
-        />
-        {errors && errors[`homeAddress`] && (
-          <p className="error">{"Please check the address"}</p>
-        )}
-      </div>
-      <div className="field">
-        <label htmlFor="homeTitle" className="label">
+        <label htmlFor="housingTitle" className="label">
           Title
         </label>
         <input
           type="text"
           className="input"
-          name="homeTitle"
-          id="homeTitle"
+          name="housingTitle"
+          id="housingTitle"
           ref={register}
         />
-        {errors && errors[`homeTitle`] && (
+        {errors && errors[`housingTitle`] && (
           <p className="error">{"Please check the title"}</p>
         )}
       </div>
       <div className="field">
-        <label htmlFor="homeNotes" className="label">
+        <label htmlFor="housingNotes" className="label">
           Notes
         </label>
         <textarea
           className="textarea"
-          name="homeNotes"
-          id="homeNotes"
+          name="housingNotes"
+          id="housingNotes"
           ref={register}
         />
-        {errors && errors[`homeNotes`] && (
+        {errors && errors[`housingNotes`] && (
           <p className="error">{"Please check the notes"}</p>
         )}
       </div>

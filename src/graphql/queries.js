@@ -5588,6 +5588,13 @@ export const listClients = `query ListClients(
             notes
             address{
               id
+              number
+              street
+              postCode
+              country
+              state
+              region
+              county 
             }
           }
           repair{

@@ -66,6 +66,7 @@ export default function ExpensePersonalForm(props) {
 
   useEffect(() => {
     reset({
+      //generic fields
       personal: isUpdating && expense ? expense.category : "",
       housing:
         isUpdating && expense && expense.category === "HOUSING"
@@ -98,6 +99,36 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense ? housingInitializeForm(expense).supplyFor : "",
       brand: isUpdating && expense ? housingInitializeForm(expense).brand : "",
       model: isUpdating && expense ? housingInitializeForm(expense).model : "",
+      payType:
+        isUpdating && expense ? housingInitializeForm(expense).payType : "",
+      housingNumber:
+        isUpdating && expense
+          ? housingInitializeForm(expense).housingNumber
+          : "",
+      housingStreet:
+        isUpdating && expense
+          ? housingInitializeForm(expense).housingStreet
+          : "",
+      housingCounty:
+        isUpdating && expense
+          ? housingInitializeForm(expense).housingCounty
+          : "",
+      housingPostCode:
+        isUpdating && expense
+          ? housingInitializeForm(expense).housingPostCode
+          : "",
+      housingState:
+        isUpdating && expense
+          ? housingInitializeForm(expense).housingState
+          : "",
+      housingRegion:
+        isUpdating && expense
+          ? housingInitializeForm(expense).housingRegion
+          : "",
+      housingCountry:
+        isUpdating && expense
+          ? housingInitializeForm(expense).housingCountry
+          : "",
       insuranceAmount: isUpdating && expense ? expense.amount : "",
       phoneTitle:
         isUpdating && expense && (expense.plan || expense.aditional)
@@ -136,15 +167,6 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.plan && expense.plan.billing
           ? expense.plan.billing.billingEnd
           : "",
-
-      payType:
-        isUpdating && expense && expense.home
-          ? expense.home.mortgage.toLowerCase()
-          : "",
-      homeAddress:
-        isUpdating && expense && expense.home && expense.home.address
-          ? `You must add the other side of the relations`
-          : `You must add the other side of the relations`,
       phonePlan:
         isUpdating && expense && expense.phonePlan
           ? expense.phonePlan.toLowerCase()
@@ -302,6 +324,30 @@ export default function ExpensePersonalForm(props) {
           model: expense.supply.model
         };
       } else if (expense.home) {
+        return {
+          title: expense.home.title,
+          notes: expense.home.notes,
+          payType: expense.home.mortgage.toLowerCase(),
+          housingNumber: expense.home.address
+            ? expense.home.address.number
+            : "",
+          housingStreet: expense.home.address
+            ? expense.home.address.street
+            : "",
+          housingCounty: expense.home.address
+            ? expense.home.address.county
+            : "",
+          housingPostCode: expense.home.address
+            ? expense.home.address.postCode
+            : "",
+          housingState: expense.home.address ? expense.home.address.state : "",
+          housingRegion: expense.home.address
+            ? expense.home.address.region
+            : "",
+          housingCountry: expense.home.address
+            ? expense.home.address.country
+            : ""
+        };
       }
     }
   };
