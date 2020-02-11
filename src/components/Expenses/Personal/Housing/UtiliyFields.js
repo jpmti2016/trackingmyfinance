@@ -1,31 +1,25 @@
 import React from "react";
 
-export default function UtiliyFields({
-  watchUtility,
-  register,
-  errors,
-  expense,
-  isUpdating
-}) {
+export default function UtiliyFields({ watchUtility, register, errors }) {
   return (
     <>
       <div className="field">
-        <label htmlFor={`utilityDueDate`} className="label">
+        <label htmlFor={`housingDueDate`} className="label">
           Due Date
         </label>
         <input
           type="date"
           className="input"
-          name={`utilityDueDate`}
-          id={`utilityDueDate`}
+          name={`housingDueDate`}
+          id={`housingDueDate`}
           ref={register({ required: true })}
         />
-        {errors && errors[`utilityDueDate`] && (
+        {errors && errors[`housingDueDate`] && (
           <p className="error">{"Please select a due date"}</p>
         )}
       </div>
       <div className="field">
-        <label htmlFor={`utilityAmount`} className="label">
+        <label htmlFor={`housingAmount`} className="label">
           Amount
         </label>
         <div className="control">
@@ -33,18 +27,18 @@ export default function UtiliyFields({
             className="input"
             type="number"
             placeholder="25"
-            name={`utilityAmount`}
-            id={`utilityAmount`}
+            name={`housingAmount`}
+            id={`housingAmount`}
             ref={register({ required: true, min: 1 })}
           />
-          {errors && errors[`utilityBill`] && (
+          {errors && errors[`housingBill`] && (
             <p className="error">{"Please enter the amount"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor={`utilityCompany`} className="label">
+        <label htmlFor={`housingCompany`} className="label">
           Company
         </label>
         <div className="control">
@@ -52,18 +46,18 @@ export default function UtiliyFields({
             className="input"
             type="text"
             placeholder="Late water bill"
-            name={`utilityCompany`}
-            id={`utilityCompany`}
+            name={`housingCompany`}
+            id={`housingCompany`}
             ref={register({ min: 2 })}
           />
-          {errors && errors[`utilityCompany`] && (
+          {errors && errors[`housingCompany`] && (
             <p className="error">{"Please check the company"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor={`utilityTitle`} className="label">
+        <label htmlFor={`housingTitle`} className="label">
           Title
         </label>
         <div className="control">
@@ -71,29 +65,29 @@ export default function UtiliyFields({
             className="input"
             type="text"
             placeholder="Title"
-            name={`utilityTitle`}
-            id={`utilityTitle`}
+            name={`housingTitle`}
+            id={`housingTitle`}
             ref={register({ min: 2 })}
           />
-          {errors && errors[`utilityTitle`] && (
+          {errors && errors[`housingTitle`] && (
             <p className="error">{"Please check the title"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor={`utilityNotes`} className="label">
+        <label htmlFor={`housingNotes`} className="label">
           Notes
         </label>
         <div className="control">
           <textarea
             className="textarea"
-            name={`utilityNotes`}
-            id={`utilityNotes`}
+            name={`housingNotes`}
+            id={`housingNotes`}
             ref={register}
           />
         </div>
-        {errors && errors[`utilityNotes`] && (
+        {errors && errors[`housingNotes`] && (
           <p className="error">{"Please check the notes"}</p>
         )}
       </div>
@@ -103,35 +97,35 @@ export default function UtiliyFields({
         </label>
 
         <div className="control">
-          <label htmlFor={`utilityBillingStart`} className="label">
+          <label htmlFor={`housingBillingStart`} className="label">
             Start
           </label>
           <input
             type="date"
             className="input"
             placeholder="Start"
-            name={`utilityBillingStart`}
-            id={`utilityBillingStart`}
+            name={`housingBillingStart`}
+            id={`housingBillingStart`}
             ref={register}
           />
-          {errors && errors[`utilityBillingStart`] && (
+          {errors && errors[`housingBillingStart`] && (
             <p className="error">{"Please check the Start Period"}</p>
           )}
         </div>
 
         <div className="control">
-          <label htmlFor={`utilityBillingEnd`} className="label">
+          <label htmlFor={`housingBillingEnd`} className="label">
             End
           </label>
           <input
             type="date"
             className="input"
             placeholder="End"
-            name={`utilityBillingEnd`}
-            id={`utilityBillingEnd`}
+            name={`housingBillingEnd`}
+            id={`housingBillingEnd`}
             ref={register}
           />
-          {errors && errors["utilityBillingEnd"] && (
+          {errors && errors["housingBillingEnd"] && (
             <p className="error">{"Please check the End Period"}</p>
           )}
         </div>
@@ -140,7 +134,7 @@ export default function UtiliyFields({
         watchUtility === "power" ||
         watchUtility === "gas") && (
         <div className="field">
-          <label htmlFor={`utilityReading`} className="label">
+          <label htmlFor={`housingReading`} className="label">
             Reading
           </label>
           <div className="control">
@@ -148,12 +142,12 @@ export default function UtiliyFields({
               type="text"
               className="input"
               placeholder="123"
-              name={`utilityReading`}
-              id={`utilityReading`}
+              name={`housingReading`}
+              id={`housingReading`}
               ref={register}
             />
           </div>
-          {errors && errors[`utilityReading`] && (
+          {errors && errors[`housingReading`] && (
             <p className="error">{"Please check the Reading"}</p>
           )}
         </div>
