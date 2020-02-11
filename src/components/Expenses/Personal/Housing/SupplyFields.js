@@ -32,68 +32,68 @@ export default function SupplyFields({ register, errors }) {
         </div>
       </div>
       <div className="field">
-        <label htmlFor="supplyDueDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Date of Purchase
         </label>
         <div className="control">
           <input
             type="date"
             className="input"
-            name="supplyDueDate"
-            id="supplyDueDate"
+            name="dueDate"
+            id="dueDate"
             ref={register}
           />
-          {errors && errors.supplyDueDate && (
+          {errors && errors.dueDate && (
             <p className="error">{"Please select a the supply's dueDate"}</p>
           )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="supplyAmount" className="label">
+        <label htmlFor="amount" className="label">
           Amount
         </label>
         <div className="control">
           <input
             type="number"
             className="input"
-            name="supplyAmount"
-            id="supplyAmount"
+            name="amount"
+            id="amount"
             ref={register}
           />
-          {errors && errors.supplyAmount && (
+          {errors && errors.amount && (
             <p className="error">{"Please select a the supply's amount"}</p>
           )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="supplyTitle" className="label">
+        <label htmlFor="housingTitle" className="label">
           Title
         </label>
         <div className="control">
           <input
             type="text"
             className="input"
-            name="supplyTitle"
-            id="supplyTitle"
+            name="housingTitle"
+            id="housingTitle"
             ref={register}
           />
-          {errors && errors.supplyTitle && (
+          {errors && errors.housingTitle && (
             <p className="error">{"Please check the supply's title"}</p>
           )}
         </div>
       </div>
       <div className="field">
-        <label htmlFor="supplyNotes" className="label">
+        <label htmlFor="housingNotes" className="label">
           Notes
         </label>
         <div className="control">
           <textarea
             className="textarea"
-            name="supplyNotes"
-            id="supplyNotes"
+            name="housingNotes"
+            id="housingNotes"
             ref={register}
           />
-          {errors && errors.supplyNotes && (
+          {errors && errors.housingNotes && (
             <p className="error">{"Please check the supply's notes"}</p>
           )}
         </div>

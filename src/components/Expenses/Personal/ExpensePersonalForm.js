@@ -77,16 +77,27 @@ export default function ExpensePersonalForm(props) {
           : "",
       dueDate: isUpdating && expense ? expense.dueDate : "",
       title: isUpdating && expense && expense.title ? expense.title : "",
+      notes: isUpdating && expense && expense.notes ? expense.notes : "",
       amount: isUpdating && expense ? expense.amount : "",
       //housing
-      housingDueDate: isUpdating && expense ? expense.dueDate : "",
       housingTitle:
         isUpdating && expense ? housingInitializeForm(expense).title : "",
       housingNotes:
         isUpdating && expense ? housingInitializeForm(expense).notes : "",
-      housingAmount: isUpdating && expense ? expense.amount : "",
       housingCompany:
         isUpdating && expense ? housingInitializeForm(expense).company : "",
+      housingBillingStart:
+        isUpdating && expense
+          ? housingInitializeForm(expense).billingStart
+          : "",
+      housingBillingEnd:
+        isUpdating && expense ? housingInitializeForm(expense).billingEnd : "",
+      housingReading:
+        isUpdating && expense ? housingInitializeForm(expense).reading : "",
+      supplyFor:
+        isUpdating && expense ? housingInitializeForm(expense).supplyFor : "",
+      brand: isUpdating && expense ? housingInitializeForm(expense).brand : "",
+      model: isUpdating && expense ? housingInitializeForm(expense).model : "",
       insuranceAmount: isUpdating && expense ? expense.amount : "",
       phoneTitle:
         isUpdating && expense && (expense.plan || expense.aditional)
@@ -103,8 +114,6 @@ export default function ExpensePersonalForm(props) {
           ? expense.dinningOut.title
           : "",
 
-      notes: isUpdating && expense && expense.notes ? expense.notes : "",
-
       phoneNotes:
         isUpdating && expense && (expense.plan || expense.aditional)
           ? expense.plan
@@ -119,31 +128,15 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.dinningOut
           ? expense.dinningOut.notes
           : "",
-      housingBillingStart:
-        isUpdating && expense
-          ? housingInitializeForm(expense).billingStart
-          : "",
-      housingBillingEnd:
-        isUpdating && expense ? housingInitializeForm(expense).billingEnd : "",
-
       phonePlanBillingStart:
         isUpdating && expense && expense.plan && expense.plan.billing
           ? expense.plan.billing.billingStart
           : "",
-
       phonePlanBillingEnd:
         isUpdating && expense && expense.plan && expense.plan.billing
           ? expense.plan.billing.billingEnd
           : "",
 
-      housingReading:
-        isUpdating && expense ? housingInitializeForm(expense).reading : "",
-      supplyFor:
-        isUpdating && expense && expense.supply ? expense.supply.supplyFor : "",
-      brand:
-        isUpdating && expense && expense.supply ? expense.supply.brand : "",
-      model:
-        isUpdating && expense && expense.supply ? expense.supply.model : "",
       payType:
         isUpdating && expense && expense.home
           ? expense.home.mortgage.toLowerCase()
@@ -301,7 +294,14 @@ export default function ExpensePersonalForm(props) {
           reading: expense.utility.reading
         };
       } else if (expense.supply) {
-        return {};
+        return {
+          supplyFor: expense.supply.company,
+          title: expense.supply.title,
+          notes: expense.supply.notes,
+          brand: expense.supply.brand,
+          model: expense.supply.model
+        };
+      } else if (expense.home) {
       }
     }
   };
@@ -313,12 +313,6 @@ export default function ExpensePersonalForm(props) {
           title: expense.college.title,
           notes: expense.college.notes,
           program: expense.college.program,
-          // edPeriodStart: expense.college.period
-          //   ? expense.college.period.billingStart
-          //   : "",
-          // edPeriodEnd: expense.college.period
-          //   ? expense.college.period.billingEnd
-          //   : "",
           fees: expense.college.fees ? [...expense.college.fees.items] : []
         };
       } else if (expense.onlineCourse) {
@@ -349,12 +343,6 @@ export default function ExpensePersonalForm(props) {
           title: expense.communityCollege.title,
           notes: expense.communityCollege.notes,
           program: expense.communityCollege.program,
-          // edPeriodStart: expense.communityCollege.period
-          //   ? expense.communityCollege.period.billingStart
-          //   : "",
-          // edPeriodEnd: expense.communityCollege.period
-          //   ? expense.communityCollege.period.billingEnd
-          //   : "",
           fees: expense.communityCollege.fees
             ? [...expense.communityCollege.fees.items]
             : []

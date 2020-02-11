@@ -4,22 +4,22 @@ export default function UtiliyFields({ watchUtility, register, errors }) {
   return (
     <>
       <div className="field">
-        <label htmlFor={`housingDueDate`} className="label">
+        <label htmlFor={`dueDate`} className="label">
           Due Date
         </label>
         <input
           type="date"
           className="input"
-          name={`housingDueDate`}
-          id={`housingDueDate`}
+          name={`dueDate`}
+          id={`dueDate`}
           ref={register({ required: true })}
         />
-        {errors && errors[`housingDueDate`] && (
+        {errors && errors[`dueDate`] && (
           <p className="error">{"Please select a due date"}</p>
         )}
       </div>
       <div className="field">
-        <label htmlFor={`housingAmount`} className="label">
+        <label htmlFor={`amount`} className="label">
           Amount
         </label>
         <div className="control">
@@ -27,11 +27,11 @@ export default function UtiliyFields({ watchUtility, register, errors }) {
             className="input"
             type="number"
             placeholder="25"
-            name={`housingAmount`}
-            id={`housingAmount`}
+            name={`amount`}
+            id={`amount`}
             ref={register({ required: true, min: 1 })}
           />
-          {errors && errors[`housingBill`] && (
+          {errors && errors[`amount`] && (
             <p className="error">{"Please enter the amount"}</p>
           )}
         </div>
