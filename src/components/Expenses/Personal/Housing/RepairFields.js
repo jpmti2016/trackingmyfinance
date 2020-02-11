@@ -4,63 +4,63 @@ export default function RepairFields({ register, errors }) {
   return (
     <>
       <div className="field">
-        <label htmlFor="repairTitle" className="label">
+        <label htmlFor="housingTitle" className="label">
           Title
         </label>
         <input
           type="text"
           className="input"
-          name="repairTitle"
-          id="repairTitle"
+          name="housingTitle"
+          id="housingTitle"
           ref={register({ required: true })}
         />
-        {errors && errors[`repairTitle`] && (
+        {errors && errors[`housingTitle`] && (
           <p className="error">{"Please check the title"}</p>
         )}
       </div>
       <div className="field">
-        <label htmlFor="repairDueDate" className="label">
+        <label htmlFor="dueDate" className="label">
           Due Date
         </label>
         <input
           type="date"
           className="input"
-          name="repairDueDate"
-          id="repairDueDate"
+          name="dueDate"
+          id="dueDate"
           ref={register}
         />
-        {errors && errors[`repairDueDate`] && (
+        {errors && errors[`dueDate`] && (
           <p className="error">{"Please select the Due Date"}</p>
         )}
       </div>
 
       <div className="field">
-        <label htmlFor="repairAmount" className="label">
+        <label htmlFor="amount" className="label">
           Amount
         </label>
         <input
           type="number"
           className="input"
-          name="repairAmount"
-          id="repairAmount"
+          name="amount"
+          id="amount"
           ref={register({ required: true })}
         />
-        {errors && errors[`repairAmount`] && (
+        {errors && errors[`amount`] && (
           <p className="error">{"Please select the amount"}</p>
         )}
       </div>
 
       <div className="field">
-        <label htmlFor="repairNotes" className="label">
+        <label htmlFor="housingNotes" className="label">
           Notes
         </label>
         <textarea
           className="textarea"
-          name="repairNotes"
-          id="repairNotes"
+          name="housingNotes"
+          id="housingNotes"
           ref={register}
         />
-        {errors && errors[`repairNotes`] && (
+        {errors && errors[`housingNotes`] && (
           <p className="error">{"Please select the notes"}</p>
         )}
       </div>

@@ -348,6 +348,16 @@ export default function ExpensePersonalForm(props) {
             ? expense.home.address.country
             : ""
         };
+      } else if (expense.repair) {
+        return {
+          title: expense.repair.title,
+          notes: expense.repair.notes
+        };
+      } else if (expense.otherHousing) {
+        return {
+          title: expense.otherHousing.title,
+          notes: expense.otherHousing.notes
+        };
       }
     }
   };
