@@ -77,10 +77,11 @@ export default function ExpensePersonalForm(props) {
           ? expense.utility.selection.toLowerCase()
           : "",
       dueDate: isUpdating && expense ? expense.dueDate : "",
-      title: isUpdating && expense && expense.title ? expense.title : "",
-      notes: isUpdating && expense && expense.notes ? expense.notes : "",
+      title: isUpdating && expense ? expense.title : "",
+      notes: isUpdating && expense ? expense.notes : "",
       amount: isUpdating && expense ? expense.amount : "",
       //housing
+
       housingTitle:
         isUpdating && expense ? housingInitializeForm(expense).title : "",
       housingNotes:
@@ -129,15 +130,14 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense
           ? housingInitializeForm(expense).housingCountry
           : "",
-      insuranceAmount: isUpdating && expense ? expense.amount : "",
+
       phoneTitle:
         isUpdating && expense && (expense.plan || expense.aditional)
           ? expense.plan
             ? expense.plan.title
             : expense.aditional.title
           : "",
-      insuranceTitle:
-        isUpdating && expense && expense.title ? expense.title : "",
+
       groceryTitle:
         isUpdating && expense && expense.grocery ? expense.grocery.title : "",
       dinningOutTitle:
@@ -151,8 +151,7 @@ export default function ExpensePersonalForm(props) {
             ? expense.plan.notes
             : expense.aditional.notes
           : "",
-      insuranceNotes:
-        isUpdating && expense && expense.notes ? expense.notes : "",
+
       groceryNotes:
         isUpdating && expense && expense.grocery ? expense.grocery.notes : "",
       dinningOutNotes:
@@ -179,7 +178,7 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.yearDeductions
           ? expense.yearDeductions
           : "",
-      insuranceComapny:
+      insuranceCompany:
         isUpdating && expense && expense.company ? expense.company : "",
       beneficiaries:
         isUpdating && expense && expense.beneficiaries
@@ -357,6 +356,11 @@ export default function ExpensePersonalForm(props) {
         return {
           title: expense.otherHousing.title,
           notes: expense.otherHousing.notes
+        };
+      } else {
+        return {
+          title: "",
+          notes: ""
         };
       }
     }

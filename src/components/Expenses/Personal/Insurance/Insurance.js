@@ -33,26 +33,26 @@ export default function InsuranceFields({
       </div>
 
       <div className="field">
-        <label htmlFor="startDate" className="label">
-          Start Date
+        <label htmlFor="dueDate" className="label">
+          Due Date
         </label>
         <div className="control">
           <input
             type="date"
             className="input"
-            name="startDate"
-            id="startDate"
+            name="dueDate"
+            id="dueDate"
             placeholder="10/01/2018"
             ref={register({ required: true })}
           />
-          {errors.startDate && (
-            <p className="error">{"Please select the start date"}</p>
+          {errors.dueDate && (
+            <p className="error">{"Please select the due date"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="insuranceTitle" className="label">
+        <label htmlFor="title" className="label">
           Plan Title
         </label>
         <div className="control">
@@ -64,18 +64,16 @@ export default function InsuranceFields({
                 ? "Property insurance"
                 : "Vision Insurance"
             }
-            name="insuranceTitle"
-            id="insuranceTitle"
+            name="title"
+            id="title"
             ref={register({ required: true })}
           />
-          {errors.insuranceTitle && (
-            <p className="error">{"Please check the title"}</p>
-          )}
+          {errors.title && <p className="error">{"Please check the title"}</p>}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="insuranceNotes" className="label">
+        <label htmlFor="notes" className="label">
           Notes
         </label>
         <div className="control">
@@ -86,14 +84,12 @@ export default function InsuranceFields({
                 ? "Property insurance Personal Notes"
                 : "Vision Insurance Personal Notes"
             }
-            name="insuranceNotes"
-            id="insuranceNotes"
+            name="notes"
+            id="notes"
             ref={register({ required: true })}
           />
         </div>
-        {errors.insuranceNotes && (
-          <p className="error">{"Please check the notes"}</p>
-        )}
+        {errors.notes && <p className="error">{"Please check the notes"}</p>}
       </div>
 
       <div className="field">
@@ -120,6 +116,25 @@ export default function InsuranceFields({
       </div>
 
       <div className="field">
+        <label htmlFor="startDate" className="label">
+          Start Date
+        </label>
+        <div className="control">
+          <input
+            type="date"
+            className="input"
+            name="startDate"
+            id="startDate"
+            placeholder="10/01/2018"
+            ref={register({ required: true })}
+          />
+          {errors.startDate && (
+            <p className="error">{"Please select the start date"}</p>
+          )}
+        </div>
+      </div>
+
+      <div className="field">
         <label htmlFor="yearDeductions" className="label">
           Year Deductions
         </label>
@@ -139,7 +154,7 @@ export default function InsuranceFields({
       </div>
 
       <div className="field">
-        <label htmlFor="insuranceAmount" className="label">
+        <label htmlFor="amount" className="label">
           Personal Cost
         </label>
         <div className="control">
@@ -147,18 +162,18 @@ export default function InsuranceFields({
             type="number"
             className="input"
             placeholder="30.49"
-            name="insuranceAmount"
-            id="insuranceAmount"
+            name="amount"
+            id="amount"
             ref={register}
           />
-          {errors.insuranceAmount && (
+          {errors.amount && (
             <p className="error">{"Please check the personal cost"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="insuranceComapny" className="label">
+        <label htmlFor="insuranceCompany" className="label">
           Insurance Company
         </label>
         <div className="control">
@@ -166,8 +181,8 @@ export default function InsuranceFields({
             type="text"
             className="input"
             placeholder="Mutual of Omaha"
-            name="insuranceComapny"
-            id="insuranceComapny"
+            name="insuranceCompany"
+            id="insuranceCompany"
             ref={register({ required: true })}
           />
         </div>
