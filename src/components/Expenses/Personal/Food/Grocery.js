@@ -47,36 +47,36 @@ export default function GroceryFields({
       </div>
 
       <div className="field">
-        <label htmlFor="groceryTitle" className="label">
+        <label htmlFor="foodTitle" className="label">
           Title
         </label>
         <div className="control">
           <input
             type="text"
             className="input"
-            name="groceryTitle"
-            id="groceryTitle"
+            name="foodTitle"
+            id="foodTitle"
             ref={register({ required: true })}
           />
-          {errors && errors[`groceryTitle`] && (
+          {errors && errors[`foodTitle`] && (
             <p className="error">{"Please check the title"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="groceryNotes" className="label">
+        <label htmlFor="foodNotes" className="label">
           Notes
         </label>
         <div className="control">
           <textarea
             className="textarea"
-            name="groceryNotes"
-            id="groceryNotes"
+            name="foodNotes"
+            id="foodNotes"
             ref={register({ required: true })}
           />
         </div>
-        {errors && errors[`groceryNotes`] && (
+        {errors && errors[`foodNotes`] && (
           <p className="error">{"Please check the notes"}</p>
         )}
       </div>
@@ -110,19 +110,19 @@ export default function GroceryFields({
 
       {watchGroceryInfo === "TOTAL" ? (
         <div className="field">
-          <label htmlFor="groceryTotal" className="label">
+          <label htmlFor="amount" className="label">
             Amount
           </label>
           <div className="control">
             <input
-              id="groceryTotal"
+              id="amount"
               type="number"
               className="input"
-              name="groceryTotal"
+              name="amount"
               ref={register}
             />
           </div>
-          {errors && errors[`groceryTotal`] && (
+          {errors && errors[`amount`] && (
             <p className="error">{"Please check the total"}</p>
           )}
         </div>

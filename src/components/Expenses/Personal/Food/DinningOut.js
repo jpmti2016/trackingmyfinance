@@ -4,6 +4,40 @@ export default function DinningOut({ register, errors }) {
   return (
     <>
       <div className="field">
+        <label htmlFor="amount" className="label">
+          Amount
+        </label>
+        <div className="control">
+          <input
+            type="text"
+            className="input"
+            name="amount"
+            id="amount"
+            ref={register({ required: true })}
+          />
+          {errors && errors[`amount`] && (
+            <p className="error">{"Please check the amount field"}</p>
+          )}
+        </div>
+      </div>
+      <div className="field">
+        <label htmlFor="dueDate" className="label">
+          Due Date
+        </label>
+        <div className="control">
+          <input
+            type="date"
+            className="input"
+            name="dueDate"
+            id="dueDate"
+            ref={register({ required: true })}
+          />
+          {errors && errors[`dueDate`] && (
+            <p className="error">{"Please check the dueDate field"}</p>
+          )}
+        </div>
+      </div>
+      <div className="field">
         <label htmlFor="place" className="label">
           Place
         </label>
@@ -22,35 +56,35 @@ export default function DinningOut({ register, errors }) {
       </div>
 
       <div className="field">
-        <label htmlFor="dinningOutTitle" className="label">
+        <label htmlFor="foodTitle" className="label">
           Title
         </label>
         <div className="control">
           <input
             type="text"
             className="input"
-            name="dinningOutTitle"
-            id="dinningOutTitle"
+            name="foodTitle"
+            id="foodTitle"
             ref={register({ required: true })}
           />
-          {errors && errors[`dinningOutTitle`] && (
+          {errors && errors[`foodTitle`] && (
             <p className="error">{"Please check the title"}</p>
           )}
         </div>
       </div>
 
       <div className="field">
-        <label htmlFor="dinningOutNotes" className="label">
+        <label htmlFor="foodNotes" className="label">
           Notes
         </label>
         <div className="control">
           <textarea
             className="textarea"
-            name="dinningOutNotes"
-            id="dinningOutNotes"
+            name="foodNotes"
+            id="foodNotes"
             ref={register({ required: true })}
           />
-          {errors && errors[`dinningOutNotes`] && (
+          {errors && errors[`foodNotes`] && (
             <p className="error">{"Please check the notes"}</p>
           )}
         </div>

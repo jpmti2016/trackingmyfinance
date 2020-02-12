@@ -82,67 +82,41 @@ export default function ExpensePersonalForm(props) {
       amount: isUpdating && expense ? expense.amount : "",
       //housing
 
-      housingTitle:
-        isUpdating && expense ? housingInitializeForm(expense).title : "",
-      housingNotes:
-        isUpdating && expense ? housingInitializeForm(expense).notes : "",
+      housingTitle: isUpdating && expense ? housingInitForm(expense).title : "",
+      housingNotes: isUpdating && expense ? housingInitForm(expense).notes : "",
       housingCompany:
-        isUpdating && expense ? housingInitializeForm(expense).company : "",
+        isUpdating && expense ? housingInitForm(expense).company : "",
       housingBillingStart:
-        isUpdating && expense
-          ? housingInitializeForm(expense).billingStart
-          : "",
+        isUpdating && expense ? housingInitForm(expense).billingStart : "",
       housingBillingEnd:
-        isUpdating && expense ? housingInitializeForm(expense).billingEnd : "",
+        isUpdating && expense ? housingInitForm(expense).billingEnd : "",
       housingReading:
-        isUpdating && expense ? housingInitializeForm(expense).reading : "",
+        isUpdating && expense ? housingInitForm(expense).reading : "",
       supplyFor:
-        isUpdating && expense ? housingInitializeForm(expense).supplyFor : "",
-      brand: isUpdating && expense ? housingInitializeForm(expense).brand : "",
-      model: isUpdating && expense ? housingInitializeForm(expense).model : "",
-      payType:
-        isUpdating && expense ? housingInitializeForm(expense).payType : "",
+        isUpdating && expense ? housingInitForm(expense).supplyFor : "",
+      brand: isUpdating && expense ? housingInitForm(expense).brand : "",
+      model: isUpdating && expense ? housingInitForm(expense).model : "",
+      payType: isUpdating && expense ? housingInitForm(expense).payType : "",
       housingNumber:
-        isUpdating && expense
-          ? housingInitializeForm(expense).housingNumber
-          : "",
+        isUpdating && expense ? housingInitForm(expense).housingNumber : "",
       housingStreet:
-        isUpdating && expense
-          ? housingInitializeForm(expense).housingStreet
-          : "",
+        isUpdating && expense ? housingInitForm(expense).housingStreet : "",
       housingCounty:
-        isUpdating && expense
-          ? housingInitializeForm(expense).housingCounty
-          : "",
+        isUpdating && expense ? housingInitForm(expense).housingCounty : "",
       housingPostCode:
-        isUpdating && expense
-          ? housingInitializeForm(expense).housingPostCode
-          : "",
+        isUpdating && expense ? housingInitForm(expense).housingPostCode : "",
       housingState:
-        isUpdating && expense
-          ? housingInitializeForm(expense).housingState
-          : "",
+        isUpdating && expense ? housingInitForm(expense).housingState : "",
       housingRegion:
-        isUpdating && expense
-          ? housingInitializeForm(expense).housingRegion
-          : "",
+        isUpdating && expense ? housingInitForm(expense).housingRegion : "",
       housingCountry:
-        isUpdating && expense
-          ? housingInitializeForm(expense).housingCountry
-          : "",
+        isUpdating && expense ? housingInitForm(expense).housingCountry : "",
 
       phoneTitle:
         isUpdating && expense && (expense.plan || expense.aditional)
           ? expense.plan
             ? expense.plan.title
             : expense.aditional.title
-          : "",
-
-      groceryTitle:
-        isUpdating && expense && expense.grocery ? expense.grocery.title : "",
-      dinningOutTitle:
-        isUpdating && expense && expense.dinningOut
-          ? expense.dinningOut.title
           : "",
 
       phoneNotes:
@@ -152,12 +126,7 @@ export default function ExpensePersonalForm(props) {
             : expense.aditional.notes
           : "",
 
-      groceryNotes:
-        isUpdating && expense && expense.grocery ? expense.grocery.notes : "",
-      dinningOutNotes:
-        isUpdating && expense && expense.dinningOut
-          ? expense.dinningOut.notes
-          : "",
+      //phone
       phonePlanBillingStart:
         isUpdating && expense && expense.plan && expense.plan.billing
           ? expense.plan.billing.billingStart
@@ -189,77 +158,54 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.lawyers
           ? [...expense.lawyers.items]
           : "",
-      groceryStore:
-        isUpdating && expense && expense.grocery ? expense.grocery.store : "",
-      groceryInfo:
-        isUpdating && expense && expense.grocery ? expense.grocery.info : "",
-      groceryTotal: isUpdating && expense ? expense.amount : "",
-      place:
-        isUpdating && expense && expense.dinningOut
-          ? expense.dinningOut.place
-          : "",
-      products:
-        isUpdating && expense && expense.grocery && expense.grocery.products
-          ? [...expense.grocery.products.items]
-          : [],
+      //food
+      foodNotes: isUpdating && expense ? foodInitForm(expense).notes : "",
+      foodTitle: isUpdating && expense ? foodInitForm(expense).title : "",
+      groceryStore: isUpdating && expense ? foodInitForm(expense).store : "",
+      groceryInfo: isUpdating && expense ? foodInitForm(expense).info : "",
+      // groceryTotal: isUpdating && expense ? expense.amount : "",
+      place: isUpdating && expense ? foodInitForm(expense).place : "",
+      products: isUpdating && expense ? foodInitForm(expense).products : [],
       //Commute
       commuteService: isUpdating && expense ? expense.service : "",
       commuteEvent: isUpdating && expense ? expense.event : "",
       //education
       bCampPriceDeferred:
-        isUpdating && expense
-          ? educationInitializeForm(expense).costDeferred
-          : "",
+        isUpdating && expense ? educationInitForm(expense).costDeferred : "",
       edProgram:
-        isUpdating && expense ? educationInitializeForm(expense).program : "",
+        isUpdating && expense ? educationInitForm(expense).program : "",
       edTrainingSchool:
-        isUpdating && expense ? educationInitializeForm(expense).school : "",
-      edNotes:
-        isUpdating && expense ? educationInitializeForm(expense).notes : "",
-      edTitle:
-        isUpdating && expense ? educationInitializeForm(expense).title : "",
+        isUpdating && expense ? educationInitForm(expense).school : "",
+      edNotes: isUpdating && expense ? educationInitForm(expense).notes : "",
+      edTitle: isUpdating && expense ? educationInitForm(expense).title : "",
       edPeriodStart:
-        isUpdating && expense
-          ? educationInitializeForm(expense).edPeriodStart
-          : "",
+        isUpdating && expense ? educationInitForm(expense).edPeriodStart : "",
       edPeriodEnd:
-        isUpdating && expense
-          ? educationInitializeForm(expense).edPeriodEnd
-          : "",
+        isUpdating && expense ? educationInitForm(expense).edPeriodEnd : "",
       instructors:
-        isUpdating && expense
-          ? educationInitializeForm(expense).instructors
-          : [],
+        isUpdating && expense ? educationInitForm(expense).instructors : [],
       edOnlineDesc:
-        isUpdating && expense
-          ? educationInitializeForm(expense).description
-          : "",
+        isUpdating && expense ? educationInitForm(expense).description : "",
       edOnlinePlatf:
-        isUpdating && expense ? educationInitializeForm(expense).platform : "",
-      url: isUpdating && expense ? educationInitializeForm(expense).url : "",
+        isUpdating && expense ? educationInitForm(expense).platform : "",
+      url: isUpdating && expense ? educationInitForm(expense).url : "",
       edOnlinePeriod:
         isUpdating && expense
-          ? educationInitializeForm(expense).edOnlinePeriod
+          ? educationInitForm(expense).edOnlinePeriod
           : false,
       tuitionAndFees:
-        isUpdating && expense
-          ? educationInitializeForm(expense).tuitionAndFees
-          : "",
+        isUpdating && expense ? educationInitForm(expense).tuitionAndFees : "",
       booksAndSupplies:
         isUpdating && expense
-          ? educationInitializeForm(expense).booksAndSupplies
+          ? educationInitForm(expense).booksAndSupplies
           : "",
       roomAndBoard:
-        isUpdating && expense
-          ? educationInitializeForm(expense).roomAndBoard
-          : "",
+        isUpdating && expense ? educationInitForm(expense).roomAndBoard : "",
       edTransportation:
-        isUpdating && expense
-          ? educationInitializeForm(expense).transportation
-          : "",
+        isUpdating && expense ? educationInitForm(expense).transportation : "",
       edPersonal:
-        isUpdating && expense ? educationInitializeForm(expense).personal : "",
-      fees: isUpdating && expense ? educationInitializeForm(expense).fees : [],
+        isUpdating && expense ? educationInitForm(expense).personal : "",
+      fees: isUpdating && expense ? educationInitForm(expense).fees : [],
       //Taxes
       year: isUpdating && expense && expense.w2 ? expense.w2.year : "",
       grossPay: isUpdating && expense && expense.w2 ? expense.w2.grossPay : "",
@@ -298,7 +244,34 @@ export default function ExpensePersonalForm(props) {
     }
   };
 
-  const housingInitializeForm = expense => {
+  const foodInitForm = expense => {
+    if (expense) {
+      if (expense.grocery) {
+        return {
+          title: expense.grocery.title,
+          notes: expense.grocery.notes,
+          info: expense.grocery.info,
+          store: expense.grocery.store,
+          products: expense.grocery.products
+            ? [...expense.grocery.products.items]
+            : []
+        };
+      } else if (expense.dinningOut) {
+        return {
+          place: expense.dinningOut.place,
+          title: expense.dinningOut.title,
+          notes: expense.dinningOut.notes
+        };
+      } else {
+        return {
+          title: "",
+          notes: ""
+        };
+      }
+    }
+  };
+
+  const housingInitForm = expense => {
     if (expense) {
       if (expense.utility) {
         return {
@@ -366,7 +339,7 @@ export default function ExpensePersonalForm(props) {
     }
   };
 
-  const educationInitializeForm = expense => {
+  const educationInitForm = expense => {
     if (expense) {
       if (expense.college) {
         return {
