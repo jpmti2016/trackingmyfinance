@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 // import * as yup from 'yup';
-import dayjs from "dayjs";
+
 import { useHistory } from "react-router-dom";
-import { API, graphqlOperation } from "aws-amplify";
-import {
-  createPeriod,
-  updatePeriod,
-  createUtility,
-  updateUtility,
-  updateHousingExpense
-} from "../../../graphql/mutations";
+
 import "./ExpensePersonalForm.css";
 
-import { asEnumeration } from "../../helpers/noswitch";
+import { categoryAsEnum } from "../../helpers/category";
 
 import HousingFields from "./Housing/Housing";
 import InsuranceFields from "./Insurance/Insurance";
@@ -28,7 +21,6 @@ import PetFields from "./Pet/Pet";
 import LoanFields from "./Loan/Loan";
 import TaxesFields from "./Taxes/Taxes";
 import InvestmentFields from "./Investment/Investment";
-import { getOtherHousing } from "../../../graphql/queries";
 
 // const personalSchema = yup.object().shape({
 //   housing: yup.object.shape({
@@ -72,16 +64,12 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.category === "HOUSING"
           ? housingEnumT(expense).typeToUpdate
           : "",
-      utility:
-        isUpdating && expense && expense.utility
-          ? expense.utility.selection.toLowerCase()
-          : "",
       dueDate: isUpdating && expense ? expense.dueDate : "",
       title: isUpdating && expense ? expense.title : "",
       notes: isUpdating && expense ? expense.notes : "",
       amount: isUpdating && expense ? expense.amount : "",
       //housing
-
+      utility: isUpdating && expense ? housingInitForm(expense).utility : "",
       housingTitle: isUpdating && expense ? housingInitForm(expense).title : "",
       housingNotes: isUpdating && expense ? housingInitForm(expense).notes : "",
       housingCompany:
@@ -220,26 +208,33 @@ export default function ExpensePersonalForm(props) {
     });
   }, [expense, reset, isUpdating]);
 
-  const watchPersonal = watch("personal");
-
-  const watchInsurance = watch("nature");
-
-  const watchHousing = watch("housing");
-
-  const watchUtility = watch("utility");
-
   const housingEnumT = expense => {
     if (expense) {
       if (expense.home) {
-        return { typeToUpdate: "HOME", title: "" };
+        return {
+          typeToUpdate: "HOME",
+          title: ""
+        };
       } else if (expense.otherHousing) {
-        return { typeToUpdate: "OTHER", title: "" };
+        return {
+          typeToUpdate: "OTHER",
+          title: ""
+        };
       } else if (expense.repair) {
-        return { typeToUpdate: "REPAIR", title: "" };
+        return {
+          typeToUpdate: "REPAIR",
+          title: ""
+        };
       } else if (expense.supply) {
-        return { typeToUpdate: "SUPPLIES", title: "" };
+        return {
+          typeToUpdate: "SUPPLIES",
+          title: ""
+        };
       } else if (expense.utility) {
-        return { typeToUpdate: "UTILITIES", title: "" };
+        return {
+          typeToUpdate: "UTILITIES",
+          title: ""
+        };
       }
     }
   };
@@ -275,7 +270,7 @@ export default function ExpensePersonalForm(props) {
     if (expense) {
       if (expense.utility) {
         return {
-          selection: expense.utility.selection,
+          utility: expense.utility.selection,
           company: expense.utility.company,
           title: expense.utility.title,
           notes: expense.utility.notes,
@@ -409,21 +404,26 @@ export default function ExpensePersonalForm(props) {
     }
   };
 
+  const watchPersonal = watch("personal");
+
+  const watchInsurance = watch("nature");
+  const watchHousing = watch("nature");
+  const watchFood = watch("nature");
+  const watchEnterMent = watch("nature");
+  const watchEducation = watch("nature");
+
+  const watchUtility = watch("utility");
+
   const watchLawyerOption = watch("lawyerOption");
 
   const watchPhonePlan = watch("phonePlan");
-
-  const watchFood = watch("nature");
 
   const watchGroceryInfo = watch("groceryInfo");
 
   const watchCommuteService = watch("commuteService");
 
-  const watchEducation = watch("nature");
   const watchEdOnlinePeriod = watch("edOnlinePeriod");
   const watchBCampPriceDeferred = watch("bCampPriceDeferred");
-
-  const watchEnterMent = watch("nature");
 
   const ctaElement = `${
     watchPersonal !== "Select" ? watchPersonal : ""
@@ -435,138 +435,18 @@ export default function ExpensePersonalForm(props) {
     history.push("/expenses/personal");
   };
 
-  const managePeriod = async ({ periodStartEmpty, periodEndingEmpty }) => {
-    try {
-      let periodId = null;
-      if (isAdding) {
-        const result = await API.graphql(
-          graphqlOperation(createPeriod, {
-            input: {
-              billingStart: periodStartEmpty,
-              billingEnd: periodEndingEmpty
-            }
-          })
-        );
-
-        result && (periodId = result.data.createPeriod.id);
-        console.log("period created", periodId);
-      } else if (isUpdating) {
-        const result = await API.graphql(
-          graphqlOperation(updatePeriod, {
-            input: {
-              billingStart: periodStartEmpty,
-              billingEnd: periodEndingEmpty
-            }
-          })
-        );
-
-        result && (periodId = result.data.createPeriod.id);
-        console.log("period updated", periodId);
-      }
-
-      return periodId;
-    } catch (error) {
-      console.error("Validate period", error);
-    }
-  };
-
-  const formatUtilities = async newData => {
-    try {
-      const {
-        kind,
-        personal,
-        housing,
-        utility,
-        waterDueDate,
-        waterBill,
-        waterTitle,
-        waterCompany,
-        waterNotes,
-        waterPeriodStart,
-        waterPeriodEnding,
-        waterReading
-      } = newData;
-      const formatedDueDate = dayjs(waterDueDate).format("YYYY-MM-DD");
-      const formatedAmount = waterBill === "" ? null : Number(waterBill);
-
-      const titleBeNotEmpty = waterTitle === "" ? null : waterTitle;
-      const notesBeNotEmpty = waterNotes === "" ? null : waterNotes;
-      const companyBeNotEmpty = waterCompany === "" ? null : waterCompany;
-      const readingBeNotEmpty = waterReading === "" ? null : waterReading;
-
-      // const categoryBeNotEmpty =
-
-      const periodStartBeNotEmpty =
-        waterPeriodStart === ""
-          ? null
-          : dayjs(waterPeriodStart).format("YYYY-MM-DD");
-      const periodEndingBeNotEmpty =
-        waterPeriodEnding === ""
-          ? null
-          : dayjs(waterPeriodEnding).format("YYYY-MM-DD");
-      const utilityPeriodId = await managePeriod({
-        periodStartBeNotEmpty,
-        periodEndingBeNotEmpty
-      });
-
-      const formatedUtility = {
-        company: companyBeNotEmpty,
-        notes: notesBeNotEmpty,
-        reading: readingBeNotEmpty,
-        selection: utility,
-        title: titleBeNotEmpty,
-        utilityPeriodId
-      };
-
-      if (isUpdating) {
-        let existingUtilityId = null;
-        expense && (existingUtilityId = expense.utility.id);
-        const utilityToUpdate = { id: existingUtilityId, ...formatedUtility };
-        const utilityUpdated = await API.graphql(
-          graphqlOperation(updateUtility, { input: utilityToUpdate })
-        );
-        const utilityId =
-          utilityUpdated && utilityUpdated.data.updateUtility.id;
-
-        const housingExpenseToUpdate = {
-          ...expense,
-          housingExpenseUtilityId: utilityId,
-          kind,
-          category: personal,
-          nature: housing,
-          dueDate: formatedDueDate,
-          amount: formatedAmount
-        };
-
-        const updatedHousingExpense = await API.graphql(
-          graphqlOperation(updateHousingExpense, {
-            input: housingExpenseToUpdate
-          })
-        );
-        console.log("updated housing", updatedHousingExpense);
-      } else if (isAdding) {
-      }
-    } catch (error) {
-      console.error("Format housing utility period", error);
-    }
-  };
-
-  const formatHousing = data => {
-    switch (watchHousing) {
-      case "Utilities":
-        return formatUtilities(data);
-      default:
-        throw new Error("Must select a housing");
-    }
-  };
-
   const handleUpdatePersonalExpense = formatedExpense => {
     // formatPesonalExpense(formatedExpense);
   };
 
-  const handleCreatePersonalExpense = formatedExpense => {
+  const handleCreatePersonalExpense = (data, clientId) => {
     try {
-    } catch (error) {}
+      console.log("handle create personal", data);
+      categoryAsEnum.fromValue(data.personal).create(data, clientId);
+      history.push("/expenses/personal");
+    } catch (error) {
+      console.error("handle create personal expense", error);
+    }
   };
 
   const onSubmit = (data, e) => {
@@ -577,18 +457,17 @@ export default function ExpensePersonalForm(props) {
       const kind = "PERSONAL"; //'Personal' because each the field kind is based on the current tab position
       // const formatedExpense = formatPesonalExpense({ ...data, kind });
 
-      // isAdding && handleCreatePersonalExpense(formatedExpense);
+      isAdding && handleCreatePersonalExpense(data, clientId);
 
       // isUpdating && handleUpdatePersonalExpense(formatedExpense);
-      alert(JSON.stringify(data));
+
+      // alert(JSON.stringify(data));
     } catch (error) {
       console.error("CU personal expense", error);
     }
 
     // e.target.reset(); // reset after form submit
     // alert(JSON.stringify(data));
-
-    history.push("/expenses/personal");
   };
 
   return (
@@ -605,7 +484,12 @@ export default function ExpensePersonalForm(props) {
           <div className="level">
             <div className="level-left">
               <div className="level-item">
-                <h1 className="title" style={{ color: "#363636" }}>
+                <h1
+                  className="title"
+                  style={{
+                    color: "#363636"
+                  }}
+                >
                   Expenses
                 </h1>
               </div>
@@ -625,7 +509,9 @@ export default function ExpensePersonalForm(props) {
                 <select
                   name="personal"
                   id="personal"
-                  ref={register({ required: true })}
+                  ref={register({
+                    required: true
+                  })}
                 >
                   <option value="">--Select--</option>
                   <option value="HOUSING">Housing</option>
@@ -753,7 +639,10 @@ export default function ExpensePersonalForm(props) {
                 className="button is-link is-fullwidth"
                 type="submit"
                 onClick={handleCancel}
-                style={{ backgroundColor: "#fafafa", color: "#BAA949" }}
+                style={{
+                  backgroundColor: "#fafafa",
+                  color: "#BAA949"
+                }}
               >
                 Cancel
               </button>
