@@ -5,13 +5,13 @@ export default function UtilityRadioGroup({ register }) {
     <div className="field is-grouped is-grouped-multiline">
       <div className="control">
         <label htmlFor="water" className="label">
-          <input type="radio" name="utility" value="water" ref={register} />
+          <input type="radio" name="utility" value="WATER" ref={register} />
           Water
         </label>
       </div>
       <div className="control">
         <label htmlFor="power" className="label">
-          <input type="radio" name="utility" value="power" ref={register} />
+          <input type="radio" name="utility" value="POWER" ref={register} />
           Power
         </label>
       </div>
@@ -21,7 +21,7 @@ export default function UtilityRadioGroup({ register }) {
             type="radio"
             placeholder="gas"
             name="utility"
-            value="gas"
+            value="GAS"
             ref={register}
           />
           Gas
@@ -33,7 +33,7 @@ export default function UtilityRadioGroup({ register }) {
             type="radio"
             placeholder="internet"
             name="utility"
-            value="internet"
+            value="INTERNET"
             ref={register}
           />
           Internet
@@ -45,7 +45,7 @@ export default function UtilityRadioGroup({ register }) {
             type="radio"
             placeholder="cable"
             name="utility"
-            value="cable"
+            value="CABLE"
             ref={register}
           />
           Cable
@@ -57,7 +57,7 @@ export default function UtilityRadioGroup({ register }) {
             type="radio"
             placeholder="phone"
             name="utility"
-            value="phone"
+            value="PHONE"
             ref={register}
           />
           Phone

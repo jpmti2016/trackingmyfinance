@@ -18,30 +18,28 @@ export default function HousingFields({
   return (
     <>
       <div className="field">
-        <label htmlFor="housing" className="label">
+        <label htmlFor="nature" className="label">
           Housing
         </label>
         <div className="control">
           <div className="select">
-            <select name="housing" ref={register({ required: true })}>
+            <select name="nature" ref={register({ required: true })}>
               <option value="">--Select--</option>
-              <option value="UTILITIES">Utilities</option>
-              <option value="SUPPLIES">Supplies</option>
+              <option value="UTILITY">Utilities</option>
+              <option value="SUPPLY">Supplies</option>
               <option value="HOME">Home</option>
               <option value="REPAIR">Repair</option>
               <option value="OTHER">Other</option>
             </select>
           </div>
-          {errors && errors.housing && (
+          {errors && errors.nature && (
             <p className="error">{"Please select a housing type"}</p>
           )}
         </div>
       </div>
 
-      {watchHousing === "UTILITIES" && (
-        <UtilityRadioGroup register={register} />
-      )}
-      {watchHousing === "UTILITIES" && watchUtility && (
+      {watchHousing === "UTILITY" && <UtilityRadioGroup register={register} />}
+      {watchHousing === "UTILITY" && watchUtility && (
         <UtiliyFields
           watchUtility={watchUtility}
           register={register}
@@ -51,7 +49,7 @@ export default function HousingFields({
         />
       )}
 
-      {watchHousing === "SUPPLIES" && (
+      {watchHousing === "SUPPLY" && (
         <SupplyFields register={register} expense={expense} errors={errors} />
       )}
 

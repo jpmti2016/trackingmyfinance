@@ -36,6 +36,24 @@ export default function UtiliyFields({ watchUtility, register, errors }) {
           )}
         </div>
       </div>
+      <div className="field">
+        <label htmlFor={`housingReading`} className="label">
+          Reading
+        </label>
+        <div className="control">
+          <input
+            className="input"
+            type="number"
+            placeholder="25"
+            name={`housingReading`}
+            id={`housingReading`}
+            ref={register({ required: true, min: 1 })}
+          />
+          {errors && errors[`housingReading`] && (
+            <p className="error">{"Please enter the reading"}</p>
+          )}
+        </div>
+      </div>
 
       <div className="field">
         <label htmlFor={`housingCompany`} className="label">
