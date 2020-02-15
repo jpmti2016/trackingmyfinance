@@ -439,25 +439,22 @@ export default function ExpensePersonalForm(props) {
     // formatPesonalExpense(formatedExpense);
   };
 
-  const handleCreatePersonalExpense = (data, clientId) => {
+  const handleCreatePersonalExpense = async (data, clientId) => {
     try {
-      console.log("handle create personal", data);
-      categoryAsEnum.fromValue(data.personal).create(data, clientId);
+      await categoryAsEnum.fromValue(data.personal).create(data, clientId);
+
       history.push("/expenses/personal");
     } catch (error) {
       console.error("handle create personal expense", error);
     }
   };
 
-  const onSubmit = (data, e) => {
+  const onSubmit = async (data, e) => {
     //  !!!! Add a field kind: 'Personal' to the object before send
     //cause needed to filter each type of products per table
 
     try {
-      const kind = "PERSONAL"; //'Personal' because each the field kind is based on the current tab position
-      // const formatedExpense = formatPesonalExpense({ ...data, kind });
-
-      isAdding && handleCreatePersonalExpense(data, clientId);
+      isAdding && (await handleCreatePersonalExpense(data, clientId));
 
       // isUpdating && handleUpdatePersonalExpense(formatedExpense);
 

@@ -291,7 +291,7 @@ export const handleCreateHousing = async (data, clientId = null) => {
     );
 
     console.log("handle create housing result", result);
-    return result.data.createHousingExpense.id;
+    return result.data.createHousingExpense;
   } catch (error) {
     console.error("handle create housing", error);
   }

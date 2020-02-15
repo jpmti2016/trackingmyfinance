@@ -27,7 +27,13 @@ export default function ExpenseTableNav({ clientId }) {
           </Link>
         </div>
 
-        <Link className="button is-outlined" to={{ pathname: `${url}/add`, state: { clientId } }}>
+        <Link
+          className="button is-outlined"
+          to={{
+            pathname: `${url}/add`,
+            state: { clientId }
+          }}
+        >
           <span className="icon">
             <i className="far fa-plus-square"></i>
           </span>
