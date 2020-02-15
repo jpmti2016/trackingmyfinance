@@ -131,6 +131,7 @@ export default function Personal({ client }) {
     }
   };
 
+  console.log("expenses", expenses);
   const handleDeleteExpense = async (id, __typename) => {
     try {
       const result = await API.graphql(
