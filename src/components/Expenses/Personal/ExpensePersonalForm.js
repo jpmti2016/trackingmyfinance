@@ -21,6 +21,7 @@ import PetFields from "./Pet/Pet";
 import LoanFields from "./Loan/Loan";
 import TaxesFields from "./Taxes/Taxes";
 import InvestmentFields from "./Investment/Investment";
+import { handleUpdateHousing } from "../../helpers/housing";
 
 // const personalSchema = yup.object().shape({
 //   housing: yup.object.shape({
@@ -435,8 +436,14 @@ export default function ExpensePersonalForm(props) {
     history.push("/expenses/personal");
   };
 
-  const handleUpdatePersonalExpense = formatedExpense => {
-    // formatPesonalExpense(formatedExpense);
+  const handleUpdatePersonalExpense = async (data, expense) => {
+    try {
+      await categoryAsEnum.fromValue(data.personal).update(data, expense);
+
+      history.push("/expenses/personal");
+    } catch (error) {
+      console.error("handle update personal expense", error);
+    }
   };
 
   const handleCreatePersonalExpense = async (data, clientId) => {
@@ -456,7 +463,7 @@ export default function ExpensePersonalForm(props) {
     try {
       isAdding && (await handleCreatePersonalExpense(data, clientId));
 
-      // isUpdating && handleUpdatePersonalExpense(formatedExpense);
+      isUpdating && handleUpdatePersonalExpense(data, expense);
 
       // alert(JSON.stringify(data));
     } catch (error) {

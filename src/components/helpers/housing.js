@@ -199,6 +199,8 @@ export const handleUpdateUtility = async (data, utility) => {
       graphqlOperation(updateUtility, { input: { ...utilityFormated } })
     );
 
+    console.log("utility updated", result.data.updateUtility);
+
     return result.data.updateUtility.id;
   } catch (error) {
     console.error("handle update utility", error);
@@ -214,15 +216,16 @@ export const handleFormatUtility = (data, utility = null) => {
     selection: data.utility ? data.utility : null,
     company: data.housingCompany ? data.housingCompany : null,
     title: data.housingTitle ? data.housingTitle : null,
-    notes: data.housingNotes ? data.housingTitle : null,
+    notes: data.housingNotes ? data.housingNotes : null,
     utilityPeriodId: null,
     reading: data.housingReading ? Number(data.housingReading) : null
   };
 
   if (utility) {
     const utilityPeriodId = utility.period ? utility.period.id : null;
-    const { selection, company, title, notes, reading } = utility;
+    const { id, selection, company, title, notes, reading } = utility;
     const updatedUtility = {
+      id,
       selection,
       company,
       title,
@@ -243,6 +246,7 @@ export const handleFormatRepair = () => {};
 
 const housingAsEnum = asEnumeration({
   UTILITY: {
+    name: "utility",
     idName: "housingExpenseUtilityId",
     format: handleFormatUtility,
     create: handleCreateUtility,
@@ -301,6 +305,38 @@ export const handleDeleteHousing = id => {
   return `deleted ${id}`;
 };
 
-export const handleUpdateHousing = expense => {
-  return `updated ${expense}`;
+export const handleUpdateHousing = async (data, expense) => {
+  try {
+    //Asumes that allway the part will exist expense[housingAsEnum.fromValue(data.nature).name] === true
+    //and the expense has a [housingAsEnum.fromValue(data.nature).idName] and a clientId
+    //must add tags fields by AI
+    //expense should have an id
+    await housingAsEnum
+      .fromValue(data.nature)
+      .update(data, expense[housingAsEnum.fromValue(data.nature).name]);
+
+    //kind should be added?? Also amount, category, dueDate, nature; think that they will be already
+    //in the form
+    const { id } = expense;
+
+    const expenseToUpdate = {
+      id,
+      amount: data.amount ? Number(data.amount) : null,
+      category: data.personal ? data.personal : null,
+      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      nature: data.nature ? data.nature : null
+    };
+
+    const result = await API.graphql(
+      graphqlOperation(updateHousingExpense, {
+        input: { ...expenseToUpdate }
+      })
+    );
+
+    console.log("expense updated", result.data.updateHousingExpense);
+
+    return result.data.updateHousingExpense;
+  } catch (error) {
+    console.error("handle update housing", error);
+  }
 };

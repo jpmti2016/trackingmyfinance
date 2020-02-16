@@ -25,6 +25,7 @@ export const handleUpdatePeriod = async period => {
     const result = await API.graphql(
       graphqlOperation(updatePeriod, { input: { ...period } })
     );
+    console.log("period updated", result.data.updatePeriod);
     return result.data.updatePeriod.id;
   } catch (error) {
     console.error("handle update period");
