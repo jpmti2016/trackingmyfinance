@@ -30,6 +30,12 @@ import {
   handleDeletePeriod
 } from "./period";
 
+import {
+  handleCreateAddress,
+  handleDeleteAddress,
+  handleUpdateAddress
+} from "./address";
+
 // Is AppSync cost separated from DynamoDB cost (read, write) when your graphqQL api use a DynamoDB database?
 
 // I am trying to decide if I should check for an object (read) or directly update it (re-write) calling the API. Maybe I could mitigate that if the app have some state on the client side and make some check here.
@@ -51,10 +57,12 @@ import {
 
 //housing repair
 
-export const handleCreateRepair = async repair => {
+export const handleCreateRepair = async data => {
   try {
+    const repairFormated = housingAsEnum.fromValue("REPAIR").format(data);
+
     const result = await API.graphql(
-      graphqlOperation(createRepair, { input: { ...repair } })
+      graphqlOperation(createRepair, { input: { ...repairFormated } })
     );
     return result.data.createRepair.id;
   } catch (error) {
@@ -62,13 +70,26 @@ export const handleCreateRepair = async repair => {
   }
 };
 
-export const handleDeleteRepair = async id => {};
+export const handleDeleteRepair = async id => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(deleteRepair, { input: { id } })
+    );
+    return result.data.deleteRepair.id;
+  } catch (error) {
+    console.error("handle delete repair", error);
+  }
+};
 
-export const handleUpdateRepair = async repair => {
+export const handleUpdateRepair = async (data, repair) => {
   //repair should contains the repair id from expense state --expense.repair.id
   try {
-    const result = await API.grapql(
-      graphqlOperation(updateRepair, { input: { ...repair } })
+    const repairFormated = housingAsEnum
+      .fromValue("REPAIR")
+      .format(data, repair);
+
+    const result = await API.graphql(
+      graphqlOperation(updateRepair, { input: { ...repairFormated } })
     );
 
     return result.data.updateRepair.id;
@@ -155,9 +176,8 @@ export const handleCreateUtility = async data => {
 //Deleted compounded intances return all of it prts ids
 export const handleDeleteUtility = async (id, periodId = null) => {
   try {
-    let periodDeletedId = null;
     if (periodId) {
-      periodDeletedId = await handleDeletePeriod(periodId);
+      await handleDeletePeriod(periodId);
     }
 
     const result = await API.graphql(
@@ -207,6 +227,20 @@ export const handleUpdateUtility = async (data, utility) => {
   }
 };
 
+//housing supply
+export const handleCreateSupply = async (data, supply = null) => {};
+
+export const handleDeleteSupply = async id => {};
+
+export const handleUpdateSupply = async (data, supply = null) => {};
+
+//housing other
+export const handleCreateOther = async otherHousing => {};
+
+export const handleDeleteOther = async id => {};
+
+export const handleUpdateOther = async (data, otherHousing) => {};
+
 //housingExpenseUtilityId
 
 // housing ** format
@@ -242,7 +276,111 @@ export const handleFormatUtility = (data, utility = null) => {
   return newUtility;
 };
 
-export const handleFormatRepair = () => {};
+export const handleFormatHome = (data, home = null) => {
+  try {
+    const newHome = {
+      mortgage: data.mortgage ? data.mortgage : null,
+      title: data.housingTitle ? data.housingTitle : null,
+      notes: data.housingNotes ? data.housingNotes : null,
+      homeAddressId: null
+    };
+
+    if (home) {
+      const homeAddressId = home.address ? home.address.id : null;
+      const { id, mortgage, title, notes } = home;
+      const updatedHome = {
+        id,
+        mortgage,
+        title,
+        notes,
+        ...newHome,
+        homeAddressId
+      };
+
+      return updatedHome;
+    }
+
+    return newHome;
+  } catch (error) {
+    console.error("handle format home", error);
+  }
+};
+export const handleFormatRepair = (data, repair = null) => {
+  try {
+    const newRepair = {
+      title: data.housingTitle ? data.housingTitle : null,
+      notes: data.housingNotes ? data.housingNotes : null
+    };
+
+    if (repair) {
+      const { id, title, notes } = repair;
+      const updatedRepair = {
+        id,
+        title,
+        notes,
+        ...newRepair
+      };
+
+      return updatedRepair;
+    }
+    return newRepair;
+  } catch (error) {
+    console.log("handle format repair", error);
+  }
+};
+export const handleFormatSupply = (data, supply = null) => {
+  try {
+    const newSupply = {
+      supplyFor: data.supplyFor ? data.supplyFor : null,
+      title: data.housingTitle ? data.housingTitle : null,
+      notes: data.housingNotes ? data.housingNotes : null,
+      brand: data.brand ? data.brand : null,
+      model: data.model ? data.model : null
+    };
+
+    if (supply) {
+      const { id, supplyFor, title, notes, brand, model } = supply;
+      const updatedSupply = {
+        id,
+        supplyFor,
+        title,
+        notes,
+        brand,
+        model,
+        ...newSupply
+      };
+
+      return updatedSupply;
+    }
+    return newSupply;
+  } catch (error) {
+    console.log("handle format supply", error);
+  }
+};
+
+export const handleFormatOther = (data, otherHousing = null) => {
+  try {
+    const newOtherHousing = {
+      title: data.housingTitle ? data.housingTitle : null,
+      notes: data.housingNotes ? data.housingNotes : null
+    };
+
+    if (otherHousing) {
+      const { id, title, notes } = otherHousing;
+      const updatedotherHousing = {
+        id,
+        title,
+        notes,
+        ...newOtherHousing
+      };
+
+      return updatedotherHousing;
+    }
+    return newOtherHousing;
+  } catch (error) {
+    console.log("handle format otherHousing", error);
+  }
+};
 
 const housingAsEnum = asEnumeration({
   UTILITY: {
@@ -254,9 +392,15 @@ const housingAsEnum = asEnumeration({
     update: handleUpdateUtility
   },
   SUPPLY: {
-    idName: "housingExpenseSupplyId"
+    name: "supply",
+    idName: "housingExpenseSupplyId",
+    format: handleFormatSupply,
+    create: handleCreateSupply,
+    delete: handleDeleteSupply,
+    update: handleUpdateSupply
   },
   REPAIR: {
+    name: "repair",
     idName: "housingExpenseRepairId",
     create: handleCreateRepair,
     delete: handleDeleteRepair,
@@ -265,10 +409,20 @@ const housingAsEnum = asEnumeration({
     format: handleFormatRepair
   },
   HOME: {
-    idName: "housingExpenseHomeId"
+    name: "home",
+    idName: "housingExpenseHomeId",
+    format: handleFormatHome,
+    create: handleCreateHome,
+    delete: handleDeleteHome,
+    update: handleUpdateHome
   },
   OTHER: {
-    idName: "housingExpenseOtherHousingId"
+    name: "otherHousing",
+    idName: "housingExpenseOtherHousingId",
+    format: handleFormatOther,
+    create: handleCreateOther,
+    delete: handleDeleteOther,
+    update: handleUpdateOther
   }
 });
 
@@ -277,8 +431,7 @@ export const handleCreateHousing = async (data, clientId = null) => {
 
   try {
     const id = await housingAsEnum.fromValue(data.nature).create(data);
-    console.log("utility id", id);
-    console.log("utility name", housingAsEnum.fromValue(data.nature).idName);
+
     //have to add tags but it should be IA agregated, lambda function ??
     const newHousing = {
       kind: "PERSONAL",
@@ -294,7 +447,6 @@ export const handleCreateHousing = async (data, clientId = null) => {
       graphqlOperation(createHousingExpense, { input: { ...newHousing } })
     );
 
-    console.log("handle create housing result", result);
     return result.data.createHousingExpense;
   } catch (error) {
     console.error("handle create housing", error);
@@ -302,12 +454,19 @@ export const handleCreateHousing = async (data, clientId = null) => {
 };
 
 export const handleDeleteHousing = id => {
-  return `deleted ${id}`;
+  try {
+    const result = API.graphql(
+      graphqlOperation(deleteHousingExpense, { input: { id } })
+    );
+    return result.data.deleteHousingExpense;
+  } catch (error) {
+    console.error("handle delete housing expense", error);
+  }
 };
 
 export const handleUpdateHousing = async (data, expense) => {
   try {
-    //Asumes that allway the part will exist expense[housingAsEnum.fromValue(data.nature).name] === true
+    //Asumes that allwys the part will exist expense[housingAsEnum.fromValue(data.nature).name] === true
     //and the expense has a [housingAsEnum.fromValue(data.nature).idName] and a clientId
     //must add tags fields by AI
     //expense should have an id
