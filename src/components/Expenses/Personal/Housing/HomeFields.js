@@ -10,7 +10,7 @@ export default function HomeFields({ register, errors }) {
               id="mortgage"
               type="radio"
               name="payType"
-              value="mortgage"
+              value="MORTGAGE"
               ref={register}
             />
             Mortgage
@@ -22,7 +22,7 @@ export default function HomeFields({ register, errors }) {
               id="rent"
               type="radio"
               name="payType"
-              value="rent"
+              value="RENT"
               ref={register}
             />
             Rent

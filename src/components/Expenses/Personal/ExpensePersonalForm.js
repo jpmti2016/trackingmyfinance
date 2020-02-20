@@ -295,7 +295,7 @@ export default function ExpensePersonalForm(props) {
         return {
           title: expense.home.title,
           notes: expense.home.notes,
-          payType: expense.home.mortgage.toLowerCase(),
+          payType: expense.home.mortgage,
           housingNumber: expense.home.address
             ? expense.home.address.number
             : "",

@@ -136,8 +136,6 @@ export const handleCreateHome = async data => {
       homeAddressId = await handleCreateAddress(addressFormated);
     }
 
-    console.log("address id", homeAddressId);
-
     const formatedHome = { ...homePreFormated, homeAddressId };
 
     const result = await API.graphql(
@@ -146,21 +144,58 @@ export const handleCreateHome = async data => {
       })
     );
 
-    console.log("new home", result.data.createHome);
     return result.data.createHome.id;
   } catch (error) {
     console.log("handle create repair", error);
   }
 };
 
-export const handleDeleteHome = async id => {};
+export const handleDeleteHome = async (id, addressId = null) => {
+  try {
+    if (addressId) {
+      await handleDeleteAddress(addressId);
+    }
 
-export const handleUpdateHome = async home => {
+    const result = await API.graphql(
+      graphqlOperation(deleteHome, { input: { id } })
+    );
+
+    return result.data.deleteHome.id;
+  } catch (error) {
+    console.error("handle delete home", error);
+  }
+};
+
+export const handleUpdateHome = async (data, home) => {
   //Home should contains the Home id from expense state --expense.Home.id
   try {
-    const result = await API.grapql(
-      graphqlOperation(updateHome, { input: { ...home } })
+    const homePreformated = housingAsEnum.fromValue("HOME").format(data, home);
+    let { homeAddressId } = homePreformated;
+
+    const addressFormated = handleFormatAddress(data);
+    const addressFormatedValues = Object.values(addressFormated);
+    const notNull = x => x; // null should return as false
+
+    //TODO check if make sense that someone could change
+    // all address's fields to empty
+    if (addressFormatedValues.some(notNull)) {
+      if (homeAddressId) {
+        await handleUpdateAddress({
+          id: homeAddressId,
+          ...addressFormated
+        });
+      } else {
+        homeAddressId = await handleCreateAddress(addressFormated);
+      }
+    }
+
+    const formatedHome = { ...homePreformated, homeAddressId };
+
+    const result = await API.graphql(
+      graphqlOperation(updateHome, { input: { ...formatedHome } })
     );
+
+    console.log("updated home", result.data.updateHome);
 
     return result.data.updateHome.id;
   } catch (error) {
@@ -311,7 +346,7 @@ export const handleFormatUtility = (data, utility = null) => {
 export const handleFormatHome = (data, home = null) => {
   try {
     const newHome = {
-      mortgage: data.mortgage ? data.mortgage : null,
+      mortgage: data.payType ? data.payType : null,
       title: data.housingTitle ? data.housingTitle : null,
       notes: data.housingNotes ? data.housingNotes : null,
       homeAddressId: null

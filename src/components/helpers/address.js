@@ -29,6 +29,7 @@ export const handleUpdateAddress = async address => {
     const result = await API.graphql(
       graphqlOperation(updateAddress, { input: { ...address } })
     );
+    console.log("handle update address", result.data.updateAddress);
     return result.data.updateAddress.id;
   } catch (error) {
     console.error("handle update address", error);
