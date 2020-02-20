@@ -1,7 +1,7 @@
 import { API, graphqlOperation } from "aws-amplify";
 import dayjs from "dayjs";
 
-import { asEnumeration, categoryAsEnum } from "./noswitch";
+import { asEnumeration } from "./utilities";
 
 import {
   createRepair,
@@ -33,7 +33,8 @@ import {
 import {
   handleCreateAddress,
   handleDeleteAddress,
-  handleUpdateAddress
+  handleUpdateAddress,
+  handleFormatAddress
 } from "./address";
 
 // Is AppSync cost separated from DynamoDB cost (read, write) when your graphqQL api use a DynamoDB database?
@@ -109,12 +110,43 @@ export const handleListRepair = async () => {
   }
 };
 
-//housing home
-export const handleCreateHome = async home => {
+export const handleGetRepair = async id => {
   try {
     const result = await API.graphql(
-      graphqlOperation(createHome, { input: { ...home } })
+      graphqlOperation(getRepair, { input: { id } })
     );
+    return result.data.getRepair;
+  } catch (error) {
+    console.error("handle get repair", error);
+  }
+};
+
+//housing home
+export const handleCreateHome = async data => {
+  try {
+    let homeAddressId = null;
+
+    const homePreFormated = housingAsEnum.fromValue("HOME").format(data);
+
+    const addressFormated = handleFormatAddress(data);
+    const addressFormatedValues = Object.values(addressFormated);
+    const notNull = x => x; // null should return as false
+
+    if (addressFormatedValues.some(notNull)) {
+      homeAddressId = await handleCreateAddress(addressFormated);
+    }
+
+    console.log("address id", homeAddressId);
+
+    const formatedHome = { ...homePreFormated, homeAddressId };
+
+    const result = await API.graphql(
+      graphqlOperation(createHome, {
+        input: { ...formatedHome }
+      })
+    );
+
+    console.log("new home", result.data.createHome);
     return result.data.createHome.id;
   } catch (error) {
     console.log("handle create repair", error);

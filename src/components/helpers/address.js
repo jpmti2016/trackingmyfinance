@@ -6,6 +6,8 @@ import {
 } from "../../graphql/mutations";
 import { getAddress, listAddresss } from "../../graphql/queries";
 
+import { replacePropEmptyString } from "./utilities";
+
 //asumes all fields come formatted
 
 export const handleCreateAddress = async address => {
@@ -13,6 +15,8 @@ export const handleCreateAddress = async address => {
     const result = await API.graphql(
       graphqlOperation(createAddress, { input: { ...address } })
     );
+
+    console.log("new address", result.data.createAddress);
     return result.data.createAddress.id;
   } catch (error) {
     console.error("handle create addres", error);
@@ -64,4 +68,28 @@ export const handleListAddress = async owner => {
   } catch (error) {
     console.log("handle list address", error);
   }
+};
+
+//TODO format address, for that each form tht use it has to put the same fields names
+
+export const handleFormatAddress = data => {
+  const address = handleStructureAddress(data);
+
+  const formatedAddress = replacePropEmptyString(address);
+
+  return formatedAddress;
+};
+
+export const handleStructureAddress = data => {
+  const address = {
+    number: data.housingNumber,
+    street: data.housingStreet,
+    postCode: data.housingPostCode,
+    country: data.housingCountry,
+    state: data.housingState,
+    region: data.housingRegion,
+    county: data.housingCounty
+  };
+
+  return address;
 };

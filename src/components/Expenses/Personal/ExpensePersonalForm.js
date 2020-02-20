@@ -464,7 +464,7 @@ export default function ExpensePersonalForm(props) {
       isAdding && (await handleCreatePersonalExpense(data, clientId));
 
       isUpdating && handleUpdatePersonalExpense(data, expense);
-
+      // console.log('data', data);
       // alert(JSON.stringify(data));
     } catch (error) {
       console.error("CU personal expense", error);

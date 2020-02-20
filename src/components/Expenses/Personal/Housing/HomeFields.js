@@ -155,7 +155,7 @@ export default function HomeFields({ register, errors }) {
         </div>
         <div className="field">
           <label htmlFor="housingCountry" className="label">
-            Postal Code
+            Country
           </label>
           <input
             type="text"
