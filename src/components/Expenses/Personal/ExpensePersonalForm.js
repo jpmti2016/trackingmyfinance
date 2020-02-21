@@ -285,7 +285,7 @@ export default function ExpensePersonalForm(props) {
         };
       } else if (expense.supply) {
         return {
-          supplyFor: expense.supply.company,
+          supplyFor: expense.supply.supplyFor,
           title: expense.supply.title,
           notes: expense.supply.notes,
           brand: expense.supply.brand,
@@ -464,7 +464,7 @@ export default function ExpensePersonalForm(props) {
       isAdding && (await handleCreatePersonalExpense(data, clientId));
 
       isUpdating && handleUpdatePersonalExpense(data, expense);
-      // console.log('data', data);
+      console.log("data", data);
       // alert(JSON.stringify(data));
     } catch (error) {
       console.error("CU personal expense", error);

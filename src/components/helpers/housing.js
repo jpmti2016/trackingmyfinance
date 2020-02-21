@@ -13,15 +13,27 @@ import {
   createUtility,
   deleteUtility,
   updateUtility,
+  createSupply,
+  updateSupply,
+  deleteSupply,
   createHousingExpense,
   updateHousingExpense,
-  deleteHousingExpense
+  deleteHousingExpense,
+  createOtherHousing,
+  deleteOtherHousing,
+  updateOtherHousing
 } from "../../graphql/mutations";
 import {
   getRepair,
   listRepairs,
+  getUtility,
+  listUtilitys,
+  getSupply,
+  listSupplys,
   getHome,
-  listHomes
+  listHomes,
+  listOtherHousings,
+  getOtherHousing
 } from "../../graphql/queries";
 
 import {
@@ -214,6 +226,17 @@ export const handleListHome = async () => {
   }
 };
 
+export const handleGetHome = async id => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(getHome, { input: { id } })
+    );
+    return result.data.getHome;
+  } catch (error) {
+    console.error("handle get home", error);
+  }
+};
+
 //housing utility
 export const handleCreateUtility = async data => {
   try {
@@ -294,19 +317,163 @@ export const handleUpdateUtility = async (data, utility) => {
   }
 };
 
+export const handleGetUtility = async id => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(getUtility, { input: { id } })
+    );
+    return result.data.getUtility;
+  } catch (error) {
+    console.error("handle get utility", error);
+  }
+};
+
+export const handleListUtility = async () => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(listUtilitys, { input: {} })
+    );
+    return result.data.listUtilitys.items;
+  } catch (error) {
+    console.error("handle list utility", error);
+  }
+};
+
 //housing supply
-export const handleCreateSupply = async (data, supply = null) => {};
+export const handleCreateSupply = async data => {
+  try {
+    const supplyFormated = housingAsEnum.fromValue("SUPPLY").format(data);
 
-export const handleDeleteSupply = async id => {};
+    const result = await API.graphql(
+      graphqlOperation(createSupply, { input: { ...supplyFormated } })
+    );
 
-export const handleUpdateSupply = async (data, supply = null) => {};
+    return result.data.createSupply.id;
+  } catch (error) {
+    console.error("handle create supply", error);
+  }
+};
+
+export const handleDeleteSupply = async id => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(deleteSupply, { input: { id } })
+    );
+
+    return result.data.deleteSupply.id;
+  } catch (error) {
+    console.error("handle delete supply", error);
+  }
+};
+
+export const handleUpdateSupply = async (data, supply = null) => {
+  try {
+    const formatedSupply = housingAsEnum
+      .fromValue("SUPPLY")
+      .format(data, supply);
+
+    const result = await API.graphql(
+      graphqlOperation(updateSupply, { input: { ...formatedSupply } })
+    );
+
+    return result.data.updateSupply.id;
+  } catch (error) {
+    console.error("handle update supply", error);
+  }
+};
+
+export const handleGetSupply = async id => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(getSupply, { input: { id } })
+    );
+    return result.data.getSupply;
+  } catch (error) {
+    console.error("handle get supply", error);
+  }
+};
+
+export const handleListSupply = async () => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(listSupplys, { input: {} })
+    );
+    return result.data.listSupplys.items;
+  } catch (error) {
+    console.error("handle list supply", error);
+  }
+};
 
 //housing other
-export const handleCreateOther = async otherHousing => {};
+export const handleCreateOtherHousings = async data => {
+  try {
+    const formatedOtherHousings = housingAsEnum.fromValue("OTHER").format(data);
 
-export const handleDeleteOther = async id => {};
+    const result = await API.graphql(
+      graphqlOperation(createOtherHousing, {
+        input: { ...formatedOtherHousings }
+      })
+    );
 
-export const handleUpdateOther = async (data, otherHousing) => {};
+    return result.data.createOtherHousing.id;
+  } catch (error) {
+    console.error("handle create other housing", error);
+  }
+};
+
+export const handleDeleteOtherHousings = async id => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(deleteOtherHousing, { input: {} })
+    );
+
+    return result.data.deleteOtherHousing.id;
+  } catch (error) {
+    console.error("handle delete other housing", error);
+  }
+};
+
+export const handleUpdateOtherHousings = async (data, otherHousing) => {
+  try {
+    const formatedOtherHousing = housingAsEnum
+      .fromValue("OTHER")
+      .format(data, otherHousing);
+
+    const result = await API.graphql(
+      graphqlOperation(updateOtherHousing, {
+        input: { ...formatedOtherHousing }
+      })
+    );
+
+    return result.data.updateOtherHousing.id;
+  } catch (error) {
+    console.error("handle update other housing", error);
+  }
+};
+
+export const handleListOtherHousings = async () => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(listOtherHousings, { input: {} })
+    );
+
+    return result.data.listOtherHousings.items;
+  } catch (error) {
+    console.error("handle list other housing", error);
+  }
+};
+
+export const handleGetOtherHousings = async id => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(getOtherHousing, { input: { id } })
+    );
+
+    return result.data.getOtherHousing;
+  } catch (error) {
+    console.error("handle get other housing", error);
+  }
+};
 
 //housingExpenseUtilityId
 
@@ -425,7 +592,7 @@ export const handleFormatSupply = (data, supply = null) => {
   }
 };
 
-export const handleFormatOther = (data, otherHousing = null) => {
+export const handleFormatOtherHousings = (data, otherHousing = null) => {
   try {
     const newOtherHousing = {
       title: data.housingTitle ? data.housingTitle : null,
@@ -456,7 +623,9 @@ const housingAsEnum = asEnumeration({
     format: handleFormatUtility,
     create: handleCreateUtility,
     delete: handleDeleteUtility,
-    update: handleUpdateUtility
+    update: handleUpdateUtility,
+    list: handleListUtility,
+    get: handleGetUtility
   },
   SUPPLY: {
     name: "supply",
@@ -464,16 +633,19 @@ const housingAsEnum = asEnumeration({
     format: handleFormatSupply,
     create: handleCreateSupply,
     delete: handleDeleteSupply,
-    update: handleUpdateSupply
+    update: handleUpdateSupply,
+    list: handleListSupply,
+    get: handleGetSupply
   },
   REPAIR: {
     name: "repair",
     idName: "housingExpenseRepairId",
+    format: handleFormatRepair,
     create: handleCreateRepair,
     delete: handleDeleteRepair,
     update: handleUpdateRepair,
     list: handleListRepair,
-    format: handleFormatRepair
+    get: handleGetRepair
   },
   HOME: {
     name: "home",
@@ -481,15 +653,19 @@ const housingAsEnum = asEnumeration({
     format: handleFormatHome,
     create: handleCreateHome,
     delete: handleDeleteHome,
-    update: handleUpdateHome
+    update: handleUpdateHome,
+    list: handleListHome,
+    get: handleGetHome
   },
   OTHER: {
     name: "otherHousing",
     idName: "housingExpenseOtherHousingId",
-    format: handleFormatOther,
-    create: handleCreateOther,
-    delete: handleDeleteOther,
-    update: handleUpdateOther
+    format: handleFormatOtherHousings,
+    create: handleCreateOtherHousings,
+    delete: handleDeleteOtherHousings,
+    update: handleUpdateOtherHousings,
+    list: handleListOtherHousings,
+    get: handleGetOtherHousings
   }
 });
 
