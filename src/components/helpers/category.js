@@ -9,7 +9,17 @@ import {
 let categoryEnum = Object.freeze({
   housing: "HOUSING",
   phone: "PHONE",
-  insurance: "INSURANCE"
+  insurance: "INSURANCE",
+  legal: "LEGAL",
+  food: "FOOD",
+  commute: "COMMUTE",
+  education: "EDUCATION",
+  personalcare: "PERSONALCARE",
+  pet: "PET",
+  entertainment: "ENTERTAINMENT",
+  loan: "LOAN",
+  taxes: "TAXES",
+  investement: "INVESTMENT"
 });
 
 const formatPhone = expense => {

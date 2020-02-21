@@ -33,7 +33,9 @@ import {
   getHome,
   listHomes,
   listOtherHousings,
-  getOtherHousing
+  getOtherHousing,
+  listHousingExpenses,
+  getHousingExpense
 } from "../../graphql/queries";
 
 import {
@@ -83,8 +85,10 @@ export const handleCreateRepair = async data => {
   }
 };
 
-export const handleDeleteRepair = async id => {
+export const handleDeleteRepair = async repair => {
   try {
+    const { id } = repair;
+
     const result = await API.graphql(
       graphqlOperation(deleteRepair, { input: { id } })
     );
@@ -162,9 +166,12 @@ export const handleCreateHome = async data => {
   }
 };
 
-export const handleDeleteHome = async (id, addressId = null) => {
+export const handleDeleteHome = async home => {
   try {
-    if (addressId) {
+    const { id } = home;
+
+    if (home.address) {
+      const addressId = home.address.id;
       await handleDeleteAddress(addressId);
     }
 
@@ -264,9 +271,12 @@ export const handleCreateUtility = async data => {
 };
 
 //Deleted compounded intances return all of it prts ids
-export const handleDeleteUtility = async (id, periodId = null) => {
+export const handleDeleteUtility = async utility => {
   try {
-    if (periodId) {
+    const { id } = utility;
+
+    if (utility.preriod) {
+      const periodId = utility.period.id;
       await handleDeletePeriod(periodId);
     }
 
@@ -354,8 +364,9 @@ export const handleCreateSupply = async data => {
   }
 };
 
-export const handleDeleteSupply = async id => {
+export const handleDeleteSupply = async supply => {
   try {
+    const { id } = supply;
     const result = await API.graphql(
       graphqlOperation(deleteSupply, { input: { id } })
     );
@@ -421,10 +432,11 @@ export const handleCreateOtherHousings = async data => {
   }
 };
 
-export const handleDeleteOtherHousings = async id => {
+export const handleDeleteOtherHousings = async otherHousing => {
   try {
+    const { id } = otherHousing;
     const result = await API.graphql(
-      graphqlOperation(deleteOtherHousing, { input: {} })
+      graphqlOperation(deleteOtherHousing, { input: { id } })
     );
 
     return result.data.deleteOtherHousing.id;
@@ -696,8 +708,14 @@ export const handleCreateHousing = async (data, clientId = null) => {
   }
 };
 
-export const handleDeleteHousing = id => {
+export const handleDeleteHousing = async expense => {
   try {
+    const { id } = expense;
+
+    //TODO check the function call must pass an expense
+    await housingAsEnum
+      .fromValue(expense.nature)
+      .delete(expense[housingAsEnum.fromValue(expense.nature).name]);
     const result = API.graphql(
       graphqlOperation(deleteHousingExpense, { input: { id } })
     );
