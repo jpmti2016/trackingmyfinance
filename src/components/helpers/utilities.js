@@ -42,6 +42,46 @@ export const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
 
 export const dissoc = prop => ({ [prop]: _, ...obj }) => obj;
 
+//return a new object that not contains the props specified
+export const omitObjectProps = (object = {}, props = []) =>
+  props.reduce(
+    (acc, prop) => {
+      //prop in object returns true for props in the prototype chain
+      if (object.hasOwnProperty(prop)) {
+        delete acc[prop];
+      }
+      return acc;
+    },
+    { ...object }
+  );
+
+//return an object with only the props specified
+export const includeObjectProps = (object = {}, props = []) =>
+  props.reduce((acc, prop) => {
+    if (object.hasOwnProperty(prop)) {
+      acc = { ...acc, [prop]: object[prop] };
+    } else {
+      // the object don't have the prop but we return
+      // the needed property with null
+      acc = { ...acc, [prop]: null };
+    }
+
+    return acc;
+  }, {});
+
+const o = { a: 1, b: null, c: undefined, d: "sdsadsa" };
+const props = ["g", "a"];
+
+console.log("less props", includeObjectProps(o, props));
+console.log("less props NO object", includeObjectProps({}, props));
+console.log("less props NO props", includeObjectProps(o, []));
+console.log(includeObjectProps());
+
+// console.log("less props", omitObjectProps(o, props));
+// console.log("less props NO object", omitObjectProps({}, props));
+// console.log("less props NO props", omitObjectProps(o, []));
+// console.log(omitObjectProps());
+
 // Map object
 
 // An Object-specific version of map. The function is applied to three arguments: (value, key, obj).
