@@ -1,12 +1,22 @@
-import { asEnumeration } from "./utilities";
+import { asEnumeration } from "../../helpers/utilities";
 
 import {
   handleCreateHousing,
   handleDeleteHousing,
-  handleUpdateHousing
+  handleUpdateHousing,
+  handleGetHousing,
+  handleListHousing
 } from "./housing";
 
-let categoryEnum = Object.freeze({
+import {
+  handleCreatePhoneExpense,
+  handleDeletePhoneExpense,
+  handleUpdatePhoneExpense,
+  handleGetPhoneExpense,
+  handleListPhoneExpense
+} from "./phone";
+
+export const categoryEnum = Object.freeze({
   housing: "HOUSING",
   phone: "PHONE",
   insurance: "INSURANCE",
@@ -83,12 +93,19 @@ export const categoryAsEnum = asEnumeration({
     initializeForm: initializeHousing,
     create: handleCreateHousing,
     delete: handleDeleteHousing,
-    update: handleUpdateHousing
+    update: handleUpdateHousing,
+    list: handleListHousing,
+    get: handleGetHousing
   },
   PHONE: {
     idName: "phoneExpenseClientId",
     format: formatPhone,
-    initializeForm: initializePhone
+    initializeForm: initializePhone,
+    create: handleCreatePhoneExpense,
+    delete: handleDeletePhoneExpense,
+    update: handleUpdatePhoneExpense,
+    list: handleListPhoneExpense,
+    get: handleGetPhoneExpense
   },
   INSURANCE: {
     idName: "insuranceExpenseClientId",

@@ -3,10 +3,10 @@ import {
   createAddress,
   updateAddress,
   deleteAddress
-} from "../../graphql/mutations";
-import { getAddress, listAddresss } from "../../graphql/queries";
+} from "../../../graphql/mutations";
+import { getAddress, listAddresss } from "../../../graphql/queries";
 
-import { replacePropEmptyString } from "./utilities";
+import { replacePropEmptyString } from "../../helpers/utilities";
 
 //asumes all fields come formatted
 

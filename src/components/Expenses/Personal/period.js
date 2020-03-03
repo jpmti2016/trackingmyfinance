@@ -3,8 +3,8 @@ import {
   createPeriod,
   updatePeriod,
   deletePeriod
-} from "../../graphql/mutations";
-import { getPeriod, listPeriods } from "../../graphql/queries.js";
+} from "../../../graphql/mutations";
+import { getPeriod, listPeriods } from "../../../graphql/queries.js";
 
 //asumes all fields come formatted
 

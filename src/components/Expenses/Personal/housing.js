@@ -1,7 +1,7 @@
 import { API, graphqlOperation } from "aws-amplify";
 import dayjs from "dayjs";
 
-import { asEnumeration } from "./utilities";
+import { asEnumeration } from "../../helpers/utilities";
 
 import {
   createRepair,
@@ -22,7 +22,7 @@ import {
   createOtherHousing,
   deleteOtherHousing,
   updateOtherHousing
-} from "../../graphql/mutations";
+} from "../../../graphql/mutations";
 import {
   getRepair,
   listRepairs,
@@ -36,7 +36,7 @@ import {
   getOtherHousing,
   listHousingExpenses,
   getHousingExpense
-} from "../../graphql/queries";
+} from "../../../graphql/queries";
 
 import {
   handleCreatePeriod,
@@ -126,7 +126,7 @@ export const handleListRepair = async () => {
   }
 };
 
-export const handleGetRepair = async id => {
+export const handleGetRepair = async ({ id }) => {
   try {
     const result = await API.graphql(
       graphqlOperation(getRepair, { input: { id } })
@@ -233,7 +233,7 @@ export const handleListHome = async () => {
   }
 };
 
-export const handleGetHome = async id => {
+export const handleGetHome = async ({ id }) => {
   try {
     const result = await API.graphql(
       graphqlOperation(getHome, { input: { id } })
@@ -270,7 +270,7 @@ export const handleCreateUtility = async data => {
   }
 };
 
-//Deleted compounded intances return all of it prts ids
+//Deleted compounded instances return all of it parts ids
 export const handleDeleteUtility = async utility => {
   try {
     const { id } = utility;
@@ -327,7 +327,7 @@ export const handleUpdateUtility = async (data, utility) => {
   }
 };
 
-export const handleGetUtility = async id => {
+export const handleGetUtility = async ({ id }) => {
   try {
     const result = await API.graphql(
       graphqlOperation(getUtility, { input: { id } })
@@ -393,7 +393,7 @@ export const handleUpdateSupply = async (data, supply = null) => {
   }
 };
 
-export const handleGetSupply = async id => {
+export const handleGetSupply = async ({ id }) => {
   try {
     const result = await API.graphql(
       graphqlOperation(getSupply, { input: { id } })
@@ -475,7 +475,7 @@ export const handleListOtherHousings = async () => {
   }
 };
 
-export const handleGetOtherHousings = async id => {
+export const handleGetOtherHousings = async ({ id }) => {
   try {
     const result = await API.graphql(
       graphqlOperation(getOtherHousing, { input: { id } })
@@ -716,6 +716,7 @@ export const handleDeleteHousing = async expense => {
     await housingAsEnum
       .fromValue(expense.nature)
       .delete(expense[housingAsEnum.fromValue(expense.nature).name]);
+
     const result = API.graphql(
       graphqlOperation(deleteHousingExpense, { input: { id } })
     );
@@ -753,10 +754,30 @@ export const handleUpdateHousing = async (data, expense) => {
       })
     );
 
-    console.log("expense updated", result.data.updateHousingExpense);
-
     return result.data.updateHousingExpense;
   } catch (error) {
     console.error("handle update housing", error);
+  }
+};
+
+export const handleGetHousing = async id => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(getHousingExpense, { input: { id } })
+    );
+    return result.data.getHousingExpense;
+  } catch (error) {
+    console.error("handle get housing expense", error);
+  }
+};
+
+export const handleListHousing = async () => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(listHousingExpenses, { input: {} })
+    );
+    return result.data.listHousingExpenses.items;
+  } catch (error) {
+    console.error("handle list housing expense", error);
   }
 };
