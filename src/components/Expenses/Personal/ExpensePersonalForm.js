@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 import "./ExpensePersonalForm.css";
 
-import { categoryAsEnum } from "../../helpers/category";
+import { categoryAsEnum } from "./category";
 
 import HousingFields from "./Housing/Housing";
 import InsuranceFields from "./Insurance/Insurance";
@@ -21,7 +21,6 @@ import PetFields from "./Pet/Pet";
 import LoanFields from "./Loan/Loan";
 import TaxesFields from "./Taxes/Taxes";
 import InvestmentFields from "./Investment/Investment";
-import { handleUpdateHousing } from "../../helpers/housing";
 
 // const personalSchema = yup.object().shape({
 //   housing: yup.object.shape({
@@ -101,6 +100,7 @@ export default function ExpensePersonalForm(props) {
       housingCountry:
         isUpdating && expense ? housingInitForm(expense).housingCountry : "",
 
+      //phone
       phoneTitle:
         isUpdating && expense && (expense.plan || expense.aditional)
           ? expense.plan
@@ -114,8 +114,6 @@ export default function ExpensePersonalForm(props) {
             ? expense.plan.notes
             : expense.aditional.notes
           : "",
-
-      //phone
       phonePlanBillingStart:
         isUpdating && expense && expense.plan && expense.plan.billing
           ? expense.plan.billing.billingStart
@@ -125,9 +123,7 @@ export default function ExpensePersonalForm(props) {
           ? expense.plan.billing.billingEnd
           : "",
       phonePlan:
-        isUpdating && expense && expense.phonePlan
-          ? expense.phonePlan.toLowerCase()
-          : "",
+        isUpdating && expense && expense.phonePlan ? expense.phonePlan : "",
       //insurance
       nature: isUpdating && expense && expense.nature ? expense.nature : "",
       startDate: isUpdating && expense ? expense.startDate : "",

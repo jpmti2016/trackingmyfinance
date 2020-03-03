@@ -10,7 +10,7 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
               id="Plan"
               type="radio"
               name="phonePlan"
-              value="plan"
+              value="PLAN"
               ref={register}
             />
             Plan
@@ -23,7 +23,7 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
               id="Aditional"
               type="radio"
               name="phonePlan"
-              value="aditional"
+              value="ADITIONAL"
               ref={register}
             />
             Aditional
@@ -32,22 +32,22 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
       </div>
 
       <div className="field">
-        <label htmlFor="phoneDueDate" className="label">
+        <label htmlFor="dueDate" className="label">
           {watchPhonePlan === "Plan" ? "Due Date" : "Date"}
         </label>
         <input
           type="date"
           className="input"
-          name="phoneDueDate"
+          name="dueDate"
           ref={register}
-          id="phoneDueDate"
+          id="dueDate"
         />
-        {errors && errors[`phoneDueDate`] && (
+        {errors && errors[`dueDate`] && (
           <p className="error">{"Please select a due date"}</p>
         )}
       </div>
       <div className="field">
-        <label htmlFor="phoneAmount" className="label">
+        <label htmlFor="amount" className="label">
           Amount
         </label>
         <div className="control">
@@ -55,11 +55,11 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
             className="input"
             type="number"
             placeholder="43"
-            name="phoneAmount"
-            id="phoneAmount"
+            name="amount"
+            id="amount"
             ref={register({ required: true, min: 0 })}
           />
-          {errors && errors[`phoneAmount`] && (
+          {errors && errors[`amount`] && (
             <p className="error">{"Please check the amount"}</p>
           )}
         </div>
@@ -101,7 +101,7 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
         )}
       </div>
 
-      {watchPhonePlan === "plan" && (
+      {watchPhonePlan === "PLAN" && (
         <div className="field">
           <label htmlFor="" className="label">
             Billing Period
