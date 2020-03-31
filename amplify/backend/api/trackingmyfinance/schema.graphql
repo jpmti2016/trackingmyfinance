@@ -863,3 +863,22 @@ type S3Object {
 #   credits: [Card]
 #   loans: [Loan]
 # }
+
+input S3ObjectInput {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+input CreateBeneficiaryInput {
+  id: ID
+  name: String!
+  lastName: String!
+  images: [S3ObjectInput]
+  beneficiaryAddressId: ID
+  beneficiaryInsuranceId: ID
+}
+
+type Mutation {
+  batchAddBeneficiaries(beneficiaries: [CreateBeneficiaryInput]): [Beneficiary]
+}

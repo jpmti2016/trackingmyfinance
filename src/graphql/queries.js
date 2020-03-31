@@ -5468,36 +5468,58 @@ export const listClients = `query ListClients(
   $nextToken: String
 ) {
   listClients(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items{
+    items {
       id
       username
       name
       owner
-      address{
+      address {
         id
+        number
+        street
+        postCode
+        country
+        state
+        region
+        county
+        owner
       }
+      email
       phone
-      
-      creditReports(limit: 10){
+      avatar {
+        bucket
+        region
+        key
+      }
+      images {
+        bucket
+        region
+        key
+      }
+      creditReports(limit: 10) {
         items{
           id
           creditScore
         }
         nextToken
       }
-      
-      priorityPayment{
+      priorityPayment {
         id
         percent
+        createdAt
+        updatedAt
+        owner
       }
-      
-      fi{
+      fi {
         id
         targetAmount
         targetYears
+        createdAt
+        updatedAt
+        projectedExpenseByYear
+        owner
       }
-      
-      properties (limit: 10){
+      properties (limit: 10) {
         items{
           id
           title
@@ -5505,7 +5527,9 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
+      investments {
+        nextToken
+      }
       incomes (limit: 10){
         items{
           id
@@ -5515,9 +5539,8 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
       budgets (limit: 10){
-        items{
+        items {
           id
           amount
           title
@@ -5529,7 +5552,6 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
       cards (limit: 10){
         items{
           id
@@ -5546,9 +5568,8 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
       housingExpenses (limit: 50){
-        items{
+        items {
           id
           __typename
           amount
@@ -5594,7 +5615,7 @@ export const listClients = `query ListClients(
               country
               state
               region
-              county 
+              county
             }
           }
           repair{
@@ -5610,9 +5631,8 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
-      phoneExpenses (limit: 10){
-        items{
+      phoneExpenses (limit: 50){
+        items {
           id
           __typename
           amount
@@ -5636,9 +5656,8 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
-      insuranceExpenses (limit: 10){
-         items{
+      insuranceExpenses (limit: 50){
+        items {
           id
           __typename
           kind
@@ -5662,10 +5681,11 @@ export const listClients = `query ListClients(
             }
           }
         }
+        nextToken
       }
-      
-      legalExpenses (limit: 10){
-        items{
+
+      legalExpenses (limit: 50) {
+        items {
           id
           __typename
           kind
@@ -5698,9 +5718,9 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
-      foodExpenses (limit: 10){
-        items{
+
+      foodExpenses(limit: 50){
+        items {
           id
           __typename
           kind
@@ -5733,8 +5753,8 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
-      commuteExpenses (limit: 10){
+
+      commuteExpenses (limit: 50){
         items{
           id
           __typename
@@ -5749,8 +5769,8 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      
-      educationExpenses (limit: 10){
+
+      educationExpenses (limit: 50){
         items{
           id
           __typename
@@ -5784,27 +5804,27 @@ export const listClients = `query ListClients(
             }
           }
           onlineCourse{
+            id
+            title
+            description
+            notes
+            platform
+            url
+            period{
               id
-              title
-              description
-              notes
-              platform
-              url
-              period{
+              billingStart
+              billingEnd
+            }
+            instructors{
+              items{
                 id
-                billingStart
-                billingEnd
+                phone
+                tweeter
+                name
+                email
+                webPage
               }
-              instructors{
-                items{
-                  id
-                  phone
-                  tweeter
-                  name
-                  email
-                  webPage
-                }
-              }
+            }
           }
           communityCollege{
             id
@@ -5855,7 +5875,7 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      personalCareExpenses (limit: 10){
+      personalCareExpenses (limit: 50){
         items{
           id
           __typename
@@ -5869,7 +5889,7 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      petExpenses (limit:10){
+      petExpenses (limit: 50){
         items{
           id
           __typename
@@ -5882,7 +5902,7 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      entertainmentExpenses (limit: 10){
+      entertainmentExpenses (limit: 50){
         items{
           id
           __typename
@@ -5895,8 +5915,8 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      loanExpenses (limit: 10){
-        items{
+      loanExpenses (limit: 50){
+        items {
           id
           __typename
           amount
@@ -5908,7 +5928,7 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      taxExpenses (limit: 10){
+      taxExpenses (limit: 50){
         items{
           id
           __typename
@@ -5922,7 +5942,7 @@ export const listClients = `query ListClients(
             grossPay
             federal
             state
-            local       
+            local
           }
           taxDebt
           fee
@@ -5931,7 +5951,7 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      investmentExpenses (limit: 10){
+      investmentExpenses (limit: 50){
         items{
           id
           __typename
@@ -5946,7 +5966,7 @@ export const listClients = `query ListClients(
         }
         nextToken
       }
-      gyftExpenses (limit: 10){
+      gyftExpenses (limit: 50){
         items{
           id
           __typename
@@ -5967,5 +5987,4 @@ export const listClients = `query ListClients(
     nextToken
   }
 }
-
 `;

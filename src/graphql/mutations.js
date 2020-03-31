@@ -1,6 +1,63 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const batchAddBeneficiaries = `mutation BatchAddBeneficiaries($beneficiaries: [CreateBeneficiaryInput]) {
+  batchAddBeneficiaries(beneficiaries: $beneficiaries) {
+    id
+    name
+    lastName
+    address {
+      id
+      number
+      street
+      postCode
+      country
+      state
+      region
+      county
+      owner
+    }
+    images {
+      bucket
+      region
+      key
+    }
+    insurance {
+      id
+      kind
+      amount
+      dueDate
+      category
+      nature
+      startDate
+      title
+      notes
+      tags
+      coverage
+      yearDeductions
+      company
+      images {
+        bucket
+        region
+        key
+      }
+      beneficiaries {
+        nextToken
+      }
+      client {
+        id
+        username
+        name
+        email
+        phone
+        owner
+      }
+      owner
+    }
+    owner
+  }
+}
+`;
 export const createPeriod = `mutation CreatePeriod(
   $input: CreatePeriodInput!
   $condition: ModelPeriodConditionInput
