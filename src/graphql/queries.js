@@ -5673,6 +5673,7 @@ export const listClients = `query ListClients(
           company
           beneficiaries{
             items{
+              id
               name
               lastName
               address{
@@ -5988,3 +5989,23 @@ export const listClients = `query ListClients(
   }
 }
 `;
+export const listInsuranceBeneficiary = `query listInsuranceBeneficiary(
+  $filter: ModelIDInput
+  $limit: Int
+  $nextToken: String
+) {
+  listInsuranceExpenses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items{
+      id
+      beneficiaries{
+        items{
+          id
+          name
+          lastName
+          address{
+            id
+          }
+        }
+      }
+    }
+  }`;
