@@ -4,40 +4,125 @@ import { Link, useRouteMatch } from "react-router-dom";
 export default function ExpenseTable({
   expenses,
   handleDeleteExpense,
-  expenseType
+  expenseType,
 }) {
   let { url } = useRouteMatch();
 
-  let btns = expense => {
+  const btns = (expense) => {
     return (
-      <div className="level">
-        <div className="level-left" style={{ marginRight: "1rem" }}>
-          <div className="level-item">
-            <Link
-              className="button is-small"
-              to={{ pathname: `${url}/edit/${expense.id}`, state: { expense } }}
-            >
-              <i className="far fa-edit"></i>
-            </Link>
-          </div>
-        </div>
-        <div className="level-rigth">
-          <div className="level-item">
-            <button
-              className="button is-small"
-              onClick={() =>
-                handleDeleteExpense(expense.id, expense.__typename)
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        {/* <div className="level-left" style={{ marginRight: "1rem" }}> */}
+
+        <div className="level-item">
+          <Link
+            className="label is-small"
+            to={{
+              pathname: `${url}/${expense.id}/expensepart`,
+              state: {
+                id: expense.id,
+                __typename: expense.__typename,
+                nature: expense.nature,
+              },
+            }}
+          >
+            {formatNestedChild(expense) ? formatNestedChild(expense).text : ""}{" "}
+            <i
+              className={
+                formatNestedChild(expense)
+                  ? formatNestedChild(expense).iname
+                  : ""
               }
-            >
-              <i className="far fa-trash-alt"></i>
-            </button>
-          </div>
+            ></i>{" "}
+            {/* <i className="fas fa-angle-right"></i> */}
+          </Link>
+        </div>
+
+        <div className="level-item" style={{ margin: "0 1rem" }}>
+          <Link
+            // className="button is-small"
+            className="button is-small"
+            to={{ pathname: `${url}/edit/${expense.id}`, state: { expense } }}
+          >
+            <i className="far fa-edit"></i>
+          </Link>
+        </div>
+
+        <div className="level-item">
+          <button
+            className="button is-small"
+            onClick={() => handleDeleteExpense(expense.id, expense.__typename)}
+          >
+            <i className="far fa-trash-alt"></i>
+          </button>
         </div>
       </div>
     );
   };
 
-  const formatEvent = event => {
+  const formatNestedChild = (expense) => {
+    if (expense) {
+      const nature = expense.nature;
+      switch (expense.__typename) {
+        case "InsuranceExpense":
+          if (
+            nature === "HOME" ||
+            nature === "CAR" ||
+            nature === "LIFE" ||
+            nature === "DISABILITY" ||
+            nature === "OTHER"
+          ) {
+            // return { iname: "fas fa-users", text: "Donees" };
+            return {
+              iname: "fas fa-angle-right",
+              text: "Beneficiaries",
+              subpath: "beneficiaries",
+            };
+          } else {
+            return "";
+          }
+        case "LegalExpense":
+          // return { iname: "fas fa-balance-scale", text: "Lawyers" };
+          return {
+            iname: "fas fa-angle-right",
+            text: "Lawyers",
+            subpath: "lawyers",
+          };
+        case "FoodExpense":
+          if (nature === "GROCERY") {
+            return {
+              iname: "fas fa-angle-right",
+              text: "Products",
+              subpath: "products",
+            };
+          } else {
+            return "";
+          }
+        case "EducationExpense":
+          if (nature === "COLLEGE" || nature === "COMUNITYCOLLEGE") {
+            // return { iname: "fas fa-dollar-sign", text: "Fees" };
+            return {
+              iname: "fas fa-angle-right",
+              text: "Fees",
+              subpath: "fees",
+            };
+          } else if (nature === "ONLINECOURSE") {
+            // return { iname: "fas fa-chalkboard-teacher", text: "Instructors" };
+            return {
+              iname: "fas fa-angle-right",
+              text: "Instructors",
+              subpath: "instructors",
+            };
+          } else {
+            return "";
+          }
+
+        default:
+          return "";
+      }
+    }
+  };
+
+  const formatEvent = (event) => {
     switch (event) {
       case "PHONERECHARGE":
         return "Phone Recharge";
@@ -56,34 +141,34 @@ export default function ExpenseTable({
     }
   };
 
-  const formatTitleAndNotes = expense => {
+  const formatTitleAndNotes = (expense) => {
     if (expense) {
       switch (expense.__typename) {
         case "HousingExpense":
           if (expense.nature === "UTILITY" && expense.utility) {
             return {
               title: expense.utility.title,
-              notes: expense.utility.notes
+              notes: expense.utility.notes,
             };
           } else if (expense.nature === "SUPPLY" && expense.supply) {
             return {
               title: expense.supply.title,
-              notes: expense.supply.notes
+              notes: expense.supply.notes,
             };
           } else if (expense.nature === "REPAIR" && expense.repair) {
             return {
               title: expense.repair.title,
-              notes: expense.repair.notes
+              notes: expense.repair.notes,
             };
           } else if (expense.nature === "HOME" && expense.home) {
             return {
               title: expense.home.title,
-              notes: expense.home.notes
+              notes: expense.home.notes,
             };
           } else if (expense.nature === "OTHER" && expense.otherHousing) {
             return {
               title: expense.otherHousing.title,
-              notes: expense.otherHousing.notes
+              notes: expense.otherHousing.notes,
             };
           } else {
             return { title: "NA", notes: "NA" };
@@ -93,12 +178,12 @@ export default function ExpenseTable({
           if (expense.phonePlan === "PLAN" && expense.plan) {
             return {
               title: expense.plan.title,
-              notes: expense.plan.notes
+              notes: expense.plan.notes,
             };
           } else if (expense.phonePlan === "ADITIONAL" && expense.aditional) {
             return {
               title: expense.aditional.title,
-              notes: expense.aditional.notes
+              notes: expense.aditional.notes,
             };
           } else {
             return { title: "NA", notes: "NA" };
@@ -108,12 +193,12 @@ export default function ExpenseTable({
           if (expense.nature === "GROCERY" && expense.grocery) {
             return {
               title: expense.grocery.title,
-              notes: expense.grocery.notes
+              notes: expense.grocery.notes,
             };
           } else if (expense.nature === "DINNINGOUT" && expense.dinningOut) {
             return {
               title: expense.dinningOut.title,
-              notes: expense.dinningOut.notes
+              notes: expense.dinningOut.notes,
             };
           } else {
             return { title: "NA", notes: "NA" };
@@ -122,7 +207,7 @@ export default function ExpenseTable({
           if (expense.nature === "COLLEGE" && expense.college) {
             return {
               title: expense.college.title,
-              notes: expense.college.notes
+              notes: expense.college.notes,
             };
           } else if (
             expense.nature === "ONLINECOURSE" &&
@@ -130,7 +215,7 @@ export default function ExpenseTable({
           ) {
             return {
               title: expense.onlineCourse.title,
-              notes: expense.onlineCourse.notes
+              notes: expense.onlineCourse.notes,
             };
           } else if (
             expense.nature === "COMUNITYCOLLEGE" &&
@@ -138,17 +223,17 @@ export default function ExpenseTable({
           ) {
             return {
               title: expense.communityCollege.title,
-              notes: expense.communityCollege.notes
+              notes: expense.communityCollege.notes,
             };
           } else if (expense.nature === "TRAINING" && expense.training) {
             return {
               title: expense.training.title,
-              notes: expense.training.notes
+              notes: expense.training.notes,
             };
           } else if (expense.nature === "BOOTCAMP" && expense.bootcamp) {
             return {
               title: expense.bootcamp.title,
-              notes: expense.bootcamp.notes
+              notes: expense.bootcamp.notes,
             };
           } else {
             return { title: "NA", notes: "NA" };
@@ -165,7 +250,7 @@ export default function ExpenseTable({
         case "GyftExpense":
           return {
             title: expense.title ? expense.title : "",
-            notes: expense.notes ? expense.title : ""
+            notes: expense.notes ? expense.title : "",
           };
 
         default:

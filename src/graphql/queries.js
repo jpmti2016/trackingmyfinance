@@ -886,6 +886,14 @@ export const getInsuranceExpense = `query GetInsuranceExpense($id: ID!) {
     }
     beneficiaries {
       items {
+        __typename
+        address{
+          id
+          number
+          state
+          street
+          country
+        }
         id
         name
         lastName
@@ -1157,7 +1165,15 @@ export const getLegalExpense = `query GetLegalExpense($id: ID!) {
     }
     lawyers {
       items {
+        __typename
         id
+        address{
+          id
+          number
+          street
+          state
+          country
+        }
         phone
         name
         lastName
@@ -1458,6 +1474,7 @@ export const listDinningOuts = `query ListDinningOuts(
 `;
 export const getFoodExpense = `query GetFoodExpense($id: ID!) {
   getFoodExpense(id: $id) {
+    __typename
     id
     kind
     amount
@@ -1466,11 +1483,21 @@ export const getFoodExpense = `query GetFoodExpense($id: ID!) {
     nature
     grocery {
       id
+      __typename
       store
       title
       notes
       info
       products {
+        items{
+        __typename
+        id
+        name
+        price
+        quantity
+        frequency
+        }
+        
         nextToken
       }
       owner
@@ -2280,11 +2307,26 @@ export const getEducationExpense = `query GetEducationExpense($id: ID!) {
         key
       }
       fees {
+        items{
+          __typename
+          id
+          tuitionAndFees
+          booksAndSupplies
+          roomAndBoard
+          transportation
+          personal
+          period{
+            id
+            billingStart
+            billingEnd
+          }
+        }
         nextToken
       }
       owner
     }
     onlineCourse {
+      __typename
       id
       title
       university
@@ -2305,11 +2347,22 @@ export const getEducationExpense = `query GetEducationExpense($id: ID!) {
         owner
       }
       instructors {
+        items{
+          __typename
+          id
+          phone
+          tweeter
+          name
+          lastName
+          email
+          webPage
+        }
         nextToken
       }
       owner
     }
     communityCollege {
+      __typename
       id
       program
       university
@@ -2322,6 +2375,20 @@ export const getEducationExpense = `query GetEducationExpense($id: ID!) {
         key
       }
       fees {
+        items{
+          __typename
+          id
+          tuitionAndFees
+          booksAndSupplies
+          roomAndBoard
+          transportation
+          personal
+          period{
+            id
+            billingStart
+            billingEnd
+          }
+        }
         nextToken
       }
       owner
