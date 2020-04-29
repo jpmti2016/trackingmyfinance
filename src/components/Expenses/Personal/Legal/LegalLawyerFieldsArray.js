@@ -5,7 +5,7 @@ import { useFieldArray } from "react-hook-form";
 export default function LegalLawyerFieldsArray({ register, control, errors }) {
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "lawyers"
+    name: "lawyers",
   });
 
   return (
@@ -39,7 +39,7 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                   defaultValue={`${item.fee}`}
                 />
                 {errors && errors[`${fieldName}.fee`] && (
-                  <p className="error">{"Please check the lawyer's fee"}</p>
+                  <p className="error">style={{ display: "block" }}</p>
                 )}
               </div>
             </div>
@@ -240,7 +240,7 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                   htmlFor={`${fieldName}.address.country`}
                   className="label"
                 >
-                  country
+                  Country
                 </label>
                 <div className="control">
                   <input
@@ -288,7 +288,7 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
               street: "",
               country: "",
               state: "",
-              county: ""
+              county: "",
             })
           }
         >

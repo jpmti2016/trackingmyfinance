@@ -31,6 +31,8 @@ async function initializeExpensePart(
         let expenseId = null;
         let nature = null;
         let natureId = null;
+        let text = GetExpense(__typename).buttonText;
+
         switch (__typename) {
           case "LegalExpense":
             expenseId = response.data[GetExpense(__typename).operName]
@@ -38,7 +40,7 @@ async function initializeExpensePart(
               : null;
             parts = response.data[GetExpense(__typename).operName][
               GetExpense(__typename).fieldName
-            ].items.map((lawyer) => ({ ...lawyer, expenseId }));
+            ].items.map((lawyer) => ({ ...lawyer, expenseId, text }));
             break;
           case "InsuranceExpense":
             expenseId = response.data[GetExpense(__typename).operName]
@@ -46,7 +48,7 @@ async function initializeExpensePart(
               : null;
             parts = response.data[GetExpense(__typename).operName][
               GetExpense(__typename).fieldName
-            ].items.map((beneficiary) => ({ ...beneficiary, expenseId }));
+            ].items.map((beneficiary) => ({ ...beneficiary, expenseId, text }));
             break;
           case "FoodExpense":
             natureId =
@@ -56,6 +58,7 @@ async function initializeExpensePart(
             ].grocery.products.items.map((product) => ({
               ...product,
               natureId,
+              text,
             }));
 
             break;
@@ -67,7 +70,12 @@ async function initializeExpensePart(
                 : null;
               parts = response.data[
                 GetExpense(__typename).operName
-              ].college.fees.items.map((fee) => ({ ...fee, natureId, nature }));
+              ].college.fees.items.map((fee) => ({
+                ...fee,
+                natureId,
+                nature,
+                text,
+              }));
             } else if (nature === "COMUNITYCOLLEGE") {
               natureId = response.data[GetExpense(__typename).operName]
                 .communityCollege
@@ -80,6 +88,7 @@ async function initializeExpensePart(
                 ...fee,
                 natureId,
                 nature,
+                text,
               }));
             } else if (nature === "ONLINECOURSE") {
               natureId = response.data[GetExpense(__typename).operName]
@@ -92,6 +101,7 @@ async function initializeExpensePart(
                 ...instructor,
                 nature,
                 natureId,
+                text,
               }));
             }
             break;
@@ -213,6 +223,8 @@ export default function ExpensePartTable(props) {
               expenseParts.length > 0
                 ? expenseParts[0].__typename
                 : "Beneficiary",
+            text:
+              expenseParts.length > 0 ? expenseParts[0].text : "Beneficiary",
             // addressId will be created before create a beneficiary}
           },
         };
@@ -222,6 +234,7 @@ export default function ExpensePartTable(props) {
           expensePartId: expensePart.id,
           addressId: expensePart.address.id ? expensePart.address.id : null,
           __typename: expensePart.__typename,
+          text: expensePart.text,
         },
         delete: {
           expensePartId: expensePart.id,
@@ -244,7 +257,8 @@ export default function ExpensePartTable(props) {
             expenseId:
               expenseParts.length > 0 ? expenseParts[0].expenseId : null,
             __typename:
-              expenseParts.length > 0 ? expenseParts[0].__typename : null,
+              expenseParts.length > 0 ? expenseParts[0].__typename : "Lawyer",
+            text: expenseParts.length > 0 ? expenseParts[0].text : "Lawyer",
             // addressId will be created before create a lawyer}
           },
         };
@@ -258,6 +272,7 @@ export default function ExpensePartTable(props) {
               : null
             : null,
           __typename: expensePart ? expensePart.__typename : null,
+          text: expensePart ? expensePart.text : "Lawyer",
         },
         delete: {
           expensePartId: expensePart ? expensePart.id : null,
@@ -275,6 +290,7 @@ export default function ExpensePartTable(props) {
           add: {
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : "Product",
+            text: expenseParts.length > 0 ? expenseParts[0].text : "Product",
             natureId:
               expenseParts.length > 0 ? expenseParts[0].natureId : "GROCERY",
           },
@@ -284,6 +300,7 @@ export default function ExpensePartTable(props) {
         edit: {
           expensePartId: expensePart ? expensePart.id : null,
           __typename: expensePart ? expensePart.__typename : null,
+          text: expensePart ? expensePart.text : "Product",
         },
         delete: {
           expensePartId: expensePart ? expensePart.id : null,
@@ -296,6 +313,8 @@ export default function ExpensePartTable(props) {
           add: {
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : null,
+            text:
+              expenseParts.length > 0 ? expenseParts[0].text : "Academic Fee",
             nature: expenseParts.length > 0 ? expenseParts[0].nature : null,
             natureId: expenseParts.length > 0 ? expenseParts[0].natureId : null,
             // periodId will be created before create a AcademicFee
@@ -306,6 +325,7 @@ export default function ExpensePartTable(props) {
         edit: {
           expensePartId: expensePart ? expensePart.id : null,
           __typename: expensePart ? expensePart.__typename : null,
+          text: expensePart ? expensePart.text : "Academic Fee",
           nature: expensePart ? expensePart.nature : null,
           natureId: expensePart ? expensePart.natureId : null,
           periodId: expensePart
@@ -331,6 +351,7 @@ export default function ExpensePartTable(props) {
           add: {
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : null,
+            text: expenseParts.length > 0 ? expenseParts[0].text : "Instructor",
             nature: expenseParts.length > 0 ? expenseParts[0].nature : null,
             natureId: expenseParts.length > 0 ? expenseParts[0].natureId : null,
           },
@@ -340,6 +361,7 @@ export default function ExpensePartTable(props) {
         edit: {
           expensePartId: expensePart ? expensePart.id : null,
           __typename: expensePart ? expensePart.__typename : null,
+          text: expensePart ? expensePart.text : "Instructor",
         },
         delete: {
           expensePartId: expensePart ? expensePart.id : null,
