@@ -18,7 +18,6 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 
 import ExpensePartTable from "./components/Expenses/ExpensePartTable";
-import BeneficiaryForm from "./components/Expenses/Personal/Insurance/BeneficiaryForm";
 
 import ExpensePartForm from "./components/Expenses/Personal/ExpensePartForm";
 
@@ -50,14 +49,6 @@ function App() {
           <Route
             path="/expenses/personal/:expense/expensepart/add"
             component={ExpensePartForm}
-          />
-          <Route
-            path="/expenses/personal/:id/beneficiaries/edit/:benId"
-            component={BeneficiaryForm}
-          />
-          <Route
-            path="/expenses/personal/:id/beneficiaries/add"
-            component={BeneficiaryForm}
           />
           <Route
             path="/expenses/personal/:id/expensepart"

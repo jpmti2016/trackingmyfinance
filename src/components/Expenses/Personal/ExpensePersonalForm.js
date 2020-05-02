@@ -200,43 +200,43 @@ export default function ExpensePersonalForm(props) {
       taxDebt: isUpdating && expense ? expense.taxDebt : "",
       fee: isUpdating && expense ? expense.fee : "",
       //investment
-      investment: isUpdating && expense ? expense.account : ""
+      investment: isUpdating && expense ? expense.account : "",
       //
     });
   }, [expense, reset, isUpdating]);
 
-  const housingEnumT = expense => {
+  const housingEnumT = (expense) => {
     if (expense) {
       if (expense.home) {
         return {
           typeToUpdate: "HOME",
-          title: ""
+          title: "",
         };
       } else if (expense.otherHousing) {
         return {
           typeToUpdate: "OTHER",
-          title: ""
+          title: "",
         };
       } else if (expense.repair) {
         return {
           typeToUpdate: "REPAIR",
-          title: ""
+          title: "",
         };
       } else if (expense.supply) {
         return {
           typeToUpdate: "SUPPLIES",
-          title: ""
+          title: "",
         };
       } else if (expense.utility) {
         return {
           typeToUpdate: "UTILITIES",
-          title: ""
+          title: "",
         };
       }
     }
   };
 
-  const foodInitForm = expense => {
+  const foodInitForm = (expense) => {
     if (expense) {
       if (expense.grocery) {
         return {
@@ -246,24 +246,24 @@ export default function ExpensePersonalForm(props) {
           store: expense.grocery.store,
           products: expense.grocery.products
             ? [...expense.grocery.products.items]
-            : []
+            : [],
         };
       } else if (expense.dinningOut) {
         return {
           place: expense.dinningOut.place,
           title: expense.dinningOut.title,
-          notes: expense.dinningOut.notes
+          notes: expense.dinningOut.notes,
         };
       } else {
         return {
           title: "",
-          notes: ""
+          notes: "",
         };
       }
     }
   };
 
-  const housingInitForm = expense => {
+  const housingInitForm = (expense) => {
     if (expense) {
       if (expense.utility) {
         return {
@@ -277,7 +277,7 @@ export default function ExpensePersonalForm(props) {
           billingEnd: expense.utility.period
             ? expense.utility.period.billingEnd
             : "",
-          reading: expense.utility.reading
+          reading: expense.utility.reading,
         };
       } else if (expense.supply) {
         return {
@@ -285,7 +285,7 @@ export default function ExpensePersonalForm(props) {
           title: expense.supply.title,
           notes: expense.supply.notes,
           brand: expense.supply.brand,
-          model: expense.supply.model
+          model: expense.supply.model,
         };
       } else if (expense.home) {
         return {
@@ -310,35 +310,35 @@ export default function ExpensePersonalForm(props) {
             : "",
           housingCountry: expense.home.address
             ? expense.home.address.country
-            : ""
+            : "",
         };
       } else if (expense.repair) {
         return {
           title: expense.repair.title,
-          notes: expense.repair.notes
+          notes: expense.repair.notes,
         };
       } else if (expense.otherHousing) {
         return {
           title: expense.otherHousing.title,
-          notes: expense.otherHousing.notes
+          notes: expense.otherHousing.notes,
         };
       } else {
         return {
           title: "",
-          notes: ""
+          notes: "",
         };
       }
     }
   };
 
-  const educationInitForm = expense => {
+  const educationInitForm = (expense) => {
     if (expense) {
       if (expense.college) {
         return {
           title: expense.college.title,
           notes: expense.college.notes,
           program: expense.college.program,
-          fees: expense.college.fees ? [...expense.college.fees.items] : []
+          fees: expense.college.fees ? [...expense.college.fees.items] : [],
         };
       } else if (expense.onlineCourse) {
         return {
@@ -361,7 +361,7 @@ export default function ExpensePersonalForm(props) {
             : "",
           edPeriodEnd: expense.onlineCourse.period
             ? expense.onlineCourse.period.billingEnd
-            : ""
+            : "",
         };
       } else if (expense.communityCollege) {
         return {
@@ -370,7 +370,7 @@ export default function ExpensePersonalForm(props) {
           program: expense.communityCollege.program,
           fees: expense.communityCollege.fees
             ? [...expense.communityCollege.fees.items]
-            : []
+            : [],
         };
       } else if (expense.training) {
         return {
@@ -382,7 +382,7 @@ export default function ExpensePersonalForm(props) {
             : "",
           edPeriodEnd: expense.training.period
             ? expense.training.period.billingEnd
-            : ""
+            : "",
         };
       } else if (expense.bootcamp) {
         return {
@@ -390,12 +390,12 @@ export default function ExpensePersonalForm(props) {
           notes: expense.bootcamp.notes,
           costDeferred: expense.bootcamp.costDeferred
             ? expense.bootcamp.costDeferred === "NO"
-            : expense.bootcamp.costDeferred === "YES"
+            : expense.bootcamp.costDeferred === "YES",
         };
       } else {
         return {
           title: "NA",
-          notes: "NA"
+          notes: "NA",
         };
       }
     }
@@ -477,7 +477,7 @@ export default function ExpensePersonalForm(props) {
         style={{
           paddingTop: "8rem",
           paddingBottom: "0.1rem",
-          color: "#363636"
+          color: "#363636",
         }}
       >
         <div className="container">
@@ -487,7 +487,7 @@ export default function ExpensePersonalForm(props) {
                 <h1
                   className="title"
                   style={{
-                    color: "#363636"
+                    color: "#363636",
                   }}
                 >
                   Expenses
@@ -510,7 +510,7 @@ export default function ExpensePersonalForm(props) {
                   name="personal"
                   id="personal"
                   ref={register({
-                    required: true
+                    required: true,
                   })}
                 >
                   <option value="">--Select--</option>
@@ -641,7 +641,7 @@ export default function ExpensePersonalForm(props) {
                 onClick={handleCancel}
                 style={{
                   backgroundColor: "#fafafa",
-                  color: "#BAA949"
+                  color: "#BAA949",
                 }}
               >
                 Cancel

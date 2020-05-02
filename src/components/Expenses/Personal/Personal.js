@@ -17,7 +17,7 @@ import {
   deletePetExpense,
   deleteEntertainmentExpense,
   deleteLoanExpense,
-  deleteTaxExpense
+  deleteTaxExpense,
 } from "../../../graphql/mutations";
 
 export default function Personal({ client }) {
@@ -40,7 +40,7 @@ export default function Personal({ client }) {
         petExpenses,
         entertainmentExpenses,
         loanExpenses,
-        taxExpenses
+        taxExpenses,
       } = client;
 
       setExpenses([
@@ -56,13 +56,13 @@ export default function Personal({ client }) {
         ...petExpenses.items,
         ...entertainmentExpenses.items,
         ...loanExpenses.items,
-        ...taxExpenses.items
+        ...taxExpenses.items,
       ]);
       setClientId(id);
     }
   }, [client]);
 
-  const MethodToDeleteExpense = __typename => {
+  const MethodToDeleteExpense = (__typename) => {
     switch (__typename) {
       case "PetExpense":
         return deletePetExpense;
@@ -98,7 +98,7 @@ export default function Personal({ client }) {
     }
   };
 
-  const MethodToDeleteExpenseName = __typename => {
+  const MethodToDeleteExpenseName = (__typename) => {
     switch (__typename) {
       case "PetExpense":
         return "deletePetExpense";
@@ -132,14 +132,15 @@ export default function Personal({ client }) {
   };
 
   console.log("expenses", expenses);
+  // Check if delete nested object like home in housingExpense, i gess not TODO
   const handleDeleteExpense = async (id, __typename) => {
     try {
       const result = await API.graphql(
         graphqlOperation(MethodToDeleteExpense(__typename), { input: { id } })
       );
       result &&
-        setExpenses(expenses =>
-          expenses.filter(e => {
+        setExpenses((expenses) =>
+          expenses.filter((e) => {
             return (
               e.id !== result.data[MethodToDeleteExpenseName(__typename)].id
             );

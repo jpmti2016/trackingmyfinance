@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 import LawyerFields from "./../Personal/Legal/LawyerFields";
+import BeneficiaryFields from "./../Personal/Insurance/BeneficiaryFields";
 import "./ExpensePersonalForm.css";
 import { partAsEnum } from "./part";
 
@@ -30,7 +31,7 @@ export default function ExpensePartForm(props) {
   console.log("isAdding", isAdding);
   console.log("isUpdating", isUpdating);
 
-  const { register, handleSubmit, errors, watch, reset, control } = useForm({});
+  const { register, handleSubmit, errors, watch, reset } = useForm({});
 
   useEffect(() => {
     reset({
@@ -183,11 +184,18 @@ export default function ExpensePartForm(props) {
           {expensePart && expensePart.__typename === "Lawyer" && (
             <LawyerFields register={register} errors={errors} />
           )}
+          {expensePart && expensePart.__typename === "Beneficiary" && (
+            <BeneficiaryFields register={register} errors={errors} />
+          )}
 
           <div className="field">
             <div className="control">
               <button className="button is-link is-fullwidth cta">
-                {expensePart ? `ADD ${expensePart.text.toUpperCase()}` : ""}
+                {expensePart
+                  ? `${
+                      isAdding ? "ADD" : "UPDATE"
+                    } ${expensePart.text.toUpperCase()}`
+                  : ""}
               </button>
             </div>
           </div>

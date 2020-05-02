@@ -11,6 +11,7 @@ import {
 } from "../../graphql/queries";
 
 import { handleDeleteLawyer } from "../Expenses/Personal/lawyer";
+import { handleDeleteBeneficiary } from "../Expenses/Personal/beneficiary";
 
 async function initializeExpensePart(
   expenseId,
@@ -286,6 +287,7 @@ export default function ExpensePartTable(props) {
           addressId: expensePart.address ? expensePart.address.id : null,
           __typename: expensePart.__typename,
           nature,
+          operGql: handleDeleteBeneficiary,
         },
       };
     } else if (
