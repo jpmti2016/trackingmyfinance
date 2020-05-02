@@ -5,7 +5,7 @@ export default function LegalFields({
   register,
   watchLawyerOption,
   control,
-  errors
+  errors,
 }) {
   return (
     <>
@@ -35,17 +35,20 @@ export default function LegalFields({
           )}
         </div>
       </div>
-
       <div className="field">
         <label className="label">Due Date</label>
         <div className="control">
-          <input type="date" className="input" name="dueDate" ref={register} />
+          <input
+            type="date"
+            className="input"
+            name="dueDate"
+            ref={register({ required: true })}
+          />
           {errors && errors[`dueDate`] && (
             <p className="error">{"Please select the due date"}</p>
           )}
         </div>
       </div>
-
       <div className="field">
         <label htmlFor="amount" className="label">
           Amount
@@ -63,7 +66,6 @@ export default function LegalFields({
           )}
         </div>
       </div>
-
       <div className="field">
         <label htmlFor="title" className="label">
           Title
@@ -74,14 +76,13 @@ export default function LegalFields({
             id="title"
             className="input"
             name="title"
-            ref={register({ required: true })}
+            ref={register}
           />
           {errors && errors[`title`] && (
             <p className="error">{"Please check the title"}</p>
           )}
         </div>
       </div>
-
       <div className="field">
         <label htmlFor="notes" className="label">
           Notes
@@ -98,12 +99,12 @@ export default function LegalFields({
           <p className="error">{"Please check the notes"}</p>
         )}
       </div>
-
-      <LegalLawyerFieldsArray
+      {/* Each lawyer will be added from the lawyer list */}
+      {/* <LegalLawyerFieldsArray
         register={register}
         control={control}
         errors={errors}
-      />
+      /> */}
     </>
   );
 }

@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import LawyerFields from "./../Personal/Legal/LawyerFields";
 import "./ExpensePersonalForm.css";
+import { partAsEnum } from "./part";
 
 export default function ExpensePartForm(props) {
   const [expensePart, setExpensePart] = useState(null);
@@ -32,19 +33,100 @@ export default function ExpensePartForm(props) {
   const { register, handleSubmit, errors, watch, reset, control } = useForm({});
 
   useEffect(() => {
-    reset({});
+    reset({
+      //address
+      number:
+        isUpdating && expensePart
+          ? expensePart.address
+            ? expensePart.address.number
+            : ""
+          : "",
+      street:
+        isUpdating && expensePart
+          ? expensePart.address
+            ? expensePart.address.street
+            : ""
+          : "",
+      county:
+        isUpdating && expensePart
+          ? expensePart.address
+            ? expensePart.address.county
+            : ""
+          : "",
+      state:
+        isUpdating && expensePart
+          ? expensePart.address
+            ? expensePart.address.state
+            : ""
+          : "",
+      region:
+        isUpdating && expensePart
+          ? expensePart.address
+            ? expensePart.address.region
+            : ""
+          : "",
+      postCode:
+        isUpdating && expensePart
+          ? expensePart.address
+            ? expensePart.address.postCode
+            : ""
+          : "",
+      country:
+        isUpdating && expensePart
+          ? expensePart.address
+            ? expensePart.address.country
+            : ""
+          : "",
+
+      //lawyer
+      fee: isUpdating && expensePart ? expensePart.fee : 0.0,
+      name: isUpdating && expensePart ? expensePart.name : "",
+      lastName: isUpdating && expensePart ? expensePart.lastName : "",
+      phone: isUpdating && expensePart ? expensePart.phone : "",
+      email: isUpdating && expensePart ? expensePart.email : "",
+      firm: isUpdating && expensePart ? expensePart.firm : "",
+    });
   }, [expensePart, reset, isUpdating]);
 
-  const handleCreatePart = async (data, expensePartId) => {
-    console.log("handle create part", data, expensePartId);
+  const handleCreatePart = async (data, expensePart) => {
+    console.log(
+      "partAsEnumTypename",
+      partAsEnum.fromValue(expensePart.__typename.toUpperCase()).idName
+    );
+    console.log("handle create part", data, expensePart);
+
+    try {
+      const result = await partAsEnum
+        .fromValue(expensePart.__typename.toUpperCase())
+        .create(data, expensePart);
+
+      console.log("expensePart in form", expensePart);
+      console.log("handle create lawyer", result);
+
+      // history.push(`/expenses/personal/${expensePartId}/expensepart`);
+      history.push(`/expenses/personal`);
+    } catch (error) {
+      console.error("handle create part", error);
+    }
   };
   const handleUpdatePart = async (data, expensePart) => {
     console.log("handle update part", data, expensePart);
+    try {
+      const result = await partAsEnum
+        .fromValue(expensePart.__typename.toUpperCase())
+        .update(data, expensePart);
+
+      console.log("update result", result);
+
+      history.push(`/expenses/personal`);
+    } catch (error) {
+      console.error("handle update part", error);
+    }
   };
 
   const onSubmit = async (data, e) => {
     try {
-      isAdding && (await handleCreatePart(data, expensePart.expensePartId));
+      isAdding && (await handleCreatePart(data, expensePart));
       isUpdating && (await handleUpdatePart(data, expensePart));
       console.log("data", data);
     } catch (error) {
@@ -73,7 +155,7 @@ export default function ExpensePartForm(props) {
               <div
                 className="level-item"
                 style={{
-                  display: "fles",
+                  display: "flex",
                   flexDirection: "column",
                   justifyItems: "flex-start",
                 }}
@@ -82,11 +164,13 @@ export default function ExpensePartForm(props) {
                   {expensePart ? expensePart.text : "Loading"}
                 </h1>
 
-                <p> {props.location.pathname}</p>
-                <h1>{expensePart ? expensePart.__typename : "NA"}</h1>
-                <h1>{expensePart ? expensePart.nature : "NA"}</h1>
+                <p> {`pathname ${props.location.pathname}`}</p>
+                <p>{`typename: ${
+                  expensePart ? expensePart.__typename : "NA"
+                }`}</p>
+                <p>{expensePart ? expensePart.nature : "NA"}</p>
 
-                <p>{JSON.stringify(props.location.state)}</p>
+                <p>{`state: ${JSON.stringify(props.location.state)}`}</p>
                 {console.log("link", props.location.state)}
               </div>
             </div>

@@ -5,7 +5,7 @@ import {
   handleDeleteHousing,
   handleUpdateHousing,
   handleGetHousing,
-  handleListHousing
+  handleListHousing,
 } from "./housing";
 
 import {
@@ -13,8 +13,16 @@ import {
   handleDeletePhoneExpense,
   handleUpdatePhoneExpense,
   handleGetPhoneExpense,
-  handleListPhoneExpense
+  handleListPhoneExpense,
 } from "./phone";
+
+import {
+  handleCreateLegal,
+  handleDeleteLegal,
+  handleUpdateLegal,
+  handleGetLegal,
+  handleListLegal,
+} from "./legal";
 
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
@@ -29,61 +37,61 @@ export const categoryEnum = Object.freeze({
   entertainment: "ENTERTAINMENT",
   loan: "LOAN",
   taxes: "TAXES",
-  investement: "INVESTMENT"
+  investement: "INVESTMENT",
 });
 
-const formatPhone = expense => {
+const formatPhone = (expense) => {
   return expense;
 };
 
-const formatInsurance = expense => {
+const formatInsurance = (expense) => {
   return expense;
 };
 
-const initializeHousing = expense => {
+const initializeHousing = (expense) => {
   return expense;
 };
 
-const initializePhone = expense => {
+const initializePhone = (expense) => {
   return expense;
 };
 
-const formatLegal = expense => {
+const formatLegal = (expense) => {
   return expense;
 };
-const formatFood = expense => {
-  return expense;
-};
-
-const formatCommute = expense => {
+const formatFood = (expense) => {
   return expense;
 };
 
-const formatEducation = expense => {
+const formatCommute = (expense) => {
   return expense;
 };
 
-const formatPersonalCare = expense => {
+const formatEducation = (expense) => {
   return expense;
 };
 
-const formatEntertainment = expense => {
+const formatPersonalCare = (expense) => {
   return expense;
 };
 
-const formatLoan = expense => {
+const formatEntertainment = (expense) => {
   return expense;
 };
 
-const formatPet = expense => {
+const formatLoan = (expense) => {
   return expense;
 };
 
-const formatTaxes = expense => {
+const formatPet = (expense) => {
   return expense;
 };
 
-const formatInvestment = expense => {
+const formatTaxes = (expense) => {
+  return expense;
+};
+
+const formatInvestment = (expense) => {
   return expense;
 };
 
@@ -95,7 +103,7 @@ export const categoryAsEnum = asEnumeration({
     delete: handleDeleteHousing,
     update: handleUpdateHousing,
     list: handleListHousing,
-    get: handleGetHousing
+    get: handleGetHousing,
   },
   PHONE: {
     idName: "phoneExpenseClientId",
@@ -105,52 +113,58 @@ export const categoryAsEnum = asEnumeration({
     delete: handleDeletePhoneExpense,
     update: handleUpdatePhoneExpense,
     list: handleListPhoneExpense,
-    get: handleGetPhoneExpense
+    get: handleGetPhoneExpense,
   },
   INSURANCE: {
     idName: "insuranceExpenseClientId",
-    format: formatInsurance
+    format: formatInsurance,
   },
   LEGAL: {
     idName: "legalExpenseClientId",
-    format: formatLegal
+    format: formatLegal,
+    create: handleCreateLegal,
+    delete: handleDeleteLegal,
+    update: handleUpdateLegal,
+    list: handleListLegal,
+    get: handleGetLegal,
   },
   FOOD: {
     idName: "legalExpenseClientId",
-    format: formatFood
+    format: formatFood,
+    create: handleCreateLegal,
   },
   COMMUTE: {
     idName: "commuteExpenseClientId",
-    format: formatCommute
+    format: formatCommute,
   },
   EDUCATION: {
     idName: "educationExpenseClientId",
-    format: formatEducation
+    format: formatEducation,
   },
   PERSONALCARE: {
     idName: "personalCareExpenseClientId",
-    format: formatPersonalCare
+    format: formatPersonalCare,
   },
   PET: {
     idName: "petExpenseClientId",
-    format: formatPet
+    format: formatPet,
   },
   ENTERTAINMENT: {
     idName: "entertainmentExpenseClientId",
-    format: formatEntertainment
+    format: formatEntertainment,
   },
   LOAN: {
     idName: "loanExpenseClientId",
-    format: formatLoan
+    format: formatLoan,
   },
   TAXES: {
     idName: "taxExpenseClientId",
-    format: formatTaxes
+    format: formatTaxes,
   },
   INVESTMENT: {
     idName: "investmentExpenseClientId",
-    format: formatInvestment
-  }
+    format: formatInvestment,
+  },
 });
 
 // const format = categoryAsEnum

@@ -114,108 +114,125 @@ export default function LawyerFields({ register, errors }) {
       <fieldset name="address">
         <legend>Address</legend>
         <div className="field">
-          <label htmlFor={`address.number`} className="label">
+          <label htmlFor={`number`} className="label">
             Number
           </label>
           <div className="control">
             <input
-              id={`address.number`}
+              id={`number`}
               type="text"
               className="input"
-              name={`address.number`}
+              name={`number`}
               ref={register({ required: true })}
             />
-            {errors && errors[`address.number`] && (
+            {errors && errors[`number`] && (
               <p className="error">{"Please check the lawyer's address"}</p>
             )}
           </div>
         </div>
 
         <div className="field">
-          <label htmlFor={`address.street`} className="label">
+          <label htmlFor={`street`} className="label">
             Street
           </label>
           <div className="control">
             <input
-              id={`address.street`}
+              id={`street`}
               type="text"
               className="input"
-              name={`address.street`}
+              name={`street`}
               ref={register({ required: true })}
             />
-            {errors && errors[`address.street`] && (
+            {errors && errors[`street`] && (
               <p className="error">{"Please check the lawyer's address"}</p>
             )}
           </div>
         </div>
 
         <div className="field">
-          <label htmlFor={`address.county`} className="label">
+          <label htmlFor={`county`} className="label">
             County
           </label>
           <div className="control">
             <input
-              id={`address.county`}
+              id={`county`}
               type="text"
               className="input"
-              name={`address.county`}
+              name={`county`}
               ref={register({ required: true })}
             />
-            {errors && errors[`address.county`] && (
+            {errors && errors[`county`] && (
+              <p className="error">{"Please check the lawyer's address"}</p>
+            )}
+          </div>
+        </div>
+        <div className="field">
+          <label htmlFor={`region`} className="label">
+            Region
+          </label>
+          <div className="control">
+            <input
+              id={`region`}
+              type="text"
+              className="input"
+              name={`region`}
+              ref={register({ required: true })}
+            />
+            {errors && errors[`region`] && (
               <p className="error">{"Please check the lawyer's address"}</p>
             )}
           </div>
         </div>
 
         <div className="field">
-          <label htmlFor={`address.state`} className="label">
+          <label htmlFor={`state`} className="label">
             State
           </label>
           <div className="control">
             <input
-              id={`address.state`}
+              id={`state`}
               type="text"
               className="input"
-              name={`address.state`}
+              name={`state`}
               ref={register({ required: true })}
             />
-            {errors && errors[`address.state`] && (
+            {errors && errors[`state`] && (
               <p className="error">{"Please check the lawyer's address"}</p>
             )}
           </div>
         </div>
 
         <div className="field">
-          <label htmlFor={`address.postCode`} className="label">
+          <label htmlFor={`postCode`} className="label">
             ZIP
           </label>
           <div className="control">
             <input
-              id={`address.postCode`}
+              id={`postCode`}
               type="text"
               className="input"
-              name={`address.postCode`}
+              name={`postCode`}
               ref={register({ required: true })}
             />
-            {errors && errors[`address.postCode`] && (
+            {errors && errors[`postCode`] && (
               <p className="error">{"Please check the lawyer's address"}</p>
             )}
           </div>
         </div>
 
         <div className="field">
-          <label htmlFor={`address.country`} className="label">
+          <label htmlFor={`country`} className="label">
             Country
           </label>
           <div className="control">
             <input
-              id={`address.country`}
+              id={`country`}
               type="text"
               className="input"
-              name={`address.country`}
+              name={`country`}
               ref={register({ required: true })}
             />
-            {errors && errors[`address.country`] && (
+            {errors && errors[`country`] && (
               <p className="error">{"Please check the lawyer's address"}</p>
             )}
           </div>

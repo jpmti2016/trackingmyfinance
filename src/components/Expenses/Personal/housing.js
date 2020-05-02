@@ -21,7 +21,7 @@ import {
   deleteHousingExpense,
   createOtherHousing,
   deleteOtherHousing,
-  updateOtherHousing
+  updateOtherHousing,
 } from "../../../graphql/mutations";
 import {
   getRepair,
@@ -35,20 +35,20 @@ import {
   listOtherHousings,
   getOtherHousing,
   listHousingExpenses,
-  getHousingExpense
+  getHousingExpense,
 } from "../../../graphql/queries";
 
 import {
   handleCreatePeriod,
   handleUpdatePeriod,
-  handleDeletePeriod
+  handleDeletePeriod,
 } from "./period";
 
 import {
   handleCreateAddress,
   handleDeleteAddress,
   handleUpdateAddress,
-  handleFormatAddress
+  handleFormatAddress,
 } from "./address";
 
 // Is AppSync cost separated from DynamoDB cost (read, write) when your graphqQL api use a DynamoDB database?
@@ -72,7 +72,7 @@ import {
 
 //housing repair
 
-export const handleCreateRepair = async data => {
+export const handleCreateRepair = async (data) => {
   try {
     const repairFormated = housingAsEnum.fromValue("REPAIR").format(data);
 
@@ -85,7 +85,7 @@ export const handleCreateRepair = async data => {
   }
 };
 
-export const handleDeleteRepair = async repair => {
+export const handleDeleteRepair = async (repair) => {
   try {
     const { id } = repair;
 
@@ -138,15 +138,16 @@ export const handleGetRepair = async ({ id }) => {
 };
 
 //housing home
-export const handleCreateHome = async data => {
+export const handleCreateHome = async (data) => {
   try {
     let homeAddressId = null;
 
     const homePreFormated = housingAsEnum.fromValue("HOME").format(data);
 
     const addressFormated = handleFormatAddress(data);
+
     const addressFormatedValues = Object.values(addressFormated);
-    const notNull = x => x; // null should return as false
+    const notNull = (x) => x; // null should return as false
 
     if (addressFormatedValues.some(notNull)) {
       homeAddressId = await handleCreateAddress(addressFormated);
@@ -156,7 +157,7 @@ export const handleCreateHome = async data => {
 
     const result = await API.graphql(
       graphqlOperation(createHome, {
-        input: { ...formatedHome }
+        input: { ...formatedHome },
       })
     );
 
@@ -166,7 +167,7 @@ export const handleCreateHome = async data => {
   }
 };
 
-export const handleDeleteHome = async home => {
+export const handleDeleteHome = async (home) => {
   try {
     const { id } = home;
 
@@ -192,8 +193,9 @@ export const handleUpdateHome = async (data, home) => {
     let { homeAddressId } = homePreformated;
 
     const addressFormated = handleFormatAddress(data);
+
     const addressFormatedValues = Object.values(addressFormated);
-    const notNull = x => x; // null should return as false
+    const notNull = (x) => x; // null should return as false
 
     //TODO check if make sense that someone could change
     // all address's fields to empty
@@ -201,7 +203,7 @@ export const handleUpdateHome = async (data, home) => {
       if (homeAddressId) {
         await handleUpdateAddress({
           id: homeAddressId,
-          ...addressFormated
+          ...addressFormated,
         });
       } else {
         homeAddressId = await handleCreateAddress(addressFormated);
@@ -245,13 +247,13 @@ export const handleGetHome = async ({ id }) => {
 };
 
 //housing utility
-export const handleCreateUtility = async data => {
+export const handleCreateUtility = async (data) => {
   try {
     let utilityPeriodId = null;
     if (data.housingBillingStart !== "" && data.housingBillingEnd !== "") {
       utilityPeriodId = await handleCreatePeriod({
         billingStart: dayjs(data.housingBillingStart).format("YYYY-MM-DD"),
-        billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD")
+        billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD"),
       });
     }
     //TODO check if I should pass {} or null
@@ -271,7 +273,7 @@ export const handleCreateUtility = async data => {
 };
 
 //Deleted compounded instances return all of it parts ids
-export const handleDeleteUtility = async utility => {
+export const handleDeleteUtility = async (utility) => {
   try {
     const { id } = utility;
 
@@ -303,12 +305,12 @@ export const handleUpdateUtility = async (data, utility) => {
         await handleUpdatePeriod({
           id: utilityPeriodId,
           billingStart: dayjs(data.housingBillingStart).format("YYYY-MM-DD"),
-          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD")
+          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD"),
         });
       } else {
         utilityPeriodId = await handleCreatePeriod({
           billingStart: dayjs(data.housingBillingStart).format("YYYY-MM-DD"),
-          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD")
+          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD"),
         });
       }
     }
@@ -350,7 +352,7 @@ export const handleListUtility = async () => {
 };
 
 //housing supply
-export const handleCreateSupply = async data => {
+export const handleCreateSupply = async (data) => {
   try {
     const supplyFormated = housingAsEnum.fromValue("SUPPLY").format(data);
 
@@ -364,7 +366,7 @@ export const handleCreateSupply = async data => {
   }
 };
 
-export const handleDeleteSupply = async supply => {
+export const handleDeleteSupply = async (supply) => {
   try {
     const { id } = supply;
     const result = await API.graphql(
@@ -416,13 +418,13 @@ export const handleListSupply = async () => {
 };
 
 //housing other
-export const handleCreateOtherHousings = async data => {
+export const handleCreateOtherHousings = async (data) => {
   try {
     const formatedOtherHousings = housingAsEnum.fromValue("OTHER").format(data);
 
     const result = await API.graphql(
       graphqlOperation(createOtherHousing, {
-        input: { ...formatedOtherHousings }
+        input: { ...formatedOtherHousings },
       })
     );
 
@@ -432,7 +434,7 @@ export const handleCreateOtherHousings = async data => {
   }
 };
 
-export const handleDeleteOtherHousings = async otherHousing => {
+export const handleDeleteOtherHousings = async (otherHousing) => {
   try {
     const { id } = otherHousing;
     const result = await API.graphql(
@@ -453,7 +455,7 @@ export const handleUpdateOtherHousings = async (data, otherHousing) => {
 
     const result = await API.graphql(
       graphqlOperation(updateOtherHousing, {
-        input: { ...formatedOtherHousing }
+        input: { ...formatedOtherHousing },
       })
     );
 
@@ -498,7 +500,7 @@ export const handleFormatUtility = (data, utility = null) => {
     title: data.housingTitle ? data.housingTitle : null,
     notes: data.housingNotes ? data.housingNotes : null,
     utilityPeriodId: null,
-    reading: data.housingReading ? Number(data.housingReading) : null
+    reading: data.housingReading ? Number(data.housingReading) : null,
   };
 
   if (utility) {
@@ -512,7 +514,7 @@ export const handleFormatUtility = (data, utility = null) => {
       notes,
       reading,
       ...newUtility,
-      utilityPeriodId
+      utilityPeriodId,
     };
 
     console.log("handle format utility", updatedUtility);
@@ -528,7 +530,7 @@ export const handleFormatHome = (data, home = null) => {
       mortgage: data.payType ? data.payType : null,
       title: data.housingTitle ? data.housingTitle : null,
       notes: data.housingNotes ? data.housingNotes : null,
-      homeAddressId: null
+      homeAddressId: null,
     };
 
     if (home) {
@@ -540,7 +542,7 @@ export const handleFormatHome = (data, home = null) => {
         title,
         notes,
         ...newHome,
-        homeAddressId
+        homeAddressId,
       };
 
       return updatedHome;
@@ -555,7 +557,7 @@ export const handleFormatRepair = (data, repair = null) => {
   try {
     const newRepair = {
       title: data.housingTitle ? data.housingTitle : null,
-      notes: data.housingNotes ? data.housingNotes : null
+      notes: data.housingNotes ? data.housingNotes : null,
     };
 
     if (repair) {
@@ -564,7 +566,7 @@ export const handleFormatRepair = (data, repair = null) => {
         id,
         title,
         notes,
-        ...newRepair
+        ...newRepair,
       };
 
       return updatedRepair;
@@ -581,7 +583,7 @@ export const handleFormatSupply = (data, supply = null) => {
       title: data.housingTitle ? data.housingTitle : null,
       notes: data.housingNotes ? data.housingNotes : null,
       brand: data.brand ? data.brand : null,
-      model: data.model ? data.model : null
+      model: data.model ? data.model : null,
     };
 
     if (supply) {
@@ -593,7 +595,7 @@ export const handleFormatSupply = (data, supply = null) => {
         notes,
         brand,
         model,
-        ...newSupply
+        ...newSupply,
       };
 
       return updatedSupply;
@@ -608,7 +610,7 @@ export const handleFormatOtherHousings = (data, otherHousing = null) => {
   try {
     const newOtherHousing = {
       title: data.housingTitle ? data.housingTitle : null,
-      notes: data.housingNotes ? data.housingNotes : null
+      notes: data.housingNotes ? data.housingNotes : null,
     };
 
     if (otherHousing) {
@@ -617,7 +619,7 @@ export const handleFormatOtherHousings = (data, otherHousing = null) => {
         id,
         title,
         notes,
-        ...newOtherHousing
+        ...newOtherHousing,
       };
 
       return updatedotherHousing;
@@ -637,7 +639,7 @@ const housingAsEnum = asEnumeration({
     delete: handleDeleteUtility,
     update: handleUpdateUtility,
     list: handleListUtility,
-    get: handleGetUtility
+    get: handleGetUtility,
   },
   SUPPLY: {
     name: "supply",
@@ -647,7 +649,7 @@ const housingAsEnum = asEnumeration({
     delete: handleDeleteSupply,
     update: handleUpdateSupply,
     list: handleListSupply,
-    get: handleGetSupply
+    get: handleGetSupply,
   },
   REPAIR: {
     name: "repair",
@@ -657,7 +659,7 @@ const housingAsEnum = asEnumeration({
     delete: handleDeleteRepair,
     update: handleUpdateRepair,
     list: handleListRepair,
-    get: handleGetRepair
+    get: handleGetRepair,
   },
   HOME: {
     name: "home",
@@ -667,7 +669,7 @@ const housingAsEnum = asEnumeration({
     delete: handleDeleteHome,
     update: handleUpdateHome,
     list: handleListHome,
-    get: handleGetHome
+    get: handleGetHome,
   },
   OTHER: {
     name: "otherHousing",
@@ -677,8 +679,8 @@ const housingAsEnum = asEnumeration({
     delete: handleDeleteOtherHousings,
     update: handleUpdateOtherHousings,
     list: handleListOtherHousings,
-    get: handleGetOtherHousings
-  }
+    get: handleGetOtherHousings,
+  },
 });
 
 export const handleCreateHousing = async (data, clientId = null) => {
@@ -695,7 +697,7 @@ export const handleCreateHousing = async (data, clientId = null) => {
       dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
       nature: data.nature ? data.nature : null,
       [housingAsEnum.fromValue(data.nature).idName]: id,
-      housingExpenseClientId: clientId
+      housingExpenseClientId: clientId,
     };
 
     const result = await API.graphql(
@@ -708,7 +710,7 @@ export const handleCreateHousing = async (data, clientId = null) => {
   }
 };
 
-export const handleDeleteHousing = async expense => {
+export const handleDeleteHousing = async (expense) => {
   try {
     const { id } = expense;
 
@@ -738,6 +740,8 @@ export const handleUpdateHousing = async (data, expense) => {
 
     //kind should be added?? Also amount, category, dueDate, nature; think that they will be already
     //in the form
+
+    //Decide what fields should not be allowed to update, disabled..
     const { id } = expense;
 
     const expenseToUpdate = {
@@ -745,12 +749,12 @@ export const handleUpdateHousing = async (data, expense) => {
       amount: data.amount ? Number(data.amount) : null,
       category: data.personal ? data.personal : null,
       dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
-      nature: data.nature ? data.nature : null
+      nature: data.nature ? data.nature : null,
     };
 
     const result = await API.graphql(
       graphqlOperation(updateHousingExpense, {
-        input: { ...expenseToUpdate }
+        input: { ...expenseToUpdate },
       })
     );
 
@@ -760,7 +764,7 @@ export const handleUpdateHousing = async (data, expense) => {
   }
 };
 
-export const handleGetHousing = async id => {
+export const handleGetHousing = async (id) => {
   try {
     const result = await API.graphql(
       graphqlOperation(getHousingExpense, { input: { id } })

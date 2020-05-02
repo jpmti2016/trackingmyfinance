@@ -10,6 +10,8 @@ import {
   getEducationExpense,
 } from "../../graphql/queries";
 
+import { handleDeleteLawyer } from "../Expenses/Personal/lawyer";
+
 async function initializeExpensePart(
   expenseId,
   __typename,
@@ -27,11 +29,13 @@ async function initializeExpensePart(
       let parts = [];
 
       if (response) {
-        console.log("response data", response.data);
         let expenseId = null;
         let nature = null;
         let natureId = null;
-        let text = GetExpense(__typename).buttonText;
+
+        nature = response.data[GetExpense(__typename).operName].nature;
+
+        let text = GetExpense(__typename, nature).buttonText;
 
         switch (__typename) {
           case "LegalExpense":
@@ -40,7 +44,7 @@ async function initializeExpensePart(
               : null;
             parts = response.data[GetExpense(__typename).operName][
               GetExpense(__typename).fieldName
-            ].items.map((lawyer) => ({ ...lawyer, expenseId, text }));
+            ].items.map((lawyer) => ({ ...lawyer, expenseId, text, nature }));
             break;
           case "InsuranceExpense":
             expenseId = response.data[GetExpense(__typename).operName]
@@ -48,22 +52,35 @@ async function initializeExpensePart(
               : null;
             parts = response.data[GetExpense(__typename).operName][
               GetExpense(__typename).fieldName
-            ].items.map((beneficiary) => ({ ...beneficiary, expenseId, text }));
+            ].items.map((beneficiary) => ({
+              ...beneficiary,
+              expenseId,
+              text,
+              nature,
+            }));
             break;
           case "FoodExpense":
-            natureId =
-              response.data[GetExpense(__typename).operName].grocery.id;
+            expenseId = response.data[GetExpense(__typename).operName]
+              ? response.data[GetExpense(__typename).operName].id
+              : null;
+            natureId = response.data[GetExpense(__typename).operName].grocery
+              ? response.data[GetExpense(__typename).operName].grocery.id
+              : null;
             parts = response.data[
               GetExpense(__typename).operName
             ].grocery.products.items.map((product) => ({
               ...product,
+              expenseId,
               natureId,
               text,
+              nature,
             }));
 
             break;
           case "EducationExpense":
-            nature = response.data[GetExpense(__typename).operName].nature;
+            expenseId = response.data[GetExpense(__typename).operName]
+              ? response.data[GetExpense(__typename).operName].id
+              : null;
             if (nature === "COLLEGE") {
               natureId = response.data[GetExpense(__typename).operName].college
                 ? response.data[GetExpense(__typename).operName].college.id
@@ -72,6 +89,7 @@ async function initializeExpensePart(
                 GetExpense(__typename).operName
               ].college.fees.items.map((fee) => ({
                 ...fee,
+                expenseId,
                 natureId,
                 nature,
                 text,
@@ -86,6 +104,7 @@ async function initializeExpensePart(
                 GetExpense(__typename).operName
               ].communityCollege.fees.items.map((fee) => ({
                 ...fee,
+                expenseId,
                 natureId,
                 nature,
                 text,
@@ -99,6 +118,7 @@ async function initializeExpensePart(
                 GetExpense(__typename).operName
               ].onlineCourse.instructors.items.map((instructor) => ({
                 ...instructor,
+                expenseId,
                 nature,
                 natureId,
                 text,
@@ -120,7 +140,7 @@ async function initializeExpensePart(
   }
 }
 
-const GetExpense = (__typename) => {
+const GetExpense = (__typename, nature) => {
   switch (__typename) {
     case "InsuranceExpense":
       return {
@@ -144,10 +164,18 @@ const GetExpense = (__typename) => {
         buttonText: "Product",
       };
     case "EducationExpense":
+      if (nature === "COLLEGE" || nature === "COMUNITYCOLLEGE") {
+        return {
+          operGql: getEducationExpense,
+          operName: "getEducationExpense",
+          fieldName: "fees",
+          buttonText: "Academic Fee",
+        };
+      }
       return {
         operGql: getEducationExpense,
         operName: "getEducationExpense",
-        fieldName: "fees",
+        fieldName: "instructors",
         buttonText: "Instructor",
       };
     default:
@@ -168,7 +196,25 @@ export default function ExpensePartTable(props) {
     );
   }, [props]);
 
-  let btns = (expensePart) => {
+  const handleDeleteExpensePart = async (expensePart, setExpenseParts) => {
+    try {
+      const { nature } = expensePart;
+      console.log("expensePart to delete", expensePart);
+      const deletedPartId = await LinkState(
+        nature,
+        expensePart,
+        false
+      ).delete.operGql(expensePart);
+
+      setExpenseParts((parts) =>
+        parts.filter((part) => part.id !== deletedPartId)
+      );
+    } catch (error) {
+      console.error("handle delete expense part", error);
+    }
+  };
+
+  const btns = (expensePart) => {
     return (
       <div className="level">
         <div className="level-left" style={{ marginRight: ".2rem" }}>
@@ -193,9 +239,7 @@ export default function ExpensePartTable(props) {
             <button
               className="button is-small"
               onClick={() =>
-                props.handleDeleteExpensePart(
-                  LinkState(props.location.state.nature, expensePart).delete
-                )
+                handleDeleteExpensePart(expensePart, setExpenseParts)
               }
             >
               <i className="far fa-trash-alt"></i>
@@ -225,21 +269,23 @@ export default function ExpensePartTable(props) {
                 : "Beneficiary",
             text:
               expenseParts.length > 0 ? expenseParts[0].text : "Beneficiary",
+            nature,
             // addressId will be created before create a beneficiary}
           },
         };
       }
       return {
         edit: {
-          expensePartId: expensePart.id,
-          addressId: expensePart.address.id ? expensePart.address.id : null,
-          __typename: expensePart.__typename,
-          text: expensePart.text,
+          // expensePartId: expensePart.id,
+          // addressId: expensePart.address ? expensePart.address.id : null,
+          // text: expensePart.text
+          ...expensePart,
         },
         delete: {
           expensePartId: expensePart.id,
           addressId: expensePart.address ? expensePart.address.id : null,
           __typename: expensePart.__typename,
+          nature,
         },
       };
     } else if (
@@ -254,34 +300,38 @@ export default function ExpensePartTable(props) {
       if (adding) {
         return {
           add: {
-            expenseId:
-              expenseParts.length > 0 ? expenseParts[0].expenseId : null,
+            id: expenseParts.length > 0 ? expenseParts[0].expenseId : null,
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : "Lawyer",
             text: expenseParts.length > 0 ? expenseParts[0].text : "Lawyer",
+            nature,
             // addressId will be created before create a lawyer}
           },
         };
       }
       return {
         edit: {
-          expensePartId: expensePart ? expensePart.id : null,
-          addressId: expensePart
-            ? expensePart.address
-              ? expensePart.address.id
-              : null
-            : null,
-          __typename: expensePart ? expensePart.__typename : null,
-          text: expensePart ? expensePart.text : "Lawyer",
+          // expensePartId: expensePart ? expensePart.id : null,
+          // addressId: expensePart
+          //   ? expensePart.address
+          //     ? expensePart.address.id
+          //     : null
+          //   : null,
+          // TODO
+          // Passing those ids directly could make my life easier?
+          // text: expensePart ? expensePart.text : "Lawyer",
+          ...expensePart,
         },
         delete: {
-          expensePartId: expensePart ? expensePart.id : null,
+          id: expensePart ? expensePart.id : null,
           addressId: expensePart
             ? expensePart.address
               ? expensePart.address.id
               : null
             : null,
           __typename: expensePart ? expensePart.__typename : null,
+          nature,
+          operGql: handleDeleteLawyer,
         },
       };
     } else if (nature === "GROCERY") {
@@ -290,21 +340,24 @@ export default function ExpensePartTable(props) {
           add: {
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : "Product",
+            id: expenseParts.length > 0 ? expenseParts[0].id : null,
             text: expenseParts.length > 0 ? expenseParts[0].text : "Product",
-            natureId:
-              expenseParts.length > 0 ? expenseParts[0].natureId : "GROCERY",
+            natureId: expenseParts.length > 0 ? expenseParts[0].natureId : null,
+            nature,
           },
         };
       }
       return {
         edit: {
-          expensePartId: expensePart ? expensePart.id : null,
-          __typename: expensePart ? expensePart.__typename : null,
-          text: expensePart ? expensePart.text : "Product",
+          // expensePartId: expensePart ? expensePart.id : null,
+          // __typename: expensePart ? expensePart.__typename : null,
+          // text: expensePart ? expensePart.text : "Product",
+          ...expensePart,
         },
         delete: {
-          expensePartId: expensePart ? expensePart.id : null,
+          id: expensePart ? expensePart.id : null,
           __typename: expensePart ? expensePart.__typename : null,
+          nature,
         },
       };
     } else if (nature === "COLLEGE" || nature === "COMUNITYCOLLEGE") {
@@ -315,7 +368,7 @@ export default function ExpensePartTable(props) {
               expenseParts.length > 0 ? expenseParts[0].__typename : null,
             text:
               expenseParts.length > 0 ? expenseParts[0].text : "Academic Fee",
-            nature: expenseParts.length > 0 ? expenseParts[0].nature : null,
+            nature,
             natureId: expenseParts.length > 0 ? expenseParts[0].natureId : null,
             // periodId will be created before create a AcademicFee
           },
@@ -323,20 +376,22 @@ export default function ExpensePartTable(props) {
       }
       return {
         edit: {
-          expensePartId: expensePart ? expensePart.id : null,
-          __typename: expensePart ? expensePart.__typename : null,
-          text: expensePart ? expensePart.text : "Academic Fee",
-          nature: expensePart ? expensePart.nature : null,
-          natureId: expensePart ? expensePart.natureId : null,
-          periodId: expensePart
-            ? expensePart.period
-              ? expensePart.period.id
-              : null
-            : null,
+          // expensePartId: expensePart ? expensePart.id : null,
+          // nature: expensePart ? expensePart.nature : null,
+          // natureId: expensePart ? expensePart.natureId : null,
+          // periodId: expensePart
+          // ? expensePart.period
+          // ? expensePart.period.id
+          // : null
+          // : null,
+          // __typename: expensePart ? expensePart.__typename : null,
+          // text: expensePart ? expensePart.text : "Academic Fee",
+          ...expensePart,
         },
         delete: {
-          expensePartId: expensePart ? expensePart.id : null,
+          id: expensePart ? expensePart.id : null,
           __typename: expensePart ? expensePart.__typename : null,
+          nature,
           natureId: expensePart ? expensePart.natureId : null,
           periodId: expensePart
             ? expensePart.period
@@ -352,20 +407,22 @@ export default function ExpensePartTable(props) {
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : null,
             text: expenseParts.length > 0 ? expenseParts[0].text : "Instructor",
-            nature: expenseParts.length > 0 ? expenseParts[0].nature : null,
+            nature,
             natureId: expenseParts.length > 0 ? expenseParts[0].natureId : null,
           },
         };
       }
       return {
         edit: {
-          expensePartId: expensePart ? expensePart.id : null,
-          __typename: expensePart ? expensePart.__typename : null,
-          text: expensePart ? expensePart.text : "Instructor",
+          // expensePartId: expensePart ? expensePart.id : null,
+          // __typename: expensePart ? expensePart.__typename : null,
+          // text: expensePart ? expensePart.text : "Instructor",
+          ...expensePart,
         },
         delete: {
-          expensePartId: expensePart ? expensePart.id : null,
+          id: expensePart ? expensePart.id : null,
           __typename: expensePart ? expensePart.__typename : null,
+          nature,
         },
       };
     }
@@ -588,7 +645,10 @@ export default function ExpensePartTable(props) {
     }
   }
 
-  const fieldName = GetExpense(props.location.state.__typename).fieldName;
+  const fieldName = GetExpense(
+    props.location.state.__typename,
+    props.location.state.nature
+  ).fieldName;
 
   const headerText = ""
     .concat(fieldName.charAt(0).toLocaleUpperCase())
@@ -636,7 +696,10 @@ export default function ExpensePartTable(props) {
               <i className="far fa-plus-square"></i>
             </span>
             <span>{`Add ${
-              GetExpense(props.location.state.__typename).buttonText
+              GetExpense(
+                props.location.state.__typename,
+                props.location.state.nature
+              ).buttonText
             }`}</span>
           </Link>
         </div>

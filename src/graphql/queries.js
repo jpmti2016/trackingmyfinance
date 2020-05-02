@@ -892,7 +892,10 @@ export const getInsuranceExpense = `query GetInsuranceExpense($id: ID!) {
           number
           state
           street
+          postCode
           country
+          region
+          county
         }
         id
         name
@@ -1171,8 +1174,11 @@ export const getLegalExpense = `query GetLegalExpense($id: ID!) {
           id
           number
           street
+          county
+          region
           state
           country
+          postCode
         }
         phone
         name
