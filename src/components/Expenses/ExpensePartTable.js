@@ -12,6 +12,9 @@ import {
 
 import { handleDeleteLawyer } from "../Expenses/Personal/lawyer";
 import { handleDeleteBeneficiary } from "../Expenses/Personal/beneficiary";
+import { handleDeleteProduct } from "../Expenses/Personal/product";
+import { handleDeleteInstructor } from "../Expenses/Personal/instructor";
+import { handleDeleteAcademicFee } from "../Expenses/Personal/academicFee";
 
 async function initializeExpensePart(
   expenseId,
@@ -64,18 +67,37 @@ async function initializeExpensePart(
             expenseId = response.data[GetExpense(__typename).operName]
               ? response.data[GetExpense(__typename).operName].id
               : null;
+
             natureId = response.data[GetExpense(__typename).operName].grocery
               ? response.data[GetExpense(__typename).operName].grocery.id
               : null;
-            parts = response.data[
-              GetExpense(__typename).operName
-            ].grocery.products.items.map((product) => ({
-              ...product,
-              expenseId,
-              natureId,
-              text,
-              nature,
-            }));
+
+            if (
+              response.data[GetExpense(__typename).operName].grocery.products
+                .items.length > 0
+            ) {
+              parts = response.data[
+                GetExpense(__typename).operName
+              ].grocery.products.items.map((product) => ({
+                ...product,
+                expenseId,
+                natureId,
+                text,
+                nature,
+                hideList: false,
+              }));
+            } else {
+              parts = [
+                {
+                  expenseId,
+                  natureId,
+                  text,
+                  nature,
+                  __typename: "Product",
+                  hideList: true,
+                },
+              ];
+            }
 
             break;
           case "EducationExpense":
@@ -86,44 +108,92 @@ async function initializeExpensePart(
               natureId = response.data[GetExpense(__typename).operName].college
                 ? response.data[GetExpense(__typename).operName].college.id
                 : null;
-              parts = response.data[
-                GetExpense(__typename).operName
-              ].college.fees.items.map((fee) => ({
-                ...fee,
-                expenseId,
-                natureId,
-                nature,
-                text,
-              }));
+
+              if (
+                response.data[GetExpense(__typename).operName].college.fees
+                  .items.length > 0
+              ) {
+                parts = response.data[
+                  GetExpense(__typename).operName
+                ].college.fees.items.map((fee) => ({
+                  ...fee,
+                  expenseId,
+                  natureId,
+                  nature,
+                  text,
+                }));
+              } else {
+                parts = [
+                  {
+                    expenseId,
+                    natureId,
+                    nature,
+                    __typename: "AcademicFee",
+                    hideList: true,
+                  },
+                ];
+              }
             } else if (nature === "COMUNITYCOLLEGE") {
               natureId = response.data[GetExpense(__typename).operName]
                 .communityCollege
                 ? response.data[GetExpense(__typename).operName]
                     .communityCollege.id
                 : null;
-              parts = response.data[
-                GetExpense(__typename).operName
-              ].communityCollege.fees.items.map((fee) => ({
-                ...fee,
-                expenseId,
-                natureId,
-                nature,
-                text,
-              }));
+
+              if (
+                response.data[GetExpense(__typename).operName].communityCollege
+                  .fees.items.length > 0
+              ) {
+                parts = response.data[
+                  GetExpense(__typename).operName
+                ].communityCollege.fees.items.map((fee) => ({
+                  ...fee,
+                  expenseId,
+                  natureId,
+                  nature,
+                  text,
+                }));
+              } else {
+                parts = [
+                  {
+                    expenseId,
+                    natureId,
+                    nature,
+                    __typename: "AcademicFee",
+                    hideList: true,
+                  },
+                ];
+              }
             } else if (nature === "ONLINECOURSE") {
               natureId = response.data[GetExpense(__typename).operName]
                 .onlineCourse
                 ? response.data[GetExpense(__typename).operName].onlineCourse.id
                 : null;
-              parts = response.data[
-                GetExpense(__typename).operName
-              ].onlineCourse.instructors.items.map((instructor) => ({
-                ...instructor,
-                expenseId,
-                nature,
-                natureId,
-                text,
-              }));
+
+              if (
+                response.data[GetExpense(__typename).operName].onlineCourse
+                  .instructors.items.length > 0
+              ) {
+                parts = response.data[
+                  GetExpense(__typename).operName
+                ].onlineCourse.instructors.items.map((instructor) => ({
+                  ...instructor,
+                  expenseId,
+                  nature,
+                  natureId,
+                  text,
+                }));
+              } else {
+                parts = [
+                  {
+                    expenseId,
+                    natureId,
+                    nature,
+                    __typename: "Instructor",
+                    hideList: true,
+                  },
+                ];
+              }
             }
             break;
 
@@ -132,12 +202,10 @@ async function initializeExpensePart(
         }
       }
 
-      console.log("parts", parts);
-
       setExpenseParts(parts);
     }
   } catch (error) {
-    console.error("initialize beneficiary", error);
+    console.error("initialize parts", error);
   }
 }
 
@@ -200,7 +268,7 @@ export default function ExpensePartTable(props) {
   const handleDeleteExpensePart = async (expensePart, setExpenseParts) => {
     try {
       const { nature } = expensePart;
-      console.log("expensePart to delete", expensePart);
+
       const deletedPartId = await LinkState(
         nature,
         expensePart,
@@ -277,9 +345,6 @@ export default function ExpensePartTable(props) {
       }
       return {
         edit: {
-          // expensePartId: expensePart.id,
-          // addressId: expensePart.address ? expensePart.address.id : null,
-          // text: expensePart.text
           ...expensePart,
         },
         delete: {
@@ -302,7 +367,6 @@ export default function ExpensePartTable(props) {
       if (adding) {
         return {
           add: {
-            id: expenseParts.length > 0 ? expenseParts[0].expenseId : null,
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : "Lawyer",
             text: expenseParts.length > 0 ? expenseParts[0].text : "Lawyer",
@@ -313,15 +377,6 @@ export default function ExpensePartTable(props) {
       }
       return {
         edit: {
-          // expensePartId: expensePart ? expensePart.id : null,
-          // addressId: expensePart
-          //   ? expensePart.address
-          //     ? expensePart.address.id
-          //     : null
-          //   : null,
-          // TODO
-          // Passing those ids directly could make my life easier?
-          // text: expensePart ? expensePart.text : "Lawyer",
           ...expensePart,
         },
         delete: {
@@ -342,7 +397,6 @@ export default function ExpensePartTable(props) {
           add: {
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : "Product",
-            id: expenseParts.length > 0 ? expenseParts[0].id : null,
             text: expenseParts.length > 0 ? expenseParts[0].text : "Product",
             natureId: expenseParts.length > 0 ? expenseParts[0].natureId : null,
             nature,
@@ -351,15 +405,13 @@ export default function ExpensePartTable(props) {
       }
       return {
         edit: {
-          // expensePartId: expensePart ? expensePart.id : null,
-          // __typename: expensePart ? expensePart.__typename : null,
-          // text: expensePart ? expensePart.text : "Product",
           ...expensePart,
         },
         delete: {
           id: expensePart ? expensePart.id : null,
           __typename: expensePart ? expensePart.__typename : null,
           nature,
+          operGql: handleDeleteProduct,
         },
       };
     } else if (nature === "COLLEGE" || nature === "COMUNITYCOLLEGE") {
@@ -378,16 +430,6 @@ export default function ExpensePartTable(props) {
       }
       return {
         edit: {
-          // expensePartId: expensePart ? expensePart.id : null,
-          // nature: expensePart ? expensePart.nature : null,
-          // natureId: expensePart ? expensePart.natureId : null,
-          // periodId: expensePart
-          // ? expensePart.period
-          // ? expensePart.period.id
-          // : null
-          // : null,
-          // __typename: expensePart ? expensePart.__typename : null,
-          // text: expensePart ? expensePart.text : "Academic Fee",
           ...expensePart,
         },
         delete: {
@@ -395,11 +437,7 @@ export default function ExpensePartTable(props) {
           __typename: expensePart ? expensePart.__typename : null,
           nature,
           natureId: expensePart ? expensePart.natureId : null,
-          periodId: expensePart
-            ? expensePart.period
-              ? expensePart.period.id
-              : null
-            : null,
+          operGql: handleDeleteAcademicFee,
         },
       };
     } else if (nature === "ONLINECOURSE") {
@@ -416,15 +454,13 @@ export default function ExpensePartTable(props) {
       }
       return {
         edit: {
-          // expensePartId: expensePart ? expensePart.id : null,
-          // __typename: expensePart ? expensePart.__typename : null,
-          // text: expensePart ? expensePart.text : "Instructor",
           ...expensePart,
         },
         delete: {
           id: expensePart ? expensePart.id : null,
           __typename: expensePart ? expensePart.__typename : null,
           nature,
+          operGql: handleDeleteInstructor,
         },
       };
     }
@@ -530,20 +566,28 @@ export default function ExpensePartTable(props) {
           </tr>
         );
       } else if (expensePart.__typename === "Product") {
-        return (
-          <tr key={expensePart.id}>
-            <th>{index + 1}</th>
-            <td>{expensePart.name ? expensePart.name : ""}</td>
-            <td className="right aligned">
-              {expensePart.price ? `$ ${expensePart.price}` : ""}
-            </td>
-            <td className="right aligned">
-              {expensePart.quantity ? expensePart.quantity : ""}
-            </td>
-            <td>{expensePart.frequency ? expensePart.frequency : ""}</td>
-            <td>{btns(expensePart)}</td>
-          </tr>
-        );
+        if (!expensePart.hideList) {
+          return (
+            <tr key={expensePart.id}>
+              <th>{index + 1}</th>
+              <td>{expensePart.name ? expensePart.name : ""}</td>
+              <td className="right aligned">
+                {expensePart.price ? `$ ${expensePart.price}` : ""}
+              </td>
+              <td className="right aligned">
+                {expensePart.quantity ? expensePart.quantity : ""}
+              </td>
+              <td>{expensePart.frequency ? expensePart.frequency : ""}</td>
+              <td>{btns(expensePart)}</td>
+            </tr>
+          );
+        } else {
+          return (
+            <tr>
+              <td>NO ITEMS</td>
+            </tr>
+          );
+        }
       } else if (expensePart.__typename === "Instructor") {
         return (
           <tr key={expensePart.id}>
@@ -666,15 +710,7 @@ export default function ExpensePartTable(props) {
         margin: "8rem auto 8rem auto",
       }}
     >
-      <div
-        className="container"
-        style={
-          {
-            // border: "2px solid hsl(208, 21%, 88%)",
-            // borderRadius: "5%",
-          }
-        }
-      >
+      <div className="container">
         <div className="beneficiary-header">
           <h1 className="ui header" style={{ color: "rgb(54,54,54)" }}>
             {props.location.state.__typename ? headerText : ""}
