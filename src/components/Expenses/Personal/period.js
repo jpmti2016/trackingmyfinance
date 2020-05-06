@@ -2,37 +2,45 @@ import { API, graphqlOperation } from "aws-amplify";
 import {
   createPeriod,
   updatePeriod,
-  deletePeriod
+  deletePeriod,
 } from "../../../graphql/mutations";
 import { getPeriod, listPeriods } from "../../../graphql/queries.js";
 
+import {
+  includeObjectProps,
+  replacePropEmptyString,
+} from "../../helpers/utilities";
+
+import dayjs from "dayjs";
+
 //asumes all fields come formatted
 
-export const handleCreatePeriod = async period => {
+export const handleCreatePeriod = async (period) => {
   try {
     const result = await API.graphql(
       graphqlOperation(createPeriod, { input: { ...period } })
     );
 
-    console.log("handle create  period result", result);
     return result.data.createPeriod.id;
-  } catch (error) {}
+  } catch (error) {
+    console.error("handle create period", error);
+  }
 };
 
 //period must include id
-export const handleUpdatePeriod = async period => {
+export const handleUpdatePeriod = async (period) => {
   try {
     const result = await API.graphql(
       graphqlOperation(updatePeriod, { input: { ...period } })
     );
-    console.log("period updated", result.data.updatePeriod);
+
     return result.data.updatePeriod.id;
   } catch (error) {
-    console.error("handle update period");
+    console.error("handle update period", error);
   }
 };
 
-export const handleDeletePeriod = async id => {
+export const handleDeletePeriod = async (id) => {
   try {
     const result = await API.graphql(
       graphqlOperation(deletePeriod, { input: { id } })
@@ -43,7 +51,37 @@ export const handleDeletePeriod = async id => {
   }
 };
 
-export const handleGetPeriod = async id => {
+export const handleFormatPeriod = (data, period) => {
+  try {
+    const periodStructure = {
+      billingStart: data.billingStart
+        ? dayjs(data.billingStart).format("YYYY-MM-DD")
+        : null,
+      billingEnd: data.billingEnd
+        ? dayjs(data.billingEnd).format("YYYY-MM-DD")
+        : null,
+    };
+    // TODO check trying to create an empty period
+    const newPeriod = {
+      ...replacePropEmptyString(periodStructure),
+    };
+
+    if (period) {
+      const updatedPeriod = {
+        ...includeObjectProps(period, ["id", "billingStart", "billingEnd"]),
+        ...newPeriod,
+      };
+
+      return updatedPeriod;
+    }
+
+    return newPeriod;
+  } catch (error) {
+    console.error("handle format period", error);
+  }
+};
+
+export const handleGetPeriod = async (id) => {
   try {
     const result = await API.graphql(
       graphqlOperation(getPeriod, { input: { id } })
@@ -54,7 +92,7 @@ export const handleGetPeriod = async id => {
   }
 };
 
-export const handleListPeriod = async owner => {
+export const handleListPeriod = async (owner) => {
   try {
     const result = await API.graphql(
       graphqlOperation(listPeriods, { input: { owner } })

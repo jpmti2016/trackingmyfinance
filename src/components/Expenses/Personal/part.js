@@ -27,6 +27,24 @@ import {
   handleListBeneficiary,
 } from "./beneficiary";
 
+import {
+  handleCreateInstructor,
+  handleDeleteInstructor,
+  handleUpdateInstructor,
+  handleFormatInstructor,
+  handleGetInstructor,
+  handleListInstructor,
+} from "./instructor";
+
+import {
+  handleCreateAcademicFee,
+  handleDeleteAcademicFee,
+  handleUpdateAcademicFee,
+  handleFormatAcademicFee,
+  handleGetAcademicFee,
+  handleListAcademicFee,
+} from "./academicFee";
+
 export const partAsEnum = asEnumeration({
   LAWYER: {
     //"lawyerAddressId"
@@ -61,27 +79,25 @@ export const partAsEnum = asEnumeration({
     get: handleGetProduct,
   },
   ACADEMICFEE: {
-    //"academicFeePeriodId"
-    idName: (nature) =>
-      nature === "COLLEGE"
-        ? "academicFeeCollegeId"
-        : "academicFeeCommunityCollegeId",
+    // "academicFeePeriodId"
+    // I made an enum for handle the idName of COLLEGE and COMUNITYCOLLEGE
+    // idName: "handleIdNameNature"
     initializeForm: "TODO",
-    format: "TODO",
-    create: "TODO",
-    delete: "TODO",
-    update: "TODO",
-    list: "TODO",
-    get: "TODO",
+    format: handleFormatAcademicFee,
+    create: handleCreateAcademicFee,
+    delete: handleDeleteAcademicFee,
+    update: handleUpdateAcademicFee,
+    list: handleListAcademicFee,
+    get: handleGetAcademicFee,
   },
   INSTRUCTOR: {
     idName: "instructorTeachOnId",
     initializeForm: "TODO",
-    format: "TODO",
-    create: "TODO",
-    delete: "TODO",
-    update: "TODO",
-    list: "TODO",
-    get: "TODO",
+    format: handleFormatInstructor,
+    create: handleCreateInstructor,
+    delete: handleDeleteInstructor,
+    update: handleUpdateInstructor,
+    list: handleListInstructor,
+    get: handleGetInstructor,
   },
 });

@@ -1,5 +1,4 @@
 import { API, graphqlOperation } from "aws-amplify";
-import dayjs from "dayjs";
 
 import {
   includeObjectProps,
@@ -25,7 +24,6 @@ import {
 
 export const handleCreateLawyer = async (data, expensePart) => {
   try {
-    const lawyerLegalId = expensePart.expenseId;
     let lawyerAddressId = null;
     const addressFormated = handleFormatAddress(data);
     const addressFormatedValues = Object.values(addressFormated);
@@ -41,7 +39,6 @@ export const handleCreateLawyer = async (data, expensePart) => {
     const lawyerFormated = {
       ...lawyerPreFormated,
       lawyerAddressId,
-      lawyerLegalId,
     };
 
     const result = await API.graphql(
@@ -65,7 +62,7 @@ export const handleDeleteLawyer = async (expensePart) => {
     const result = await API.graphql(
       graphqlOperation(deleteLawyer, { input: { id } })
     );
-    console.log("deleted lawyer", result.data.deleteLawyer.id);
+
     return result.data.deleteLawyer.id;
   } catch (error) {
     console.error("handle delete lawyer", error);
@@ -80,11 +77,14 @@ export const handleUpdateLawyer = async (data, expensePart) => {
     const addressFormated = handleFormatAddress(data);
 
     const addressFormatedValues = Object.values(addressFormated);
-    const notNull = (x) => x;
+    const notNull = (x) => x; // null return false
 
     if (addressFormatedValues.some(notNull)) {
       if (lawyerAddressId) {
-        await handleUpdateAddress({ ...addressFormated, id: lawyerAddressId });
+        await handleUpdateAddress({
+          ...addressFormated,
+          id: lawyerAddressId,
+        });
       } else {
         lawyerAddressId = await handleCreateAddress(addressFormated);
       }
@@ -96,8 +96,6 @@ export const handleUpdateLawyer = async (data, expensePart) => {
       graphqlOperation(updateLawyer, { input: { ...lawyerFormated } })
     );
 
-    console.log("updated lawyer", result.data.updateLawyer);
-
     return result.data.updateLawyer;
   } catch (error) {
     console.error("handle update lawyer", error);
@@ -108,7 +106,6 @@ export const handleFormatLawyer = (data, expensePart) => {
   try {
     const lawyerStructure = {
       ...includeObjectProps(data, [
-        "id",
         "fee",
         "name",
         "lastName",
@@ -118,16 +115,13 @@ export const handleFormatLawyer = (data, expensePart) => {
       ]),
     };
 
-    console.log(" lawyer");
-
     const newLawyer = {
       ...replacePropEmptyString(lawyerStructure),
       lawyerAddressId: null,
-      lawyerLegalId: expensePart ? expensePart.expenseId : null,
-      id: expensePart.id,
+      lawyerLegalId: expensePart ? expensePart.id : null,
     };
 
-    if (expensePart) {
+    if (expensePart.id) {
       const lawyerAddressId = expensePart.address
         ? expensePart.address.id
         : null;
