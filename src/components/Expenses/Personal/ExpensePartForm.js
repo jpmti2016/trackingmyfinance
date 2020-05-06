@@ -5,6 +5,10 @@ import { useHistory } from "react-router-dom";
 
 import LawyerFields from "./../Personal/Legal/LawyerFields";
 import BeneficiaryFields from "./../Personal/Insurance/BeneficiaryFields";
+import ProductFields from "./../Personal/Food/ProductFields";
+import AcademicFeeFields from "./../Personal/Education/AcademicFeeFields";
+import InstructorFields from "./../Personal/Education/InstructorFields";
+
 import "./ExpensePersonalForm.css";
 import { partAsEnum } from "./part";
 
@@ -27,14 +31,23 @@ export default function ExpensePartForm(props) {
     setIsUpdating(props.location.pathname.includes("edit"));
   }, [props]);
 
-  console.log("form expense part", expensePart);
-  console.log("isAdding", isAdding);
-  console.log("isUpdating", isUpdating);
-
-  const { register, handleSubmit, errors, watch, reset } = useForm({});
+  const { register, handleSubmit, errors, reset } = useForm({});
 
   useEffect(() => {
     reset({
+      //period
+      billingStart:
+        isUpdating && expensePart
+          ? expensePart.period
+            ? expensePart.period.billingStart
+            : ""
+          : "",
+      billingEnd:
+        isUpdating && expensePart
+          ? expensePart.period
+            ? expensePart.period.billingEnd
+            : ""
+          : "",
       //address
       number:
         isUpdating && expensePart
@@ -78,31 +91,41 @@ export default function ExpensePartForm(props) {
             ? expensePart.address.country
             : ""
           : "",
-
-      //lawyer
-      fee: isUpdating && expensePart ? expensePart.fee : 0.0,
+      //common
       name: isUpdating && expensePart ? expensePart.name : "",
       lastName: isUpdating && expensePart ? expensePart.lastName : "",
       phone: isUpdating && expensePart ? expensePart.phone : "",
       email: isUpdating && expensePart ? expensePart.email : "",
+      //lawyer
+      fee: isUpdating && expensePart ? expensePart.fee : 0.0,
       firm: isUpdating && expensePart ? expensePart.firm : "",
+
+      //product
+      price: isUpdating && expensePart ? expensePart.price : 0.0,
+      quantity: isUpdating && expensePart ? expensePart.quantity : 1,
+      frequency: isUpdating && expensePart ? expensePart.frequency : "ONETIME",
+
+      //academic fee
+      tuitionAndFees:
+        isUpdating && expensePart ? expensePart.tuitionAndFees : 0,
+      booksAndSupplies:
+        isUpdating && expensePart ? expensePart.booksAndSupplies : 0,
+      roomAndBoard: isUpdating && expensePart ? expensePart.roomAndBoard : 0,
+      transportation:
+        isUpdating && expensePart ? expensePart.transportation : 0,
+      personal: isUpdating && expensePart ? expensePart.personal : 0,
+
+      //instructor
+      webPage: isUpdating && expensePart ? expensePart.webPage : "",
+      tweeter: isUpdating && expensePart ? expensePart.tweeter : "",
     });
   }, [expensePart, reset, isUpdating]);
 
   const handleCreatePart = async (data, expensePart) => {
-    console.log(
-      "partAsEnumTypename",
-      partAsEnum.fromValue(expensePart.__typename.toUpperCase()).idName
-    );
-    console.log("handle create part", data, expensePart);
-
     try {
-      const result = await partAsEnum
+      await partAsEnum
         .fromValue(expensePart.__typename.toUpperCase())
         .create(data, expensePart);
-
-      console.log("expensePart in form", expensePart);
-      console.log("handle create lawyer", result);
 
       // history.push(`/expenses/personal/${expensePartId}/expensepart`);
       history.push(`/expenses/personal`);
@@ -111,13 +134,10 @@ export default function ExpensePartForm(props) {
     }
   };
   const handleUpdatePart = async (data, expensePart) => {
-    console.log("handle update part", data, expensePart);
     try {
-      const result = await partAsEnum
+      await partAsEnum
         .fromValue(expensePart.__typename.toUpperCase())
         .update(data, expensePart);
-
-      console.log("update result", result);
 
       history.push(`/expenses/personal`);
     } catch (error) {
@@ -129,7 +149,6 @@ export default function ExpensePartForm(props) {
     try {
       isAdding && (await handleCreatePart(data, expensePart));
       isUpdating && (await handleUpdatePart(data, expensePart));
-      console.log("data", data);
     } catch (error) {
       console.error("expense form", error);
     }
@@ -172,7 +191,6 @@ export default function ExpensePartForm(props) {
                 <p>{expensePart ? expensePart.nature : "NA"}</p>
 
                 <p>{`state: ${JSON.stringify(props.location.state)}`}</p>
-                {console.log("link", props.location.state)}
               </div>
             </div>
           </div>
@@ -186,6 +204,15 @@ export default function ExpensePartForm(props) {
           )}
           {expensePart && expensePart.__typename === "Beneficiary" && (
             <BeneficiaryFields register={register} errors={errors} />
+          )}
+          {expensePart && expensePart.__typename === "Product" && (
+            <ProductFields register={register} errors={errors} />
+          )}
+          {expensePart && expensePart.__typename === "AcademicFee" && (
+            <AcademicFeeFields register={register} errors={errors} />
+          )}
+          {expensePart && expensePart.__typename === "Instructor" && (
+            <InstructorFields register={register} errors={errors} />
           )}
 
           <div className="field">
