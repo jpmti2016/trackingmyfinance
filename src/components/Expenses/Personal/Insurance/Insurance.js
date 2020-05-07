@@ -4,7 +4,7 @@ export default function InsuranceFields({
   watchInsurance,
   register,
   errors,
-  control
+  control,
 }) {
   return (
     <>
@@ -187,8 +187,8 @@ export default function InsuranceFields({
           />
         </div>
       </div>
-
-      {(watchInsurance === "LIFE" ||
+      {/* The insurance beneficiaries will be added from the expense list */}
+      {/* {(watchInsurance === "LIFE" ||
         watchInsurance === "DISABILITY" ||
         watchInsurance === "HOME" ||
         watchInsurance === "CAR" ||
@@ -198,7 +198,7 @@ export default function InsuranceFields({
           errors={errors}
           control={control}
         />
-      )}
+      )} */}
     </>
   );
 }

@@ -1,70 +1,142 @@
-import { API, graphqlOperation } from "./aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
 import dayjs from "dayjs";
 
 import {
-  asEnumeration,
   replacePropEmptyString,
   includeObjectProps,
+  omitObjectProps,
 } from "../../helpers/utilities";
-
-import {
-  handleCreatePeriod,
-  handleDeletePeriod,
-  handleUpdatePeriod,
-} from "./period";
 
 import {
   createInsuranceExpense,
   deleteInsuranceExpense,
   updateInsuranceExpense,
-  createBeneficiary,
-  deleteBeneficiary,
-  updateBeneficiary,
 } from "../../../graphql/mutations";
 import {
   getInsuranceExpense,
   listInsuranceExpenses,
-  getBeneficiary,
-  listBeneficiarys,
 } from "../../../graphql/queries";
 
-export const handleStructureBeneficiary = (data) => {
+export const handleFormatInsurance = (data, expense, clientId) => {
   try {
-    const beneficiary = {
-      name: data.name,
-      lastName: data.lastName,
-      beneficiaryAddressId: null,
-      beneficiaryInsuranceId: null,
+    //must add tags fields by AI
+    //expense should have an id
+
+    // some fields are nost included in the array cause
+    // need special treatment or it's  name in the form not match
+    // the the name on the entity
+    const insuranceStructure = {
+      kind: "PERSONAL",
+      amount: data.amount ? Number(data.amount) : null,
+      company: data.insuranceCompany ? data.insuranceCompany : null,
+      yearDeductions: data.yearDeductions ? Number(data.yearDeductions) : null,
+      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      startDate: data.startDate
+        ? dayjs(data.startDate).format("YYYY-MM-DD")
+        : null,
+      category: data.personal ? data.personal : null,
+
+      ...includeObjectProps(data, ["nature", "title", "notes", "coverage"]),
     };
 
-    return beneficiary;
+    const newInsurance = {
+      ...replacePropEmptyString(insuranceStructure),
+      insuranceExpenseClientId: clientId ? clientId : null,
+    };
+
+    if (expense) {
+      const updatedInsurance = {
+        ...includeObjectProps(expense, [
+          "id",
+          "kind",
+          "amount",
+          "dueDate",
+          "category",
+          "nature",
+          "startDate",
+          "title",
+          "notes",
+          "coverage",
+          "yearDeductions",
+          "company",
+        ]),
+        ...omitObjectProps(newInsurance, ["insuranceExpenseClientId"]),
+      };
+
+      return updatedInsurance;
+    }
+
+    return newInsurance;
   } catch (error) {
-    console.error("handle structure beneficiary", error);
+    console.error("handle format insurance", error);
   }
 };
 
-export const handleFormatBeneficiary = (data, beneficiary = null) => {
+export const handleCreateInsurance = async (data, clientId) => {
   try {
-    const beneficiaryStructured = handleStructureBeneficiary(data);
+    const formatedInsurance = handleFormatInsurance(data, null, clientId);
 
-    const newBeneficiaryFormated = replacePropEmptyString(
-      beneficiaryStructured
+    const result = await API.graphql(
+      graphqlOperation(createInsuranceExpense, {
+        input: { ...formatedInsurance },
+      })
     );
 
-    if (beneficiary) {
-      const beneficiaryAddressId = beneficiary.address
-        ? beneficiary.address.id
-        : null;
-      const beneficiaryUpdatedFormated = {
-        ...includeObjectProps(beneficiary, ["id", "name", "lastName"]),
-        ...newBeneficiaryFormated,
-        beneficiaryAddressId,
-      };
-
-      return beneficiaryUpdatedFormated;
-    }
-    return newBeneficiaryFormated;
+    return result.data.createInsuranceExpense;
   } catch (error) {
-    console.error("handle format beneficiary", error);
+    console.error("handle create insurance", error);
+  }
+};
+
+export const handleUpdateInsurance = async (data, expense) => {
+  try {
+    const formatedInsurance = handleFormatInsurance(data, expense, null);
+
+    const result = await API.graphql(
+      graphqlOperation(updateInsuranceExpense, {
+        input: { ...formatedInsurance },
+      })
+    );
+
+    return result.data.updateInsuranceExpense;
+  } catch (error) {
+    console.error("handle update insurance", error);
+  }
+};
+
+export const handleDeleteInsurance = async ({ id }) => {
+  try {
+    //TODO must deletes its beneficiaries if has
+
+    const result = await API.graphql(
+      graphqlOperation(deleteInsuranceExpense, { input: { id } })
+    );
+
+    return result.data.deleteInsuranceExpense;
+  } catch (error) {
+    console.error("handle delete insurance", error);
+  }
+};
+
+export const handleGetInsurance = async (id) => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(getInsuranceExpense, { input: { id } })
+    );
+
+    return result.data.getInsuranceExpense;
+  } catch (error) {
+    console.error("handle get insurance", error);
+  }
+};
+
+export const handleListInsurance = async () => {
+  try {
+    const result = await API.graphql(
+      graphqlOperation(listInsuranceExpenses, { input: {} })
+    );
+    return result.data.listInsuranceExpenses.items;
+  } catch (error) {
+    console.error("handle list insurance", error);
   }
 };

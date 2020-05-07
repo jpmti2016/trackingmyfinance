@@ -24,6 +24,13 @@ import {
   handleListLegal,
 } from "./legal";
 
+import {
+  handleCreateInsurance,
+  handleUpdateInsurance,
+  handleDeleteInsurance,
+  handleFormatInsurance,
+} from "./insurance";
+
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
   phone: "PHONE",
@@ -41,10 +48,6 @@ export const categoryEnum = Object.freeze({
 });
 
 const formatPhone = (expense) => {
-  return expense;
-};
-
-const formatInsurance = (expense) => {
   return expense;
 };
 
@@ -117,7 +120,10 @@ export const categoryAsEnum = asEnumeration({
   },
   INSURANCE: {
     idName: "insuranceExpenseClientId",
-    format: formatInsurance,
+    format: handleFormatInsurance,
+    create: handleCreateInsurance,
+    update: handleUpdateInsurance,
+    delete: handleDeleteInsurance,
   },
   LEGAL: {
     idName: "legalExpenseClientId",

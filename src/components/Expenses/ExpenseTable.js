@@ -250,7 +250,7 @@ export default function ExpenseTable({
         case "GyftExpense":
           return {
             title: expense.title ? expense.title : "",
-            notes: expense.notes ? expense.title : "",
+            notes: expense.notes ? expense.notes : "",
           };
 
         default:

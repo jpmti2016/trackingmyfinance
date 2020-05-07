@@ -1,8 +1,6 @@
 import { API, graphqlOperation } from "aws-amplify";
 import dayjs from "dayjs";
 
-import { asEnumeration } from "../../helpers/utilities";
-
 import {
   createLegalExpense,
   deleteLegalExpense,

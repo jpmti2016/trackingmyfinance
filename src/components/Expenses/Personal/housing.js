@@ -81,7 +81,7 @@ export const handleCreateRepair = async (data) => {
     );
     return result.data.createRepair.id;
   } catch (error) {
-    console.log("handle create repair", error);
+    console.error("handle create repair", error);
   }
 };
 
@@ -163,7 +163,7 @@ export const handleCreateHome = async (data) => {
 
     return result.data.createHome.id;
   } catch (error) {
-    console.log("handle create repair", error);
+    console.error("handle create repair", error);
   }
 };
 
@@ -216,8 +216,6 @@ export const handleUpdateHome = async (data, home) => {
       graphqlOperation(updateHome, { input: { ...formatedHome } })
     );
 
-    console.log("updated home", result.data.updateHome);
-
     return result.data.updateHome.id;
   } catch (error) {
     console.error("handle update Home", error);
@@ -263,8 +261,6 @@ export const handleCreateUtility = async (data) => {
     const result = await API.graphql(
       graphqlOperation(createUtility, { input: { ...formatedUtility } })
     );
-
-    console.log("handle create utility result", result);
 
     return result.data.createUtility.id;
   } catch (error) {
@@ -320,8 +316,6 @@ export const handleUpdateUtility = async (data, utility) => {
     const result = await API.graphql(
       graphqlOperation(updateUtility, { input: { ...utilityFormated } })
     );
-
-    console.log("utility updated", result.data.updateUtility);
 
     return result.data.updateUtility.id;
   } catch (error) {
@@ -517,7 +511,6 @@ export const handleFormatUtility = (data, utility = null) => {
       utilityPeriodId,
     };
 
-    console.log("handle format utility", updatedUtility);
     return updatedUtility;
   }
 
@@ -573,7 +566,7 @@ export const handleFormatRepair = (data, repair = null) => {
     }
     return newRepair;
   } catch (error) {
-    console.log("handle format repair", error);
+    console.error("handle format repair", error);
   }
 };
 export const handleFormatSupply = (data, supply = null) => {
@@ -602,7 +595,7 @@ export const handleFormatSupply = (data, supply = null) => {
     }
     return newSupply;
   } catch (error) {
-    console.log("handle format supply", error);
+    console.error("handle format supply", error);
   }
 };
 
@@ -626,7 +619,7 @@ export const handleFormatOtherHousings = (data, otherHousing = null) => {
     }
     return newOtherHousing;
   } catch (error) {
-    console.log("handle format otherHousing", error);
+    console.error("handle format otherHousing", error);
   }
 };
 
