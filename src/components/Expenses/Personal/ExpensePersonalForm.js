@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 // import * as yup from 'yup';
-
+// import { DevTool } from "react-hook-form-devtools";
 import { useHistory } from "react-router-dom";
 
 import "./ExpensePersonalForm.css";
@@ -147,7 +147,7 @@ export default function ExpensePersonalForm(props) {
       foodNotes: isUpdating && expense ? foodInitForm(expense).notes : "",
       foodTitle: isUpdating && expense ? foodInitForm(expense).title : "",
       groceryStore: isUpdating && expense ? foodInitForm(expense).store : "",
-      groceryInfo: isUpdating && expense ? foodInitForm(expense).info : "",
+      groceryInfo: isUpdating && expense ? foodInitForm(expense).info : "TOTAL",
       // groceryTotal: isUpdating && expense ? expense.amount : "",
       place: isUpdating && expense ? foodInitForm(expense).place : "",
       products: isUpdating && expense ? foodInitForm(expense).products : [],
@@ -649,6 +649,7 @@ export default function ExpensePersonalForm(props) {
             </div>
           </div>
         </form>
+        {/* <DevTool control={control} /> */}
       </div>
     </>
   );
