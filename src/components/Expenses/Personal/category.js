@@ -30,6 +30,13 @@ import {
   handleDeleteInsurance,
   handleFormatInsurance,
 } from "./insurance";
+import {
+  handleCreateFood,
+  handleUpdateFood,
+  handleDeleteFood,
+  handleListFood,
+  handleGetFood,
+} from "./food";
 
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
@@ -137,7 +144,11 @@ export const categoryAsEnum = asEnumeration({
   FOOD: {
     idName: "legalExpenseClientId",
     format: formatFood,
-    create: handleCreateLegal,
+    create: handleCreateFood,
+    update: handleUpdateFood,
+    delete: handleDeleteFood,
+    list: handleListFood,
+    get: handleGetFood,
   },
   COMMUTE: {
     idName: "commuteExpenseClientId",

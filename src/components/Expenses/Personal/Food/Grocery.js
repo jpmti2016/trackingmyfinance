@@ -4,7 +4,7 @@ export default function GroceryFields({
   watchGroceryInfo,
   register,
   control,
-  errors
+  errors,
 }) {
   return (
     <>
@@ -25,7 +25,6 @@ export default function GroceryFields({
           )}
         </div>
       </div>
-
       <div className="field">
         <label htmlFor="groceryStore" className="label">
           Store
@@ -45,7 +44,6 @@ export default function GroceryFields({
           )}
         </div>
       </div>
-
       <div className="field">
         <label htmlFor="foodTitle" className="label">
           Title
@@ -63,7 +61,6 @@ export default function GroceryFields({
           )}
         </div>
       </div>
-
       <div className="field">
         <label htmlFor="foodNotes" className="label">
           Notes
@@ -80,7 +77,6 @@ export default function GroceryFields({
           <p className="error">{"Please check the notes"}</p>
         )}
       </div>
-
       <div className="field is-grouped is-grouped-multiline">
         <div className="control">
           <label htmlFor="Total" className="label">
@@ -90,6 +86,7 @@ export default function GroceryFields({
               name="groceryInfo"
               value="TOTAL"
               ref={register}
+              defaultChecked={watchGroceryInfo === "TOTAL"}
             />
             Total
           </label>
@@ -127,11 +124,12 @@ export default function GroceryFields({
           )}
         </div>
       ) : (
-        <GroceryProductFieldsArray
-          register={register}
-          control={control}
-          errors={errors}
-        />
+        <p>Products will be added from expense list</p>
+        // <GroceryProductFieldsArray
+        //   register={register}
+        //   control={control}
+        //   errors={errors}
+        // />
       )}
     </>
   );

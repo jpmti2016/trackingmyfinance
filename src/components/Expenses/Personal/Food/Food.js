@@ -7,7 +7,7 @@ export default function FoodFields({
   watchFood,
   watchGroceryInfo,
   errors,
-  control
+  control,
 }) {
   return (
     <>
@@ -18,7 +18,7 @@ export default function FoodFields({
         <div className="control">
           <div className="select">
             <select name="nature" ref={register({ required: true })}>
-              <option value="Select">Select</option>
+              <option value="">--Select--</option>
               <option value="GROCERY">Grocery</option>
               <option value="DINNINGOUT">DinningOut</option>
             </select>
