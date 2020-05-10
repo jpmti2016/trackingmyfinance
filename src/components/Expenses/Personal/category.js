@@ -29,14 +29,26 @@ import {
   handleUpdateInsurance,
   handleDeleteInsurance,
   handleFormatInsurance,
+  handleGetInsurance,
+  handleListInsurance,
 } from "./insurance";
 import {
+  handleFormatFood,
   handleCreateFood,
   handleUpdateFood,
   handleDeleteFood,
   handleListFood,
   handleGetFood,
 } from "./food";
+
+import {
+  handleFormatCommute,
+  handleCreateCommute,
+  handleUpdateCommute,
+  handleDeleteCommute,
+  handleGetCommute,
+  handleListCommute,
+} from "./commute";
 
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
@@ -67,13 +79,6 @@ const initializePhone = (expense) => {
 };
 
 const formatLegal = (expense) => {
-  return expense;
-};
-const formatFood = (expense) => {
-  return expense;
-};
-
-const formatCommute = (expense) => {
   return expense;
 };
 
@@ -131,6 +136,8 @@ export const categoryAsEnum = asEnumeration({
     create: handleCreateInsurance,
     update: handleUpdateInsurance,
     delete: handleDeleteInsurance,
+    list: handleListInsurance,
+    get: handleGetInsurance,
   },
   LEGAL: {
     idName: "legalExpenseClientId",
@@ -143,7 +150,7 @@ export const categoryAsEnum = asEnumeration({
   },
   FOOD: {
     idName: "legalExpenseClientId",
-    format: formatFood,
+    format: handleFormatFood,
     create: handleCreateFood,
     update: handleUpdateFood,
     delete: handleDeleteFood,
@@ -152,7 +159,12 @@ export const categoryAsEnum = asEnumeration({
   },
   COMMUTE: {
     idName: "commuteExpenseClientId",
-    format: formatCommute,
+    format: handleFormatCommute,
+    create: handleCreateCommute,
+    update: handleUpdateCommute,
+    delete: handleDeleteCommute,
+    list: handleListCommute,
+    get: handleGetCommute,
   },
   EDUCATION: {
     idName: "educationExpenseClientId",

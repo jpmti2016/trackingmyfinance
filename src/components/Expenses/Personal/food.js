@@ -87,7 +87,7 @@ export const handleUpdateGrocery = async (data, grocery) => {
     const formatedGrocery = handleFormatGrocery(data, grocery);
 
     const result = await API.graphql(
-      graphqlOperation(handleUpdateGrocery, { input: { ...formatedGrocery } })
+      graphqlOperation(updateGrocery, { input: { ...formatedGrocery } })
     );
 
     return result.data.updateGrocery;

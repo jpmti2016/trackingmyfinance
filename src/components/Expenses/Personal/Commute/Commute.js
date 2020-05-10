@@ -3,9 +3,9 @@ import React from "react";
 export default function CommuteFields({
   register,
   watchCommuteService,
-  errors
+  errors,
 }) {
-  let rideTitle = watchCommuteService !== "Own" ? "Ride" : "Cost";
+  let rideTitle = watchCommuteService !== "OWN" ? "Ride" : "Cost";
   return (
     <>
       <div className="field">
