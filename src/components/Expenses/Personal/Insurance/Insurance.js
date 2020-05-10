@@ -1,5 +1,5 @@
 import React from "react";
-import InsuranceBeneficiariesFieldsArray from "./InsuranceBeneficiariesFieldsArray";
+// import InsuranceBeneficiariesFieldsArray from "./InsuranceBeneficiariesFieldsArray";
 export default function InsuranceFields({
   watchInsurance,
   register,

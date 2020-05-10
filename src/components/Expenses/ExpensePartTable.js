@@ -583,7 +583,7 @@ export default function ExpensePartTable(props) {
           );
         } else {
           return (
-            <tr>
+            <tr key={1}>
               <td>NO ITEMS</td>
             </tr>
           );
@@ -600,6 +600,12 @@ export default function ExpensePartTable(props) {
             <td>{expensePart.tweeter ? expensePart.tweeter : ""}</td>
             <td>{expensePart.phone ? expensePart.phone : ""}</td>
             <td>{btns(expensePart)}</td>
+          </tr>
+        );
+      } else {
+        return (
+          <tr key={1}>
+            <td>NO ITEMS</td>
           </tr>
         );
       }

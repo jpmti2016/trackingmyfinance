@@ -1,5 +1,5 @@
 import React from "react";
-import LegalLawyerFieldsArray from "./LegalLawyerFieldsArray";
+// import LegalLawyerFieldsArray from "./LegalLawyerFieldsArray";
 
 export default function LegalFields({
   register,
