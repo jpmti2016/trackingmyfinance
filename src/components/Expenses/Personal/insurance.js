@@ -22,7 +22,7 @@ export const handleFormatInsurance = (data, expense, clientId) => {
     //must add tags fields by AI
     //expense should have an id
 
-    // some fields are nost included in the array cause
+    // some fields are not included in the array cause
     // need special treatment or it's  name in the form not match
     // the the name on the entity
     const insuranceStructure = {

@@ -723,7 +723,7 @@ export const handleDeleteHousing = async (expense) => {
 
 export const handleUpdateHousing = async (data, expense) => {
   try {
-    //Asumes that allwys the part will exist expense[housingAsEnum.fromValue(data.nature).name] === true
+    //Asumes that allways the part will exist expense[housingAsEnum.fromValue(data.nature).name] === true
     //and the expense has a [housingAsEnum.fromValue(data.nature).idName] and a clientId
     //must add tags fields by AI
     //expense should have an id
