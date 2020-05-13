@@ -4,7 +4,7 @@ import EnterMentOther from "./EnterMentOther";
 export default function EntertainmentFields({
   register,
   watchEnterMent,
-  errors
+  errors,
 }) {
   return (
     <>
@@ -19,7 +19,7 @@ export default function EntertainmentFields({
               id="nature"
               ref={register({ required: true })}
             >
-              <option value="Select">Select</option>
+              <option value="">--Select--</option>
               <option value="CONCERT">Concerts</option>
               <option value="SPORTINGEVENTS">Sporting Events</option>
               <option value="LIVETHEATER">Live Theater</option>
