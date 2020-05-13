@@ -68,6 +68,15 @@ import {
   handleListPersonalCare,
 } from "./personalCare";
 
+import {
+  handleFormatPet,
+  handleCreatePet,
+  handleUpdatePet,
+  handleDeletePet,
+  handleGetPet,
+  handleListPet,
+} from "./pet";
+
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
   phone: "PHONE",
@@ -105,10 +114,6 @@ const formatEntertainment = (expense) => {
 };
 
 const formatLoan = (expense) => {
-  return expense;
-};
-
-const formatPet = (expense) => {
   return expense;
 };
 
@@ -196,7 +201,12 @@ export const categoryAsEnum = asEnumeration({
   },
   PET: {
     idName: "petExpenseClientId",
-    format: formatPet,
+    format: handleFormatPet,
+    create: handleCreatePet,
+    update: handleUpdatePet,
+    delete: handleDeletePet,
+    list: handleListPet,
+    get: handleGetPet,
   },
   ENTERTAINMENT: {
     idName: "entertainmentExpenseClientId",
