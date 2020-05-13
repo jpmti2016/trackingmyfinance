@@ -86,6 +86,15 @@ import {
   handleGetEntertainment,
 } from "./entertainment";
 
+import {
+  handleFormatLoan,
+  handleCreateLoan,
+  handleUpdateLoan,
+  handleDeleteLoan,
+  handleGetLoan,
+  handleListLoan,
+} from "./loan";
+
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
   phone: "PHONE",
@@ -115,10 +124,6 @@ const initializePhone = (expense) => {
 };
 
 const formatLegal = (expense) => {
-  return expense;
-};
-
-const formatLoan = (expense) => {
   return expense;
 };
 
@@ -224,7 +229,12 @@ export const categoryAsEnum = asEnumeration({
   },
   LOAN: {
     idName: "loanExpenseClientId",
-    format: formatLoan,
+    format: handleFormatLoan,
+    create: handleCreateLoan,
+    update: handleUpdateLoan,
+    delete: handleDeleteLoan,
+    list: handleListLoan,
+    get: handleGetLoan,
   },
   TAXES: {
     idName: "taxExpenseClientId",
