@@ -763,11 +763,11 @@ export const handleFormatEducation = (data, expense, clientId = null) => {
         : dayjs("5000-12-31").format("YYYY-MM-DD"),
       category: data.personal ? data.personal : null,
       nature: data.nature ? data.nature : null,
-      educationExpenseClientId: clientId,
     };
 
     const newEducation = {
       ...replacePropEmptyString(educationStructure),
+      educationExpenseClientId: clientId,
     };
 
     if (expense) {
