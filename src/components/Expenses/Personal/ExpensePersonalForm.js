@@ -156,13 +156,22 @@ export default function ExpensePersonalForm(props) {
       commuteEvent: isUpdating && expense ? expense.event : "",
       //education
       bCampPriceDeferred:
-        isUpdating && expense ? educationInitForm(expense).costDeferred : "",
+        isUpdating && expense
+          ? educationInitForm(expense).costDeferred === "YES"
+          : false,
       edProgram:
         isUpdating && expense ? educationInitForm(expense).program : "",
+      edUniversity:
+        isUpdating && expense ? educationInitForm(expense).university : "",
+      edSchool: isUpdating && expense ? educationInitForm(expense).school : "",
       edTrainingSchool:
         isUpdating && expense ? educationInitForm(expense).school : "",
       edNotes: isUpdating && expense ? educationInitForm(expense).notes : "",
       edTitle: isUpdating && expense ? educationInitForm(expense).title : "",
+      edOnlinePeriod:
+        isUpdating && expense
+          ? educationInitForm(expense).edOnlinePeriod
+          : false,
       edPeriodStart:
         isUpdating && expense ? educationInitForm(expense).edPeriodStart : "",
       edPeriodEnd:
@@ -174,10 +183,7 @@ export default function ExpensePersonalForm(props) {
       edOnlinePlatf:
         isUpdating && expense ? educationInitForm(expense).platform : "",
       url: isUpdating && expense ? educationInitForm(expense).url : "",
-      edOnlinePeriod:
-        isUpdating && expense
-          ? educationInitForm(expense).edOnlinePeriod
-          : false,
+
       tuitionAndFees:
         isUpdating && expense ? educationInitForm(expense).tuitionAndFees : "",
       booksAndSupplies:
@@ -338,12 +344,16 @@ export default function ExpensePersonalForm(props) {
           title: expense.college.title,
           notes: expense.college.notes,
           program: expense.college.program,
+          university: expense.college.university,
+          school: expense.college.university,
           fees: expense.college.fees ? [...expense.college.fees.items] : [],
         };
       } else if (expense.onlineCourse) {
         return {
           title: expense.onlineCourse.title,
           notes: expense.onlineCourse.notes,
+          university: expense.onlineCourse.university,
+          school: expense.onlineCourse.school,
           instructors: expense.onlineCourse.instructors
             ? [...expense.onlineCourse.instructors.items]
             : [],
@@ -368,6 +378,8 @@ export default function ExpensePersonalForm(props) {
           title: expense.communityCollege.title,
           notes: expense.communityCollege.notes,
           program: expense.communityCollege.program,
+          university: expense.communityCollege.university,
+          school: expense.communityCollege.university,
           fees: expense.communityCollege.fees
             ? [...expense.communityCollege.fees.items]
             : [],
@@ -388,9 +400,15 @@ export default function ExpensePersonalForm(props) {
         return {
           title: expense.bootcamp.title,
           notes: expense.bootcamp.notes,
+          edPeriodStart: expense.bootcamp.period
+            ? expense.bootcamp.period.billingStart
+            : "",
+          edPeriodEnd: expense.bootcamp.period
+            ? expense.bootcamp.period.billingEnd
+            : "",
           costDeferred: expense.bootcamp.costDeferred
-            ? expense.bootcamp.costDeferred === "NO"
-            : expense.bootcamp.costDeferred === "YES",
+            ? expense.bootcamp.costDeferred
+            : null,
         };
       } else {
         return {

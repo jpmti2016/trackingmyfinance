@@ -50,6 +50,15 @@ import {
   handleListCommute,
 } from "./commute";
 
+import {
+  handleFormatEducation,
+  handleCreateEducation,
+  handleUpdateEducation,
+  handleDeleteEducation,
+  handleListEducation,
+  handleGetEducation,
+} from "./education";
+
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
   phone: "PHONE",
@@ -79,10 +88,6 @@ const initializePhone = (expense) => {
 };
 
 const formatLegal = (expense) => {
-  return expense;
-};
-
-const formatEducation = (expense) => {
   return expense;
 };
 
@@ -168,7 +173,12 @@ export const categoryAsEnum = asEnumeration({
   },
   EDUCATION: {
     idName: "educationExpenseClientId",
-    format: formatEducation,
+    format: handleFormatEducation,
+    create: handleCreateEducation,
+    update: handleUpdateEducation,
+    delete: handleDeleteEducation,
+    list: handleListEducation,
+    get: handleGetEducation,
   },
   PERSONALCARE: {
     idName: "personalCareExpenseClientId",

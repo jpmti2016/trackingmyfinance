@@ -6,6 +6,7 @@ import {
   includeObjectProps,
   omitObjectProps,
   replacePropEmptyString,
+  asEnumeration,
 } from "../../helpers/utilities";
 
 import {
@@ -19,8 +20,6 @@ import {
   updateDinningOut,
   deleteDinningOut,
 } from "../../../graphql/mutations";
-
-import { asEnumeration } from "../../helpers/utilities";
 
 import {
   getFoodExpense,
@@ -258,15 +257,15 @@ export const handleFormatFood = (data, expense, clientId) => {
 
     const foodStructure = {
       kind: "PERSONAL",
-      amount: data.amount ? Number(data.amount) : null,
+      amount: data.amount ? Number(data.amount) : 0,
       category: data.personal ? data.personal : null,
       dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
       nature: data.nature ? data.nature : null,
-      foodExpenseClientId: clientId,
     };
 
     const newFood = {
       ...replacePropEmptyString(foodStructure),
+      foodExpenseClientId: clientId,
     };
 
     if (expense) {
@@ -333,7 +332,7 @@ export const handleDeleteFood = async (expense) => {
   try {
     await foodAsEnum
       .fromValue(expense.nature)
-      .delete(expense[foodAsEnum.fromValue(expense.name).name]);
+      .delete(expense[foodAsEnum.fromValue(expense.nature).name]);
 
     const { id } = expense;
 
@@ -362,7 +361,7 @@ export const handleListFood = async () => {
 export const handleGetFood = async (id) => {
   try {
     const result = await API.graphql(
-      graphqlOperation(getFoodExpense, { input: {} })
+      graphqlOperation(getFoodExpense, { input: { id } })
     );
 
     return result.data.getFoodExpense;

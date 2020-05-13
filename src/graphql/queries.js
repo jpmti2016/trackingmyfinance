@@ -5883,6 +5883,8 @@ export const listClients = `query ListClients(
             description
             notes
             platform
+            university
+            school
             url
             period{
               id

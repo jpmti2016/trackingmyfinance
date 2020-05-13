@@ -9,7 +9,7 @@ export default function EducationFields({
   watchEdOnlinePeriod,
   watchBCampPriceDeferred,
   control,
-  errors
+  errors,
 }) {
   return (
     <>
@@ -41,6 +41,40 @@ export default function EducationFields({
       {(watchEducation === "COLLEGE" ||
         watchEducation === "COMUNITYCOLLEGE") && (
         <>
+          <div className="field">
+            <label htmlFor="edUniversity" className="label">
+              University
+            </label>
+            <div className="control">
+              <input
+                id="edUniversity"
+                type="text"
+                className="input"
+                name="edUniversity"
+                ref={register}
+              />
+              {errors.edUniversity && (
+                <p className="error">{"Please check the university"}</p>
+              )}
+            </div>
+          </div>
+          <div className="field">
+            <label htmlFor="edSchool" className="label">
+              School
+            </label>
+            <div className="control">
+              <input
+                id="edSchool"
+                type="text"
+                className="input"
+                name="edSchool"
+                ref={register}
+              />
+              {errors.edSchool && (
+                <p className="error">{"Please check the school"}</p>
+              )}
+            </div>
+          </div>
           <div className="field">
             <label htmlFor="edProgram" className="label">
               Program
@@ -88,11 +122,11 @@ export default function EducationFields({
             )}
           </div>
 
-          <EducationAcademicFeeFieldsArray
+          {/* <EducationAcademicFeeFieldsArray
             register={register}
             control={control}
             errors={errors}
-          />
+          /> */}
 
           <div className="field">
             <label htmlFor="dueDate" className="label">
@@ -111,6 +145,8 @@ export default function EducationFields({
               )}
             </div>
           </div>
+
+          <p className="field">Fees can be added from the expense list</p>
         </>
       )}
       {watchEducation === "TRAINING" && (
@@ -207,6 +243,40 @@ export default function EducationFields({
 
       {watchEducation === "ONLINECOURSE" && (
         <>
+          <div className="field">
+            <label htmlFor="edUniversity" className="label">
+              University
+            </label>
+            <div className="control">
+              <input
+                id="edUniversity"
+                type="text"
+                className="input"
+                name="edUniversity"
+                ref={register}
+              />
+              {errors.edUniversity && (
+                <p className="error">{"Please check the university"}</p>
+              )}
+            </div>
+          </div>
+          <div className="field">
+            <label htmlFor="edSchool" className="label">
+              School
+            </label>
+            <div className="control">
+              <input
+                id="edSchool"
+                type="text"
+                className="input"
+                name="edSchool"
+                ref={register}
+              />
+              {errors.edSchool && (
+                <p className="error">{"Please check the school"}</p>
+              )}
+            </div>
+          </div>
           <div className="field">
             <label htmlFor="edTitle" className="label">
               Title
@@ -327,6 +397,23 @@ export default function EducationFields({
             </div>
           </div>
 
+          <div className="field">
+            <label htmlFor="edNotes" className="label">
+              Notes
+            </label>
+            <div className="control">
+              <textarea
+                id="edNotes"
+                className="textarea"
+                name="edNotes"
+                ref={register}
+              />
+              {errors.edNotes && (
+                <p className="error">{"Please check the Notes"}</p>
+              )}
+            </div>
+          </div>
+
           {watchEdOnlinePeriod && (
             <Period
               edType={watchEducation}
@@ -334,12 +421,12 @@ export default function EducationFields({
               errors={errors}
             />
           )}
-
-          <EducationInstructorFieldsArray
+          <p className="field">Instructors will be added from expense list</p>
+          {/* <EducationInstructorFieldsArray
             register={register}
             control={control}
             errors={errors}
-          />
+          /> */}
         </>
       )}
 
@@ -362,6 +449,8 @@ export default function EducationFields({
               )}
             </div>
           </div>
+
+          <Period edType={watchEducation} register={register} errors={errors} />
 
           <div className="field">
             <label htmlFor="edNotes" className="label">
