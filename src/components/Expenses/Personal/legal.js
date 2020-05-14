@@ -2,30 +2,64 @@ import { API, graphqlOperation } from "aws-amplify";
 import dayjs from "dayjs";
 
 import {
+  includeObjectProps,
+  omitObjectProps,
+  replacePropEmptyString,
+} from "../../helpers/utilities";
+
+import {
   createLegalExpense,
   deleteLegalExpense,
   updateLegalExpense,
 } from "../../../graphql/mutations";
 import { getLegalExpense, listLegalExpenses } from "../../../graphql/queries";
 
+export const handleFormatLegal = (data, expense, clientId) => {
+  try {
+    const legalStructure = {
+      kind: "PERSONAL",
+      amount: data.amount ? Number(data.amount) : null,
+      category: data.personal ? data.personal : null,
+      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      ...includeObjectProps(data, ["nature", "title", "notes"]),
+    };
+    const newLegal = {
+      ...replacePropEmptyString(legalStructure),
+      legalExpenseClientId: clientId,
+    };
+
+    if (expense) {
+      const updatedLegal = {
+        ...includeObjectProps(expense, [
+          "id",
+          "kind",
+          "amount",
+          "category",
+          "dueDate",
+          "nature",
+          "title",
+          "notes",
+        ]),
+        ...omitObjectProps(newLegal, ["legalExpenseClientId"]),
+      };
+
+      return updatedLegal;
+    }
+
+    return newLegal;
+  } catch (error) {
+    console.error("handle format legal", error);
+  }
+};
+
 export const handleCreateLegal = async (data, clientId = null) => {
   //expense cames from state, data comes from form
 
   try {
     //have to add tags but it should be IA agregated, lambda function ??
-    const newLegal = {
-      kind: "PERSONAL",
-      amount: data.amount ? Number(data.amount) : null,
-      category: data.personal ? data.personal : null,
-      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
-      nature: data.nature ? data.nature : null,
-      title: data.title ? data.title : null,
-      notes: data.notes ? data.notes : null,
-      legalExpenseClientId: clientId,
-    };
-
+    const legalFormatted = handleFormatLegal(data, null, clientId);
     const result = await API.graphql(
-      graphqlOperation(createLegalExpense, { input: { ...newLegal } })
+      graphqlOperation(createLegalExpense, { input: { ...legalFormatted } })
     );
 
     return result.data.createLegalExpense;
@@ -38,20 +72,10 @@ export const handleUpdateLegal = async (data, expense) => {
   //must add tags fields by AI
   //expense should have an id
   try {
-    const { id } = expense;
-
-    const expenseToUpdate = {
-      id,
-      category: data.personal ? data.personal : null,
-      nature: data.nature ? data.nature : null,
-      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
-      amount: data.amount ? Number(data.amount) : null,
-      title: data.title ? data.title : null,
-      notes: data.notes ? data.notes : null,
-    };
+    const legalFormatted = handleFormatLegal(data, expense, null);
 
     const result = await API.graphql(
-      graphqlOperation(updateLegalExpense, { input: { ...expenseToUpdate } })
+      graphqlOperation(updateLegalExpense, { input: { ...legalFormatted } })
     );
 
     return result.data.updateLegalExpense;

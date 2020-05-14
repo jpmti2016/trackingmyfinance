@@ -15,7 +15,7 @@ export default function InvestmentFields({ register, errors }) {
               <option value="IRA">IRA</option>
               <option value="TRF">TRF</option>
               <option value="VTSAX">VTSAX</option>
-              <option value="Roth IRA">Roth IRA</option>
+              <option value="ROTHIRA">Roth IRA</option>
             </select>
           </div>
           {errors.investment && (

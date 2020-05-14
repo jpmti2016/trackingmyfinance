@@ -9,6 +9,7 @@ import {
 } from "./housing";
 
 import {
+  handleFormatPhoneExpense,
   handleCreatePhoneExpense,
   handleDeletePhoneExpense,
   handleUpdatePhoneExpense,
@@ -17,6 +18,7 @@ import {
 } from "./phone";
 
 import {
+  handleFormatLegal,
   handleCreateLegal,
   handleDeleteLegal,
   handleUpdateLegal,
@@ -104,6 +106,15 @@ import {
   handleGetTax,
 } from "./tax";
 
+import {
+  handleFormatInvestmentExpense,
+  handleCreateInvestmentExpense,
+  handleUpdateInvestmentExpense,
+  handleDeleteInvestmentExpense,
+  handleGetInvestmentExpense,
+  handleListInvestmentExpense,
+} from "./investment";
+
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
   phone: "PHONE",
@@ -120,23 +131,11 @@ export const categoryEnum = Object.freeze({
   investement: "INVESTMENT",
 });
 
-const formatPhone = (expense) => {
-  return expense;
-};
-
 const initializeHousing = (expense) => {
   return expense;
 };
 
 const initializePhone = (expense) => {
-  return expense;
-};
-
-const formatLegal = (expense) => {
-  return expense;
-};
-
-const formatInvestment = (expense) => {
   return expense;
 };
 
@@ -152,7 +151,7 @@ export const categoryAsEnum = asEnumeration({
   },
   PHONE: {
     idName: "phoneExpenseClientId",
-    format: formatPhone,
+    format: handleFormatPhoneExpense,
     initializeForm: initializePhone,
     create: handleCreatePhoneExpense,
     delete: handleDeletePhoneExpense,
@@ -171,7 +170,7 @@ export const categoryAsEnum = asEnumeration({
   },
   LEGAL: {
     idName: "legalExpenseClientId",
-    format: formatLegal,
+    format: handleFormatLegal,
     create: handleCreateLegal,
     delete: handleDeleteLegal,
     update: handleUpdateLegal,
@@ -252,7 +251,12 @@ export const categoryAsEnum = asEnumeration({
   },
   INVESTMENT: {
     idName: "investmentExpenseClientId",
-    format: formatInvestment,
+    format: handleFormatInvestmentExpense,
+    create: handleCreateInvestmentExpense,
+    update: handleUpdateInvestmentExpense,
+    delete: handleDeleteInvestmentExpense,
+    list: handleListInvestmentExpense,
+    get: handleGetInvestmentExpense,
   },
 });
 
