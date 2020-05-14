@@ -95,6 +95,15 @@ import {
   handleListLoan,
 } from "./loan";
 
+import {
+  handleFormatTax,
+  handleCreateTax,
+  handleUpdateTax,
+  handleDeleteTax,
+  handleListTax,
+  handleGetTax,
+} from "./tax";
+
 export const categoryEnum = Object.freeze({
   housing: "HOUSING",
   phone: "PHONE",
@@ -124,10 +133,6 @@ const initializePhone = (expense) => {
 };
 
 const formatLegal = (expense) => {
-  return expense;
-};
-
-const formatTaxes = (expense) => {
   return expense;
 };
 
@@ -238,7 +243,12 @@ export const categoryAsEnum = asEnumeration({
   },
   TAXES: {
     idName: "taxExpenseClientId",
-    format: formatTaxes,
+    format: handleFormatTax,
+    create: handleCreateTax,
+    update: handleUpdateTax,
+    delete: handleDeleteTax,
+    list: handleListTax,
+    get: handleGetTax,
   },
   INVESTMENT: {
     idName: "investmentExpenseClientId",
