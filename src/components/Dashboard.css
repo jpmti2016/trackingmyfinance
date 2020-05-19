@@ -1,6 +1,6 @@
 .hero-image {
   background-image: url(../img/IMG_20191020_134438.jpg);
-  background-color: #fff;
+  background-color: hsla(0, 0%, 0%, 0.55);
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
