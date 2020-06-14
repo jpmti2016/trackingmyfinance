@@ -27,7 +27,7 @@ export const academicFeeAsEnum = asEnumeration({
   COLLEGE: {
     idName: "academicFeeCollegeId",
   },
-  COMUNITYCOLLEGE: {
+  COMMUNITYCOLLEGE: {
     idName: "academicFeeCommunityCollegeId",
   },
 });
@@ -129,8 +129,8 @@ export const handleFormatAcademicFee = (data, expensePart) => {
     const newProduct = {
       ...replacePropEmptyString(academicFeeStructure),
       // the needed prop's name (academicFeeCollegeId OR academicFeeCommunityCollegeId)
-      // depend of the nature value (COLLEGE or COMUNITYCOLLEGE)
-      // and the idName is a prop of the academicFeeAsEnum for the type COLLEGE OR COMUNITYCOLLEGE
+      // depend of the nature value (COLLEGE or COMMUNITYCOLLEGE)
+      // and the idName is a prop of the academicFeeAsEnum for the type COLLEGE OR COMMUNITYCOLLEGE
       [academicFeeAsEnum.fromValue(expensePart.nature.toUpperCase())
         .idName]: expensePart.natureId ? expensePart.natureId : null,
       academicFeePeriodId: expensePart.period ? expensePart.period.id : null,

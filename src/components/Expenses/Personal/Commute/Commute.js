@@ -22,7 +22,7 @@ export default function CommuteFields({
               <option value="">--Select--</option>
               <option value="OWN">Own</option>
               <option value="UBER">Uber</option>
-              <option value="LIFT">Lift</option>
+              <option value="LYFT">Lyft</option>
               <option value="TAXI">Taxi</option>
               <option value="SCOOTER">Scooter</option>
               <option value="BUS">Bus</option>

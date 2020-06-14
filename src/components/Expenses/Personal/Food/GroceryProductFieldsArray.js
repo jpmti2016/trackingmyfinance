@@ -5,11 +5,11 @@ import { useFieldArray } from "react-hook-form";
 export default function GroceryProductFieldsArray({
   register,
   control,
-  errors
+  errors,
 }) {
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "products"
+    name: "products",
   });
 
   return (
@@ -104,7 +104,7 @@ export default function GroceryProductFieldsArray({
                     <option value="MONTHLY">Monthly</option>
                     <option value="BEWEEKLY">Beweekly</option>
                     <option value="WEEKLY">Weekly</option>
-                    <option value="DAYLY">Dayly</option>
+                    <option value="DAILY">Daily</option>
                     <option value="HOURLY">Hourly</option>
                     <option value="ONETIME">Onetime</option>
                     <option value="OTHER">Other</option>

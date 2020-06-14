@@ -18,15 +18,15 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
         </div>
 
         <div className="control">
-          <label htmlFor="Aditional" className="label">
+          <label htmlFor="Additional" className="label">
             <input
-              id="Aditional"
+              id="Additional"
               type="radio"
               name="phonePlan"
-              value="ADITIONAL"
+              value="ADDITIONAL"
               ref={register}
             />
-            Aditional
+            Additional
           </label>
         </div>
       </div>

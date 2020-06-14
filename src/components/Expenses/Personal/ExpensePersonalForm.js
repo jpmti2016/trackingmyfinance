@@ -102,17 +102,17 @@ export default function ExpensePersonalForm(props) {
 
       //phone
       phoneTitle:
-        isUpdating && expense && (expense.plan || expense.aditional)
+        isUpdating && expense && (expense.plan || expense.additional)
           ? expense.plan
             ? expense.plan.title
-            : expense.aditional.title
+            : expense.additional.title
           : "",
 
       phoneNotes:
-        isUpdating && expense && (expense.plan || expense.aditional)
+        isUpdating && expense && (expense.plan || expense.additional)
           ? expense.plan
             ? expense.plan.notes
-            : expense.aditional.notes
+            : expense.additional.notes
           : "",
       phonePlanBillingStart:
         isUpdating && expense && expense.plan && expense.plan.billing

@@ -712,7 +712,7 @@ export const educationAsEnum = asEnumeration({
     list: handleListOnlineCourse,
     get: handleGetOnlineCourse,
   },
-  COMUNITYCOLLEGE: {
+  COMMUNITYCOLLEGE: {
     name: "communityCollege",
     idName: "educationExpenseCommunityCollegeId",
     format: handleFormatCommunityCollege,

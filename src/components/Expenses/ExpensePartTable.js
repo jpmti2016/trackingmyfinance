@@ -133,7 +133,7 @@ async function initializeExpensePart(
                   },
                 ];
               }
-            } else if (nature === "COMUNITYCOLLEGE") {
+            } else if (nature === "COMMUNITYCOLLEGE") {
               natureId = response.data[GetExpense(__typename).operName]
                 .communityCollege
                 ? response.data[GetExpense(__typename).operName]
@@ -233,7 +233,7 @@ const GetExpense = (__typename, nature) => {
         buttonText: "Product",
       };
     case "EducationExpense":
-      if (nature === "COLLEGE" || nature === "COMUNITYCOLLEGE") {
+      if (nature === "COLLEGE" || nature === "COMMUNITYCOLLEGE") {
         return {
           operGql: getEducationExpense,
           operName: "getEducationExpense",
@@ -414,7 +414,7 @@ export default function ExpensePartTable(props) {
           operGql: handleDeleteProduct,
         },
       };
-    } else if (nature === "COLLEGE" || nature === "COMUNITYCOLLEGE") {
+    } else if (nature === "COLLEGE" || nature === "COMMUNITYCOLLEGE") {
       if (adding) {
         return {
           add: {

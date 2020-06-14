@@ -27,7 +27,7 @@ export default function EducationFields({
               <option value="">--Select--</option>
               <option value="COLLEGE">College</option>
               <option value="ONLINECOURSE">Online Course</option>
-              <option value="COMUNITYCOLLEGE">Community College</option>
+              <option value="COMMUNITYCOLLEGE">Community College</option>
               <option value="TRAINING">Training</option>
               <option value="BOOTCAMP">Bootcamp</option>
             </select>
@@ -39,7 +39,7 @@ export default function EducationFields({
       </div>
 
       {(watchEducation === "COLLEGE" ||
-        watchEducation === "COMUNITYCOLLEGE") && (
+        watchEducation === "COMMUNITYCOLLEGE") && (
         <>
           <div className="field">
             <label htmlFor="edUniversity" className="label">

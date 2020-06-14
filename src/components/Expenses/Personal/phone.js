@@ -5,7 +5,7 @@ import { asEnumeration, replacePropEmptyString } from "../../helpers/utilities";
 import {
   handleCreatePeriod,
   handleDeletePeriod,
-  handleUpdatePeriod
+  handleUpdatePeriod,
 } from "./period";
 import {
   createPlan,
@@ -14,28 +14,28 @@ import {
   updatePhoneExpense,
   deletePlan,
   updatePlan,
-  createAditional,
-  deleteAditional,
-  updateAditional
+  createAdditional,
+  deleteAdditional,
+  updateAdditional,
 } from "../../../graphql/mutations";
 
 import { includeObjectProps } from "../../helpers/utilities";
 import {
   listPlans,
   getPlan,
-  listAditionals,
-  getAditional,
+  listAdditionals,
+  getAdditional,
   getPhoneExpense,
-  listPhoneExpenses
+  listPhoneExpenses,
 } from "../../../graphql/queries";
 
 //phone plan
-export const handleStructurePlan = data => {
+export const handleStructurePlan = (data) => {
   try {
     const plan = {
       title: data.phoneTitle,
       notes: data.phoneNotes,
-      planBillingId: null
+      planBillingId: null,
     };
 
     return plan;
@@ -53,7 +53,7 @@ export const handleFormatPlan = (data, plan = null) => {
       const planUpdatedFormated = {
         ...includeObjectProps(plan, ["id", "title", "notes"]),
         ...newPlanFormated,
-        planBillingId
+        planBillingId,
       };
 
       return planUpdatedFormated;
@@ -65,7 +65,7 @@ export const handleFormatPlan = (data, plan = null) => {
   }
 };
 
-export const handleCreatePlan = async data => {
+export const handleCreatePlan = async (data) => {
   try {
     let planBillingId = null;
     const planPreFormated = phoneAsEnum.fromValue(data.phonePlan).format(data);
@@ -73,7 +73,7 @@ export const handleCreatePlan = async data => {
     if (data.phonePlanBillingEnd !== "" && data.phonePlanBillingStart !== "") {
       planBillingId = await handleCreatePeriod({
         billingStart: dayjs(data.phonePlanBillingStart).format("YYYY-MM-DD"),
-        billingEnd: dayjs(data.phonePlanBillingEnd).format("YYYY-MM-DD")
+        billingEnd: dayjs(data.phonePlanBillingEnd).format("YYYY-MM-DD"),
       });
     }
 
@@ -90,7 +90,7 @@ export const handleCreatePlan = async data => {
   }
 };
 
-export const handleDeletePlan = async plan => {
+export const handleDeletePlan = async (plan) => {
   try {
     const { id } = plan;
 
@@ -119,12 +119,12 @@ export const handleUpdatePlan = async (data, plan = null) => {
         await handleUpdatePeriod({
           id: planBillingId,
           billingStart: dayjs(data.phonePlanBillingStart).format("YYYY-MM-DD"),
-          billingEnd: dayjs(data.phonePlanBillingEnd).format("YYYY-MM-DD")
+          billingEnd: dayjs(data.phonePlanBillingEnd).format("YYYY-MM-DD"),
         });
       } else {
         planBillingId = await handleCreatePeriod({
           billingStart: dayjs(data.phonePlanBillingStart).format("YYYY-MM-DD"),
-          billingEnd: dayjs(data.phonePlanBillingEnd).format("YYYY-MM-DD")
+          billingEnd: dayjs(data.phonePlanBillingEnd).format("YYYY-MM-DD"),
         });
       }
     }
@@ -163,99 +163,101 @@ export const handleGetPlan = async ({ id }) => {
   }
 };
 
-// phone aditional
+// phone additional
 
-export const handleStructureAditional = data => {
+export const handleStructureAdditional = (data) => {
   try {
-    const aditional = {
+    const additional = {
       title: data.phoneTitle,
-      notes: data.phoneNotes
+      notes: data.phoneNotes,
     };
 
-    return aditional;
+    return additional;
   } catch (error) {
-    console.error("handle structure aditional", error);
+    console.error("handle structure additional", error);
   }
 };
 
-export const handleFormatAditional = (data, aditional = null) => {
+export const handleFormatAdditional = (data, additional = null) => {
   try {
-    const aditionalRestructured = handleStructureAditional(data);
-    const newAditionalFormated = replacePropEmptyString(aditionalRestructured);
-    if (aditional) {
-      const aditionalUpdatedFormated = {
-        ...aditional,
-        ...newAditionalFormated
+    const additionalRestructured = handleStructureAdditional(data);
+    const newAdditionalFormated = replacePropEmptyString(
+      additionalRestructured
+    );
+    if (additional) {
+      const additionalUpdatedFormated = {
+        ...additional,
+        ...newAdditionalFormated,
       };
 
-      return aditionalUpdatedFormated;
+      return additionalUpdatedFormated;
     }
 
-    return newAditionalFormated;
+    return newAdditionalFormated;
   } catch (error) {
     console.error("handle format plan");
   }
 };
 
-export const handleCreateAditional = async data => {
+export const handleCreateAdditional = async (data) => {
   try {
-    const aditionalFormated = phoneAsEnum.fromValue("ADITIONAL").format(data);
+    const additionalFormated = phoneAsEnum.fromValue("ADDITIONAL").format(data);
 
     const result = await API.graphql(
-      graphqlOperation(createAditional, { input: { ...aditionalFormated } })
+      graphqlOperation(createAdditional, { input: { ...additionalFormated } })
     );
-    console.log("handle create aditional", result.data.createAditional);
+    console.log("handle create additional", result.data.createAdditional);
 
-    return result.data.createAditional.id;
+    return result.data.createAdditional.id;
   } catch (error) {
-    console.error("handle create phone aditional", error);
+    console.error("handle create phone additional", error);
   }
 };
 
-export const handleDeleteAditional = async ({ id }) => {
+export const handleDeleteAdditional = async ({ id }) => {
   try {
     const result = await API.graphql(
-      graphqlOperation(deleteAditional, { input: { id } })
+      graphqlOperation(deleteAdditional, { input: { id } })
     );
-    console.log("handle delete phone aditional", result.data.deleteAditional);
+    console.log("handle delete phone additional", result.data.deleteAdditional);
   } catch (error) {
-    console.error("handle delete phone aditional", error);
+    console.error("handle delete phone additional", error);
   }
 };
 
-export const handleUpdateAditional = async (data, aditional) => {
+export const handleUpdateAdditional = async (data, additional) => {
   try {
-    const aditionalFormated = phoneAsEnum
-      .fromValue("ADITIONAL")
-      .format(data, aditional);
+    const additionalFormated = phoneAsEnum
+      .fromValue("ADDITIONAL")
+      .format(data, additional);
 
     const result = await API.graphql(
-      graphqlOperation(updateAditional, { input: { ...aditionalFormated } })
+      graphqlOperation(updateAdditional, { input: { ...additionalFormated } })
     );
-    console.log("handle update aditional", result.data.updateAditional);
+    console.log("handle update additional", result.data.updateAdditional);
   } catch (error) {
-    console.error("handle update phone aditional", error);
+    console.error("handle update phone additional", error);
   }
 };
 
-export const handleListAditional = async () => {
+export const handleListAdditional = async () => {
   try {
-    const result = await API.graphql(graphqlOperation(listAditionals));
-    return result.data.listAditionals.items;
+    const result = await API.graphql(graphqlOperation(listAdditionals));
+    return result.data.listAdditionals.items;
   } catch (error) {
-    console.error("handle list phone aditional", error);
+    console.error("handle list phone additional", error);
   }
 };
 
-export const handleGetAditional = async ({ id }) => {
+export const handleGetAdditional = async ({ id }) => {
   try {
     const result = await API.graphql(
-      graphqlOperation(getAditional, { input: { id } })
+      graphqlOperation(getAdditional, { input: { id } })
     );
 
-    return result.data.getAditional;
+    return result.data.getAdditional;
   } catch (error) {
-    console.error("handle get aditional", error);
+    console.error("handle get additional", error);
   }
 };
 
@@ -263,7 +265,7 @@ export const handleGetAditional = async ({ id }) => {
 
 const phoneAsEnum = asEnumeration({
   PLAN: {
-    //no name cause plan and aditional has the same name
+    //no name cause plan and additional has the same name
     //that the phonePlan values
     name: "plan",
     idName: "phoneExpensePlanId",
@@ -272,21 +274,21 @@ const phoneAsEnum = asEnumeration({
     delete: handleDeletePlan,
     update: handleUpdatePlan,
     list: handleListPlan,
-    get: handleGetPlan
+    get: handleGetPlan,
   },
-  ADITIONAL: {
-    name: "aditional",
-    idName: "phoneExpenseAditionalId",
-    format: handleFormatAditional,
-    create: handleCreateAditional,
-    delete: handleDeleteAditional,
-    update: handleUpdateAditional,
-    list: handleListAditional,
-    get: handleGetAditional
-  }
+  ADDITIONAL: {
+    name: "additional",
+    idName: "phoneExpenseAdditionalId",
+    format: handleFormatAdditional,
+    create: handleCreateAdditional,
+    delete: handleDeleteAdditional,
+    update: handleUpdateAdditional,
+    list: handleListAdditional,
+    get: handleGetAdditional,
+  },
 });
 
-export const handleStructurePhoneExpense = data => {
+export const handleStructurePhoneExpense = (data) => {
   try {
     const newPhone = {
       kind: "PERSONAL",
@@ -296,7 +298,7 @@ export const handleStructurePhoneExpense = data => {
       phonePlan: data.phonePlan,
       [phoneAsEnum.fromValue(data.phonePlan).idName]: null, // this field should be defined
       // at create/update time
-      phoneExpenseClientId: null
+      phoneExpenseClientId: null,
     };
 
     console.log("handle strcucture phone", newPhone);
@@ -324,8 +326,8 @@ export const handleFormatPhoneExpense = (data, expense) => {
           "dueDate",
           "amount",
           "category",
-          "phonePlan"
-        ])
+          "phonePlan",
+        ]),
       };
 
       console.log("handle format phone", updatedPhone);
@@ -343,7 +345,7 @@ export const handleFormatPhoneExpense = (data, expense) => {
 
 export const handleCreatePhoneExpense = async (data, clientId) => {
   try {
-    // create plan or aditional
+    // create plan or additional
     const id = await phoneAsEnum.fromValue(data.phonePlan).create(data);
 
     const expensePreFormated = handleFormatPhoneExpense(data);
@@ -353,7 +355,7 @@ export const handleCreatePhoneExpense = async (data, clientId) => {
     const expenseFormated = {
       ...expensePreFormated,
       [phoneAsEnum.fromValue(data.phonePlan).idName]: id,
-      phoneExpenseClientId: clientId
+      phoneExpenseClientId: clientId,
     };
 
     console.log("expense formated before create", expenseFormated);
@@ -369,7 +371,7 @@ export const handleCreatePhoneExpense = async (data, clientId) => {
   }
 };
 
-export const handleDeletePhoneExpense = async expense => {
+export const handleDeletePhoneExpense = async (expense) => {
   try {
     const { id } = expense;
 

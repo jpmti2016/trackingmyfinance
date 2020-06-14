@@ -98,7 +98,7 @@ export default function ExpenseTable({
             return "";
           }
         case "EducationExpense":
-          if (nature === "COLLEGE" || nature === "COMUNITYCOLLEGE") {
+          if (nature === "COLLEGE" || nature === "COMMUNITYCOLLEGE") {
             // return { iname: "fas fa-dollar-sign", text: "Fees" };
             return {
               iname: "fas fa-angle-right",
@@ -180,10 +180,10 @@ export default function ExpenseTable({
               title: expense.plan.title,
               notes: expense.plan.notes,
             };
-          } else if (expense.phonePlan === "ADITIONAL" && expense.aditional) {
+          } else if (expense.phonePlan === "ADDITIONAL" && expense.additional) {
             return {
-              title: expense.aditional.title,
-              notes: expense.aditional.notes,
+              title: expense.additional.title,
+              notes: expense.additional.notes,
             };
           } else {
             return { title: "NA", notes: "NA" };
@@ -218,7 +218,7 @@ export default function ExpenseTable({
               notes: expense.onlineCourse.notes,
             };
           } else if (
-            expense.nature === "COMUNITYCOLLEGE" &&
+            expense.nature === "COMMUNITYCOLLEGE" &&
             expense.communityCollege
           ) {
             return {

@@ -80,7 +80,7 @@ export const partAsEnum = asEnumeration({
   },
   ACADEMICFEE: {
     // "academicFeePeriodId"
-    // I made an enum for handle the idName of COLLEGE and COMUNITYCOLLEGE
+    // I made an enum for handle the idName of COLLEGE and COMMUNITYCOLLEGE
     // idName: "handleIdNameNature"
     initializeForm: "TODO",
     format: handleFormatAcademicFee,

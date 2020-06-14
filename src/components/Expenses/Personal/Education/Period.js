@@ -5,7 +5,7 @@ export default function Period({ edType, register, errors }) {
     <div className="field">
       <label htmlFor="" className="label">
         {edType === "COLLEGE" ||
-        edType === "COMUNITYCOLLEGE" ||
+        edType === "COMMUNITYCOLLEGE" ||
         edType === "TRAINING"
           ? "Academic Period"
           : `Period`}
