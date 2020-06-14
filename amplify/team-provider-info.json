@@ -1,22 +1,15 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-trackingmyfinance-dev-133025-authRole",
-            "UnauthRoleArn": "arn:aws:iam::048105772632:role/amplify-trackingmyfinance-dev-133025-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::048105772632:role/amplify-trackingmyfinance-dev-133025-authRole",
+            "AuthRoleName": "amplify-trackingmyfinance-dev-35929-authRole",
+            "UnauthRoleArn": "arn:aws:iam::048105772632:role/amplify-trackingmyfinance-dev-35929-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::048105772632:role/amplify-trackingmyfinance-dev-35929-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-trackingmyfinance-dev-133025-deployment",
-            "UnauthRoleName": "amplify-trackingmyfinance-dev-133025-unauthRole",
-            "StackName": "amplify-trackingmyfinance-dev-133025",
-            "StackId": "arn:aws:cloudformation:us-east-1:048105772632:stack/amplify-trackingmyfinance-dev-133025/6f4d5b20-3957-11ea-a729-0e9c8848c400",
-            "AmplifyAppId": "d1j0k0murujttr"
-        },
-        "categories": {
-            "auth": {
-                "trackingmyfinance1abdb9a4": {
-                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"177337096682608\",\"client_secret\":\"0f9cb5c577436be442a9c587c9d2cae5\"},{\"ProviderName\":\"Google\",\"client_id\":\"296225175854-hfh8h5abna4vht7ounteus21tgv85m0v.apps.googleusercontent.com\",\"client_secret\":\"jKzf5pWa7XeE2dB_CDRiVwmo\"},{\"ProviderName\":\"LoginWithAmazon\",\"client_id\":\"amzn1.application-oa2-client.5e2d9b4e63d544ceacc9d76f348d6197\",\"client_secret\":\"ea5d31fc327b1240b459417f34579e2d2e213c07794f3e3806b59fbba9dd3c4a\"}]"
-                }
-            }
+            "DeploymentBucketName": "amplify-trackingmyfinance-dev-35929-deployment",
+            "UnauthRoleName": "amplify-trackingmyfinance-dev-35929-unauthRole",
+            "StackName": "amplify-trackingmyfinance-dev-35929",
+            "StackId": "arn:aws:cloudformation:us-east-1:048105772632:stack/amplify-trackingmyfinance-dev-35929/0572b050-ae15-11ea-9da6-12ae8fb95b53",
+            "AmplifyAppId": "d6t283hqik3d0"
         }
     }
 }
