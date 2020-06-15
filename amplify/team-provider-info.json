@@ -10,6 +10,13 @@
             "StackName": "amplify-trackingmyfinance-dev-35929",
             "StackId": "arn:aws:cloudformation:us-east-1:048105772632:stack/amplify-trackingmyfinance-dev-35929/0572b050-ae15-11ea-9da6-12ae8fb95b53",
             "AmplifyAppId": "d6t283hqik3d0"
+        },
+        "categories": {
+            "auth": {
+                "trackingmyfinanceb98cffba": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"207466013644618\",\"client_secret\":\"74ebba29e76868271e5834713ea05ea2\"},{\"ProviderName\":\"Google\",\"client_id\":\"296225175854-hfh8h5abna4vht7ounteus21tgv85m0v.apps.googleusercontent.com\",\"client_secret\":\"jKzf5pWa7XeE2dB_CDRiVwmo\"},{\"ProviderName\":\"LoginWithAmazon\",\"client_id\":\"amzn1.application-oa2-client.5e2d9b4e63d544ceacc9d76f348d6197\",\"client_secret\":\"ea5d31fc327b1240b459417f34579e2d2e213c07794f3e3806b59fbba9dd3c4a\"}]"
+                }
+            }
         }
     }
 }

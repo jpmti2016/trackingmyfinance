@@ -1,42 +1,48 @@
 {
-  "name": "trackingmyfinance",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@aws-amplify/ui-react": "^0.2.8",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.1.2",
-    "aws-amplify": "^2.3.0",
-    "aws-amplify-react": "^3.1.9",
-    "dayjs": "^1.8.28",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-hook-form": "^4.10.2",
-    "react-hook-form-devtools": "^1.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.0",
-    "yup": "^0.28.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "trackingmyfinance",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@aws-amplify/ui-react": "^0.2.8",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.1.2",
+        "aws-amplify": "^2.3.0",
+        "aws-amplify-react": "^3.1.9",
+        "dayjs": "^1.8.28",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-hook-form": "^4.10.2",
+        "react-hook-form-devtools": "^1.2.0",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "^3.4.0",
+        "yup": "^0.28.5"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "amplify-modelgen": "node amplify/scripts/amplify-modelgen.js",
+        "amplify-push": "node amplify/scripts/amplify-push.js"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "ini": "^1.3.5",
+        "inquirer": "^6.5.1"
+    }
 }

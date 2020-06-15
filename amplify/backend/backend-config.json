@@ -1,4 +1,10 @@
 {
-	"auth": {},
+	"auth": {
+		"trackingmyfinanceb98cffba": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
 	"api": {}
 }
