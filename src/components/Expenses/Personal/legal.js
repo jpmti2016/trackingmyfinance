@@ -20,7 +20,9 @@ export const handleFormatLegal = (data, expense, clientId) => {
       kind: "PERSONAL",
       amount: data.amount ? Number(data.amount) : null,
       category: data.personal ? data.personal : null,
-      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      dueDate: data.dueDate
+        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        : null,
       ...includeObjectProps(data, ["nature", "title", "notes"]),
     };
     const newLegal = {

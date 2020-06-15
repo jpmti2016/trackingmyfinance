@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 // import * as yup from 'yup';
-// import { DevTool } from "react-hook-form-devtools";
+import dayjs from "dayjs";
 import { useHistory } from "react-router-dom";
 
 import "./ExpensePersonalForm.css";
@@ -64,7 +64,10 @@ export default function ExpensePersonalForm(props) {
         isUpdating && expense && expense.category === "HOUSING"
           ? housingEnumT(expense).typeToUpdate
           : "",
-      dueDate: isUpdating && expense ? expense.dueDate : "",
+      dueDate:
+        isUpdating && expense
+          ? dayjs(expense.dueDate).format("YYYY-MM-DDThh:mm")
+          : "",
       title: isUpdating && expense ? expense.title : "",
       notes: isUpdating && expense ? expense.notes : "",
       amount: isUpdating && expense ? expense.amount : "",
@@ -75,9 +78,17 @@ export default function ExpensePersonalForm(props) {
       housingCompany:
         isUpdating && expense ? housingInitForm(expense).company : "",
       housingBillingStart:
-        isUpdating && expense ? housingInitForm(expense).billingStart : "",
+        isUpdating && expense
+          ? dayjs(housingInitForm(expense).billingStart).format(
+              "YYYY-MM-DDThh:mm"
+            )
+          : "",
       housingBillingEnd:
-        isUpdating && expense ? housingInitForm(expense).billingEnd : "",
+        isUpdating && expense
+          ? dayjs(housingInitForm(expense).billingEnd).format(
+              "YYYY-MM-DDThh:mm"
+            )
+          : "",
       housingReading:
         isUpdating && expense ? housingInitForm(expense).reading : "",
       supplyFor:
@@ -116,17 +127,20 @@ export default function ExpensePersonalForm(props) {
           : "",
       phonePlanBillingStart:
         isUpdating && expense && expense.plan && expense.plan.billing
-          ? expense.plan.billing.billingStart
+          ? dayjs(expense.plan.billing.billingStart).format("YYYY-MM-DDThh:mm")
           : "",
       phonePlanBillingEnd:
         isUpdating && expense && expense.plan && expense.plan.billing
-          ? expense.plan.billing.billingEnd
+          ? dayjs(expense.plan.billing.billingEnd).format("YYYY-MM-DDThh:mm")
           : "",
       phonePlan:
         isUpdating && expense && expense.phonePlan ? expense.phonePlan : "",
       //insurance
       nature: isUpdating && expense && expense.nature ? expense.nature : "",
-      startDate: isUpdating && expense ? expense.startDate : "",
+      startDate:
+        isUpdating && expense
+          ? dayjs(expense.startDate).format("YYYY-MM-DDThh:mm")
+          : "",
       coverage: isUpdating && expense ? expense.coverage : "",
       yearDeductions:
         isUpdating && expense && expense.yearDeductions
@@ -173,9 +187,17 @@ export default function ExpensePersonalForm(props) {
           ? educationInitForm(expense).edOnlinePeriod
           : false,
       edPeriodStart:
-        isUpdating && expense ? educationInitForm(expense).edPeriodStart : "",
+        isUpdating && expense
+          ? dayjs(educationInitForm(expense).edPeriodStart).format(
+              "YYYY-MM-DDThh:mm"
+            )
+          : "",
       edPeriodEnd:
-        isUpdating && expense ? educationInitForm(expense).edPeriodEnd : "",
+        isUpdating && expense
+          ? dayjs(educationInitForm(expense).edPeriodEnd).format(
+              "YYYY-MM-DDThh:mm"
+            )
+          : "",
       instructors:
         isUpdating && expense ? educationInitForm(expense).instructors : [],
       edOnlineDesc:
@@ -278,10 +300,14 @@ export default function ExpensePersonalForm(props) {
           title: expense.utility.title,
           notes: expense.utility.notes,
           billingStart: expense.utility.period
-            ? expense.utility.period.billingStart
+            ? dayjs(expense.utility.period.billingStart).format(
+                "YYYY-MM-DDThh:mm"
+              )
             : "",
           billingEnd: expense.utility.period
-            ? expense.utility.period.billingEnd
+            ? dayjs(expense.utility.period.billingEnd).format(
+                "YYYY-MM-DDThh:mm"
+              )
             : "",
           reading: expense.utility.reading,
         };
@@ -367,10 +393,14 @@ export default function ExpensePersonalForm(props) {
               ? true
               : false,
           edPeriodStart: expense.onlineCourse.period
-            ? expense.onlineCourse.period.billingStart
+            ? dayjs(expense.onlineCourse.period.billingStart).format(
+                "YYYY-MM-DDThh:mm"
+              )
             : "",
           edPeriodEnd: expense.onlineCourse.period
-            ? expense.onlineCourse.period.billingEnd
+            ? dayjs(expense.onlineCourse.period.billingEnd).format(
+                "YYYY-MM-DDThh:mm"
+              )
             : "",
         };
       } else if (expense.communityCollege) {
@@ -390,10 +420,14 @@ export default function ExpensePersonalForm(props) {
           notes: expense.training.notes,
           school: expense.training.school,
           edPeriodStart: expense.training.period
-            ? expense.training.period.billingStart
+            ? dayjs(expense.training.period.billingStart).format(
+                "YYYY-MM-DDThh:mm"
+              )
             : "",
           edPeriodEnd: expense.training.period
-            ? expense.training.period.billingEnd
+            ? dayjs(expense.training.period.billingEnd).format(
+                "YYYY-MM-DDThh:mm"
+              )
             : "",
         };
       } else if (expense.bootcamp) {
@@ -401,10 +435,14 @@ export default function ExpensePersonalForm(props) {
           title: expense.bootcamp.title,
           notes: expense.bootcamp.notes,
           edPeriodStart: expense.bootcamp.period
-            ? expense.bootcamp.period.billingStart
+            ? dayjs(expense.bootcamp.period.billingStart).format(
+                "YYYY-MM-DDThh:mm"
+              )
             : "",
           edPeriodEnd: expense.bootcamp.period
-            ? expense.bootcamp.period.billingEnd
+            ? dayjs(expense.bootcamp.period.billingEnd).format(
+                "YYYY-MM-DDThh:mm"
+              )
             : "",
           costDeferred: expense.bootcamp.costDeferred
             ? expense.bootcamp.costDeferred
@@ -478,7 +516,6 @@ export default function ExpensePersonalForm(props) {
       isAdding && (await handleCreatePersonalExpense(data, clientId));
 
       isUpdating && handleUpdatePersonalExpense(data, expense);
-      console.log("data", data);
       // alert(JSON.stringify(data));
     } catch (error) {
       console.error("CU personal expense", error);

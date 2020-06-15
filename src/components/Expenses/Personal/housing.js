@@ -250,8 +250,10 @@ export const handleCreateUtility = async (data) => {
     let utilityPeriodId = null;
     if (data.housingBillingStart !== "" && data.housingBillingEnd !== "") {
       utilityPeriodId = await handleCreatePeriod({
-        billingStart: dayjs(data.housingBillingStart).format("YYYY-MM-DD"),
-        billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD"),
+        billingStart: dayjs(data.housingBillingStart).format(
+          "YYYY-MM-DDThh:mmZ"
+        ),
+        billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDThh:mmZ"),
       });
     }
     //TODO check if I should pass {} or null
@@ -300,13 +302,17 @@ export const handleUpdateUtility = async (data, utility) => {
       if (utilityPeriodId) {
         await handleUpdatePeriod({
           id: utilityPeriodId,
-          billingStart: dayjs(data.housingBillingStart).format("YYYY-MM-DD"),
-          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD"),
+          billingStart: dayjs(data.housingBillingStart).format(
+            "YYYY-MM-DDThh:mmZ"
+          ),
+          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDThh:mmZ"),
         });
       } else {
         utilityPeriodId = await handleCreatePeriod({
-          billingStart: dayjs(data.housingBillingStart).format("YYYY-MM-DD"),
-          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DD"),
+          billingStart: dayjs(data.housingBillingStart).format(
+            "YYYY-MM-DDThh:mmZ"
+          ),
+          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDThh:mmZ"),
         });
       }
     }
@@ -687,7 +693,9 @@ export const handleCreateHousing = async (data, clientId = null) => {
       kind: "PERSONAL",
       amount: data.amount ? Number(data.amount) : null,
       category: data.personal ? data.personal : null,
-      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      dueDate: data.dueDate
+        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        : null,
       nature: data.nature ? data.nature : null,
       [housingAsEnum.fromValue(data.nature).idName]: id,
       housingExpenseClientId: clientId,
@@ -741,7 +749,9 @@ export const handleUpdateHousing = async (data, expense) => {
       id,
       amount: data.amount ? Number(data.amount) : null,
       category: data.personal ? data.personal : null,
-      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      dueDate: data.dueDate
+        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        : null,
       nature: data.nature ? data.nature : null,
     };
 

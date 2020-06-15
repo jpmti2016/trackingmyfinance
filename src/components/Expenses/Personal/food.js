@@ -259,7 +259,9 @@ export const handleFormatFood = (data, expense, clientId) => {
       kind: "PERSONAL",
       amount: data.amount ? Number(data.amount) : 0,
       category: data.personal ? data.personal : null,
-      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      dueDate: data.dueDate
+        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        : null,
       nature: data.nature ? data.nature : null,
     };
 

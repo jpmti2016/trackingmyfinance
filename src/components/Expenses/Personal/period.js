@@ -55,10 +55,10 @@ export const handleFormatPeriod = (data, period) => {
   try {
     const periodStructure = {
       billingStart: data.billingStart
-        ? dayjs(data.billingStart).format("YYYY-MM-DD")
+        ? dayjs(data.billingStart).format("YYYY-MM-DDThh:mmZ")
         : null,
       billingEnd: data.billingEnd
-        ? dayjs(data.billingEnd).format("YYYY-MM-DD")
+        ? dayjs(data.billingEnd).format("YYYY-MM-DDThh:mmZ")
         : null,
     };
     // TODO check trying to create an empty period

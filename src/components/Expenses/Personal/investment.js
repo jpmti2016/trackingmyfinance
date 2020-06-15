@@ -30,7 +30,9 @@ export const handleFormatInvestmentExpense = (data, expense, clientId) => {
       kind: "PERSONAL",
       amount: data.amount ? Number(data.amount) : 0,
       account: data.investment ? data.investment : null,
-      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      dueDate: data.dueDate
+        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        : null,
       category: data.personal ? data.personal : null,
       ...includeObjectProps(data, ["title", "notes"]),
     };

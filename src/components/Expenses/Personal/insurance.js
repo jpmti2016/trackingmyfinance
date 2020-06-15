@@ -30,9 +30,11 @@ export const handleFormatInsurance = (data, expense, clientId) => {
       amount: data.amount ? Number(data.amount) : null,
       company: data.insuranceCompany ? data.insuranceCompany : null,
       yearDeductions: data.yearDeductions ? Number(data.yearDeductions) : null,
-      dueDate: data.dueDate ? dayjs(data.dueDate).format("YYYY-MM-DD") : null,
+      dueDate: data.dueDate
+        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        : null,
       startDate: data.startDate
-        ? dayjs(data.startDate).format("YYYY-MM-DD")
+        ? dayjs(data.startDate).format("YYYY-MM-DDThh:mmZ")
         : null,
       category: data.personal ? data.personal : null,
 

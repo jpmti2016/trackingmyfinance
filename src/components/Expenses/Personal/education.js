@@ -759,8 +759,8 @@ export const handleFormatEducation = (data, expense, clientId = null) => {
       // TODO Bootcamp cost deferred admit empty value, so dueDate should be optional
       // to address that I going to set and arbitrary value very far away
       dueDate: data.dueDate
-        ? dayjs(data.dueDate).format("YYYY-MM-DD")
-        : dayjs("5000-12-31").format("YYYY-MM-DD"),
+        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        : dayjs("5000-12-31").format("YYYY-MM-DDThh:mmZ"),
       category: data.personal ? data.personal : null,
       nature: data.nature ? data.nature : null,
     };

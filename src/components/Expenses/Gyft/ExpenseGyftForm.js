@@ -1,34 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import * as yup from 'yup';
-import dayjs from 'dayjs';
+import * as yup from "yup";
+import dayjs from "dayjs";
 import { useHistory } from "react-router-dom";
-import { API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation } from "aws-amplify";
 
-import { createGyftExpense, createRecipient, updateGyftExpense } from '../../../graphql/mutations';
-import { listRecipients } from '../../../graphql/queries';
+import {
+  createGyftExpense,
+  createRecipient,
+  updateGyftExpense,
+} from "../../../graphql/mutations";
+import { listRecipients } from "../../../graphql/queries";
 import "./ExpenseGyftForm.css";
 
 const gyftSchema = yup.object().shape({
-  amount: yup.number('Please provide the amount').required('Please provide the amount'),
-  dueDate: yup.string().required('Please select the gyft date'),
-  event: yup.string().required('Please select the event'),
+  amount: yup
+    .number("Please provide the amount")
+    .required("Please provide the amount"),
+  dueDate: yup.string().required("Please select the gyft date"),
+  event: yup.string().required("Please select the event"),
   recipient: yup.string().required("Please provide the recipient's name"),
   title: yup.string(),
-  notes: yup.string()
+  notes: yup.string(),
 });
 
 const gyftDefault = (gyft) => {
-  console.log('default values event', gyft.event)
+  console.log("default values event", gyft.event);
 
   return {
-    amount: Number(gyft.amount) || 0.00,
+    amount: Number(gyft.amount) || 0.0,
     // dueDate: dayjs(gyft.date).format('YYYY-MM-DD') || dayjs().format('YYYY-MM-DD'),
-    event: gyft.event || 'Phone Recharge',
-    recipient: gyft.recipient.name || 'Mima',
-    title: gyft.title || '',
-    notes: gyft.notes || ''
-  }
+    event: gyft.event || "Phone Recharge",
+    recipient: gyft.recipient.name || "Mima",
+    title: gyft.title || "",
+    notes: gyft.notes || "",
+  };
 };
 
 export default function ExpenseGyftForm(props) {
@@ -40,12 +46,13 @@ export default function ExpenseGyftForm(props) {
   let history = useHistory();
 
   useEffect(() => {
-    props.location.pathname.includes('edit') && setGyft(props.location.state.expense);
-    props.location.pathname.includes('add') && setClientId(props.location.state.clientId);
+    props.location.pathname.includes("edit") &&
+      setGyft(props.location.state.expense);
+    props.location.pathname.includes("add") &&
+      setClientId(props.location.state.clientId);
 
-    setIsAdding(props.location.pathname.includes('add'));
-    setIsUpdating(props.location.pathname.includes('edit'));
-
+    setIsAdding(props.location.pathname.includes("add"));
+    setIsUpdating(props.location.pathname.includes("edit"));
   }, [props]);
 
   const cta = isAdding ? `Add my gyft expense` : `Update my gyft expense`;
@@ -59,45 +66,63 @@ export default function ExpenseGyftForm(props) {
     let result = null;
     let recipCreate = null;
     try {
-      const listResult = await API.graphql(graphqlOperation(listRecipients, { input: { name: recipient } }));
+      const listResult = await API.graphql(
+        graphqlOperation(listRecipients, { input: { name: recipient } })
+      );
 
       if (listResult) {
-        result = listResult.data.listRecipients.items.find((r) => r.name === recipient);
+        result = listResult.data.listRecipients.items.find(
+          (r) => r.name === recipient
+        );
 
         if (!result) {
-          recipCreate = await API.graphql(graphqlOperation(createRecipient, { input: { name: recipient } }));
-          recipCreate && (existingRecipientId = recipCreate.data.createRecipient.id);
-
+          recipCreate = await API.graphql(
+            graphqlOperation(createRecipient, { input: { name: recipient } })
+          );
+          recipCreate &&
+            (existingRecipientId = recipCreate.data.createRecipient.id);
         } else {
           existingRecipientId = result.id;
         }
       } else {
-        recipCreate = await API.graphql(graphqlOperation(createRecipient, { input: { name: recipient } })).data.createRecipient.id;
-        recipCreate && (existingRecipientId = recipCreate.data.createRecipient.id);
-
+        recipCreate = await API.graphql(
+          graphqlOperation(createRecipient, { input: { name: recipient } })
+        ).data.createRecipient.id;
+        recipCreate &&
+          (existingRecipientId = recipCreate.data.createRecipient.id);
       }
 
       return existingRecipientId;
-
     } catch (error) {
-      console.error('validate recipient', error);
+      console.error("validate recipient", error);
     }
-  }
+  };
 
   const handleCancel = () => {
     reset();
     history.push("/expenses/gyft");
-  }
+  };
 
   const handleUpdateGyftExpense = async (formatedInputGyft) => {
     try {
       const { amount, dueDate, event, notes, title, id, kind } = gyft;
-      const gyftToUpdate = { amount, dueDate, event, notes, title, id, kind, ...formatedInputGyft };
+      const gyftToUpdate = {
+        amount,
+        dueDate,
+        event,
+        notes,
+        title,
+        id,
+        kind,
+        ...formatedInputGyft,
+      };
       // const input = { ...newGyft, ...gyft };
 
-      const gyftUpdated = await API.graphql(graphqlOperation(updateGyftExpense, { input: gyftToUpdate }));
+      const gyftUpdated = await API.graphql(
+        graphqlOperation(updateGyftExpense, { input: gyftToUpdate })
+      );
 
-      console.log('gyft updated', gyftUpdated.data.updateGyftExpense);
+      console.log("gyft updated", gyftUpdated.data.updateGyftExpense);
       // const updateList = props.location.state.handleUpdate;
       // gyftUpdated && updateList(gyfts => gyfts.map((g) => g.id === gyftUpdated.data.updateGyftExpense.id ? gyftUpdated.data.updateGyftExpense : g))
 
@@ -105,53 +130,59 @@ export default function ExpenseGyftForm(props) {
 
       // setGyft(null);
       history.push("/expenses/gyft");
-
     } catch (error) {
-      console.error('handle update', error);
+      console.error("handle update", error);
     }
-  }
+  };
 
   const handleCreateGyftExpense = async (formatedInputGyft) => {
     try {
+      const result = await API.graphql(
+        graphqlOperation(createGyftExpense, {
+          input: { ...formatedInputGyft, gyftExpenseClientId: clientId },
+        })
+      );
 
-      const result = await API.graphql(graphqlOperation(createGyftExpense, { input: { ...formatedInputGyft, gyftExpenseClientId: clientId, } }));
-
-      console.log('new added gyft', result.data.createGyftExpense);
+      console.log("new added gyft", result.data.createGyftExpense);
       history.push("/expenses/gyft");
     } catch (error) {
-      console.error('handle create gyft', error);
+      console.error("handle create gyft", error);
     }
-  }
+  };
 
   const onSubmit = async (data, e) => {
     try {
       const kind = "GYFT"; // 'Gyft' because each the field kind is based on the current tab position
 
       const { amount, dueDate, recipient, event, notes, title } = data;
-      console.log('duedate from data', dueDate);
-      const formatedDueDate = dayjs(dueDate).format('YYYY-MM-DD');
-      console.log('formated dueDate', formatedDueDate);
+      console.log("duedate from data", dueDate);
+      const formatedDueDate = dayjs(dueDate).format("YYYY-MM-DD");
+      console.log("formated dueDate", formatedDueDate);
       const formatedAmount = Number(amount);
-      const titleEmpty = title === '' ? null : title;
-      const notesEmpty = notes === '' ? null : notes;
+      const titleEmpty = title === "" ? null : title;
+      const notesEmpty = notes === "" ? null : notes;
 
       const recipientId = await validateRecipient(recipient);
 
-      const formatedInputGyft = { kind, amount: formatedAmount, dueDate: formatedDueDate, gyftExpenseRecipientId: recipientId, event: event.replace(' ', '').toLocaleUpperCase(), notes: notesEmpty, title: titleEmpty };
+      const formatedInputGyft = {
+        kind,
+        amount: formatedAmount,
+        dueDate: formatedDueDate,
+        gyftExpenseRecipientId: recipientId,
+        event: event.replace(" ", "").toLocaleUpperCase(),
+        notes: notesEmpty,
+        title: titleEmpty,
+      };
 
       isAdding && handleCreateGyftExpense(formatedInputGyft);
 
       isUpdating && handleUpdateGyftExpense(formatedInputGyft);
-
     } catch (error) {
-      console.error('handle submit gyft', error);
+      console.error("handle submit gyft", error);
     }
 
     e.target.reset(); // reset after form submit
     // alert(JSON.stringify(data));
-
-
-
   };
 
   return (
@@ -161,7 +192,7 @@ export default function ExpenseGyftForm(props) {
         style={{
           paddingTop: "8rem",
           paddingBottom: "0.1rem",
-          color: "#363636"
+          color: "#363636",
         }}
       >
         <div className="container">
@@ -187,13 +218,18 @@ export default function ExpenseGyftForm(props) {
             <div className="control">
               <input
                 className="input"
-                type="date"
+                type="datetime-local"
                 placeholder="11/25/2019"
                 name="dueDate"
                 ref={register}
-                defaultValue={((props.location.pathname.includes('edit') && props.location.state.expense.dueDate))}
+                defaultValue={
+                  props.location.pathname.includes("edit") &&
+                  props.location.state.expense.dueDate
+                }
               />
-              {errors.dueDate && <p className="error">{errors.dueDate.message}</p>}
+              {errors.dueDate && (
+                <p className="error">{errors.dueDate.message}</p>
+              )}
             </div>
           </div>
           <div className="field">
@@ -209,9 +245,11 @@ export default function ExpenseGyftForm(props) {
                 min="0"
                 name="amount"
                 ref={register}
-                defaultValue={(gyft && gyft.amount)}
+                defaultValue={gyft && gyft.amount}
               />
-              {errors.amount && <p className="error">{errors.amount.message}</p>}
+              {errors.amount && (
+                <p className="error">{errors.amount.message}</p>
+              )}
             </div>
           </div>
           <div className="field">
@@ -251,7 +289,15 @@ export default function ExpenseGyftForm(props) {
             </label>
             <div className="control">
               <div className="select">
-                <select name="event" ref={register} defaultValue={(props.location.pathname.includes('edit') && props.location.state.expense.event) || ""}>
+                <select
+                  name="event"
+                  ref={register}
+                  defaultValue={
+                    (props.location.pathname.includes("edit") &&
+                      props.location.state.expense.event) ||
+                    ""
+                  }
+                >
                   <option value="">--Select--</option>
                   <option value="PHONERECHARGE">Phone Recharge</option>
                   <option value="MONEYSENDED">Money Sended</option>
@@ -279,7 +325,9 @@ export default function ExpenseGyftForm(props) {
                 ref={register}
                 defaultValue={(gyft && gyft.recipient.name) || ""}
               />
-              {errors.recipient && <p className="error">{errors.recipient.message}</p>}
+              {errors.recipient && (
+                <p className="error">{errors.recipient.message}</p>
+              )}
             </div>
           </div>
 
@@ -293,7 +341,12 @@ export default function ExpenseGyftForm(props) {
 
           <div className="field">
             <div className="control">
-              <button className="button is-link is-fullwidth" type="submit" onClick={handleCancel} style={{ backgroundColor: "#fafafa", color: "#BAA949" }}>
+              <button
+                className="button is-link is-fullwidth"
+                type="submit"
+                onClick={handleCancel}
+                style={{ backgroundColor: "#fafafa", color: "#BAA949" }}
+              >
                 Cancel
               </button>
             </div>
