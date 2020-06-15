@@ -36,7 +36,7 @@ export default function EnterMentOther({ register, watchEnterMent }) {
         <div className="control">
           <input
             id={`${watchEnterMent}date`}
-            type="date"
+            type="datetime-local"
             className="input"
             name={`${watchEnterMent}date`}
             ref={register}

@@ -38,7 +38,7 @@ export default function InsuranceFields({
         </label>
         <div className="control">
           <input
-            type="date"
+            type="datetime-local"
             className="input"
             name="dueDate"
             id="dueDate"
@@ -121,7 +121,7 @@ export default function InsuranceFields({
         </label>
         <div className="control">
           <input
-            type="date"
+            type="datetime-local"
             className="input"
             name="startDate"
             id="startDate"

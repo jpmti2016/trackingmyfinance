@@ -135,7 +135,7 @@ export default function EducationFields({
             <div className="control">
               <input
                 id="dueDate"
-                type="date"
+                type="datetime-local"
                 className="input"
                 name="dueDate"
                 ref={register}
@@ -210,7 +210,7 @@ export default function EducationFields({
             <div className="control">
               <input
                 id="dueDate"
-                type="date"
+                type="datetime-local"
                 className="input"
                 name="dueDate"
                 ref={register}
@@ -371,7 +371,7 @@ export default function EducationFields({
             <div className="control">
               <input
                 id="dueDate"
-                type="date"
+                type="datetime-local"
                 className="input"
                 name="dueDate"
                 ref={register}
@@ -509,7 +509,7 @@ export default function EducationFields({
               </label>
               <div className="control">
                 <input
-                  type="date"
+                  type="datetime-local"
                   className="input"
                   name="dueDate"
                   id="dueDate"

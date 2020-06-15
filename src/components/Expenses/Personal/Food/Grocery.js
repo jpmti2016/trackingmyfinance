@@ -14,7 +14,7 @@ export default function GroceryFields({
         </label>
         <div className="control">
           <input
-            type="date"
+            type="datetime-local"
             className="input"
             name="dueDate"
             id="dueDate"

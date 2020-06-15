@@ -11,7 +11,7 @@ export default function AcademicFeeFields({ register, errors }) {
               Start
             </label>
             <input
-              type="date"
+              type="datetime-local"
               className="input"
               placeholder="2020/01/15"
               name={`billingStart`}
@@ -28,7 +28,7 @@ export default function AcademicFeeFields({ register, errors }) {
               End
             </label>
             <input
-              type="date"
+              type="datetime-local"
               className="input"
               placeholder="End"
               name={`billingEnd`}

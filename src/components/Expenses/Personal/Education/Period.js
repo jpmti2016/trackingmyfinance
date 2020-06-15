@@ -16,7 +16,7 @@ export default function Period({ edType, register, errors }) {
           Start
         </label>
         <input
-          type="date"
+          type="datetime-local"
           className="input"
           placeholder="Start"
           name="edPeriodStart"
@@ -32,7 +32,7 @@ export default function Period({ edType, register, errors }) {
           End
         </label>
         <input
-          type="date"
+          type="datetime-local"
           className="input"
           placeholder="End"
           name={`edPeriodEnd`}

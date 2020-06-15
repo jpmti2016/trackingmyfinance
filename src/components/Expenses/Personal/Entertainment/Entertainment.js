@@ -90,7 +90,7 @@ export default function EntertainmentFields({
         <div className="control">
           <input
             id="dueDate"
-            type="date"
+            type="datetime-local"
             className="input"
             name="dueDate"
             ref={register}

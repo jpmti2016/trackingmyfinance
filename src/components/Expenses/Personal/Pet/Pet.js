@@ -31,7 +31,7 @@ export default function PetFields({ register }) {
         <div className="control">
           <input
             date="dueDate"
-            type="date"
+            type="datetime-local"
             className="input"
             name="dueDate"
             ref={register}

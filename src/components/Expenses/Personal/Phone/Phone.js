@@ -36,7 +36,7 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
           {watchPhonePlan === "Plan" ? "Due Date" : "Date"}
         </label>
         <input
-          type="date"
+          type="datetime-local"
           className="input"
           name="dueDate"
           ref={register}
@@ -112,7 +112,7 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
               Start
             </label>
             <input
-              type="date"
+              type="datetime-local"
               className="input"
               placeholder="Start"
               name="phonePlanBillingStart"
@@ -129,7 +129,7 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
               End
             </label>
             <input
-              type="date"
+              type="datetime-local"
               className="input"
               placeholder="End"
               name="phonePlanBillingEnd"

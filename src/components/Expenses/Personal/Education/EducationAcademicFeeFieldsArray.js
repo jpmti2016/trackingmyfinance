@@ -5,11 +5,11 @@ import { useFieldArray } from "react-hook-form";
 export default function EducationAcademicFeeFieldsArray({
   register,
   control,
-  errors
+  errors,
 }) {
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "fees"
+    name: "fees",
   });
 
   return (
@@ -46,7 +46,7 @@ export default function EducationAcademicFeeFieldsArray({
                     Start
                   </label>
                   <input
-                    type="date"
+                    type="datetime-local"
                     className="input"
                     placeholder="2020/01/15"
                     name={`${fieldName}.billingStart`}
@@ -66,7 +66,7 @@ export default function EducationAcademicFeeFieldsArray({
                     End
                   </label>
                   <input
-                    type="date"
+                    type="datetime-local"
                     className="input"
                     placeholder="End"
                     name={`${fieldName}.billingEnd`}
@@ -207,7 +207,7 @@ export default function EducationAcademicFeeFieldsArray({
               transportation: "",
               personal: "",
               billingStart: "",
-              billingEnd: ""
+              billingEnd: "",
             })
           }
         >

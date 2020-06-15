@@ -39,7 +39,7 @@ export default function LegalFields({
         <label className="label">Due Date</label>
         <div className="control">
           <input
-            type="date"
+            type="datetime-local"
             className="input"
             name="dueDate"
             ref={register({ required: true })}

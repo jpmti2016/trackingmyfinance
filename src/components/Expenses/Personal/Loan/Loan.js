@@ -46,7 +46,7 @@ export default function LoanFields({ register, errors }) {
         <div className="control">
           <input
             id="dueDate"
-            type="date"
+            type="datetime-local"
             className="input"
             name="dueDate"
             ref={register}

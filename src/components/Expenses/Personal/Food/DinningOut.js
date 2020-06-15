@@ -26,7 +26,7 @@ export default function DinningOut({ register, errors }) {
         </label>
         <div className="control">
           <input
-            type="date"
+            type="datetime-local"
             className="input"
             name="dueDate"
             id="dueDate"

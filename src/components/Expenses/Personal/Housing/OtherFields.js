@@ -23,7 +23,7 @@ export default function OtherFields({ register, errors }) {
           Due Date
         </label>
         <input
-          type="date"
+          type="datetime-local"
           className="input"
           name="dueDate"
           id="dueDate"

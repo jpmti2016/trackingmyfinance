@@ -8,7 +8,7 @@ export default function UtiliyFields({ watchUtility, register, errors }) {
           Due Date
         </label>
         <input
-          type="date"
+          type="datetime-local"
           className="input"
           name={`dueDate`}
           id={`dueDate`}
@@ -119,7 +119,7 @@ export default function UtiliyFields({ watchUtility, register, errors }) {
             Start
           </label>
           <input
-            type="date"
+            type="datetime-local"
             className="input"
             placeholder="Start"
             name={`housingBillingStart`}
@@ -136,7 +136,7 @@ export default function UtiliyFields({ watchUtility, register, errors }) {
             End
           </label>
           <input
-            type="date"
+            type="datetime-local"
             className="input"
             placeholder="End"
             name={`housingBillingEnd`}
