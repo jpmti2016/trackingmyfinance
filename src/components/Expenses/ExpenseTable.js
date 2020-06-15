@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
+import dayjs from "dayjs";
 
 export default function ExpenseTable({
   expenses,
@@ -259,6 +260,83 @@ export default function ExpenseTable({
     }
   };
 
+  const categoryIcon = (category) => {
+    switch (category) {
+      case "HOUSING":
+        return (
+          <span className="icon" fontSize="1rem">
+            <i className="fas is-large fa-w18 fa-home" />
+          </span>
+        );
+
+      case "INSURANCE":
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-star-of-life" />
+          </span>
+        );
+
+      case "LEGAL":
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-balance-scale" />
+          </span>
+        );
+
+      case "PET":
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-paw" />
+          </span>
+        );
+
+      case "PHONE":
+        return (
+          <span className="icon">
+            <i className="fas is-large fa-w18 fa-phone" />
+          </span>
+        );
+
+      case "GROCERY":
+        return (
+          <span className="icon">
+            <i className="fas is-large fa-w18 fa-shopping-basket" />
+          </span>
+        );
+
+      case "PERSONALCARE":
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-swimmer" />
+          </span>
+        );
+
+      case "COMMUTE":
+        return (
+          <span className="icon is-1">
+            <i className="fas is-large fa-w18 fa-car" />
+          </span>
+        );
+
+      case "ENTERTAINMENT":
+        return (
+          <span className="icon is-1">
+            <i className="fas is-large fa-w18 fa-film" />
+          </span>
+        );
+
+      case "EDUCATION":
+        return (
+          <span className="icon is-1">
+            <i className="fas is-large fa-w18 fa-university" />
+          </span>
+        );
+
+      default:
+        return "NA";
+    }
+  };
+
   function TableRowExpense() {
     if (!expenses)
       return (
@@ -269,10 +347,12 @@ export default function ExpenseTable({
     return expenses.map((expense, index) => {
       return (
         <tr key={expense.id}>
-          <th>{index + 1}</th>
-          {expenseType === "Personal" && <td>{expense.category}</td>}
-          <td>{expense.amount}</td>
-          <td>{expense.dueDate}</td>
+          {expenseType === "Personal" && (
+            <td>{categoryIcon(expense.category)}</td>
+          )}
+
+          <td>${expense.amount}</td>
+          <td>{dayjs(expense.dueDate).format("MMM. DD, YYYY")}</td>
           {expenseType === "Gyft" && <td>{formatEvent(expense.event)}</td>}
           {expenseType === "Gyft" && <td>{expense.recipient.name}</td>}
           <td>{expense && formatTitleAndNotes(expense).title}</td>
@@ -287,8 +367,7 @@ export default function ExpenseTable({
     <table className="table is-striped is-hoverable" style={{ width: "100%" }}>
       <thead>
         <tr>
-          <th>#</th>
-          {expenseType === "Personal" && <th>Category</th>}
+          {expenseType === "Personal" && <th></th>}
           <th>Amount</th>
           <th>Date</th>
           {expenseType === "Gyft" && <th>Event</th>}
