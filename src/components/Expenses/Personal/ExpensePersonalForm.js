@@ -134,7 +134,7 @@ export default function ExpensePersonalForm(props) {
           ? dayjs(expense.plan.billing.billingEnd).format("YYYY-MM-DDThh:mm")
           : "",
       phonePlan:
-        isUpdating && expense && expense.phonePlan ? expense.phonePlan : "",
+        isUpdating && expense && expense.phonePlan ? expense.phonePlan : "PLAN",
       //insurance
       nature: isUpdating && expense && expense.nature ? expense.nature : "",
       startDate:
