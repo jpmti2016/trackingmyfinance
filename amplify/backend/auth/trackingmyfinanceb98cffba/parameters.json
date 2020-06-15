@@ -1,6 +1,6 @@
 {
     "identityPoolName": "trackingmyfinanceb98cffba_identitypool_b98cffba",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "trackib98cffba",
     "userPoolName": "trackingmyfinanceb98cffba_userpool_b98cffba",
     "autoVerifiedAttributes": [
