@@ -126,17 +126,41 @@ export default function ExpenseTable({
   const formatEvent = (event) => {
     switch (event) {
       case "PHONERECHARGE":
-        return "Phone Recharge";
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-phone-square" />
+          </span>
+        );
       case "MONEYSENDED":
-        return "Money Sended";
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-funnel-dollar" />
+          </span>
+        );
       case "PRESENT":
-        return "Present";
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-gift" />
+          </span>
+        );
       case "BIRTHDAY":
-        return "Birthday";
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-birthday-cake" />
+          </span>
+        );
       case "CHARITY":
-        return "Charity";
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-hand-holding-heart" />
+          </span>
+        );
       case "OTHER":
-        return "Other";
+        return (
+          <span className="icon ">
+            <i className="fas is-large fa-w18 fa-question-circle" />
+          </span>
+        );
       default:
         return event;
     }
@@ -297,7 +321,7 @@ export default function ExpenseTable({
           </span>
         );
 
-      case "GROCERY":
+      case "FOOD":
         return (
           <span className="icon">
             <i className="fas is-large fa-w18 fa-shopping-basket" />
@@ -331,6 +355,24 @@ export default function ExpenseTable({
             <i className="fas is-large fa-w18 fa-university" />
           </span>
         );
+      case "LOAN":
+        return (
+          <span className="icon is-1">
+            <i className="fas is-large fa-w18 fa-money-check-alt" />
+          </span>
+        );
+      case "TAXES":
+        return (
+          <span className="icon is-1">
+            <i className="fas is-large fa-w18 fa-search-dollar" />
+          </span>
+        );
+      case "INVESTMENT":
+        return (
+          <span className="icon is-1">
+            <i className="fas is-large fa-w18 fa-piggy-bank" />
+          </span>
+        );
 
       default:
         return "NA";
@@ -351,9 +393,9 @@ export default function ExpenseTable({
             <td>{categoryIcon(expense.category)}</td>
           )}
 
+          {expenseType === "Gyft" && <td>{formatEvent(expense.event)}</td>}
           <td>${expense.amount}</td>
           <td>{dayjs(expense.dueDate).format("MMM. DD, YYYY")}</td>
-          {expenseType === "Gyft" && <td>{formatEvent(expense.event)}</td>}
           {expenseType === "Gyft" && <td>{expense.recipient.name}</td>}
           <td>{expense && formatTitleAndNotes(expense).title}</td>
           <td>{expense && formatTitleAndNotes(expense)["notes"]}</td>
@@ -368,9 +410,9 @@ export default function ExpenseTable({
       <thead>
         <tr>
           {expenseType === "Personal" && <th></th>}
+          {expenseType === "Gyft" && <th></th>}
           <th>Amount</th>
           <th>Date</th>
-          {expenseType === "Gyft" && <th>Event</th>}
           {expenseType === "Gyft" && <th>Recipient</th>}
           <th>Title</th>
           <th>Notes</th>

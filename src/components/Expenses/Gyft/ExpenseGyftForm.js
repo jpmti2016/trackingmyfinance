@@ -156,7 +156,7 @@ export default function ExpenseGyftForm(props) {
 
       const { amount, dueDate, recipient, event, notes, title } = data;
       console.log("duedate from data", dueDate);
-      const formatedDueDate = dayjs(dueDate).format("YYYY-MM-DD");
+      const formatedDueDate = dayjs(dueDate).format("YYYY-MM-DDThh:mmZ");
       console.log("formated dueDate", formatedDueDate);
       const formatedAmount = Number(amount);
       const titleEmpty = title === "" ? null : title;
