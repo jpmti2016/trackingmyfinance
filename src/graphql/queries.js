@@ -10425,62 +10425,469 @@ export const listClients = /* GraphQL */ `
           nextToken
           startedAt
         }
-        housingExpenses {
+        legalExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            notes
+            lawyers(limit: 10) {
+              items {
+                id
+                _version
+                phone
+                address {
+                  id
+                  _version
+                }
+                name
+                email
+                fee
+                firm
+                legal {
+                  id
+                  _version
+                }
+              }
+            }
+          }
         }
-        phoneExpenses {
+        foodExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            dinningOut {
+              _version
+              id
+              place
+              title
+              notes
+            }
+            grocery {
+              _version
+              id
+              store
+              title
+              notes
+              info
+              products {
+                items {
+                  _version
+                  id
+                  name
+                  price
+                  quantity
+                }
+              }
+            }
+          }
         }
-        insuranceExpenses {
+        personalCareExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            notes
+          }
         }
-        legalExpenses {
+        loanExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            notes
+          }
         }
-        foodExpenses {
+        taxExpenses(limit: 30) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            w2 {
+              _version
+              id
+              year
+              grossPay
+              federal
+              state
+              local
+            }
+            taxDebt
+            fee
+            title
+            notes
+          }
         }
-        commuteExpenses {
+        entertainmentExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            notes
+          }
         }
-        educationExpenses {
+        petExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            title
+            notes
+          }
         }
-        personalCareExpenses {
+        educationExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            id
+            _version
+            kind
+            amount
+            dueDate
+            category
+            nature
+            communityCollege {
+              id
+              _version
+              program
+              university
+              school
+              title
+              notes
+              fees {
+                items {
+                  _version
+                  id
+                  tuitionAndFees
+                  booksAndSupplies
+                  roomAndBoard
+                  transportation
+                  personal
+                  period {
+                    _version
+                    id
+                    billingStart
+                    billingEnd
+                  }
+                }
+                nextToken
+              }
+            }
+            onlineCourse {
+              id
+              _version
+              title
+              university
+              school
+              description
+              notes
+              platform
+              url
+              period {
+                id
+                _version
+                billingStart
+                billingEnd
+              }
+            }
+            training {
+              _version
+              id
+              title
+              notes
+              school
+              period {
+                _version
+                id
+                billingStart
+                billingEnd
+              }
+            }
+            bootcamp {
+              _version
+              id
+              title
+              notes
+              costDeferred
+              period {
+                _version
+                id
+                billingStart
+                billingEnd
+              }
+            }
+            college {
+              id
+              _version
+              program
+              university
+              school
+              title
+              notes
+              fees {
+                items {
+                  id
+                  _version
+                  tuitionAndFees
+                  booksAndSupplies
+                  roomAndBoard
+                  transportation
+                  personal
+                }
+              }
+            }
+          }
         }
-        petExpenses {
+        commuteExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            service
+            event
+            title
+            notes
+          }
         }
-        entertainmentExpenses {
+        investmentExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            account
+            amount
+            dueDate
+            category
+            title
+            notes
+            owner
+          }
         }
-        loanExpenses {
+        gyftExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            event
+            recipient {
+              _version
+              id
+              name
+            }
+            title
+            notes
+            owner
+          }
         }
-        taxExpenses {
+        housingExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            category
+            dueDate
+            nature
+            supply {
+              _version
+              id
+              supplyFor
+              title
+              notes
+              brand
+              model
+            }
+            home {
+              _version
+              id
+              mortgage
+              title
+              notes
+              address {
+                _version
+                id
+                number
+                street
+                postCode
+                country
+                state
+                region
+                county
+              }
+            }
+            repair {
+              _version
+              id
+              title
+              notes
+            }
+            otherHousing {
+              _version
+              id
+              title
+              notes
+            }
+            utility {
+              _version
+              id
+              selection
+              company
+              title
+              notes
+              period {
+                _version
+                id
+                billingStart
+                billingEnd
+              }
+              reading
+            }
+          }
         }
-        investmentExpenses {
+        insuranceExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            startDate
+            title
+            notes
+            coverage
+            yearDeductions
+            company
+            beneficiaries {
+              items {
+                _version
+                id
+                name
+                lastName
+                address {
+                  id
+                  _version
+                  number
+                  street
+                  postCode
+                  country
+                  state
+                  region
+                  county
+                }
+              }
+            }
+          }
         }
-        gyftExpenses {
+        phoneExpenses(limit: 50) {
           nextToken
           startedAt
+          items {
+            __typename
+            _version
+            id
+            kind
+            dueDate
+            amount
+            category
+            phonePlan
+            additional {
+              _version
+              id
+              title
+              notes
+            }
+            plan {
+              _version
+              id
+              title
+              notes
+              billing {
+                _version
+                id
+                billingStart
+                billingEnd
+              }
+            }
+          }
         }
+
         _version
         _deleted
         _lastChangedAt
