@@ -50,6 +50,7 @@ export default function AcademicFeeFields({ register, errors }) {
           <input
             id={`tuitionAndFees`}
             type="number"
+            step="0.01"
             className="input"
             name={`tuitionAndFees`}
             ref={register}
@@ -68,6 +69,7 @@ export default function AcademicFeeFields({ register, errors }) {
           <input
             id={`booksAndSupplies`}
             type="number"
+            step="0.01"
             className="input"
             name={`booksAndSupplies`}
             ref={register}
@@ -86,6 +88,7 @@ export default function AcademicFeeFields({ register, errors }) {
           <input
             id={`roomAndBoard`}
             type="number"
+            step="0.01"
             className="input"
             name={`roomAndBoard`}
             ref={register}
@@ -104,6 +107,7 @@ export default function AcademicFeeFields({ register, errors }) {
           <input
             id={`transportation`}
             type="number"
+            step="0.01"
             className="input"
             name={`transportation`}
             ref={register}
@@ -122,6 +126,7 @@ export default function AcademicFeeFields({ register, errors }) {
           <input
             id={`personal`}
             type="number"
+            step="0.01"
             className="input"
             name={`personal`}
             ref={register}

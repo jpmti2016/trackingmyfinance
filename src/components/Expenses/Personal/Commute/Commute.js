@@ -64,6 +64,7 @@ export default function CommuteFields({
             <input
               id="amount"
               type="number"
+              step="0.01"
               className="input"
               name="amount"
               ref={register({ required: true })}
@@ -108,6 +109,7 @@ export default function CommuteFields({
               <input
                 id="amount"
                 type="number"
+                step="0.01"
                 className="input"
                 name="amount"
                 ref={register({ required: true })}

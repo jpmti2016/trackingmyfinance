@@ -26,6 +26,7 @@ export default function TaxesFields({ register, errors }) {
         <div className="control">
           <input
             type="number"
+            step="0.01"
             className="input"
             name="grossPay"
             ref={register}
@@ -45,6 +46,7 @@ export default function TaxesFields({ register, errors }) {
         <div className="control">
           <input
             type="number"
+            step="0.01"
             className="input"
             name="federal"
             ref={register}
@@ -63,6 +65,7 @@ export default function TaxesFields({ register, errors }) {
           <input
             id="state"
             type="number"
+            step="0.01"
             className="input"
             name="state"
             ref={register}
@@ -79,6 +82,7 @@ export default function TaxesFields({ register, errors }) {
           <input
             id="local"
             type="number"
+            step="0.01"
             className="input"
             name="local"
             ref={register}
@@ -132,6 +136,7 @@ export default function TaxesFields({ register, errors }) {
           <input
             id="fee"
             type="number"
+            step="0.01"
             className="input"
             name="fee"
             ref={register}

@@ -114,6 +114,7 @@ export default function GroceryFields({
             <input
               id="amount"
               type="number"
+              step="0.01"
               className="input"
               name="amount"
               ref={register}

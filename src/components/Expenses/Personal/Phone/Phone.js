@@ -54,6 +54,7 @@ export default function PhoneFields({ register, watchPhonePlan, errors }) {
           <input
             className="input"
             type="number"
+            step="0.01"
             placeholder="43"
             name="amount"
             id="amount"

@@ -22,7 +22,7 @@ export default function LegalFields({
             >
               <option value="">--Select--</option>
               <option value="DOCUMENTS">Documents</option>
-              <option value="INMIGRATION">Inmigration</option>
+              <option value="INMIGRATION">Immigration</option>
               <option value="WORK">Work</option>
               <option value="ACCIDENT">Accident</option>
               <option value="HOME">Home</option>
@@ -56,6 +56,7 @@ export default function LegalFields({
         <div className="control">
           <input
             type="number"
+            step="0.01"
             id="amount"
             className="input"
             name="amount"

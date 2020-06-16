@@ -141,6 +141,7 @@ export default function InsuranceFields({
         <div className="control">
           <input
             type="number"
+            step="0.01"
             className="input"
             name="yearDeductions"
             id="yearDeductions"
@@ -160,6 +161,7 @@ export default function InsuranceFields({
         <div className="control">
           <input
             type="number"
+            step="0.01"
             className="input"
             placeholder="30.49"
             name="amount"

@@ -33,6 +33,7 @@ export default function LegalLawyerFieldsArray({ register, control, errors }) {
                 <input
                   id={`${fieldName}.fee`}
                   type="number"
+                  step="0.01"
                   className="input"
                   name={`${fieldName}.fee`}
                   ref={register({})}

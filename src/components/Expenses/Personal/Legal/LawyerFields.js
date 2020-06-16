@@ -13,6 +13,7 @@ export default function LawyerFields({ register, errors }) {
           <input
             id="fee"
             type="number"
+            step="0.01"
             className="input"
             name="fee"
             ref={register({})}

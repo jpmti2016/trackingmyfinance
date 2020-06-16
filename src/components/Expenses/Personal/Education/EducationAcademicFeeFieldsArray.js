@@ -91,6 +91,7 @@ export default function EducationAcademicFeeFieldsArray({
                 <input
                   id={`${fieldName}.tuitionAndFees`}
                   type="number"
+                  step="0.01"
                   className="input"
                   name={`${fieldName}.tuitionAndFees`}
                   ref={register}
@@ -134,6 +135,7 @@ export default function EducationAcademicFeeFieldsArray({
                 <input
                   id={`${fieldName}.roomAndBoard`}
                   type="number"
+                  step="0.01"
                   className="input"
                   name={`${fieldName}.roomAndBoard`}
                   ref={register}
@@ -153,6 +155,7 @@ export default function EducationAcademicFeeFieldsArray({
                 <input
                   id={`${fieldName}.transportation`}
                   type="number"
+                  step="0.01"
                   className="input"
                   name={`${fieldName}.transportation`}
                   ref={register}
@@ -172,6 +175,7 @@ export default function EducationAcademicFeeFieldsArray({
                 <input
                   id={`${fieldName}.personal`}
                   type="number"
+                  step="0.01"
                   className="input"
                   name={`${fieldName}.personal`}
                   ref={register}

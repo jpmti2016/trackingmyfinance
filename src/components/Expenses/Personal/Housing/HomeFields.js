@@ -35,6 +35,7 @@ export default function HomeFields({ register, errors }) {
         </label>
         <input
           type="number"
+          step="0.01"
           className="input"
           name="amount"
           id="amount"

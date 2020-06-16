@@ -29,6 +29,7 @@ export default function ProductFields({ register, errors }) {
           <input
             id={`price`}
             type="number"
+            step="0.01"
             className="input"
             name={`price`}
             ref={register({ required: true })}
@@ -47,6 +48,7 @@ export default function ProductFields({ register, errors }) {
           <input
             id={`quantity`}
             type="number"
+            step="0.01"
             className="input"
             name={`quantity`}
             ref={register({ required: true })}

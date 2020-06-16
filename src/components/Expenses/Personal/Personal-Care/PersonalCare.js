@@ -34,7 +34,8 @@ export default function PersonalCareFields({ register, errors }) {
         <div className="control">
           <input
             id="amount"
-            type="text"
+            type="number"
+            step="0.01"
             className="input"
             name="amount"
             ref={register}

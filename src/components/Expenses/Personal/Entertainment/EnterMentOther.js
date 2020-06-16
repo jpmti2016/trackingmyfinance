@@ -23,6 +23,7 @@ export default function EnterMentOther({ register, watchEnterMent }) {
         <input
           id={`${watchEnterMent}amount`}
           type="number"
+          step="0.01"
           className="input"
           name={`${watchEnterMent}amount`}
           ref={register({ required: true })}

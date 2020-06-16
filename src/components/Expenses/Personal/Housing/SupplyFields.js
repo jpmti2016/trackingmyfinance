@@ -55,6 +55,7 @@ export default function SupplyFields({ register, errors }) {
         <div className="control">
           <input
             type="number"
+            step="0.01"
             className="input"
             name="amount"
             id="amount"

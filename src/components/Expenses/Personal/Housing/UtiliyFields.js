@@ -26,6 +26,7 @@ export default function UtiliyFields({ watchUtility, register, errors }) {
           <input
             className="input"
             type="number"
+            step="0.01"
             placeholder="25"
             name={`amount`}
             id={`amount`}
@@ -44,6 +45,7 @@ export default function UtiliyFields({ watchUtility, register, errors }) {
           <input
             className="input"
             type="number"
+            step="0.01"
             placeholder="25"
             name={`housingReading`}
             id={`housingReading`}

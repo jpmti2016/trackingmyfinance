@@ -31,6 +31,7 @@ export default function InvestmentFields({ register, errors }) {
           <input
             id="amount"
             type="number"
+            step="0.01"
             className="input"
             name="amount"
             ref={register}
@@ -50,7 +51,7 @@ export default function InvestmentFields({ register, errors }) {
             type="datetime-local"
             className="input"
             name="dueDate"
-            ref={register}
+            ref={register({ required: true })}
           />
           {errors.dueDate && (
             <p className="error">{"Please select the due date"}</p>

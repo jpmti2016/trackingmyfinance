@@ -57,6 +57,7 @@ export default function GroceryProductFieldsArray({
                 <input
                   id={`${fieldName}.price`}
                   type="number"
+                  step="0.01"
                   className="input"
                   name={`${fieldName}.price`}
                   ref={register({ required: true })}
@@ -76,6 +77,7 @@ export default function GroceryProductFieldsArray({
                 <input
                   id={`${fieldName}.quantity`}
                   type="number"
+                  step="0.01"
                   className="input"
                   name={`${fieldName}.quantity`}
                   ref={register({ required: true })}
