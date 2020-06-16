@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "raect";
 import { Auth, Hub } from "aws-amplify";
 
-export const protedtedRoute = (Comp, route = "/profile") => props => {
+export const protedtedRoute = (Comp, route = "/profile") => (props) => {
   async function checkAuthState() {
     try {
       await Auth.currentAuthenticatedUser();
@@ -25,7 +25,7 @@ export const Container = ({ children }) => (
 const styles = {
   container: {
     margin: "0 auto",
-    padding: "50px 100px"
+    padding: "50px 100px",
   },
   button: {
     backgroundColor: "#006bfc",
@@ -39,14 +39,14 @@ const styles = {
     outline: "none",
     borderRadiuos: 3,
     marginTop: "25px",
-    boxShadow: "0px 1px 3px rgba(0, 0, 0, .3)"
+    boxShadow: "0px 1px 3px rgba(0, 0, 0, .3)",
   },
   containe: {
     display: "flex",
     flexDirection: "column",
     marginTop: 150,
     justyfyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   input: {
     height: 45,
@@ -57,7 +57,7 @@ const styles = {
     fontSize: 16,
     outline: "none",
     border: "none",
-    borderBottom: "2px solid rgba(0, 0, 0, .3"
+    borderBottom: "2px solid rgba(0, 0, 0, .3",
   },
   toogleForm: {
     fontWeight: "600",
@@ -65,15 +65,15 @@ const styles = {
     margingTop: "15px",
     marginBottom: 0,
     textAlign: "center",
-    color: "rgba(0, 0, 0, 0.6)"
+    color: "rgba(0, 0, 0, 0.6)",
   },
   resetPassword: {
-    marginTop: "5px"
+    marginTop: "5px",
   },
   anchor: {
     color: "#006bfc",
-    cursor: "pointer"
-  }
+    cursor: "pointer",
+  },
 };
 
 //;;;;;
@@ -105,7 +105,7 @@ const initialFormState = {
   username: "",
   password: "",
   email: "",
-  confirmationCode: ""
+  confirmationCode: "",
 };
 
 async function singIn({ username, password }, setUser) {
@@ -114,7 +114,7 @@ async function singIn({ username, password }, setUser) {
     const userInfo = { username: user.username, ...user.attributes };
     setUser(userInfo);
   } catch (error) {
-    console.log("error signing up", error);
+    console.error("error signing up", error);
   }
 }
 
@@ -124,7 +124,7 @@ async function signUp({ username, password, email }, updateFormType) {
     console.log("sign up success!!");
     updateFormType("confirmSignUp");
   } catch (error) {
-    console.log("error sign up", error);
+    console.error("error sign up", error);
   }
 }
 
@@ -134,7 +134,7 @@ async function confirmSignUp({ username, confirmationCode }, updateFormType) {
     Auth.confirmSignUp(username, confirmationCode);
     updateFormType("signIn");
   } catch (error) {
-    console.log("error signing up", error);
+    console.error("error signing up", error);
   }
 }
 
@@ -143,7 +143,7 @@ async function forgotPassword({ username }, updateFormType) {
     await Auth.forgotPassword(username);
     updateFormType("forgotPasswordSubmit");
   } catch (error) {
-    console.log("error submiting username to reset password", error);
+    console.error("error submiting username to reset password", error);
   }
 }
 
@@ -156,7 +156,7 @@ async function forgotPasswordSubmit(
     Auth.forgotPasswordSubmit(username, confirmationCode, password);
     updateFormType("signIn");
   } catch (error) {
-    console.log("error updating password", error);
+    console.error("error updating password", error);
   }
 }
 
@@ -167,7 +167,7 @@ export function Form(props) {
   function updateForm(event) {
     const newFormState = {
       ...formState,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     };
 
     updateFormState(newFormState);
@@ -179,28 +179,28 @@ export function Form(props) {
         return (
           <SignUp
             signUp={() => signUp(formState, updateFormType)}
-            updateFormState={e => updateForm(e)}
+            updateFormState={(e) => updateForm(e)}
           />
         );
       case "confirmSignUp":
         return (
           <ConfirmSignUp
             confirmSignUp={() => confirmSignUp(formState, updateFormType)}
-            updateFormState={e => updateForm(e)}
+            updateFormState={(e) => updateForm(e)}
           />
         );
       case "signIn":
         return (
           <SignIn
             signIn={() => singIn(formState, props.setUser)}
-            updateFormState={e => updateForm(e)}
+            updateFormState={(e) => updateForm(e)}
           />
         );
       case "forgotPassword":
         return (
           <ForgotPassword
             forgotPassword={() => forgotPassword(formState, updateFormType)}
-            updateFormState={e => updateForm(e)}
+            updateFormState={(e) => updateForm(e)}
           />
         );
       case "forgotPasswordSubmit":
@@ -209,7 +209,7 @@ export function Form(props) {
             forgotPasswordSubmit={() =>
               forgotPasswordSubmit(formState, updateFormType)
             }
-            updateFormState={e => updateForm(e)}
+            updateFormState={(e) => updateForm(e)}
           />
         );
       default:
@@ -261,7 +261,7 @@ export function Profile() {
   useEffect(() => {
     checkUser();
 
-    Hub.listen("auth", data => {
+    Hub.listen("auth", (data) => {
       const { payload } = data;
       if (payload.event === "signOut") {
         setUser(null);
@@ -280,7 +280,7 @@ export function Profile() {
   }
 
   function signOut() {
-    Auth.signOut().catch(err => console.log("error signing out", err));
+    Auth.signOut().catch((err) => console.error("error signing out", err));
   }
 
   if (user) {
@@ -304,7 +304,7 @@ export function SignIn({ signIn, updateFormState }) {
     <div style={styles.container}>
       <input
         name="username"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}
@@ -315,7 +315,7 @@ export function SignIn({ signIn, updateFormState }) {
       <input
         type="password"
         name="password"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}
@@ -335,7 +335,7 @@ export function SignUp({ updateFormState, signUp }) {
     <div style={styles.container}>
       <input
         name="username"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}
@@ -346,7 +346,7 @@ export function SignUp({ updateFormState, signUp }) {
       <input
         type="password"
         name="password"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}
@@ -354,7 +354,7 @@ export function SignUp({ updateFormState, signUp }) {
 
       <input
         name="email"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}
@@ -374,7 +374,7 @@ export function ConfirmSignUp({ updateFormState, confirmSignUp }) {
     <div style={styles.container}>
       <input
         name="confirmationCode"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}
@@ -394,7 +394,7 @@ export function ForgotPassword({ updateFormState, forgotPassword }) {
     <div style={styles.container}>
       <input
         name="username"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}
@@ -410,13 +410,13 @@ export function ForgotPassword({ updateFormState, forgotPassword }) {
 // ;;;;
 export function ForgotPasswordSubmit({
   updateFormState,
-  forgotPasswordSubmit
+  forgotPasswordSubmit,
 }) {
   return (
     <div style={styles.container}>
       <input
         name="confirmationcode"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}
@@ -427,7 +427,7 @@ export function ForgotPasswordSubmit({
       <input
         name="password"
         type="password"
-        onChange={e => {
+        onChange={(e) => {
           e.persist();
           updateFormState(e);
         }}

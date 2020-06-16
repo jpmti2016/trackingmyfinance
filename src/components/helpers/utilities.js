@@ -1,11 +1,11 @@
-export const asEnumeration = dictionary => {
+export const asEnumeration = (dictionary) => {
   return Object.freeze({
-    fromValue: value => {
+    fromValue: (value) => {
       if (dictionary[value]) {
         return dictionary[value];
       }
       throw new Error(`Invalid enumeration value ${value}`);
-    }
+    },
   });
 };
 
@@ -25,7 +25,7 @@ export const asEnumeration = dictionary => {
 
 // Also treats functions as functors and will compose them together.
 
-export const map = f => arr => arr.map(f);
+export const map = (f) => (arr) => arr.map(f);
 
 // Pipe
 
@@ -34,13 +34,13 @@ export const map = f => arr => arr.map(f);
 
 // In some libraries this function is named sequence.
 
-export const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
+export const pipe = (...fns) => (x) => fns.reduce((y, f) => f(y), x);
 
 //Dissoc
 
 // Returns a new object that does not contain a prop property.
 
-export const dissoc = prop => ({ [prop]: _, ...obj }) => obj;
+export const dissoc = (prop) => ({ [prop]: _, ...obj }) => obj;
 
 //return a new object that not contains the props specified
 export const omitObjectProps = (object = {}, props = []) =>
@@ -72,10 +72,10 @@ export const includeObjectProps = (object = {}, props = []) =>
 const o = { a: 1, b: null, c: undefined, d: "sdsadsa" };
 const props = ["g", "a"];
 
-console.log("less props", includeObjectProps(o, props));
-console.log("less props NO object", includeObjectProps({}, props));
-console.log("less props NO props", includeObjectProps(o, []));
-console.log(includeObjectProps());
+// console.log("less props", includeObjectProps(o, props));
+// console.log("less props NO object", includeObjectProps({}, props));
+// console.log("less props NO props", includeObjectProps(o, []));
+// console.log(includeObjectProps());
 
 // console.log("less props", omitObjectProps(o, props));
 // console.log("less props NO object", omitObjectProps({}, props));
@@ -87,12 +87,12 @@ console.log(includeObjectProps());
 // An Object-specific version of map. The function is applied to three arguments: (value, key, obj).
 // If only the value is significant, use map instead.
 
-export const mapObject = f => obj =>
+export const mapObject = (f) => (obj) =>
   Object.keys(obj).reduce((acc, key) => ({ ...acc, [key]: f(obj[key]) }), {});
 
-export const replaceEmptyStringWithNull = x => (x === "" ? null : x);
+export const replaceEmptyStringWithNull = (x) => (x === "" ? null : x);
 
-export const prepareArrayOfObjects = prop =>
+export const prepareArrayOfObjects = (prop) =>
   map(pipe(dissoc(`${prop}`), mapObject(replaceEmptyStringWithNull)));
 
 export const replacePropEmptyString = mapObject(replaceEmptyStringWithNull);

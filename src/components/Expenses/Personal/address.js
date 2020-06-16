@@ -15,8 +15,6 @@ export const handleCreateAddress = async (address) => {
     const result = await API.graphql(
       graphqlOperation(createAddress, { input: { ...address } })
     );
-
-    console.log("new address", result.data.createAddress);
     return result.data.createAddress.id;
   } catch (error) {
     console.error("handle create addres", error);
@@ -29,7 +27,7 @@ export const handleUpdateAddress = async (address) => {
     const result = await API.graphql(
       graphqlOperation(updateAddress, { input: { ...address } })
     );
-    console.log("handle update address", result.data.updateAddress);
+
     return result.data.updateAddress.id;
   } catch (error) {
     console.error("handle update address", error);
@@ -42,7 +40,6 @@ export const handleDeleteAddress = async (id) => {
       graphqlOperation(deleteAddress, { input: { id } })
     );
 
-    console.log("deleted address", result.data.deleteAddress.id);
     return result.data.deleteAddress.id;
   } catch (error) {
     console.error("handle delete address", error);
@@ -69,7 +66,7 @@ export const handleListAddress = async (owner) => {
     );
     return result.data.listAddresss.items;
   } catch (error) {
-    console.log("handle list address", error);
+    console.error("handle list address", error);
   }
 };
 
@@ -109,7 +106,6 @@ export const handleStructureAddress = (data) => {
         county: data.insuranceCounty,
       };
     } else if (data.personal === "LEGAL") {
-      console.log("if data.personal LEGAL");
       return {
         number: data.legalNumber,
         street: data.legalStreet,

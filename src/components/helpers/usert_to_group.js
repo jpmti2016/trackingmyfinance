@@ -63,7 +63,7 @@ function App() {
     useEffect(() => {
         Auth.currentAuthenticatedUser()
             .then(user => setUser(user))
-            .catch(err => console.log(err));
+            .catch(err => console.error(err));
     }, []);
 
     let isAdmin = false;

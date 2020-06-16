@@ -85,7 +85,6 @@ export const handleCreatePlan = async (data) => {
       graphqlOperation(createPlan, { input: { ...planFormated } })
     );
 
-    console.log("handle create phone plan", result.data.createPlan);
     return result.data.createPlan.id;
   } catch (error) {
     console.error("handle create plan", error);
@@ -104,7 +103,8 @@ export const handleDeletePlan = async (plan) => {
     const result = await API.graphql(
       graphqlOperation(deletePlan, { input: { id } })
     );
-    console.log("deleted plan", result.data.deletePlan);
+
+    return result.data.deletedPlan;
   } catch (error) {
     console.error("handle delete plan", error);
   }
@@ -144,8 +144,6 @@ export const handleUpdatePlan = async (data, plan = null) => {
     const result = await API.graphql(
       graphqlOperation(updatePlan, { input: { ...planFormated } })
     );
-
-    console.log("updated phone plan", result.data.updatePlan);
 
     return result.data.updatePlan.id;
   } catch (error) {
@@ -216,7 +214,6 @@ export const handleCreateAdditional = async (data) => {
     const result = await API.graphql(
       graphqlOperation(createAdditional, { input: { ...additionalFormated } })
     );
-    console.log("handle create additional", result.data.createAdditional);
 
     return result.data.createAdditional.id;
   } catch (error) {
@@ -229,7 +226,8 @@ export const handleDeleteAdditional = async ({ id }) => {
     const result = await API.graphql(
       graphqlOperation(deleteAdditional, { input: { id } })
     );
-    console.log("handle delete phone additional", result.data.deleteAdditional);
+
+    return result.data.deleteAdditional;
   } catch (error) {
     console.error("handle delete phone additional", error);
   }
@@ -244,7 +242,8 @@ export const handleUpdateAdditional = async (data, additional) => {
     const result = await API.graphql(
       graphqlOperation(updateAdditional, { input: { ...additionalFormated } })
     );
-    console.log("handle update additional", result.data.updateAdditional);
+
+    return result.data.updateAdditional;
   } catch (error) {
     console.error("handle update phone additional", error);
   }
@@ -311,11 +310,9 @@ export const handleStructurePhoneExpense = (data) => {
       phoneExpenseClientId: null,
     };
 
-    console.log("handle strcucture phone", newPhone);
-
     return newPhone;
   } catch (error) {
-    console.log("handle structure phone expense", error);
+    console.error("handle structure phone expense", error);
   }
 };
 
@@ -340,12 +337,8 @@ export const handleFormatPhoneExpense = (data, expense) => {
         ]),
       };
 
-      console.log("handle format phone", updatedPhone);
-
       return updatedPhone;
     }
-
-    console.log("handle format phone", newPhone);
 
     return newPhone;
   } catch (error) {
@@ -360,24 +353,19 @@ export const handleCreatePhoneExpense = async (data, clientId) => {
 
     const expensePreFormated = handleFormatPhoneExpense(data);
 
-    console.log("expense preFormated before create", expensePreFormated);
-
     const expenseFormated = {
       ...expensePreFormated,
       [phoneAsEnum.fromValue(data.phonePlan).idName]: id,
       phoneExpenseClientId: clientId,
     };
 
-    console.log("expense formated before create", expenseFormated);
-
     const result = await API.graphql(
       graphqlOperation(createPhoneExpense, { input: { ...expenseFormated } })
     );
 
-    console.log("handle create phone plan", result.data.createPhoneExpense);
     return result.data.createPhoneExpense;
   } catch (error) {
-    console.log("handle create phone plan", error);
+    console.error("handle create phone plan", error);
   }
 };
 
@@ -416,11 +404,9 @@ export const handleUpdatePhoneExpense = async (data, expense) => {
       graphqlOperation(updatePhoneExpense, { input: { ...expenseToUpdate } })
     );
 
-    console.log("expense updated", result.data.updatePhoneExpense);
-
     return result.data.updatePhoneExpense;
   } catch (error) {
-    console.log("handle update phone expense", error);
+    console.error("handle update phone expense", error);
   }
 };
 
