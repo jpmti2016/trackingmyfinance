@@ -18,14 +18,14 @@ export default function Dashboard() {
             <h1
               className="title is-family-primary has-text-white-ter"
               style={{ fontSize: "4rem" }}
-            //color: "rgb(139, 126, 133)",
+              //color: "rgb(139, 126, 133)",
             >
               Enjoy your money
             </h1>
             <h2
               className="subtitle is-family-code is-italic has-text-white-ter"
               style={{ fontSize: "3rem" }}
-            //color: "rgb(139, 126, 133)",
+              //color: "rgb(139, 126, 133)",
             >
               but keep a check on it
             </h2>
@@ -149,7 +149,7 @@ export default function Dashboard() {
         className="section"
         style={{
           backgroundImage: `url(${flower})`,
-          backgroundColor: "transparent"
+          backgroundColor: "transparent",
         }}
       >
         <div className="container">
@@ -168,14 +168,14 @@ export default function Dashboard() {
                   className="card-content"
                   style={{
                     borderTop: "1px solid hsl(328° 5% 52%)",
-                    color: "#363636"
+                    color: "#363636",
                   }}
                 >
                   <div className="media">
                     <div className="media-left">
-                      <figure className="image is-48x48">
-                        <img src={ding} alt="Ding" />
-                      </figure>
+                      <span className="icon title is-4">
+                        <i className="fas fa-phone-square" />
+                      </span>
                     </div>
                     <div className="media-content">
                       <p className="title is-4">Phone Refill</p>
@@ -208,9 +208,9 @@ export default function Dashboard() {
                 >
                   <div className="media">
                     <div className="media-left">
-                      <figure className="image is-48x48">
-                        <img src={wu} alt="Westernunion logo" />
-                      </figure>
+                      <span className="icon title is-4">
+                        <i className="fas fa-funnel-dollar" />
+                      </span>
                     </div>
                     <div className="media-content">
                       <p className="title is-4">Money Send</p>
@@ -243,9 +243,9 @@ export default function Dashboard() {
                 >
                   <div className="media">
                     <div className="media-left">
-                      <figure className="image is-48x48">
-                        <img src={presentlogo} alt="Present Logo" />
-                      </figure>
+                      <span className="icon title is-4">
+                        <i className="fas fa-gift" />
+                      </span>
                     </div>
                     <div className="media-content">
                       <p className="title is-4">Present</p>
