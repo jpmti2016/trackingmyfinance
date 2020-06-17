@@ -71,7 +71,7 @@ const useAmplifyAuth = () => {
         if (isMounted) {
           const data = await Auth.currentAuthenticatedUser();
           if (data) {
-            // history.push('/expenses/personal')
+            history.push("/expenses/personal");
             dispatch({
               type: "FETCH_USER_DATA_SUCCESS",
               payload: { user: data },
