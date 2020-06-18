@@ -1,12 +1,8 @@
 import React from "react";
-import phoner from "../img/phone-recharge.jpeg";
-import ding from "../img/ding_logo_blue.c75c8049.svg";
-import wu from "../img/wu2.png";
-import money from "../img/send-money.jpeg";
-import presentlogo from "../img/gyft-logo.jpeg";
-import present from "../img/gyft2.jpeg";
+import present from "../img/undraw_gift_box_byy3.svg";
+import moneySended from "../img/undraw_transfer_money_rywa.svg";
+import phoneRecharge from "../img/undraw_mobile_pay_9abj.svg";
 
-import flower from "../img/IMG_20191020_132426.jpg";
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -15,89 +11,26 @@ export default function Dashboard() {
       <section className="hero is-large hero-image">
         <div className="hero-body">
           <div className="container">
-            <h1
-              className="title is-family-primary has-text-white-ter"
-              style={{ fontSize: "4rem" }}
-              //color: "rgb(139, 126, 133)",
-            >
-              Enjoy your money
-            </h1>
-            <h2
-              className="subtitle is-family-code is-italic has-text-white-ter"
-              style={{ fontSize: "3rem" }}
-              //color: "rgb(139, 126, 133)",
-            >
-              but keep a check on it
-            </h2>
+            <div className="bgc-hero-title">
+              <h1
+                className="title is-family-primary has-text-white-ter"
+                style={{ fontSize: "4rem" }}
+                // color: "rgb(139, 126, 133)",
+              >
+                Enjoy your money
+              </h1>
+              <h2
+                className="title is-family-code is-italic has-text-white-ter"
+                style={{ fontSize: "3rem" }}
+                //color: "rgb(139, 126, 133)",
+              >
+                but keep a check on it
+              </h2>
+            </div>
           </div>
         </div>
       </section>
-      {/* <section
-        className="section has-text-light"
-        // style={{ backgroundColor: "#3e9c35" }}
-      >
-        <div className="container ">
-          <h1 className="title" style={{ color: "#3e9c35" }}>
-            Section
-          </h1>
-          <h2 className="subtitle " style={{ color: "#3e9c35" }}>
-            A simple container to divide your page into{" "}
-            <strong style={{ color: "#3e9c35" }}>sections</strong>, like the one
-            you're currently reading
-          </h2>
 
-          <article className="media">
-            <figure className="media-left">
-              <p className="image is-64x64">
-                <img src={image} alt="color pallete" />
-              </p>
-            </figure>
-            <div className="media-content">
-              <div className="content">
-                <p style={{ color: "#3e9c35" }}>
-                  <strong style={{ color: "#3e9c35" }}>Color Pallete</strong>{" "}
-                  <small>@https://www.color-hex.com/color-palette/22365</small>{" "}
-                  <br />
-                  USD Dollar Color Pallete
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <ul>
-            <li
-              className="has-text-light"
-              style={{ backgroundColor: "#3e9c35" }}
-            >
-              #3e9c35 (62,156,53)
-            </li>
-            <li
-              className="has-text-light"
-              style={{ backgroundColor: "#168118" }}
-            >
-              #168118 (22,129,24)
-            </li>
-            <li
-              className="has-text-light"
-              style={{ backgroundColor: "#157811" }}
-            >
-              #157811 (21,120,17)
-            </li>
-            <li
-              className="has-text-light"
-              style={{ backgroundColor: "#036704" }}
-            >
-              #036704 (3,103,4)
-            </li>
-            <li
-              className="has-text-light"
-              style={{ backgroundColor: "#084f09" }}
-            >
-              #084f09 (8,79,9)
-            </li>
-          </ul>
-        </div>
-      </section> */}
       <section
         className="section"
         style={{ paddingTop: "6rem", paddingBottom: "9rem" }}
@@ -145,13 +78,7 @@ export default function Dashboard() {
           </div>
         </nav>
       </section>
-      <section
-        className="section"
-        style={{
-          backgroundImage: `url(${flower})`,
-          backgroundColor: "transparent",
-        }}
-      >
+      <section className="section background-pattern">
         <div className="container">
           <div className="columns">
             <div className="column">
@@ -161,7 +88,7 @@ export default function Dashboard() {
               >
                 <div className="card-image">
                   <figure className="image is-4by3">
-                    <img src={phoner} alt="Phone Recharge" />
+                    <img src={phoneRecharge} alt="Phone Recharge" />
                   </figure>
                 </div>
                 <div
@@ -199,7 +126,7 @@ export default function Dashboard() {
               >
                 <div className="card-image">
                   <figure className="image is-4by3">
-                    <img src={money} alt="Money Sended" />
+                    <img src={moneySended} alt="Money Sended" />
                   </figure>
                 </div>
                 <div
