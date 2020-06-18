@@ -3,7 +3,14 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <footer className="footer" style={{ color: "#363636" }}>
+      <footer
+        className="footer"
+        style={{
+          borderTop: "3px solid rgba(133, 129, 126)",
+          backgroundColor: "#fff",
+          color: "#363636",
+        }}
+      >
         <div className="content has-text-centered">
           <p>
             Created with{" "}
@@ -25,10 +32,7 @@ export default function Footer() {
               </svg>
             </span>{" "}
             by <strong>jpmti2016 </strong>
-            using{" "}
-            {/* <a className="is-info" href="https://bulma.io">
-            Bulma
-          </a> */}
+            using
             <strong>Bulma</strong> , <strong>React</strong> and{" "}
             <strong>AWS Amplify</strong>
           </p>
