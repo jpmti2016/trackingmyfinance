@@ -406,20 +406,25 @@ export default function ExpenseTable({
   }
 
   return (
-    <table className="table is-striped is-hoverable" style={{ width: "100%" }}>
-      <thead>
-        <tr>
-          {expenseType === "Personal" && <th></th>}
-          {expenseType === "Gyft" && <th></th>}
-          <th>Amount</th>
-          <th>Date</th>
-          {expenseType === "Gyft" && <th>Recipient</th>}
-          <th>Title</th>
-          <th>Notes</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>{TableRowExpense()}</tbody>
-    </table>
+    <div className="table-container">
+      <table
+        className="table is-striped is-hoverable tablet stackable"
+        style={{ width: "100%" }}
+      >
+        <thead>
+          <tr>
+            {expenseType === "Personal" && <th></th>}
+            {expenseType === "Gyft" && <th></th>}
+            <th>Amount</th>
+            <th>Date</th>
+            {expenseType === "Gyft" && <th>Recipient</th>}
+            <th>Title</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>{TableRowExpense()}</tbody>
+      </table>
+    </div>
   );
 }

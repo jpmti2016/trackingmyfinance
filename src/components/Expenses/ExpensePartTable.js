@@ -747,13 +747,15 @@ export default function ExpensePartTable(props) {
             }`}</span>
           </Link>
         </div>
-        <table
-          className="table is-striped is-hoverable padded"
-          style={{ width: "100%" }}
-        >
-          <thead>{TableHeaderExpensePart()}</thead>
-          <tbody>{TableRowExpensePart()}</tbody>
-        </table>
+        <div className="table-container">
+          <table
+            className="table is-striped is-hoverable is-narrow padded"
+            style={{ width: "100%" }}
+          >
+            <thead>{TableHeaderExpensePart()}</thead>
+            <tbody>{TableRowExpensePart()}</tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
