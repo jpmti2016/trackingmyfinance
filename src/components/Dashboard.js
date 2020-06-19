@@ -1,41 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
 import present from "../img/undraw_gift_box_byy3.svg";
 import moneySended from "../img/undraw_transfer_money_rywa.svg";
 import phoneRecharge from "../img/undraw_mobile_pay_9abj.svg";
+import finance from "../img/undraw_finance_0bdk.svg";
+
+import UserContext from "../components/helpers/userContext";
+
+import { NavLink } from "react-router-dom";
 
 import "./Dashboard.css";
 
 export default function Dashboard() {
+  const { user } = useContext(UserContext);
+
   return (
     <>
-      <section className="hero is-large hero-image">
+      <section className="hero">
         <div className="hero-body">
           <div className="container">
             <div className="bgc-hero-title">
               <h1
-                className="title is-family-primary has-text-white-ter"
-                style={{ fontSize: "4rem" }}
+                className="title is-family-primary"
+
                 // color: "rgb(139, 126, 133)",
               >
                 Enjoy your money
               </h1>
               <h2
-                className="title is-family-code is-italic has-text-white-ter"
-                style={{ fontSize: "3rem" }}
+                className="title is-family-code is-italic"
+
                 //color: "rgb(139, 126, 133)",
+                // ;;lkk
               >
                 but keep a check on it
               </h2>
+              {user === null && (
+                <NavLink className="button cta login start-now" to="/signin">
+                  <span>Start Now</span>
+                </NavLink>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      <section
-        className="section"
-        style={{ paddingTop: "6rem", paddingBottom: "9rem" }}
-      >
-        <nav className="level">
+      <section className="section stats">
+        <div className="container move-up">
+          <div className="card-image">
+            <figure className="image is-4by3">
+              <img src={finance} alt="Money Sended" />
+            </figure>
+          </div>
+        </div>
+        <div className="level">
           <div className="level-item has-text-centered">
             <div className="fancy-effect">
               <p className="heading" style={{ color: "#BAA949" }}>
@@ -76,9 +93,10 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-        </nav>
+        </div>
       </section>
       <section className="section background-pattern">
+        <div className="container"></div>
         <div className="container">
           <div className="columns">
             <div className="column">
@@ -112,7 +130,6 @@ export default function Dashboard() {
                   <div className="content">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec iaculis mauris. @bulmaio
-                    {/* <a href="#">#css</a> <a href="#">#responsive</a> */}
                     <br />
                     <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                   </div>

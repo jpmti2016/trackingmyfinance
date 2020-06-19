@@ -1,13 +1,6 @@
-.hero-image {
-  background-image: url(../img/undraw_finance_0bdk.svg);
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-  text-shadow: 0 0 50px hsla(0, 0%, 0%, 1);
-}
-
 .fancy-effect {
   transition: all 0.5s ease; /* back to normal */
+  padding-top: 2rem;
 }
 
 .fancy-effect:hover {
@@ -25,8 +18,136 @@
 
 .bgc-hero-title {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.hero {
+  padding: 2rem 0 10rem 0;
+}
+
+.bgc-hero-title h1 {
+  font-size: 2.5rem;
+  color: rgb(139, 126, 133);
+}
+
+.bgc-hero-title h2 {
+  font-size: 1.5rem;
+  color: rgb(139, 126, 133);
 }
 
 .hero-body {
+  height: 70vh;
   background-color: rgba(133, 129, 126, 0.1);
+}
+
+.move-up {
+  margin-top: -21rem;
+}
+
+.button.cta {
+  background-color: #baa949;
+}
+.button.cta:hover {
+  background-color: hsl(59, 76%, 45%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.cta-cancel {
+  background-color: #fafafa;
+  color: #baa949;
+}
+.button.cta-cancel:hover {
+  background-color: hsl(0, 54%, 70%);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* .button.is-link.is-hovered, .button.is-link:hover {
+    background-color: hsl(348, 86%, 61%);
+    border-color: transparent;
+    color: #fff;
+} */
+
+.button.login,
+.button.loggout {
+  color: #fff;
+}
+
+.button.loggout.is-hovered,
+.button.loggout:hover {
+  background-color: hsl(348, 86%, 61%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.login.is-hovered,
+.button.login:hover {
+  background-color: #fff;
+  border-color: transparent;
+  color: #baa949;
+  border: 1px solid;
+}
+
+.start-now {
+  font-size: 1rem;
+  align-self: center;
+  padding: 0.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  margin-bottom: 2rem;
+  background-color: #baa949;
+  border: 1px solid #baa949;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.stats {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 640px) {
+  .move-up {
+    margin-top: -18rem;
+  }
+
+  .hero {
+    height: 80vh;
+  }
+
+  .bgc-hero-title {
+    padding: 4rem 0;
+  }
+
+  .start-now {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    height: 90vh;
+  }
+  .move-up {
+    margin-top: -22rem;
+  }
+
+  .bgc-hero-title h1 {
+    font-size: 4.5rem;
+  }
+
+  .bgc-hero-title h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .move-up {
+    margin-top: -29rem;
+  }
 }
