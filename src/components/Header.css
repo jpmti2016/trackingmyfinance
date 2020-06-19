@@ -73,3 +73,14 @@ canvas[role=""],
 canvas[aria-label=""] {
   border: 5px dashed red;
 }
+
+.greeting {
+  display: none;
+  padding: 0.25rem 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .greeting {
+    display: inline;
+  }
+}
