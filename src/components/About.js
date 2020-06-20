@@ -4,22 +4,21 @@ import "./About.css";
 export default function About() {
   return (
     <>
-      <section
-        className="section"
-        style={{ paddingTop: "6rem", paddingBottom: "2rem" }}
-      >
+      <section className="section about">
         <div className="container">
           <h2 className="title">About</h2>
-          <p>Keeping records of our expenses is a hard work.</p>
           <p>
-            Also our receips, for everything, are in a continous treatening by
-            the amount of space that they need and the probability of lossing
-            them.
+            Keeping records of our expenses is a hard work. Also our receips are
+            continously treatening us: the amount of space that they need and
+            the probability of lossing them increase with each purchase. But
+            event worse how to detect trends in our buying habits or how to know
+            what portion of our budget is still alive?
           </p>
           <p>
-            But event worse how to detect trends in our buying habits or how to
-            know the size of your budget still alive?
+            We provide you a secure, accesible and customize solution to your
+            finance management needs.
           </p>
+
           <p>
             Try the app, create a new user or use user: test password: test2020
           </p>
