@@ -108,7 +108,10 @@ export default function Header({ user, handleSignOut }) {
 
             {user && (
               <>
-                <span className="is-italic" style={{ color: "#BAA949" }}>
+                <span
+                  className="is-italic greeting"
+                  style={{ color: "#BAA949" }}
+                >
                   {message}
                 </span>
                 <span className="navbar-item">

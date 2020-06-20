@@ -79,6 +79,10 @@ canvas[aria-label=""] {
   padding: 0.25rem 0.75rem;
 }
 
+.navbar-burger:hover {
+  background-color: #fff;
+}
+
 @media (min-width: 640px) {
   .greeting {
     display: inline;
