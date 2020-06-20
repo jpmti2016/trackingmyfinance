@@ -1,0 +1,31 @@
+.footer {
+  border-top: 3px solid rgba(133, 129, 126);
+  background-color: #fff;
+  color: #363636;
+  padding-top: 3rem;
+}
+
+.nav-footer {
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+}
+
+.navbar-item {
+  color: #baa949;
+}
+
+.navbar-item:hover,
+a.navbar-item:hover {
+  color: #363636;
+}
+
+.tools {
+  font-size: 0.8rem;
+  padding-top: 1rem;
+}
+
+.tools:nth-child(2n) {
+  /* border-top: 1px solid #363636; */
+  padding-top: 2rem;
+}

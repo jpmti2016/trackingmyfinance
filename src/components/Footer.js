@@ -1,17 +1,26 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import "./Footer.css";
 
 export default function Footer() {
   return (
     <>
-      <footer
-        className="footer"
-        style={{
-          borderTop: "3px solid rgba(133, 129, 126)",
-          backgroundColor: "#fff",
-          color: "#363636",
-        }}
-      >
-        <div className="content has-text-centered">
+      <footer className="footer">
+        <div className="nav-footer">
+          <NavLink className="navbar-item" to="/about" exact>
+            About
+          </NavLink>
+          <a
+            href="https://www.freeprivacypolicy.com/privacy/view/ef554d2217496393f6fca51d46de5b6f"
+            className="navbar-item"
+          >
+            Privacy Policy
+          </a>
+          <a href="mailto:jpmti2016" className="navbar-item">
+            Contact
+          </a>
+        </div>
+        <div className="tools has-text-centered">
           <p>
             Created with{" "}
             <span className="bd-footer-link-icon has-text-danger">
@@ -31,9 +40,11 @@ export default function Footer() {
                 ></path>
               </svg>
             </span>{" "}
-            by <strong>jpmti2016 </strong>
-            using
-            <strong>Bulma</strong> , <strong>React</strong> and{" "}
+            by jpmti2016
+          </p>
+          <p>
+            Used
+            <strong> Bulma</strong>, <strong>React</strong> and{" "}
             <strong>AWS Amplify</strong>
           </p>
         </div>
