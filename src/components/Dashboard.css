@@ -46,54 +46,9 @@
   margin-top: -21rem;
 }
 
-.button.cta {
-  background-color: #baa949;
-}
-.button.cta:hover {
-  background-color: hsl(59, 76%, 45%);
-  border-color: transparent;
-  color: #fff;
-}
-
-.button.cta-cancel {
-  background-color: #fafafa;
-  color: #baa949;
-}
-.button.cta-cancel:hover {
-  background-color: hsl(0, 54%, 70%);
-  border-color: transparent;
-  color: #fff;
-}
-
-/* .button.is-link.is-hovered, .button.is-link:hover {
-    background-color: hsl(348, 86%, 61%);
-    border-color: transparent;
-    color: #fff;
-} */
-
-.button.login,
-.button.loggout {
-  color: #fff;
-}
-
-.button.loggout.is-hovered,
-.button.loggout:hover {
-  background-color: hsl(348, 86%, 61%);
-  border-color: transparent;
-  color: #fff;
-}
-
-.button.login.is-hovered,
-.button.login:hover {
-  background-color: #fff;
-  border-color: transparent;
-  color: #baa949;
-  border: 1px solid;
-}
-
-.start-now {
+.btn-start-now {
   font-size: 1rem;
-  align-self: center;
+  margin: 0 auto;
   padding: 0.5rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -103,6 +58,41 @@
   border: 1px solid #baa949;
   border-radius: 5px;
   color: #fff;
+}
+
+.btn-start-now.cta {
+  background-color: #baa949;
+}
+.btn-start-now.cta:hover {
+  background-color: hsl(59, 76%, 45%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.btn-start-now.cta-cancel {
+  background-color: #fafafa;
+  color: #baa949;
+}
+.btn-start-now.cta-cancel:hover {
+  background-color: hsl(0, 54%, 70%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.btn-start-now.login {
+  color: #fff;
+}
+
+.btn-start-now.login.is-hovered,
+.btn-start-now.login:hover {
+  background-color: #fff;
+  border-color: transparent;
+  color: #baa949;
+  border: 1px solid;
+}
+
+.navbar-item {
+  z-index: 10;
 }
 
 .stats {

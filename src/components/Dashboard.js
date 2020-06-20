@@ -32,12 +32,14 @@ export default function Dashboard() {
                 //color: "rgb(139, 126, 133)",
                 // ;;lkk
               >
-                but keep a check on it
+                but keep track of it
               </h2>
               {user === null && (
-                <NavLink className="button cta login start-now" to="/signin">
-                  <span>Start Now</span>
-                </NavLink>
+                <span className="navbar-item">
+                  <NavLink className="btn-start-now cta login" to="/signin">
+                    <span>Start Now</span>
+                  </NavLink>
+                </span>
               )}
             </div>
           </div>
