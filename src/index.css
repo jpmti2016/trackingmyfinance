@@ -1,13 +1,14 @@
 @import-normalize;
 
-:root {
-  --primary-background-color: #FFFFFF;
-  --primary-text-color: #0E0E0E;
-  --secondary-background-color: #EEEEEE;
-  --secondary-text-color: #000000;
-  --tertiary-background-color: #FF8034;
-  --tertiary-text-color: #FFFFFF;
-}
+/* :root {
+ --primary-background-color: #ffffff;
+  --primary-text-color: #0e0e0e;
+  --secondary-background-color: #eeeeee;
+  --secondary-text-color: #baa949;
+  --tertiary-background-color: #ff8034;
+  --tertiary-text-color: #baa949;
+  --cc: #66afe9; 
+}*/
 
 body {
   margin: 0;

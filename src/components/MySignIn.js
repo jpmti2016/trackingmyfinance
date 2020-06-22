@@ -2,8 +2,9 @@ import React from "react";
 
 import { Authenticator, AmplifyTheme } from "aws-amplify-react";
 // const federated = {
-//     google_client_id: '389406440941-969d1fa65qgjoctdbhcgtcj87tfme7v2.apps.googleusercontent.com',
-//     amazon_client_id: '55u9ahaevm56mpnchti12s438l'
+//   google_client_id: "ssss",
+//   amazon_client_id: "ssss",
+//   facebook_app_id: "ssss",
 // };
 
 export default function MySignIn() {
@@ -16,9 +17,22 @@ export default function MySignIn() {
       ...AmplifyTheme.oAuthSignInButton,
       padding: "0px",
     },
-    button: {
-      ...AmplifyTheme.button,
-      backgroundColor: "var(--amazonOrange)",
+    // button: {
+    //   ...AmplifyTheme.button,
+    //   backgroundColor: "var(--secondary-text-color)",
+    // },
+    // input: {
+    //   ...AmplifyTheme.input,
+    //   color: "var(--secondary-text-color)",
+    //   border: "1px solid var(--secondary-text-color)",
+    // },
+    hint: {
+      ...AmplifyTheme.hint,
+      // color: "#66afe9",
+    },
+    a: {
+      ...AmplifyTheme.a,
+      color: "#BAA949",
     },
     sectionBody: {
       ...AmplifyTheme.sectionBody,
@@ -26,8 +40,17 @@ export default function MySignIn() {
     },
     sectionHeader: {
       ...AmplifyTheme.sectionHeader,
-      backgroundColor: "var(--squidInk)",
+      // backgroundColor: "var(--squidInk)",
+      backgroundColor: "#fff",
+      color: "#baa949",
+      // border: "1px solid #baa949",
     },
+    button: {
+      ...AmplifyTheme.button,
+      backgroundColor: "#baa949",
+      color: "#fff",
+    },
+    // signInButtonIcon: { display: "none" },
   };
   return (
     <div
