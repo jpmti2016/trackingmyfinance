@@ -113,7 +113,7 @@ export const handleFormatBeneficiary = (data, expensePart) => {
     const newBeneficiary = {
       ...replacePropEmptyString(beneficiaryStructure),
       beneficiaryAddressId: null,
-      beneficiaryInsuranceId: expensePart ? expensePart.expenseId : null,
+      beneficiaryInsuranceId: expensePart ? expensePart.insuranceId : null,
     };
 
     if (expensePart) {
@@ -136,7 +136,7 @@ export const handleFormatBeneficiary = (data, expensePart) => {
   }
 };
 
-export const handleListBeneficiary = async (id) => {
+export const handleListBeneficiary = async () => {
   try {
     const result = await API.graphql(
       graphqlOperation(listBeneficiarys, { input: {} })

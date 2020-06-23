@@ -1939,6 +1939,8 @@ export const getInsuranceExpense = /* GraphQL */ `
   query GetInsuranceExpense($id: ID!) {
     getInsuranceExpense(id: $id) {
       id
+      __typename
+      _version
       kind
       amount
       dueDate
@@ -1959,6 +1961,7 @@ export const getInsuranceExpense = /* GraphQL */ `
       beneficiaries {
         items {
           id
+          __typename
           name
           lastName
           _version
@@ -1967,6 +1970,22 @@ export const getInsuranceExpense = /* GraphQL */ `
           createdAt
           updatedAt
           owner
+          address {
+            id
+            number
+            street
+            postCode
+            country
+            state
+            region
+            county
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+            owner
+          }
         }
         nextToken
         startedAt
@@ -2455,6 +2474,8 @@ export const syncLegalExpenses = /* GraphQL */ `
 export const getLegalExpense = /* GraphQL */ `
   query GetLegalExpense($id: ID!) {
     getLegalExpense(id: $id) {
+      __typename
+      _version
       id
       kind
       amount
@@ -2471,6 +2492,8 @@ export const getLegalExpense = /* GraphQL */ `
       }
       lawyers {
         items {
+          __typename
+          _version
           id
           phone
           name
@@ -2484,6 +2507,18 @@ export const getLegalExpense = /* GraphQL */ `
           createdAt
           updatedAt
           owner
+          address {
+            id
+            _version
+            __typename
+            number
+            state
+            street
+            postCode
+            county
+            country
+            region
+          }
         }
         nextToken
         startedAt
@@ -3082,6 +3117,7 @@ export const getFoodExpense = /* GraphQL */ `
   query GetFoodExpense($id: ID!) {
     getFoodExpense(id: $id) {
       id
+      __typename
       kind
       amount
       dueDate
@@ -3089,11 +3125,21 @@ export const getFoodExpense = /* GraphQL */ `
       nature
       grocery {
         id
+        __typename
         store
         title
         notes
         info
         products {
+          items {
+            id
+            __typename
+            _version
+            name
+            price
+            quantity
+            frequency
+          }
           nextToken
           startedAt
         }
@@ -4736,6 +4782,7 @@ export const getEducationExpense = /* GraphQL */ `
       nature
       college {
         id
+        __typename
         program
         university
         school
@@ -4747,6 +4794,22 @@ export const getEducationExpense = /* GraphQL */ `
           key
         }
         fees {
+          items {
+            id
+            __typename
+            _version
+            tuitionAndFees
+            booksAndSupplies
+            roomAndBoard
+            transportation
+            personal
+            period {
+              id
+              _version
+              billingStart
+              billingEnd
+            }
+          }
           nextToken
           startedAt
         }
@@ -4783,9 +4846,21 @@ export const getEducationExpense = /* GraphQL */ `
           owner
         }
         instructors {
+          items {
+            id
+            _version
+            __typename
+            phone
+            tweeter
+            name
+            lastName
+            email
+            webPage
+          }
           nextToken
           startedAt
         }
+        __typename
         _version
         _deleted
         _lastChangedAt
@@ -4795,6 +4870,7 @@ export const getEducationExpense = /* GraphQL */ `
       }
       communityCollege {
         id
+        __typename
         program
         university
         school
@@ -4806,6 +4882,22 @@ export const getEducationExpense = /* GraphQL */ `
           key
         }
         fees {
+          items {
+            id
+            _version
+            __typename
+            tuitionAndFees
+            booksAndSupplies
+            roomAndBoard
+            transportation
+            personal
+            period {
+              id
+              _version
+              billingStart
+              billingEnd
+            }
+          }
           nextToken
           startedAt
         }
@@ -4873,147 +4965,7 @@ export const getEducationExpense = /* GraphQL */ `
         owner
       }
       tags
-      client {
-        id
-        username
-        name
-        address {
-          id
-          number
-          street
-          postCode
-          country
-          state
-          region
-          county
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        email
-        phone
-        avatar {
-          bucket
-          region
-          key
-        }
-        images {
-          bucket
-          region
-          key
-        }
-        creditReports {
-          nextToken
-          startedAt
-        }
-        priorityPayment {
-          id
-          percent
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        fi {
-          id
-          targetAmount
-          targetYears
-          createdAt
-          updatedAt
-          projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        properties {
-          nextToken
-          startedAt
-        }
-        investments {
-          nextToken
-          startedAt
-        }
-        incomes {
-          nextToken
-          startedAt
-        }
-        budgets {
-          nextToken
-          startedAt
-        }
-        cards {
-          nextToken
-          startedAt
-        }
-        housingExpenses {
-          nextToken
-          startedAt
-        }
-        phoneExpenses {
-          nextToken
-          startedAt
-        }
-        insuranceExpenses {
-          nextToken
-          startedAt
-        }
-        legalExpenses {
-          nextToken
-          startedAt
-        }
-        foodExpenses {
-          nextToken
-          startedAt
-        }
-        commuteExpenses {
-          nextToken
-          startedAt
-        }
-        educationExpenses {
-          nextToken
-          startedAt
-        }
-        personalCareExpenses {
-          nextToken
-          startedAt
-        }
-        petExpenses {
-          nextToken
-          startedAt
-        }
-        entertainmentExpenses {
-          nextToken
-          startedAt
-        }
-        loanExpenses {
-          nextToken
-          startedAt
-        }
-        taxExpenses {
-          nextToken
-          startedAt
-        }
-        investmentExpenses {
-          nextToken
-          startedAt
-        }
-        gyftExpenses {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
+      __typename
       _version
       _deleted
       _lastChangedAt
@@ -10442,6 +10394,7 @@ export const listClients = /* GraphQL */ `
             lawyers(limit: 10) {
               items {
                 id
+                __typename
                 _version
                 phone
                 address {

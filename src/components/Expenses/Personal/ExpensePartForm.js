@@ -9,6 +9,8 @@ import ProductFields from "./../Personal/Food/ProductFields";
 import AcademicFeeFields from "./../Personal/Education/AcademicFeeFields";
 import InstructorFields from "./../Personal/Education/InstructorFields";
 
+import dayjs from "dayjs";
+
 import "./ExpensePersonalForm.css";
 import { partAsEnum } from "./part";
 
@@ -16,6 +18,8 @@ export default function ExpensePartForm(props) {
   const [expensePart, setExpensePart] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+
+  console.log("expense part to fill", expensePart);
 
   let history = useHistory();
 
@@ -39,13 +43,13 @@ export default function ExpensePartForm(props) {
       billingStart:
         isUpdating && expensePart
           ? expensePart.period
-            ? expensePart.period.billingStart
+            ? dayjs(expensePart.period.billingStart).format("YYYY-MM-DDThh:mm")
             : ""
           : "",
       billingEnd:
         isUpdating && expensePart
           ? expensePart.period
-            ? expensePart.period.billingEnd
+            ? dayjs(expensePart.period.billingEnd).format("YYYY-MM-DDThh:mm")
             : ""
           : "",
       //address

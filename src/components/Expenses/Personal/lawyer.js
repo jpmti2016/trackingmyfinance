@@ -118,7 +118,7 @@ export const handleFormatLawyer = (data, expensePart) => {
     const newLawyer = {
       ...replacePropEmptyString(lawyerStructure),
       lawyerAddressId: null,
-      lawyerLegalId: expensePart ? expensePart.id : null,
+      lawyerLegalId: expensePart ? expensePart.legalId : null,
     };
 
     if (expensePart.id) {

@@ -46,22 +46,61 @@ async function initializeExpensePart(
             expenseId = response.data[GetExpense(__typename).operName]
               ? response.data[GetExpense(__typename).operName].id
               : null;
-            parts = response.data[GetExpense(__typename).operName][
-              GetExpense(__typename).fieldName
-            ].items.map((lawyer) => ({ ...lawyer, expenseId, text, nature }));
+
+            if (
+              response.data[GetExpense(__typename).operName][
+                GetExpense(__typename).fieldName
+              ].items.length > 0
+            ) {
+              parts = response.data[GetExpense(__typename).operName][
+                GetExpense(__typename).fieldName
+              ].items.map((lawyer) => ({
+                ...lawyer,
+                expenseId,
+                text,
+                nature,
+              }));
+            } else {
+              parts = [
+                {
+                  expenseId,
+                  text,
+                  nature,
+                  __typename: "Lawyer",
+                  hideList: true,
+                },
+              ];
+            }
             break;
           case "InsuranceExpense":
             expenseId = response.data[GetExpense(__typename).operName]
               ? response.data[GetExpense(__typename).operName].id
               : null;
-            parts = response.data[GetExpense(__typename).operName][
-              GetExpense(__typename).fieldName
-            ].items.map((beneficiary) => ({
-              ...beneficiary,
-              expenseId,
-              text,
-              nature,
-            }));
+
+            if (
+              response.data[GetExpense(__typename).operName][
+                GetExpense(__typename).fieldName
+              ].items.length > 0
+            ) {
+              parts = response.data[GetExpense(__typename).operName][
+                GetExpense(__typename).fieldName
+              ].items.map((beneficiary) => ({
+                ...beneficiary,
+                expenseId,
+                text,
+                nature,
+              }));
+            } else {
+              parts = [
+                {
+                  expenseId,
+                  text,
+                  nature,
+                  __typename: "Beneficiary",
+                  hideList: true,
+                },
+              ];
+            }
             break;
           case "FoodExpense":
             expenseId = response.data[GetExpense(__typename).operName]
@@ -254,6 +293,7 @@ const GetExpense = (__typename, nature) => {
 
 export default function ExpensePartTable(props) {
   const [expenseParts, setExpenseParts] = useState([]);
+
   let { url } = useRouteMatch();
 
   useEffect(() => {
@@ -330,7 +370,7 @@ export default function ExpensePartTable(props) {
       if (adding) {
         return {
           add: {
-            expenseId:
+            insuranceId:
               expenseParts.length > 0 ? expenseParts[0].expenseId : null,
             __typename:
               expenseParts.length > 0
@@ -367,6 +407,7 @@ export default function ExpensePartTable(props) {
       if (adding) {
         return {
           add: {
+            legalId: expenseParts.length > 0 ? expenseParts[0].expenseId : null,
             __typename:
               expenseParts.length > 0 ? expenseParts[0].__typename : "Lawyer",
             text: expenseParts.length > 0 ? expenseParts[0].text : "Lawyer",
@@ -475,96 +516,122 @@ export default function ExpensePartTable(props) {
       );
     return expenseParts.map((expensePart, index) => {
       if (expensePart.__typename === "Beneficiary") {
-        return (
-          <tr key={expensePart.id}>
-            <th>{index + 1}</th>
-            <td>Image</td>
-            <td>{expensePart.name ? expensePart.name : ""}</td>
-            <td>{expensePart.lastName ? expensePart.lastName : ""}</td>
-            <td>{`${expensePart.address ? expensePart.address.number : ""} ${
-              expensePart.address ? expensePart.address.street : ""
-            } ${expensePart.address ? expensePart.address.state : ""} ${
-              expensePart.address ? expensePart.address.country : ""
-            }`}</td>
-            <td>{btns(expensePart)}</td>
-          </tr>
-        );
+        if (!expensePart.hideList) {
+          return (
+            <tr key={expensePart.id}>
+              <th>{index + 1}</th>
+              <td>Image</td>
+              <td>{expensePart.name ? expensePart.name : ""}</td>
+              <td>{expensePart.lastName ? expensePart.lastName : ""}</td>
+              <td>{`${expensePart.address ? expensePart.address.number : ""} ${
+                expensePart.address ? expensePart.address.street : ""
+              } ${expensePart.address ? expensePart.address.state : ""} ${
+                expensePart.address ? expensePart.address.country : ""
+              }`}</td>
+              <td>{btns(expensePart)}</td>
+            </tr>
+          );
+        } else {
+          return (
+            <tr key={1}>
+              <td>NO ITEMS</td>
+            </tr>
+          );
+        }
       } else if (expensePart.__typename === "Lawyer") {
-        return (
-          <tr key={expensePart.id}>
-            <th>{index + 1}</th>
-            <td>{`${expensePart.name ? expensePart.name : ""} ${
-              expensePart.lastName ? expensePart.lastName : ""
-            }`}</td>
-            <td>{expensePart.firm ? expensePart.firm : ""}</td>
-            <td className="right aligned">
-              {expensePart.fee ? `$ ${expensePart.fee}` : ""}
-            </td>
-            <td>{`${
-              expensePart.address
-                ? expensePart.address.number
+        if (!expensePart.hideList) {
+          return (
+            <tr key={expensePart.id}>
+              <th>{index + 1}</th>
+              <td>{`${expensePart.name ? expensePart.name : ""} ${
+                expensePart.lastName ? expensePart.lastName : ""
+              }`}</td>
+              <td>{expensePart.firm ? expensePart.firm : ""}</td>
+              <td className="right aligned">
+                {expensePart.fee ? `$ ${expensePart.fee}` : ""}
+              </td>
+              <td>{`${
+                expensePart.address
                   ? expensePart.address.number
+                    ? expensePart.address.number
+                    : ""
                   : ""
-                : ""
-            } ${
-              expensePart.address
-                ? expensePart.address.street
+              } ${
+                expensePart.address
                   ? expensePart.address.street
+                    ? expensePart.address.street
+                    : ""
                   : ""
-                : ""
-            } ${
-              expensePart.address
-                ? expensePart.address.state
+              } ${
+                expensePart.address
                   ? expensePart.address.state
+                    ? expensePart.address.state
+                    : ""
                   : ""
-                : ""
-            } ${
-              expensePart.address
-                ? expensePart.address.country
+              } ${
+                expensePart.address
                   ? expensePart.address.country
+                    ? expensePart.address.country
+                    : ""
                   : ""
-                : ""
-            }`}</td>
-            <td>{btns(expensePart)}</td>
-          </tr>
-        );
+              }`}</td>
+              <td>{btns(expensePart)}</td>
+            </tr>
+          );
+        } else {
+          return (
+            <tr key={1}>
+              <td>NO ITEMS</td>
+            </tr>
+          );
+        }
       } else if (expensePart.__typename === "AcademicFee") {
-        return (
-          <tr key={expensePart.id}>
-            <th>{index + 1}</th>
-            <td className="right aligned">
-              {expensePart.tuitionAndFees
-                ? `$ ${expensePart.tuitionAndFees}`
-                : ""}
-            </td>
-            <td className="right aligned">
-              {expensePart.booksAndSupplies
-                ? `$ ${expensePart.booksAndSupplies}`
-                : ""}
-            </td>
-            <td className="right aligned">
-              {expensePart.roomAndBoard ? `$ ${expensePart.roomAndBoard}` : ""}
-            </td>
-            <td className="right aligned">
-              {expensePart.transportation
-                ? `$ ${expensePart.transportation}`
-                : ""}
-            </td>
-            <td className="right aligned">
-              {expensePart.personal ? `$ ${expensePart.personal}` : ""}
-            </td>
-            <td>{`${
-              expensePart.period
-                ? dayjs(expensePart.period.billingStart).format("MMM D, YYYY")
-                : "NA"
-            } - ${
-              expensePart.period
-                ? dayjs(expensePart.period.billingEnd).format("MMM D, YYYY")
-                : "NA"
-            }`}</td>
-            <td>{btns(expensePart)}</td>
-          </tr>
-        );
+        if (!expensePart.hideList) {
+          return (
+            <tr key={expensePart.id}>
+              <th>{index + 1}</th>
+              <td className="right aligned">
+                {expensePart.tuitionAndFees
+                  ? `$ ${expensePart.tuitionAndFees}`
+                  : ""}
+              </td>
+              <td className="right aligned">
+                {expensePart.booksAndSupplies
+                  ? `$ ${expensePart.booksAndSupplies}`
+                  : ""}
+              </td>
+              <td className="right aligned">
+                {expensePart.roomAndBoard
+                  ? `$ ${expensePart.roomAndBoard}`
+                  : ""}
+              </td>
+              <td className="right aligned">
+                {expensePart.transportation
+                  ? `$ ${expensePart.transportation}`
+                  : ""}
+              </td>
+              <td className="right aligned">
+                {expensePart.personal ? `$ ${expensePart.personal}` : ""}
+              </td>
+              <td>{`${
+                expensePart.period
+                  ? dayjs(expensePart.period.billingStart).format("MMM D, YYYY")
+                  : "NA"
+              } - ${
+                expensePart.period
+                  ? dayjs(expensePart.period.billingEnd).format("MMM D, YYYY")
+                  : "NA"
+              }`}</td>
+              <td>{btns(expensePart)}</td>
+            </tr>
+          );
+        } else {
+          return (
+            <tr key={1}>
+              <td>NO ITEMS</td>
+            </tr>
+          );
+        }
       } else if (expensePart.__typename === "Product") {
         if (!expensePart.hideList) {
           return (
@@ -589,19 +656,21 @@ export default function ExpensePartTable(props) {
           );
         }
       } else if (expensePart.__typename === "Instructor") {
-        return (
-          <tr key={expensePart.id}>
-            <th>{index + 1}</th>
-            <td>Image</td>
-            <td>{`${expensePart.name ? expensePart.name : ""} ${
-              expensePart.lastName ? expensePart.lastName : ""
-            }`}</td>
-            <td>{expensePart.email ? expensePart.email : ""}</td>
-            <td>{expensePart.tweeter ? expensePart.tweeter : ""}</td>
-            <td>{expensePart.phone ? expensePart.phone : ""}</td>
-            <td>{btns(expensePart)}</td>
-          </tr>
-        );
+        if (!expensePart.hideList) {
+          return (
+            <tr key={expensePart.id}>
+              <th>{index + 1}</th>
+              <td>Image</td>
+              <td>{`${expensePart.name ? expensePart.name : ""} ${
+                expensePart.lastName ? expensePart.lastName : ""
+              }`}</td>
+              <td>{expensePart.email ? expensePart.email : ""}</td>
+              <td>{expensePart.tweeter ? expensePart.tweeter : ""}</td>
+              <td>{expensePart.phone ? expensePart.phone : ""}</td>
+              <td>{btns(expensePart)}</td>
+            </tr>
+          );
+        }
       } else {
         return (
           <tr key={1}>
