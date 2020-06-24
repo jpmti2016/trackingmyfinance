@@ -103,6 +103,7 @@ export const handleUpdateLawyer = async (data, expensePart) => {
 };
 
 export const handleFormatLawyer = (data, expensePart) => {
+  console.log("expense part to format", expensePart);
   try {
     const lawyerStructure = {
       ...includeObjectProps(data, [
