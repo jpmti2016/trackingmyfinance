@@ -73,9 +73,9 @@ export const handleCreatePlan = async (data) => {
     if (data.phonePlanBillingEnd !== "" && data.phonePlanBillingStart !== "") {
       planBillingId = await handleCreatePeriod({
         billingStart: dayjs(data.phonePlanBillingStart).format(
-          "YYYY-MM-DDThh:mmZ"
+          "YYYY-MM-DDTHH:mmZ"
         ),
-        billingEnd: dayjs(data.phonePlanBillingEnd).format("YYYY-MM-DDThh:mmZ"),
+        billingEnd: dayjs(data.phonePlanBillingEnd).format("YYYY-MM-DDTHH:mmZ"),
       });
     }
 
@@ -121,19 +121,19 @@ export const handleUpdatePlan = async (data, plan = null) => {
         await handleUpdatePeriod({
           id: planBillingId,
           billingStart: dayjs(data.phonePlanBillingStart).format(
-            "YYYY-MM-DDThh:mmZ"
+            "YYYY-MM-DDTHH:mmZ"
           ),
           billingEnd: dayjs(data.phonePlanBillingEnd).format(
-            "YYYY-MM-DDThh:mmZ"
+            "YYYY-MM-DDTHH:mmZ"
           ),
         });
       } else {
         planBillingId = await handleCreatePeriod({
           billingStart: dayjs(data.phonePlanBillingStart).format(
-            "YYYY-MM-DDThh:mmZ"
+            "YYYY-MM-DDTHH:mmZ"
           ),
           billingEnd: dayjs(data.phonePlanBillingEnd).format(
-            "YYYY-MM-DDThh:mmZ"
+            "YYYY-MM-DDTHH:mmZ"
           ),
         });
       }
@@ -301,7 +301,7 @@ export const handleStructurePhoneExpense = (data) => {
   try {
     const newPhone = {
       kind: "PERSONAL",
-      dueDate: dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ"),
+      dueDate: dayjs(data.dueDate).format("YYYY-MM-DDTHH:mmZ"),
       amount: Number(data.amount),
       category: data.personal,
       phonePlan: data.phonePlan,

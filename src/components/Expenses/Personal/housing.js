@@ -251,9 +251,9 @@ export const handleCreateUtility = async (data) => {
     if (data.housingBillingStart !== "" && data.housingBillingEnd !== "") {
       utilityPeriodId = await handleCreatePeriod({
         billingStart: dayjs(data.housingBillingStart).format(
-          "YYYY-MM-DDThh:mmZ"
+          "YYYY-MM-DDTHH:mmZ"
         ),
-        billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDThh:mmZ"),
+        billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDTHH:mmZ"),
       });
     }
     //TODO check if I should pass {} or null
@@ -303,16 +303,16 @@ export const handleUpdateUtility = async (data, utility) => {
         await handleUpdatePeriod({
           id: utilityPeriodId,
           billingStart: dayjs(data.housingBillingStart).format(
-            "YYYY-MM-DDThh:mmZ"
+            "YYYY-MM-DDTHH:mmZ"
           ),
-          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDThh:mmZ"),
+          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDTHH:mmZ"),
         });
       } else {
         utilityPeriodId = await handleCreatePeriod({
           billingStart: dayjs(data.housingBillingStart).format(
-            "YYYY-MM-DDThh:mmZ"
+            "YYYY-MM-DDTHH:mmZ"
           ),
-          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDThh:mmZ"),
+          billingEnd: dayjs(data.housingBillingEnd).format("YYYY-MM-DDTHH:mmZ"),
         });
       }
     }
@@ -694,7 +694,7 @@ export const handleCreateHousing = async (data, clientId = null) => {
       amount: data.amount ? Number(data.amount) : null,
       category: data.personal ? data.personal : null,
       dueDate: data.dueDate
-        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        ? dayjs(data.dueDate).format("YYYY-MM-DDTHH:mmZ")
         : null,
       nature: data.nature ? data.nature : null,
       [housingAsEnum.fromValue(data.nature).idName]: id,
@@ -750,7 +750,7 @@ export const handleUpdateHousing = async (data, expense) => {
       amount: data.amount ? Number(data.amount) : null,
       category: data.personal ? data.personal : null,
       dueDate: data.dueDate
-        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        ? dayjs(data.dueDate).format("YYYY-MM-DDTHH:mmZ")
         : null,
       nature: data.nature ? data.nature : null,
     };

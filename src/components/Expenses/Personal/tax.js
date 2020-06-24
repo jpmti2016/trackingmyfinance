@@ -138,7 +138,7 @@ export const handleFormatTax = (data, expense, clientId) => {
       amount:
         data.taxDebt && data.fee ? Number(data.taxDebt) + Number(data.fee) : 0,
       dueDate: data.dueDate
-        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        ? dayjs(data.dueDate).format("YYYY-MM-DDTHH:mmZ")
         : null,
       category: data.personal ? data.personal : null,
       taxDebt: data.taxDebt ? Number(data.taxDebt) : null,

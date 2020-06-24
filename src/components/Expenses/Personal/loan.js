@@ -27,7 +27,7 @@ export const handleFormatLoan = (data, expense, clientId) => {
       kind: "PERSONAL",
       amount: data.amount ? Number(data.amount) : null,
       dueDate: data.dueDate
-        ? dayjs(data.dueDate).format("YYYY-MM-DDThh:mmZ")
+        ? dayjs(data.dueDate).format("YYYY-MM-DDTHH:mmZ")
         : null,
       category: data.personal ? data.personal : null,
       ...includeObjectProps(data, ["nature", "title", "notes"]),
