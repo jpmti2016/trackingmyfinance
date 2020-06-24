@@ -310,6 +310,7 @@ export default function ExpensePartTable(props) {
       const { nature } = expensePart;
 
       const deletedPartId = await LinkState(
+        props.location.state.__typename,
         nature,
         expensePart,
         false
@@ -333,6 +334,7 @@ export default function ExpensePartTable(props) {
               to={{
                 pathname: `${url}/edit/${expensePart.id}`,
                 state: LinkState(
+                  props.location.state.__typename,
                   props.location.state.nature,
                   expensePart,
                   false
@@ -359,13 +361,14 @@ export default function ExpensePartTable(props) {
     );
   };
 
-  function LinkState(nature, expensePart, adding) {
+  function LinkState(expenseType, nature, expensePart, adding) {
     if (
-      nature === "HOME" ||
-      nature === "CAR" ||
-      nature === "LIFE" ||
-      nature === "DISABILITY" ||
-      nature === "OTHER"
+      expenseType === "InsuranceExpense" &&
+      (nature === "HOME" ||
+        nature === "CAR" ||
+        nature === "LIFE" ||
+        nature === "DISABILITY" ||
+        nature === "OTHER")
     ) {
       if (adding) {
         return {
@@ -396,13 +399,14 @@ export default function ExpensePartTable(props) {
         },
       };
     } else if (
-      nature === "DOCUMENTS" ||
-      nature === "INMIGRATION" ||
-      nature === "WORK" ||
-      nature === "ACCIDENT" ||
-      nature === "HOME" ||
-      nature === "PERSONAL" ||
-      nature === "OTHER"
+      expenseType === "LegalExpense" &&
+      (nature === "DOCUMENTS" ||
+        nature === "INMIGRATION" ||
+        nature === "WORK" ||
+        nature === "ACCIDENT" ||
+        nature === "HOME" ||
+        nature === "PERSONAL" ||
+        nature === "OTHER")
     ) {
       if (adding) {
         return {
@@ -802,7 +806,12 @@ export default function ExpensePartTable(props) {
             className="button is-outlined"
             to={{
               pathname: `${url}/add`,
-              state: LinkState(props.location.state.nature, null, true).add,
+              state: LinkState(
+                props.location.state.__typename,
+                props.location.state.nature,
+                null,
+                true
+              ).add,
             }}
           >
             <span className="icon">
