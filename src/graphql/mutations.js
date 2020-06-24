@@ -10,9 +10,6 @@ export const createPeriod = /* GraphQL */ `
       id
       billingStart
       billingEnd
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -28,9 +25,6 @@ export const updatePeriod = /* GraphQL */ `
       id
       billingStart
       billingEnd
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -46,9 +40,6 @@ export const deletePeriod = /* GraphQL */ `
       id
       billingStart
       billingEnd
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -70,9 +61,6 @@ export const createUtility = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -83,9 +71,6 @@ export const createUtility = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -107,9 +92,6 @@ export const updateUtility = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -120,9 +102,6 @@ export const updateUtility = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -144,9 +123,6 @@ export const deleteUtility = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -157,9 +133,6 @@ export const deleteUtility = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -183,9 +156,6 @@ export const createSupply = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -209,9 +179,6 @@ export const updateSupply = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -235,9 +202,6 @@ export const deleteSupply = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -263,9 +227,6 @@ export const createHome = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -275,9 +236,6 @@ export const createHome = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -303,9 +261,6 @@ export const updateHome = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -315,9 +270,6 @@ export const updateHome = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -343,9 +295,6 @@ export const deleteHome = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -355,9 +304,6 @@ export const deleteHome = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -378,9 +324,6 @@ export const createRepair = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -401,9 +344,6 @@ export const updateRepair = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -424,9 +364,6 @@ export const deleteRepair = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -447,9 +384,6 @@ export const createOtherHousing = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -470,9 +404,6 @@ export const updateOtherHousing = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -493,9 +424,6 @@ export const deleteOtherHousing = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -524,9 +452,6 @@ export const createHousingExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -537,9 +462,6 @@ export const createHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -556,9 +478,6 @@ export const createHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -577,9 +496,6 @@ export const createHousingExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -589,9 +505,6 @@ export const createHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -605,9 +518,6 @@ export const createHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -621,9 +531,6 @@ export const createHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -642,9 +549,6 @@ export const createHousingExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -663,16 +567,12 @@ export const createHousingExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -682,97 +582,69 @@ export const createHousingExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -801,9 +673,6 @@ export const updateHousingExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -814,9 +683,6 @@ export const updateHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -833,9 +699,6 @@ export const updateHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -854,9 +717,6 @@ export const updateHousingExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -866,9 +726,6 @@ export const updateHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -882,9 +739,6 @@ export const updateHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -898,9 +752,6 @@ export const updateHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -919,9 +770,6 @@ export const updateHousingExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -940,16 +788,12 @@ export const updateHousingExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -959,97 +803,69 @@ export const updateHousingExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1078,9 +894,6 @@ export const deleteHousingExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1091,9 +904,6 @@ export const deleteHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1110,9 +920,6 @@ export const deleteHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1131,9 +938,6 @@ export const deleteHousingExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1143,9 +947,6 @@ export const deleteHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1159,9 +960,6 @@ export const deleteHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1175,9 +973,6 @@ export const deleteHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1196,9 +991,6 @@ export const deleteHousingExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1217,16 +1009,12 @@ export const deleteHousingExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -1236,97 +1024,69 @@ export const deleteHousingExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1346,16 +1106,10 @@ export const createPlan = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1375,16 +1129,10 @@ export const updatePlan = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1404,16 +1152,10 @@ export const deletePlan = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1429,9 +1171,6 @@ export const createAdditional = /* GraphQL */ `
       id
       title
       notes
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1447,9 +1186,6 @@ export const updateAdditional = /* GraphQL */ `
       id
       title
       notes
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1465,9 +1201,6 @@ export const deleteAdditional = /* GraphQL */ `
       id
       title
       notes
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1500,16 +1233,10 @@ export const createPhoneExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1518,9 +1245,6 @@ export const createPhoneExpense = /* GraphQL */ `
         id
         title
         notes
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1538,9 +1262,6 @@ export const createPhoneExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1559,16 +1280,12 @@ export const createPhoneExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -1578,97 +1295,69 @@ export const createPhoneExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1701,16 +1390,10 @@ export const updatePhoneExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1719,9 +1402,6 @@ export const updatePhoneExpense = /* GraphQL */ `
         id
         title
         notes
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1739,9 +1419,6 @@ export const updatePhoneExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1760,16 +1437,12 @@ export const updatePhoneExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -1779,97 +1452,69 @@ export const updatePhoneExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1902,16 +1547,10 @@ export const deletePhoneExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1920,9 +1559,6 @@ export const deletePhoneExpense = /* GraphQL */ `
         id
         title
         notes
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1940,9 +1576,6 @@ export const deletePhoneExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1961,16 +1594,12 @@ export const deletePhoneExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -1980,97 +1609,69 @@ export const deletePhoneExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2095,9 +1696,6 @@ export const createBeneficiary = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -2128,7 +1726,6 @@ export const createBeneficiary = /* GraphQL */ `
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         client {
           id
@@ -2136,16 +1733,10 @@ export const createBeneficiary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -2165,16 +1756,12 @@ export const createBeneficiary = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
@@ -2190,21 +1777,12 @@ export const createBeneficiary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2229,9 +1807,6 @@ export const updateBeneficiary = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -2262,7 +1837,6 @@ export const updateBeneficiary = /* GraphQL */ `
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         client {
           id
@@ -2270,16 +1844,10 @@ export const updateBeneficiary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -2299,16 +1867,12 @@ export const updateBeneficiary = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
@@ -2324,21 +1888,12 @@ export const updateBeneficiary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2363,9 +1918,6 @@ export const deleteBeneficiary = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -2396,7 +1948,6 @@ export const deleteBeneficiary = /* GraphQL */ `
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         client {
           id
@@ -2404,16 +1955,10 @@ export const deleteBeneficiary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -2433,16 +1978,12 @@ export const deleteBeneficiary = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
@@ -2458,21 +1999,12 @@ export const deleteBeneficiary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2508,15 +2040,11 @@ export const createInsuranceExpense = /* GraphQL */ `
           id
           name
           lastName
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       client {
         id
@@ -2531,9 +2059,6 @@ export const createInsuranceExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -2552,16 +2077,12 @@ export const createInsuranceExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -2571,97 +2092,69 @@ export const createInsuranceExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2697,15 +2190,11 @@ export const updateInsuranceExpense = /* GraphQL */ `
           id
           name
           lastName
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       client {
         id
@@ -2720,9 +2209,6 @@ export const updateInsuranceExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -2741,16 +2227,12 @@ export const updateInsuranceExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -2760,97 +2242,69 @@ export const updateInsuranceExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2886,15 +2340,11 @@ export const deleteInsuranceExpense = /* GraphQL */ `
           id
           name
           lastName
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       client {
         id
@@ -2909,9 +2359,6 @@ export const deleteInsuranceExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -2930,16 +2377,12 @@ export const deleteInsuranceExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -2949,97 +2392,69 @@ export const deleteInsuranceExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3068,9 +2483,6 @@ export const createLawyer = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3097,7 +2509,6 @@ export const createLawyer = /* GraphQL */ `
         }
         lawyers {
           nextToken
-          startedAt
         }
         client {
           id
@@ -3105,23 +2516,14 @@ export const createLawyer = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3150,9 +2552,6 @@ export const updateLawyer = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3179,7 +2578,6 @@ export const updateLawyer = /* GraphQL */ `
         }
         lawyers {
           nextToken
-          startedAt
         }
         client {
           id
@@ -3187,23 +2585,14 @@ export const updateLawyer = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3232,9 +2621,6 @@ export const deleteLawyer = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3261,7 +2647,6 @@ export const deleteLawyer = /* GraphQL */ `
         }
         lawyers {
           nextToken
-          startedAt
         }
         client {
           id
@@ -3269,23 +2654,14 @@ export const deleteLawyer = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3321,15 +2697,11 @@ export const createLegalExpense = /* GraphQL */ `
           email
           fee
           firm
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       client {
         id
@@ -3344,9 +2716,6 @@ export const createLegalExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3365,16 +2734,12 @@ export const createLegalExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -3384,97 +2749,69 @@ export const createLegalExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3510,15 +2847,11 @@ export const updateLegalExpense = /* GraphQL */ `
           email
           fee
           firm
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       client {
         id
@@ -3533,9 +2866,6 @@ export const updateLegalExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3554,16 +2884,12 @@ export const updateLegalExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -3573,97 +2899,69 @@ export const updateLegalExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3699,15 +2997,11 @@ export const deleteLegalExpense = /* GraphQL */ `
           email
           fee
           firm
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       client {
         id
@@ -3722,9 +3016,6 @@ export const deleteLegalExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3743,16 +3034,12 @@ export const deleteLegalExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -3762,97 +3049,69 @@ export const deleteLegalExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3879,11 +3138,7 @@ export const createProduct = /* GraphQL */ `
         info
         products {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3893,9 +3148,6 @@ export const createProduct = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3922,11 +3174,7 @@ export const updateProduct = /* GraphQL */ `
         info
         products {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3936,9 +3184,6 @@ export const updateProduct = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3965,11 +3210,7 @@ export const deleteProduct = /* GraphQL */ `
         info
         products {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3979,9 +3220,6 @@ export const deleteProduct = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4007,19 +3245,12 @@ export const createGrocery = /* GraphQL */ `
           quantity
           frequency
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4045,19 +3276,12 @@ export const updateGrocery = /* GraphQL */ `
           quantity
           frequency
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4083,19 +3307,12 @@ export const deleteGrocery = /* GraphQL */ `
           quantity
           frequency
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4117,9 +3334,6 @@ export const createDinningOut = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4141,9 +3355,6 @@ export const updateDinningOut = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4165,9 +3376,6 @@ export const deleteDinningOut = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4194,11 +3402,7 @@ export const createFoodExpense = /* GraphQL */ `
         info
         products {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4213,9 +3417,6 @@ export const createFoodExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4234,9 +3435,6 @@ export const createFoodExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -4255,16 +3453,12 @@ export const createFoodExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -4274,97 +3468,69 @@ export const createFoodExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4391,11 +3557,7 @@ export const updateFoodExpense = /* GraphQL */ `
         info
         products {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4410,9 +3572,6 @@ export const updateFoodExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4431,9 +3590,6 @@ export const updateFoodExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -4452,16 +3608,12 @@ export const updateFoodExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -4471,97 +3623,69 @@ export const updateFoodExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4588,11 +3712,7 @@ export const deleteFoodExpense = /* GraphQL */ `
         info
         products {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4607,9 +3727,6 @@ export const deleteFoodExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4628,9 +3745,6 @@ export const deleteFoodExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -4649,16 +3763,12 @@ export const deleteFoodExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -4668,97 +3778,69 @@ export const deleteFoodExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4799,9 +3881,6 @@ export const createCommuteExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -4820,16 +3899,12 @@ export const createCommuteExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -4839,97 +3914,69 @@ export const createCommuteExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4970,9 +4017,6 @@ export const updateCommuteExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -4991,16 +4035,12 @@ export const updateCommuteExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -5010,97 +4050,69 @@ export const updateCommuteExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5141,9 +4153,6 @@ export const deleteCommuteExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5162,16 +4171,12 @@ export const deleteCommuteExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -5181,97 +4186,69 @@ export const deleteCommuteExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5294,9 +4271,6 @@ export const createAcademicFee = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -5315,11 +4289,7 @@ export const createAcademicFee = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -5338,18 +4308,11 @@ export const createAcademicFee = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5372,9 +4335,6 @@ export const updateAcademicFee = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -5393,11 +4353,7 @@ export const updateAcademicFee = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -5416,18 +4372,11 @@ export const updateAcademicFee = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5450,9 +4399,6 @@ export const deleteAcademicFee = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -5471,11 +4417,7 @@ export const deleteAcademicFee = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -5494,18 +4436,11 @@ export const deleteAcademicFee = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5537,19 +4472,12 @@ export const createCollege = /* GraphQL */ `
           roomAndBoard
           transportation
           personal
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5581,19 +4509,12 @@ export const updateCollege = /* GraphQL */ `
           roomAndBoard
           transportation
           personal
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5625,19 +4546,12 @@ export const deleteCollege = /* GraphQL */ `
           roomAndBoard
           transportation
           personal
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5669,19 +4583,12 @@ export const createCommunityCollege = /* GraphQL */ `
           roomAndBoard
           transportation
           personal
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5713,19 +4620,12 @@ export const updateCommunityCollege = /* GraphQL */ `
           roomAndBoard
           transportation
           personal
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5757,19 +4657,12 @@ export const deleteCommunityCollege = /* GraphQL */ `
           roomAndBoard
           transportation
           personal
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5812,27 +4705,17 @@ export const createInstructor = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5875,27 +4758,17 @@ export const updateInstructor = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5938,27 +4811,17 @@ export const deleteInstructor = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5988,9 +4851,6 @@ export const createOnlineCourse = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6004,19 +4864,12 @@ export const createOnlineCourse = /* GraphQL */ `
           lastName
           email
           webPage
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6046,9 +4899,6 @@ export const updateOnlineCourse = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6062,19 +4912,12 @@ export const updateOnlineCourse = /* GraphQL */ `
           lastName
           email
           webPage
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6104,9 +4947,6 @@ export const deleteOnlineCourse = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6120,19 +4960,12 @@ export const deleteOnlineCourse = /* GraphQL */ `
           lastName
           email
           webPage
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6158,16 +4991,10 @@ export const createTraining = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6193,16 +5020,10 @@ export const updateTraining = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6228,16 +5049,10 @@ export const deleteTraining = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6263,16 +5078,10 @@ export const createBootcamp = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6298,16 +5107,10 @@ export const updateBootcamp = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6333,16 +5136,10 @@ export const deleteBootcamp = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6375,11 +5172,7 @@ export const createEducationExpense = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6402,20 +5195,13 @@ export const createEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6434,11 +5220,7 @@ export const createEducationExpense = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6457,16 +5239,10 @@ export const createEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6485,16 +5261,10 @@ export const createEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6513,9 +5283,6 @@ export const createEducationExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -6534,16 +5301,12 @@ export const createEducationExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -6553,97 +5316,69 @@ export const createEducationExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6676,11 +5411,7 @@ export const updateEducationExpense = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6703,20 +5434,13 @@ export const updateEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6735,11 +5459,7 @@ export const updateEducationExpense = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6758,16 +5478,10 @@ export const updateEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6786,16 +5500,10 @@ export const updateEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6814,9 +5522,6 @@ export const updateEducationExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -6835,16 +5540,12 @@ export const updateEducationExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -6854,97 +5555,69 @@ export const updateEducationExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6977,11 +5650,7 @@ export const deleteEducationExpense = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -7004,20 +5673,13 @@ export const deleteEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -7036,11 +5698,7 @@ export const deleteEducationExpense = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -7059,16 +5717,10 @@ export const deleteEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -7087,16 +5739,10 @@ export const deleteEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -7115,9 +5761,6 @@ export const deleteEducationExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7136,16 +5779,12 @@ export const deleteEducationExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -7155,97 +5794,69 @@ export const deleteEducationExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -7285,9 +5896,6 @@ export const createPersonalCareExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7306,16 +5914,12 @@ export const createPersonalCareExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -7325,97 +5929,69 @@ export const createPersonalCareExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -7455,9 +6031,6 @@ export const updatePersonalCareExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7476,16 +6049,12 @@ export const updatePersonalCareExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -7495,97 +6064,69 @@ export const updatePersonalCareExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -7625,9 +6166,6 @@ export const deletePersonalCareExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7646,16 +6184,12 @@ export const deletePersonalCareExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -7665,97 +6199,69 @@ export const deletePersonalCareExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -7795,9 +6301,6 @@ export const createPetExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7816,16 +6319,12 @@ export const createPetExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -7835,97 +6334,69 @@ export const createPetExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -7965,9 +6436,6 @@ export const updatePetExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7986,16 +6454,12 @@ export const updatePetExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -8005,97 +6469,69 @@ export const updatePetExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8135,9 +6571,6 @@ export const deletePetExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8156,16 +6589,12 @@ export const deletePetExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -8175,97 +6604,69 @@ export const deletePetExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8305,9 +6706,6 @@ export const createEntertainmentExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8326,16 +6724,12 @@ export const createEntertainmentExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -8345,97 +6739,69 @@ export const createEntertainmentExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8475,9 +6841,6 @@ export const updateEntertainmentExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8496,16 +6859,12 @@ export const updateEntertainmentExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -8515,97 +6874,69 @@ export const updateEntertainmentExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8645,9 +6976,6 @@ export const deleteEntertainmentExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8666,16 +6994,12 @@ export const deleteEntertainmentExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -8685,97 +7009,69 @@ export const deleteEntertainmentExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8815,9 +7111,6 @@ export const createLoanExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8836,16 +7129,12 @@ export const createLoanExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -8855,97 +7144,69 @@ export const createLoanExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8985,9 +7246,6 @@ export const updateLoanExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9006,16 +7264,12 @@ export const updateLoanExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -9025,97 +7279,69 @@ export const updateLoanExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9155,9 +7381,6 @@ export const deleteLoanExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9176,16 +7399,12 @@ export const deleteLoanExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -9195,97 +7414,69 @@ export const deleteLoanExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9317,9 +7508,6 @@ export const createW2Summary = /* GraphQL */ `
           federal
           state
           local
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9340,23 +7528,14 @@ export const createW2Summary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9388,9 +7567,6 @@ export const updateW2Summary = /* GraphQL */ `
           federal
           state
           local
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9411,23 +7587,14 @@ export const updateW2Summary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9459,9 +7626,6 @@ export const deleteW2Summary = /* GraphQL */ `
           federal
           state
           local
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9482,23 +7646,14 @@ export const deleteW2Summary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9534,16 +7689,10 @@ export const createTaxExpense = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -9571,9 +7720,6 @@ export const createTaxExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9592,16 +7738,12 @@ export const createTaxExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -9611,97 +7753,69 @@ export const createTaxExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9737,16 +7851,10 @@ export const updateTaxExpense = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -9774,9 +7882,6 @@ export const updateTaxExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9795,16 +7900,12 @@ export const updateTaxExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -9814,97 +7915,69 @@ export const updateTaxExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9940,16 +8013,10 @@ export const deleteTaxExpense = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -9977,9 +8044,6 @@ export const deleteTaxExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9998,16 +8062,12 @@ export const deleteTaxExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -10017,97 +8077,69 @@ export const deleteTaxExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -10147,9 +8179,6 @@ export const createInvestmentExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -10168,16 +8197,12 @@ export const createInvestmentExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -10187,97 +8212,69 @@ export const createInvestmentExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -10317,9 +8314,6 @@ export const updateInvestmentExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -10338,16 +8332,12 @@ export const updateInvestmentExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -10357,97 +8347,69 @@ export const updateInvestmentExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -10487,9 +8449,6 @@ export const deleteInvestmentExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -10508,16 +8467,12 @@ export const deleteInvestmentExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -10527,97 +8482,69 @@ export const deleteInvestmentExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -10646,9 +8573,6 @@ export const createRecipient = /* GraphQL */ `
         recipient {
           id
           name
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -10667,23 +8591,14 @@ export const createRecipient = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -10712,9 +8627,6 @@ export const updateRecipient = /* GraphQL */ `
         recipient {
           id
           name
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -10733,23 +8645,14 @@ export const updateRecipient = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -10778,9 +8681,6 @@ export const deleteRecipient = /* GraphQL */ `
         recipient {
           id
           name
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -10799,23 +8699,14 @@ export const deleteRecipient = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -10850,16 +8741,10 @@ export const createGyftExpense = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -10885,9 +8770,6 @@ export const createGyftExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -10906,16 +8788,12 @@ export const createGyftExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -10925,97 +8803,69 @@ export const createGyftExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -11050,16 +8900,10 @@ export const updateGyftExpense = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -11085,9 +8929,6 @@ export const updateGyftExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -11106,16 +8947,12 @@ export const updateGyftExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -11125,97 +8962,69 @@ export const updateGyftExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -11250,16 +9059,10 @@ export const deleteGyftExpense = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -11285,9 +9088,6 @@ export const deleteGyftExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -11306,16 +9106,12 @@ export const deleteGyftExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -11325,97 +9121,69 @@ export const deleteGyftExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -11435,9 +9203,6 @@ export const createBudget = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -11461,9 +9226,6 @@ export const createBudget = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -11482,16 +9244,12 @@ export const createBudget = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -11501,97 +9259,69 @@ export const createBudget = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -11609,9 +9339,6 @@ export const updateBudget = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -11635,9 +9362,6 @@ export const updateBudget = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -11656,16 +9380,12 @@ export const updateBudget = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -11675,97 +9395,69 @@ export const updateBudget = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -11783,9 +9475,6 @@ export const deleteBudget = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -11809,9 +9498,6 @@ export const deleteBudget = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -11830,16 +9516,12 @@ export const deleteBudget = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -11849,97 +9531,69 @@ export const deleteBudget = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -11976,9 +9630,6 @@ export const createIncome = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -11997,16 +9648,12 @@ export const createIncome = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -12016,97 +9663,69 @@ export const createIncome = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12145,9 +9764,6 @@ export const updateIncome = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -12166,16 +9782,12 @@ export const updateIncome = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -12185,97 +9797,69 @@ export const updateIncome = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12314,9 +9898,6 @@ export const deleteIncome = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -12335,16 +9916,12 @@ export const deleteIncome = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -12354,97 +9931,69 @@ export const deleteIncome = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12470,9 +10019,6 @@ export const createCreditCardDetail = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12498,9 +10044,6 @@ export const updateCreditCardDetail = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12526,9 +10069,6 @@ export const deleteCreditCardDetail = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12549,9 +10089,6 @@ export const createDebitCardDetail = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12572,9 +10109,6 @@ export const updateDebitCardDetail = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12595,9 +10129,6 @@ export const deleteDebitCardDetail = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12629,9 +10160,6 @@ export const createCard = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -12645,9 +10173,6 @@ export const createCard = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -12665,9 +10190,6 @@ export const createCard = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -12686,16 +10208,12 @@ export const createCard = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -12705,97 +10223,69 @@ export const createCard = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -12827,9 +10317,6 @@ export const updateCard = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -12843,9 +10330,6 @@ export const updateCard = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -12863,9 +10347,6 @@ export const updateCard = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -12884,16 +10365,12 @@ export const updateCard = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -12903,97 +10380,69 @@ export const updateCard = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -13025,9 +10474,6 @@ export const deleteCard = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -13041,9 +10487,6 @@ export const deleteCard = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -13061,9 +10504,6 @@ export const deleteCard = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -13082,16 +10522,12 @@ export const deleteCard = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -13101,97 +10537,69 @@ export const deleteCard = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -13227,9 +10635,6 @@ export const createCreditReport = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -13248,16 +10653,12 @@ export const createCreditReport = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -13267,97 +10668,69 @@ export const createCreditReport = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -13392,9 +10765,6 @@ export const updateCreditReport = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -13413,16 +10783,12 @@ export const updateCreditReport = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -13432,97 +10798,69 @@ export const updateCreditReport = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -13557,9 +10895,6 @@ export const deleteCreditReport = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -13578,16 +10913,12 @@ export const deleteCreditReport = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -13597,97 +10928,69 @@ export const deleteCreditReport = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -13703,9 +11006,6 @@ export const createPriorityPayment = /* GraphQL */ `
       percent
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -13720,9 +11020,6 @@ export const updatePriorityPayment = /* GraphQL */ `
       percent
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -13737,9 +11034,6 @@ export const deletePriorityPayment = /* GraphQL */ `
       percent
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -13756,9 +11050,6 @@ export const createFinancialIndependence = /* GraphQL */ `
       createdAt
       updatedAt
       projectedExpenseByYear
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -13775,9 +11066,6 @@ export const updateFinancialIndependence = /* GraphQL */ `
       createdAt
       updatedAt
       projectedExpenseByYear
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -13794,9 +11082,6 @@ export const deleteFinancialIndependence = /* GraphQL */ `
       createdAt
       updatedAt
       projectedExpenseByYear
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -13821,9 +11106,6 @@ export const createInvestment = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -13833,15 +11115,11 @@ export const createInvestment = /* GraphQL */ `
           id
           name
           lastName
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
@@ -13864,9 +11142,6 @@ export const createInvestment = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -13885,16 +11160,12 @@ export const createInvestment = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -13904,97 +11175,69 @@ export const createInvestment = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -14019,9 +11262,6 @@ export const updateInvestment = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -14031,15 +11271,11 @@ export const updateInvestment = /* GraphQL */ `
           id
           name
           lastName
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
@@ -14062,9 +11298,6 @@ export const updateInvestment = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -14083,16 +11316,12 @@ export const updateInvestment = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -14102,97 +11331,69 @@ export const updateInvestment = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -14217,9 +11418,6 @@ export const deleteInvestment = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -14229,15 +11427,11 @@ export const deleteInvestment = /* GraphQL */ `
           id
           name
           lastName
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
@@ -14260,9 +11454,6 @@ export const deleteInvestment = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -14281,16 +11472,12 @@ export const deleteInvestment = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -14300,97 +11487,69 @@ export const deleteInvestment = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -14418,9 +11577,6 @@ export const createLoan = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -14430,9 +11586,6 @@ export const createLoan = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -14460,9 +11613,6 @@ export const updateLoan = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -14472,9 +11622,6 @@ export const updateLoan = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -14502,9 +11649,6 @@ export const deleteLoan = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -14514,9 +11658,6 @@ export const deleteLoan = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -14551,9 +11692,6 @@ export const createProperty = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -14572,16 +11710,12 @@ export const createProperty = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -14591,97 +11725,69 @@ export const createProperty = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -14718,9 +11824,6 @@ export const updateProperty = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -14739,16 +11842,12 @@ export const updateProperty = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -14758,97 +11857,69 @@ export const updateProperty = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -14885,9 +11956,6 @@ export const deleteProperty = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -14906,16 +11974,12 @@ export const deleteProperty = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -14925,97 +11989,69 @@ export const deleteProperty = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -15036,9 +12072,6 @@ export const createAddress = /* GraphQL */ `
       state
       region
       county
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -15059,9 +12092,6 @@ export const updateAddress = /* GraphQL */ `
       state
       region
       county
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -15082,9 +12112,6 @@ export const deleteAddress = /* GraphQL */ `
       state
       region
       county
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -15109,9 +12136,6 @@ export const createClient = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -15140,23 +12164,16 @@ export const createClient = /* GraphQL */ `
           derogatoryMarks
           accounts
           tags
-          _version
-          _deleted
-          _lastChangedAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       priorityPayment {
         id
         percent
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       fi {
@@ -15166,9 +12183,6 @@ export const createClient = /* GraphQL */ `
         createdAt
         updatedAt
         projectedExpenseByYear
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       properties {
@@ -15179,15 +12193,11 @@ export const createClient = /* GraphQL */ `
           notes
           purchaseDate
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       investments {
         items {
@@ -15204,13 +12214,9 @@ export const createClient = /* GraphQL */ `
           createdAt
           updatedAt
           tags
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       incomes {
         items {
@@ -15222,15 +12228,11 @@ export const createClient = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       budgets {
         items {
@@ -15243,13 +12245,9 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       cards {
         items {
@@ -15258,15 +12256,11 @@ export const createClient = /* GraphQL */ `
           last4Digit
           amount
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       housingExpenses {
         items {
@@ -15277,15 +12271,11 @@ export const createClient = /* GraphQL */ `
           dueDate
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       phoneExpenses {
         items {
@@ -15296,15 +12286,11 @@ export const createClient = /* GraphQL */ `
           category
           phonePlan
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       insuranceExpenses {
         items {
@@ -15321,15 +12307,11 @@ export const createClient = /* GraphQL */ `
           coverage
           yearDeductions
           company
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       legalExpenses {
         items {
@@ -15342,15 +12324,11 @@ export const createClient = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       foodExpenses {
         items {
@@ -15361,15 +12339,11 @@ export const createClient = /* GraphQL */ `
           category
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       commuteExpenses {
         items {
@@ -15383,15 +12357,11 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       educationExpenses {
         items {
@@ -15402,15 +12372,11 @@ export const createClient = /* GraphQL */ `
           category
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       personalCareExpenses {
         items {
@@ -15423,15 +12389,11 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       petExpenses {
         items {
@@ -15444,15 +12406,11 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       entertainmentExpenses {
         items {
@@ -15465,15 +12423,11 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       loanExpenses {
         items {
@@ -15486,15 +12440,11 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       taxExpenses {
         items {
@@ -15508,15 +12458,11 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       investmentExpenses {
         items {
@@ -15529,15 +12475,11 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       gyftExpenses {
         items {
@@ -15549,19 +12491,12 @@ export const createClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -15586,9 +12521,6 @@ export const updateClient = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -15617,23 +12549,16 @@ export const updateClient = /* GraphQL */ `
           derogatoryMarks
           accounts
           tags
-          _version
-          _deleted
-          _lastChangedAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       priorityPayment {
         id
         percent
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       fi {
@@ -15643,9 +12568,6 @@ export const updateClient = /* GraphQL */ `
         createdAt
         updatedAt
         projectedExpenseByYear
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       properties {
@@ -15656,15 +12578,11 @@ export const updateClient = /* GraphQL */ `
           notes
           purchaseDate
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       investments {
         items {
@@ -15681,13 +12599,9 @@ export const updateClient = /* GraphQL */ `
           createdAt
           updatedAt
           tags
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       incomes {
         items {
@@ -15699,15 +12613,11 @@ export const updateClient = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       budgets {
         items {
@@ -15720,13 +12630,9 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       cards {
         items {
@@ -15735,15 +12641,11 @@ export const updateClient = /* GraphQL */ `
           last4Digit
           amount
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       housingExpenses {
         items {
@@ -15754,15 +12656,11 @@ export const updateClient = /* GraphQL */ `
           dueDate
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       phoneExpenses {
         items {
@@ -15773,15 +12671,11 @@ export const updateClient = /* GraphQL */ `
           category
           phonePlan
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       insuranceExpenses {
         items {
@@ -15798,15 +12692,11 @@ export const updateClient = /* GraphQL */ `
           coverage
           yearDeductions
           company
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       legalExpenses {
         items {
@@ -15819,15 +12709,11 @@ export const updateClient = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       foodExpenses {
         items {
@@ -15838,15 +12724,11 @@ export const updateClient = /* GraphQL */ `
           category
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       commuteExpenses {
         items {
@@ -15860,15 +12742,11 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       educationExpenses {
         items {
@@ -15879,15 +12757,11 @@ export const updateClient = /* GraphQL */ `
           category
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       personalCareExpenses {
         items {
@@ -15900,15 +12774,11 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       petExpenses {
         items {
@@ -15921,15 +12791,11 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       entertainmentExpenses {
         items {
@@ -15942,15 +12808,11 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       loanExpenses {
         items {
@@ -15963,15 +12825,11 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       taxExpenses {
         items {
@@ -15985,15 +12843,11 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       investmentExpenses {
         items {
@@ -16006,15 +12860,11 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       gyftExpenses {
         items {
@@ -16026,19 +12876,12 @@ export const updateClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -16063,9 +12906,6 @@ export const deleteClient = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -16094,23 +12934,16 @@ export const deleteClient = /* GraphQL */ `
           derogatoryMarks
           accounts
           tags
-          _version
-          _deleted
-          _lastChangedAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       priorityPayment {
         id
         percent
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       fi {
@@ -16120,9 +12953,6 @@ export const deleteClient = /* GraphQL */ `
         createdAt
         updatedAt
         projectedExpenseByYear
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       properties {
@@ -16133,15 +12963,11 @@ export const deleteClient = /* GraphQL */ `
           notes
           purchaseDate
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       investments {
         items {
@@ -16158,13 +12984,9 @@ export const deleteClient = /* GraphQL */ `
           createdAt
           updatedAt
           tags
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       incomes {
         items {
@@ -16176,15 +12998,11 @@ export const deleteClient = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       budgets {
         items {
@@ -16197,13 +13015,9 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       cards {
         items {
@@ -16212,15 +13026,11 @@ export const deleteClient = /* GraphQL */ `
           last4Digit
           amount
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       housingExpenses {
         items {
@@ -16231,15 +13041,11 @@ export const deleteClient = /* GraphQL */ `
           dueDate
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       phoneExpenses {
         items {
@@ -16250,15 +13056,11 @@ export const deleteClient = /* GraphQL */ `
           category
           phonePlan
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       insuranceExpenses {
         items {
@@ -16275,15 +13077,11 @@ export const deleteClient = /* GraphQL */ `
           coverage
           yearDeductions
           company
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       legalExpenses {
         items {
@@ -16296,15 +13094,11 @@ export const deleteClient = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       foodExpenses {
         items {
@@ -16315,15 +13109,11 @@ export const deleteClient = /* GraphQL */ `
           category
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       commuteExpenses {
         items {
@@ -16337,15 +13127,11 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       educationExpenses {
         items {
@@ -16356,15 +13142,11 @@ export const deleteClient = /* GraphQL */ `
           category
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       personalCareExpenses {
         items {
@@ -16377,15 +13159,11 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       petExpenses {
         items {
@@ -16398,15 +13176,11 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       entertainmentExpenses {
         items {
@@ -16419,15 +13193,11 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       loanExpenses {
         items {
@@ -16440,15 +13210,11 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       taxExpenses {
         items {
@@ -16462,15 +13228,11 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       investmentExpenses {
         items {
@@ -16483,15 +13245,11 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       gyftExpenses {
         items {
@@ -16503,19 +13261,12 @@ export const deleteClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner

@@ -1,44 +1,12 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const syncPeriods = /* GraphQL */ `
-  query SyncPeriods(
-    $filter: ModelPeriodFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncPeriods(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        billingStart
-        billingEnd
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getPeriod = /* GraphQL */ `
   query GetPeriod($id: ID!) {
     getPeriod(id: $id) {
       id
       billingStart
       billingEnd
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -56,63 +24,11 @@ export const listPeriods = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncUtilities = /* GraphQL */ `
-  query SyncUtilities(
-    $filter: ModelUtilityFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncUtilities(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        selection
-        company
-        title
-        notes
-        period {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        reading
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -128,9 +44,6 @@ export const getUtility = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -141,9 +54,6 @@ export const getUtility = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -167,9 +77,6 @@ export const listUtilitys = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -180,52 +87,11 @@ export const listUtilitys = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncSupplies = /* GraphQL */ `
-  query SyncSupplies(
-    $filter: ModelSupplyFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncSupplies(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        supplyFor
-        title
-        notes
-        brand
-        model
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -243,9 +109,6 @@ export const getSupply = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -271,66 +134,11 @@ export const listSupplys = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncHomes = /* GraphQL */ `
-  query SyncHomes(
-    $filter: ModelHomeFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncHomes(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        mortgage
-        title
-        notes
-        address {
-          id
-          number
-          street
-          postCode
-          country
-          state
-          region
-          county
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -350,9 +158,6 @@ export const getHome = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -362,9 +167,6 @@ export const getHome = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -392,9 +194,6 @@ export const listHomes = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -404,49 +203,11 @@ export const listHomes = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncRepairs = /* GraphQL */ `
-  query SyncRepairs(
-    $filter: ModelRepairFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncRepairs(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -461,9 +222,6 @@ export const getRepair = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -486,49 +244,11 @@ export const listRepairs = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncOtherHousings = /* GraphQL */ `
-  query SyncOtherHousings(
-    $filter: ModelOtherHousingFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncOtherHousings(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -543,9 +263,6 @@ export const getOtherHousing = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -568,123 +285,11 @@ export const listOtherHousings = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncHousingExpenses = /* GraphQL */ `
-  query SyncHousingExpenses(
-    $filter: ModelHousingExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncHousingExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        category
-        dueDate
-        nature
-        utility {
-          id
-          selection
-          company
-          title
-          notes
-          reading
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        supply {
-          id
-          supplyFor
-          title
-          notes
-          brand
-          model
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        home {
-          id
-          mortgage
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        repair {
-          id
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        otherHousing {
-          id
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        tags
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -707,9 +312,6 @@ export const getHousingExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -720,9 +322,6 @@ export const getHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -739,9 +338,6 @@ export const getHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -760,9 +356,6 @@ export const getHousingExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -772,9 +365,6 @@ export const getHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -788,9 +378,6 @@ export const getHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -804,9 +391,6 @@ export const getHousingExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -825,9 +409,6 @@ export const getHousingExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -846,16 +427,12 @@ export const getHousingExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -865,97 +442,69 @@ export const getHousingExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -983,9 +532,6 @@ export const listHousingExpenses = /* GraphQL */ `
           title
           notes
           reading
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -997,9 +543,6 @@ export const listHousingExpenses = /* GraphQL */ `
           notes
           brand
           model
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1009,9 +552,6 @@ export const listHousingExpenses = /* GraphQL */ `
           mortgage
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1020,9 +560,6 @@ export const listHousingExpenses = /* GraphQL */ `
           id
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1031,9 +568,6 @@ export const listHousingExpenses = /* GraphQL */ `
           id
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1045,62 +579,15 @@ export const listHousingExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncPlans = /* GraphQL */ `
-  query SyncPlans(
-    $filter: ModelPlanFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncPlans(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        notes
-        billing {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -1114,16 +601,10 @@ export const getPlan = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1145,51 +626,15 @@ export const listPlans = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncAdditionals = /* GraphQL */ `
-  query SyncAdditionals(
-    $filter: ModelAdditionalFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncAdditionals(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        notes
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -1199,9 +644,6 @@ export const getAdditional = /* GraphQL */ `
       id
       title
       notes
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1219,88 +661,11 @@ export const listAdditionals = /* GraphQL */ `
         id
         title
         notes
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncPhoneExpenses = /* GraphQL */ `
-  query SyncPhoneExpenses(
-    $filter: ModelPhoneExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncPhoneExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        dueDate
-        amount
-        category
-        phonePlan
-        tags
-        images {
-          bucket
-          region
-          key
-        }
-        plan {
-          id
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        additional {
-          id
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -1327,16 +692,10 @@ export const getPhoneExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1345,9 +704,6 @@ export const getPhoneExpense = /* GraphQL */ `
         id
         title
         notes
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1365,9 +721,6 @@ export const getPhoneExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1386,16 +739,12 @@ export const getPhoneExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -1405,97 +754,69 @@ export const getPhoneExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1526,9 +847,6 @@ export const listPhoneExpenses = /* GraphQL */ `
           id
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1537,9 +855,6 @@ export const listPhoneExpenses = /* GraphQL */ `
           id
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1550,112 +865,15 @@ export const listPhoneExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncBeneficiaries = /* GraphQL */ `
-  query SyncBeneficiaries(
-    $filter: ModelBeneficiaryFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBeneficiaries(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        lastName
-        address {
-          id
-          number
-          street
-          postCode
-          country
-          state
-          region
-          county
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        images {
-          bucket
-          region
-          key
-        }
-        insurance {
-          id
-          kind
-          amount
-          dueDate
-          category
-          nature
-          startDate
-          title
-          notes
-          tags
-          coverage
-          yearDeductions
-          company
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        investment {
-          id
-          account
-          title
-          notes
-          roi
-          fee
-          value
-          gain
-          loss
-          target
-          createdAt
-          updatedAt
-          tags
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -1674,9 +892,6 @@ export const getBeneficiary = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1707,7 +922,6 @@ export const getBeneficiary = /* GraphQL */ `
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         client {
           id
@@ -1715,16 +929,10 @@ export const getBeneficiary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -1744,16 +952,12 @@ export const getBeneficiary = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
@@ -1769,21 +973,12 @@ export const getBeneficiary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -1810,9 +1005,6 @@ export const listBeneficiarys = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1836,9 +1028,6 @@ export const listBeneficiarys = /* GraphQL */ `
           coverage
           yearDeductions
           company
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -1857,81 +1046,13 @@ export const listBeneficiarys = /* GraphQL */ `
           createdAt
           updatedAt
           tags
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncInsuranceExpenses = /* GraphQL */ `
-  query SyncInsuranceExpenses(
-    $filter: ModelInsuranceExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncInsuranceExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        nature
-        startDate
-        title
-        notes
-        tags
-        coverage
-        yearDeductions
-        company
-        images {
-          bucket
-          region
-          key
-        }
-        beneficiaries {
-          nextToken
-          startedAt
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -1939,8 +1060,6 @@ export const getInsuranceExpense = /* GraphQL */ `
   query GetInsuranceExpense($id: ID!) {
     getInsuranceExpense(id: $id) {
       id
-      __typename
-      _version
       kind
       amount
       dueDate
@@ -1961,34 +1080,13 @@ export const getInsuranceExpense = /* GraphQL */ `
       beneficiaries {
         items {
           id
-          __typename
           name
           lastName
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
-          address {
-            id
-            number
-            street
-            postCode
-            country
-            state
-            region
-            county
-            _version
-            _deleted
-            _lastChangedAt
-            createdAt
-            updatedAt
-            owner
-          }
         }
         nextToken
-        startedAt
       }
       client {
         id
@@ -2003,9 +1101,6 @@ export const getInsuranceExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -2024,16 +1119,12 @@ export const getInsuranceExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -2043,97 +1134,69 @@ export const getInsuranceExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2172,7 +1235,6 @@ export const listInsuranceExpenses = /* GraphQL */ `
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         client {
           id
@@ -2180,93 +1242,15 @@ export const listInsuranceExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncLawyers = /* GraphQL */ `
-  query SyncLawyers(
-    $filter: ModelLawyerFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncLawyers(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        avatar {
-          bucket
-          region
-          key
-        }
-        phone
-        address {
-          id
-          number
-          street
-          postCode
-          country
-          state
-          region
-          county
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        name
-        lastName
-        email
-        fee
-        firm
-        legal {
-          id
-          kind
-          amount
-          dueDate
-          category
-          nature
-          title
-          notes
-          tags
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -2289,9 +1273,6 @@ export const getLawyer = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -2318,7 +1299,6 @@ export const getLawyer = /* GraphQL */ `
         }
         lawyers {
           nextToken
-          startedAt
         }
         client {
           id
@@ -2326,23 +1306,14 @@ export const getLawyer = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2373,9 +1344,6 @@ export const listLawyers = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -2395,79 +1363,15 @@ export const listLawyers = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncLegalExpenses = /* GraphQL */ `
-  query SyncLegalExpenses(
-    $filter: ModelLegalExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncLegalExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        nature
-        title
-        notes
-        tags
-        images {
-          bucket
-          region
-          key
-        }
-        lawyers {
-          nextToken
-          startedAt
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -2475,7 +1379,6 @@ export const getLegalExpense = /* GraphQL */ `
   query GetLegalExpense($id: ID!) {
     getLegalExpense(id: $id) {
       __typename
-      _version
       id
       kind
       amount
@@ -2493,7 +1396,6 @@ export const getLegalExpense = /* GraphQL */ `
       lawyers {
         items {
           __typename
-          _version
           id
           phone
           name
@@ -2501,27 +1403,22 @@ export const getLegalExpense = /* GraphQL */ `
           email
           fee
           firm
-          _version
-          _deleted
-          _lastChangedAt
+          address {
+            __typename
+            id
+            number
+            street
+            postCode
+            country
+            state
+            region
+            county
+          }
           createdAt
           updatedAt
           owner
-          address {
-            id
-            _version
-            __typename
-            number
-            state
-            street
-            postCode
-            county
-            country
-            region
-          }
         }
         nextToken
-        startedAt
       }
       client {
         id
@@ -2536,9 +1433,6 @@ export const getLegalExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -2557,16 +1451,12 @@ export const getLegalExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -2576,97 +1466,69 @@ export const getLegalExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2697,7 +1559,6 @@ export const listLegalExpenses = /* GraphQL */ `
         }
         lawyers {
           nextToken
-          startedAt
         }
         client {
           id
@@ -2705,72 +1566,15 @@ export const listLegalExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncProducts = /* GraphQL */ `
-  query SyncProducts(
-    $filter: ModelProductFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncProducts(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        price
-        quantity
-        frequency
-        tags
-        grocery {
-          id
-          store
-          title
-          notes
-          info
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -2791,11 +1595,7 @@ export const getProduct = /* GraphQL */ `
         info
         products {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -2805,9 +1605,6 @@ export const getProduct = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2834,9 +1631,6 @@ export const listProducts = /* GraphQL */ `
           title
           notes
           info
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -2846,50 +1640,11 @@ export const listProducts = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncGroceries = /* GraphQL */ `
-  query SyncGroceries(
-    $filter: ModelGroceryFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncGroceries(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        store
-        title
-        notes
-        info
-        products {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -2909,19 +1664,12 @@ export const getGrocery = /* GraphQL */ `
           quantity
           frequency
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -2943,52 +1691,12 @@ export const listGrocerys = /* GraphQL */ `
         info
         products {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncDinningOuts = /* GraphQL */ `
-  query SyncDinningOuts(
-    $filter: ModelDinningOutFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncDinningOuts(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        place
-        title
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -3004,9 +1712,6 @@ export const getDinningOut = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3030,86 +1735,11 @@ export const listDinningOuts = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncFoodExpenses = /* GraphQL */ `
-  query SyncFoodExpenses(
-    $filter: ModelFoodExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncFoodExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        nature
-        grocery {
-          id
-          store
-          title
-          notes
-          info
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        dinningOut {
-          id
-          place
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        tags
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -3117,7 +1747,6 @@ export const getFoodExpense = /* GraphQL */ `
   query GetFoodExpense($id: ID!) {
     getFoodExpense(id: $id) {
       id
-      __typename
       kind
       amount
       dueDate
@@ -3125,27 +1754,13 @@ export const getFoodExpense = /* GraphQL */ `
       nature
       grocery {
         id
-        __typename
         store
         title
         notes
         info
         products {
-          items {
-            id
-            __typename
-            _version
-            name
-            price
-            quantity
-            frequency
-          }
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3160,9 +1775,6 @@ export const getFoodExpense = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3181,9 +1793,6 @@ export const getFoodExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3202,16 +1811,12 @@ export const getFoodExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -3221,97 +1826,69 @@ export const getFoodExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3338,9 +1915,6 @@ export const listFoodExpenses = /* GraphQL */ `
           title
           notes
           info
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3350,9 +1924,6 @@ export const listFoodExpenses = /* GraphQL */ `
           place
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3364,76 +1935,15 @@ export const listFoodExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncCommuteExpenses = /* GraphQL */ `
-  query SyncCommuteExpenses(
-    $filter: ModelCommuteExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncCommuteExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        service
-        event
-        title
-        tags
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -3468,9 +1978,6 @@ export const getCommuteExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3489,16 +1996,12 @@ export const getCommuteExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -3508,97 +2011,69 @@ export const getCommuteExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3634,93 +2109,15 @@ export const listCommuteExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncAcademicFees = /* GraphQL */ `
-  query SyncAcademicFees(
-    $filter: ModelAcademicFeeFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncAcademicFees(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        tuitionAndFees
-        booksAndSupplies
-        roomAndBoard
-        transportation
-        personal
-        period {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        college {
-          id
-          program
-          university
-          school
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        communityCollege {
-          id
-          program
-          university
-          school
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -3737,9 +2134,6 @@ export const getAcademicFee = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3758,11 +2152,7 @@ export const getAcademicFee = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -3781,18 +2171,11 @@ export const getAcademicFee = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3817,9 +2200,6 @@ export const listAcademicFees = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3831,9 +2211,6 @@ export const listAcademicFees = /* GraphQL */ `
           school
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -3845,63 +2222,15 @@ export const listAcademicFees = /* GraphQL */ `
           school
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncColleges = /* GraphQL */ `
-  query SyncColleges(
-    $filter: ModelCollegeFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncColleges(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        program
-        university
-        school
-        title
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        fees {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -3927,19 +2256,12 @@ export const getCollege = /* GraphQL */ `
           roomAndBoard
           transportation
           personal
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -3967,58 +2289,12 @@ export const listColleges = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncCommunityColleges = /* GraphQL */ `
-  query SyncCommunityColleges(
-    $filter: ModelCommunityCollegeFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncCommunityColleges(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        program
-        university
-        school
-        title
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        fees {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -4044,19 +2320,12 @@ export const getCommunityCollege = /* GraphQL */ `
           roomAndBoard
           transportation
           personal
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4088,71 +2357,12 @@ export const listCommunityColleges = /* GraphQL */ `
         }
         fees {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncInstructors = /* GraphQL */ `
-  query SyncInstructors(
-    $filter: ModelInstructorFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncInstructors(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        phone
-        tweeter
-        name
-        lastName
-        email
-        webPage
-        images {
-          bucket
-          region
-          key
-        }
-        teachOn {
-          id
-          title
-          university
-          school
-          description
-          notes
-          platform
-          url
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -4189,27 +2399,17 @@ export const getInstructor = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4245,76 +2445,15 @@ export const listInstructors = /* GraphQL */ `
           notes
           platform
           url
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncOnlineCourses = /* GraphQL */ `
-  query SyncOnlineCourses(
-    $filter: ModelOnlineCourseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncOnlineCourses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        university
-        school
-        description
-        notes
-        platform
-        url
-        images {
-          bucket
-          region
-          key
-        }
-        period {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        instructors {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -4338,9 +2477,6 @@ export const getOnlineCourse = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4354,19 +2490,12 @@ export const getOnlineCourse = /* GraphQL */ `
           lastName
           email
           webPage
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4398,72 +2527,18 @@ export const listOnlineCourses = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncTrainings = /* GraphQL */ `
-  query SyncTrainings(
-    $filter: ModelTrainingFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncTrainings(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        notes
-        school
-        images {
-          bucket
-          region
-          key
-        }
-        period {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -4483,16 +2558,10 @@ export const getTraining = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4520,68 +2589,15 @@ export const listTrainings = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncBootcamps = /* GraphQL */ `
-  query SyncBootcamps(
-    $filter: ModelBootcampFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBootcamps(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        notes
-        costDeferred
-        images {
-          bucket
-          region
-          key
-        }
-        period {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -4601,16 +2617,10 @@ export const getBootcamp = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -4638,136 +2648,15 @@ export const listBootcamps = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncEducationExpenses = /* GraphQL */ `
-  query SyncEducationExpenses(
-    $filter: ModelEducationExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncEducationExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        nature
-        college {
-          id
-          program
-          university
-          school
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        onlineCourse {
-          id
-          title
-          university
-          school
-          description
-          notes
-          platform
-          url
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        communityCollege {
-          id
-          program
-          university
-          school
-          title
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        training {
-          id
-          title
-          notes
-          school
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        bootcamp {
-          id
-          title
-          notes
-          costDeferred
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        tags
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -4782,7 +2671,6 @@ export const getEducationExpense = /* GraphQL */ `
       nature
       college {
         id
-        __typename
         program
         university
         school
@@ -4794,28 +2682,8 @@ export const getEducationExpense = /* GraphQL */ `
           key
         }
         fees {
-          items {
-            id
-            __typename
-            _version
-            tuitionAndFees
-            booksAndSupplies
-            roomAndBoard
-            transportation
-            personal
-            period {
-              id
-              _version
-              billingStart
-              billingEnd
-            }
-          }
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4838,39 +2706,19 @@ export const getEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         instructors {
-          items {
-            id
-            _version
-            __typename
-            phone
-            tweeter
-            name
-            lastName
-            email
-            webPage
-          }
           nextToken
-          startedAt
         }
-        __typename
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       communityCollege {
         id
-        __typename
         program
         university
         school
@@ -4882,28 +2730,8 @@ export const getEducationExpense = /* GraphQL */ `
           key
         }
         fees {
-          items {
-            id
-            _version
-            __typename
-            tuitionAndFees
-            booksAndSupplies
-            roomAndBoard
-            transportation
-            personal
-            period {
-              id
-              _version
-              billingStart
-              billingEnd
-            }
-          }
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4922,16 +2750,10 @@ export const getEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -4950,25 +2772,124 @@ export const getEducationExpense = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       tags
-      __typename
-      _version
-      _deleted
-      _lastChangedAt
+      client {
+        id
+        username
+        name
+        address {
+          id
+          number
+          street
+          postCode
+          country
+          state
+          region
+          county
+          createdAt
+          updatedAt
+          owner
+        }
+        email
+        phone
+        avatar {
+          bucket
+          region
+          key
+        }
+        images {
+          bucket
+          region
+          key
+        }
+        creditReports {
+          nextToken
+        }
+        priorityPayment {
+          id
+          percent
+          createdAt
+          updatedAt
+          owner
+        }
+        fi {
+          id
+          targetAmount
+          targetYears
+          createdAt
+          updatedAt
+          projectedExpenseByYear
+          owner
+        }
+        properties {
+          nextToken
+        }
+        investments {
+          nextToken
+        }
+        incomes {
+          nextToken
+        }
+        budgets {
+          nextToken
+        }
+        cards {
+          nextToken
+        }
+        housingExpenses {
+          nextToken
+        }
+        phoneExpenses {
+          nextToken
+        }
+        insuranceExpenses {
+          nextToken
+        }
+        legalExpenses {
+          nextToken
+        }
+        foodExpenses {
+          nextToken
+        }
+        commuteExpenses {
+          nextToken
+        }
+        educationExpenses {
+          nextToken
+        }
+        personalCareExpenses {
+          nextToken
+        }
+        petExpenses {
+          nextToken
+        }
+        entertainmentExpenses {
+          nextToken
+        }
+        loanExpenses {
+          nextToken
+        }
+        taxExpenses {
+          nextToken
+        }
+        investmentExpenses {
+          nextToken
+        }
+        gyftExpenses {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
       createdAt
       updatedAt
       owner
@@ -5000,9 +2921,6 @@ export const listEducationExpenses = /* GraphQL */ `
           school
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5016,9 +2934,6 @@ export const listEducationExpenses = /* GraphQL */ `
           notes
           platform
           url
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5030,9 +2945,6 @@ export const listEducationExpenses = /* GraphQL */ `
           school
           title
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5042,9 +2954,6 @@ export const listEducationExpenses = /* GraphQL */ `
           title
           notes
           school
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5054,9 +2963,6 @@ export const listEducationExpenses = /* GraphQL */ `
           title
           notes
           costDeferred
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5068,75 +2974,15 @@ export const listEducationExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncPersonalCareExpenses = /* GraphQL */ `
-  query SyncPersonalCareExpenses(
-    $filter: ModelPersonalCareExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncPersonalCareExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        nature
-        title
-        tags
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -5170,9 +3016,6 @@ export const getPersonalCareExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5191,16 +3034,12 @@ export const getPersonalCareExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -5210,97 +3049,69 @@ export const getPersonalCareExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5339,75 +3150,15 @@ export const listPersonalCareExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncPetExpenses = /* GraphQL */ `
-  query SyncPetExpenses(
-    $filter: ModelPetExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncPetExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        nature
-        title
-        tags
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -5441,9 +3192,6 @@ export const getPetExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5462,16 +3210,12 @@ export const getPetExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -5481,97 +3225,69 @@ export const getPetExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5606,75 +3322,15 @@ export const listPetExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncEntertainmentExpenses = /* GraphQL */ `
-  query SyncEntertainmentExpenses(
-    $filter: ModelEntertainmentExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncEntertainmentExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        nature
-        title
-        tags
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -5708,9 +3364,6 @@ export const getEntertainmentExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -5729,16 +3382,12 @@ export const getEntertainmentExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -5748,97 +3397,69 @@ export const getEntertainmentExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -5877,75 +3498,15 @@ export const listEntertainmentExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncLoanExpenses = /* GraphQL */ `
-  query SyncLoanExpenses(
-    $filter: ModelLoanExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncLoanExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        nature
-        title
-        tags
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -5979,9 +3540,6 @@ export const getLoanExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -6000,16 +3558,12 @@ export const getLoanExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -6019,97 +3573,69 @@ export const getLoanExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6144,72 +3670,15 @@ export const listLoanExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncW2Summaries = /* GraphQL */ `
-  query SyncW2Summaries(
-    $filter: ModelW2SummaryFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncW2Summaries(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        year
-        grossPay
-        federal
-        state
-        local
-        tax {
-          id
-          kind
-          amount
-          dueDate
-          category
-          taxDebt
-          fee
-          title
-          tags
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -6235,9 +3704,6 @@ export const getW2Summary = /* GraphQL */ `
           federal
           state
           local
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -6258,23 +3724,14 @@ export const getW2Summary = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6306,90 +3763,15 @@ export const listW2Summarys = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncTaxExpenses = /* GraphQL */ `
-  query SyncTaxExpenses(
-    $filter: ModelTaxExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncTaxExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        category
-        w2 {
-          id
-          year
-          grossPay
-          federal
-          state
-          local
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        taxDebt
-        fee
-        title
-        tags
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -6419,16 +3801,10 @@ export const getTaxExpense = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -6456,9 +3832,6 @@ export const getTaxExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -6477,16 +3850,12 @@ export const getTaxExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -6496,97 +3865,69 @@ export const getTaxExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6613,9 +3954,6 @@ export const listTaxExpenses = /* GraphQL */ `
           federal
           state
           local
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -6636,75 +3974,15 @@ export const listTaxExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncInvestmentExpenses = /* GraphQL */ `
-  query SyncInvestmentExpenses(
-    $filter: ModelInvestmentExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncInvestmentExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        account
-        amount
-        dueDate
-        category
-        title
-        tags
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -6738,9 +4016,6 @@ export const getInvestmentExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -6759,16 +4034,12 @@ export const getInvestmentExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -6778,97 +4049,69 @@ export const getInvestmentExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -6907,71 +4150,15 @@ export const listInvestmentExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncRecipients = /* GraphQL */ `
-  query SyncRecipients(
-    $filter: ModelRecipientFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncRecipients(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        images {
-          bucket
-          region
-          key
-        }
-        gyft {
-          id
-          kind
-          amount
-          dueDate
-          event
-          title
-          tags
-          notes
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -6994,9 +4181,6 @@ export const getRecipient = /* GraphQL */ `
         recipient {
           id
           name
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7015,23 +4199,14 @@ export const getRecipient = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -7062,84 +4237,15 @@ export const listRecipients = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncGyftExpenses = /* GraphQL */ `
-  query SyncGyftExpenses(
-    $filter: ModelGyftExpenseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncGyftExpenses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        kind
-        amount
-        dueDate
-        event
-        recipient {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        title
-        tags
-        notes
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -7168,16 +4274,10 @@ export const getGyftExpense = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -7203,9 +4303,6 @@ export const getGyftExpense = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7224,16 +4321,12 @@ export const getGyftExpense = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -7243,97 +4336,69 @@ export const getGyftExpense = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -7356,9 +4421,6 @@ export const listGyftExpenses = /* GraphQL */ `
         recipient {
           id
           name
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7377,79 +4439,15 @@ export const listGyftExpenses = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncBudgets = /* GraphQL */ `
-  query SyncBudgets(
-    $filter: ModelBudgetFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBudgets(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        amount
-        spent
-        period {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         createdAt
         updatedAt
-        category
-        title
-        tags
-        notes
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       nextToken
-      startedAt
     }
   }
 `;
@@ -7463,9 +4461,6 @@ export const getBudget = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -7489,9 +4484,6 @@ export const getBudget = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7510,16 +4502,12 @@ export const getBudget = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -7529,97 +4517,69 @@ export const getBudget = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -7639,9 +4599,6 @@ export const listBudgets = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7658,72 +4615,13 @@ export const listBudgets = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncIncomes = /* GraphQL */ `
-  query SyncIncomes(
-    $filter: ModelIncomeFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncIncomes(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        amount
-        dueDate
-        nature
-        frequency
-        title
-        notes
-        tags
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -7756,9 +4654,6 @@ export const getIncome = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -7777,16 +4672,12 @@ export const getIncome = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -7796,97 +4687,69 @@ export const getIncome = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -7920,61 +4783,15 @@ export const listIncomes = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncCreditCardDetails = /* GraphQL */ `
-  query SyncCreditCardDetails(
-    $filter: ModelCreditCardDetailFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncCreditCardDetails(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        limit
-        dueDate
-        interestRate
-        interestFee
-        minPayment
-        currentPurchaseAPR
-        currentAdvanceAPR
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -7994,9 +4811,6 @@ export const getCreditCardDetail = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8028,49 +4842,11 @@ export const listCreditCardDetails = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncDebitCardDetails = /* GraphQL */ `
-  query SyncDebitCardDetails(
-    $filter: ModelDebitCardDetailFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncDebitCardDetails(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        dueDate
-        overdraftFee
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -8085,9 +4861,6 @@ export const getDebitCardDetail = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8114,86 +4887,11 @@ export const listDebitCardDetails = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncCards = /* GraphQL */ `
-  query SyncCards(
-    $filter: ModelCardFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncCards(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        nature
-        last4Digit
-        amount
-        tags
-        creditCardDetail {
-          id
-          limit
-          dueDate
-          interestRate
-          interestFee
-          minPayment
-          currentPurchaseAPR
-          currentAdvanceAPR
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        debitCardDetail {
-          id
-          dueDate
-          overdraftFee
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -8219,9 +4917,6 @@ export const getCard = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -8235,9 +4930,6 @@ export const getCard = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -8255,9 +4947,6 @@ export const getCard = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8276,16 +4965,12 @@ export const getCard = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -8295,97 +4980,69 @@ export const getCard = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -8414,9 +5071,6 @@ export const listCards = /* GraphQL */ `
           minPayment
           currentPurchaseAPR
           currentAdvanceAPR
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8425,9 +5079,6 @@ export const listCards = /* GraphQL */ `
           id
           dueDate
           overdraftFee
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8438,70 +5089,15 @@ export const listCards = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncCreditReports = /* GraphQL */ `
-  query SyncCreditReports(
-    $filter: ModelCreditReportFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncCreditReports(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        issuer
-        creditScore
-        createdAt
-        onTimePayments
-        creditUsage
-        creditInquiries
-        derogatoryMarks
-        accounts
-        tags
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -8531,9 +5127,6 @@ export const getCreditReport = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -8552,16 +5145,12 @@ export const getCreditReport = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -8571,97 +5160,69 @@ export const getCreditReport = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       updatedAt
       owner
     }
@@ -8691,49 +5252,14 @@ export const listCreditReports = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncPriorityPayments = /* GraphQL */ `
-  query SyncPriorityPayments(
-    $filter: ModelPriorityPaymentFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncPriorityPayments(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        percent
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -8744,9 +5270,6 @@ export const getPriorityPayment = /* GraphQL */ `
       percent
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -8767,43 +5290,9 @@ export const listPriorityPayments = /* GraphQL */ `
         percent
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncFinancialIndependences = /* GraphQL */ `
-  query SyncFinancialIndependences(
-    $filter: ModelFinancialIndependenceFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncFinancialIndependences(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        targetAmount
-        targetYears
-        createdAt
-        updatedAt
-        projectedExpenseByYear
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -8816,9 +5305,6 @@ export const getFinancialIndependence = /* GraphQL */ `
       createdAt
       updatedAt
       projectedExpenseByYear
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -8841,83 +5327,9 @@ export const listFinancialIndependences = /* GraphQL */ `
         createdAt
         updatedAt
         projectedExpenseByYear
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncInvestments = /* GraphQL */ `
-  query SyncInvestments(
-    $filter: ModelInvestmentFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncInvestments(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        account
-        title
-        notes
-        roi
-        fee
-        value
-        gain
-        loss
-        target
-        period {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        beneficiaries {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        tags
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -8938,9 +5350,6 @@ export const getInvestment = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -8950,15 +5359,11 @@ export const getInvestment = /* GraphQL */ `
           id
           name
           lastName
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
@@ -8981,9 +5386,6 @@ export const getInvestment = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9002,16 +5404,12 @@ export const getInvestment = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -9021,97 +5419,69 @@ export const getInvestment = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -9138,16 +5508,12 @@ export const listInvestments = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         beneficiaries {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
@@ -9163,73 +5529,13 @@ export const listInvestments = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncLoans = /* GraphQL */ `
-  query SyncLoans(
-    $filter: ModelLoanFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncLoans(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        amount
-        terms
-        nature
-        apr
-        interest
-        monthPay
-        dueDate
-        title
-        notes
-        createdAt
-        updatedAt
-        tags
-        period {
-          id
-          billingStart
-          billingEnd
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        images {
-          bucket
-          region
-          key
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -9253,9 +5559,6 @@ export const getLoan = /* GraphQL */ `
         id
         billingStart
         billingEnd
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -9265,9 +5568,6 @@ export const getLoan = /* GraphQL */ `
         region
         key
       }
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -9297,9 +5597,6 @@ export const listLoans = /* GraphQL */ `
           id
           billingStart
           billingEnd
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9309,63 +5606,9 @@ export const listLoans = /* GraphQL */ `
           region
           key
         }
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncProperties = /* GraphQL */ `
-  query SyncProperties(
-    $filter: ModelPropertyFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncProperties(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        amount
-        title
-        notes
-        purchaseDate
-        tags
-        images {
-          bucket
-          region
-          key
-        }
-        client {
-          id
-          username
-          name
-          email
-          phone
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -9396,9 +5639,6 @@ export const getProperty = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -9417,16 +5657,12 @@ export const getProperty = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -9436,97 +5672,69 @@ export const getProperty = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
         housingExpenses {
           nextToken
-          startedAt
         }
         phoneExpenses {
           nextToken
-          startedAt
         }
         insuranceExpenses {
           nextToken
-          startedAt
         }
         legalExpenses {
           nextToken
-          startedAt
         }
         foodExpenses {
           nextToken
-          startedAt
         }
         commuteExpenses {
           nextToken
-          startedAt
         }
         educationExpenses {
           nextToken
-          startedAt
         }
         personalCareExpenses {
           nextToken
-          startedAt
         }
         petExpenses {
           nextToken
-          startedAt
         }
         entertainmentExpenses {
           nextToken
-          startedAt
         }
         loanExpenses {
           nextToken
-          startedAt
         }
         taxExpenses {
           nextToken
-          startedAt
         }
         investmentExpenses {
           nextToken
-          startedAt
         }
         gyftExpenses {
           nextToken
-          startedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9558,56 +5766,15 @@ export const listPropertys = /* GraphQL */ `
           name
           email
           phone
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncAddresses = /* GraphQL */ `
-  query SyncAddresses(
-    $filter: ModelAddressFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncAddresses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        number
-        street
-        postCode
-        country
-        state
-        region
-        county
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -9622,9 +5789,6 @@ export const getAddress = /* GraphQL */ `
       state
       region
       county
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -9647,174 +5811,11 @@ export const listAddresss = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncClients = /* GraphQL */ `
-  query SyncClients(
-    $filter: ModelClientFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncClients(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        username
-        name
-        address {
-          id
-          number
-          street
-          postCode
-          country
-          state
-          region
-          county
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-          owner
-        }
-        email
-        phone
-        avatar {
-          bucket
-          region
-          key
-        }
-        images {
-          bucket
-          region
-          key
-        }
-        creditReports {
-          nextToken
-          startedAt
-        }
-        priorityPayment {
-          id
-          percent
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        fi {
-          id
-          targetAmount
-          targetYears
-          createdAt
-          updatedAt
-          projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        properties {
-          nextToken
-          startedAt
-        }
-        investments {
-          nextToken
-          startedAt
-        }
-        incomes {
-          nextToken
-          startedAt
-        }
-        budgets {
-          nextToken
-          startedAt
-        }
-        cards {
-          nextToken
-          startedAt
-        }
-        housingExpenses {
-          nextToken
-          startedAt
-        }
-        phoneExpenses {
-          nextToken
-          startedAt
-        }
-        insuranceExpenses {
-          nextToken
-          startedAt
-        }
-        legalExpenses {
-          nextToken
-          startedAt
-        }
-        foodExpenses {
-          nextToken
-          startedAt
-        }
-        commuteExpenses {
-          nextToken
-          startedAt
-        }
-        educationExpenses {
-          nextToken
-          startedAt
-        }
-        personalCareExpenses {
-          nextToken
-          startedAt
-        }
-        petExpenses {
-          nextToken
-          startedAt
-        }
-        entertainmentExpenses {
-          nextToken
-          startedAt
-        }
-        loanExpenses {
-          nextToken
-          startedAt
-        }
-        taxExpenses {
-          nextToken
-          startedAt
-        }
-        investmentExpenses {
-          nextToken
-          startedAt
-        }
-        gyftExpenses {
-          nextToken
-          startedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -9833,9 +5834,6 @@ export const getClient = /* GraphQL */ `
         state
         region
         county
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
         owner
@@ -9864,23 +5862,16 @@ export const getClient = /* GraphQL */ `
           derogatoryMarks
           accounts
           tags
-          _version
-          _deleted
-          _lastChangedAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       priorityPayment {
         id
         percent
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       fi {
@@ -9890,9 +5881,6 @@ export const getClient = /* GraphQL */ `
         createdAt
         updatedAt
         projectedExpenseByYear
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       properties {
@@ -9903,15 +5891,11 @@ export const getClient = /* GraphQL */ `
           notes
           purchaseDate
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       investments {
         items {
@@ -9928,13 +5912,9 @@ export const getClient = /* GraphQL */ `
           createdAt
           updatedAt
           tags
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       incomes {
         items {
@@ -9946,15 +5926,11 @@ export const getClient = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       budgets {
         items {
@@ -9967,13 +5943,9 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       cards {
         items {
@@ -9982,15 +5954,11 @@ export const getClient = /* GraphQL */ `
           last4Digit
           amount
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       housingExpenses {
         items {
@@ -10001,15 +5969,11 @@ export const getClient = /* GraphQL */ `
           dueDate
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       phoneExpenses {
         items {
@@ -10020,15 +5984,11 @@ export const getClient = /* GraphQL */ `
           category
           phonePlan
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       insuranceExpenses {
         items {
@@ -10045,15 +6005,11 @@ export const getClient = /* GraphQL */ `
           coverage
           yearDeductions
           company
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       legalExpenses {
         items {
@@ -10066,15 +6022,11 @@ export const getClient = /* GraphQL */ `
           title
           notes
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       foodExpenses {
         items {
@@ -10085,15 +6037,11 @@ export const getClient = /* GraphQL */ `
           category
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       commuteExpenses {
         items {
@@ -10107,15 +6055,11 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       educationExpenses {
         items {
@@ -10126,15 +6070,11 @@ export const getClient = /* GraphQL */ `
           category
           nature
           tags
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       personalCareExpenses {
         items {
@@ -10147,15 +6087,11 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       petExpenses {
         items {
@@ -10168,15 +6104,11 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       entertainmentExpenses {
         items {
@@ -10189,15 +6121,11 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       loanExpenses {
         items {
@@ -10210,15 +6138,11 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       taxExpenses {
         items {
@@ -10232,15 +6156,11 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       investmentExpenses {
         items {
@@ -10253,15 +6173,11 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
       gyftExpenses {
         items {
@@ -10273,19 +6189,12 @@ export const getClient = /* GraphQL */ `
           title
           tags
           notes
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
         }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
       owner
@@ -10312,9 +6221,6 @@ export const listClients = /* GraphQL */ `
           state
           region
           county
-          _version
-          _deleted
-          _lastChangedAt
           createdAt
           updatedAt
           owner
@@ -10333,16 +6239,12 @@ export const listClients = /* GraphQL */ `
         }
         creditReports {
           nextToken
-          startedAt
         }
         priorityPayment {
           id
           percent
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         fi {
@@ -10352,361 +6254,27 @@ export const listClients = /* GraphQL */ `
           createdAt
           updatedAt
           projectedExpenseByYear
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         properties {
           nextToken
-          startedAt
         }
         investments {
           nextToken
-          startedAt
         }
         incomes {
           nextToken
-          startedAt
         }
         budgets {
           nextToken
-          startedAt
         }
         cards {
           nextToken
-          startedAt
         }
-        legalExpenses(limit: 50) {
+        housingExpenses {
           nextToken
-          startedAt
           items {
             __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            category
-            nature
-            title
-            notes
-            lawyers(limit: 10) {
-              items {
-                id
-                __typename
-                _version
-                phone
-                address {
-                  id
-                  _version
-                }
-                name
-                email
-                fee
-                firm
-                legal {
-                  id
-                  _version
-                }
-              }
-            }
-          }
-        }
-        foodExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            category
-            nature
-            dinningOut {
-              _version
-              id
-              place
-              title
-              notes
-            }
-            grocery {
-              _version
-              id
-              store
-              title
-              notes
-              info
-              products {
-                items {
-                  _version
-                  id
-                  name
-                  price
-                  quantity
-                }
-              }
-            }
-          }
-        }
-        personalCareExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            category
-            nature
-            title
-            notes
-          }
-        }
-        loanExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            category
-            nature
-            title
-            notes
-          }
-        }
-        taxExpenses(limit: 30) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            category
-            w2 {
-              _version
-              id
-              year
-              grossPay
-              federal
-              state
-              local
-            }
-            taxDebt
-            fee
-            title
-            notes
-          }
-        }
-        entertainmentExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            category
-            nature
-            title
-            notes
-          }
-        }
-        petExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            category
-            nature
-            title
-            title
-            notes
-          }
-        }
-        educationExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            id
-            _version
-            kind
-            amount
-            dueDate
-            category
-            nature
-            communityCollege {
-              id
-              _version
-              program
-              university
-              school
-              title
-              notes
-              fees {
-                items {
-                  _version
-                  id
-                  tuitionAndFees
-                  booksAndSupplies
-                  roomAndBoard
-                  transportation
-                  personal
-                  period {
-                    _version
-                    id
-                    billingStart
-                    billingEnd
-                  }
-                }
-                nextToken
-              }
-            }
-            onlineCourse {
-              id
-              _version
-              title
-              university
-              school
-              description
-              notes
-              platform
-              url
-              period {
-                id
-                _version
-                billingStart
-                billingEnd
-              }
-            }
-            training {
-              _version
-              id
-              title
-              notes
-              school
-              period {
-                _version
-                id
-                billingStart
-                billingEnd
-              }
-            }
-            bootcamp {
-              _version
-              id
-              title
-              notes
-              costDeferred
-              period {
-                _version
-                id
-                billingStart
-                billingEnd
-              }
-            }
-            college {
-              id
-              _version
-              program
-              university
-              school
-              title
-              notes
-              fees {
-                items {
-                  id
-                  _version
-                  tuitionAndFees
-                  booksAndSupplies
-                  roomAndBoard
-                  transportation
-                  personal
-                }
-              }
-            }
-          }
-        }
-        commuteExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            category
-            service
-            event
-            title
-            notes
-          }
-        }
-        investmentExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            account
-            amount
-            dueDate
-            category
-            title
-            notes
-            owner
-          }
-        }
-        gyftExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
-            id
-            kind
-            amount
-            dueDate
-            event
-            recipient {
-              _version
-              id
-              name
-            }
-            title
-            notes
-            owner
-          }
-        }
-        housingExpenses(limit: 50) {
-          nextToken
-          startedAt
-          items {
-            __typename
-            _version
             id
             kind
             amount
@@ -10714,7 +6282,6 @@ export const listClients = /* GraphQL */ `
             dueDate
             nature
             supply {
-              _version
               id
               supplyFor
               title
@@ -10723,13 +6290,11 @@ export const listClients = /* GraphQL */ `
               model
             }
             home {
-              _version
               id
               mortgage
               title
               notes
               address {
-                _version
                 id
                 number
                 street
@@ -10741,40 +6306,61 @@ export const listClients = /* GraphQL */ `
               }
             }
             repair {
-              _version
               id
               title
               notes
             }
             otherHousing {
-              _version
               id
               title
               notes
             }
             utility {
-              _version
               id
               selection
               company
               title
               notes
+              reading
               period {
-                _version
                 id
                 billingStart
                 billingEnd
               }
-              reading
             }
           }
         }
-        insuranceExpenses(limit: 50) {
+        phoneExpenses {
           nextToken
-          startedAt
           items {
             __typename
-            _version
+            id
+            kind
+            dueDate
+            amount
+            category
+            phonePlan
+            additional {
+              id
+              title
+              notes
+            }
+            plan {
+              id
+              title
+              notes
+              billing {
+                id
+                billingStart
+                billingEnd
+              }
+            }
+          }
+        }
+        insuranceExpenses {
+          nextToken
+          items {
+            __typename
             id
             kind
             amount
@@ -10789,17 +6375,15 @@ export const listClients = /* GraphQL */ `
             company
             beneficiaries {
               items {
-                _version
                 id
                 name
                 lastName
                 address {
                   id
-                  _version
                   number
                   street
                   postCode
-                  country
+                  county
                   state
                   region
                   county
@@ -10808,48 +6392,289 @@ export const listClients = /* GraphQL */ `
             }
           }
         }
-        phoneExpenses(limit: 50) {
+        legalExpenses {
           nextToken
-          startedAt
           items {
             __typename
-            _version
             id
             kind
-            dueDate
             amount
+            dueDate
             category
-            phonePlan
-            additional {
-              _version
+            nature
+            title
+            notes
+            lawyers {
+              items {
+                __typename
+                id
+                phone
+                name
+                lastName
+                email
+                fee
+                firm
+                address {
+                  id
+                }
+              }
+            }
+          }
+        }
+        foodExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            dinningOut {
               id
+              place
               title
               notes
             }
-            plan {
-              _version
+            grocery {
               id
+              store
               title
               notes
-              billing {
-                _version
+              info
+              products {
+                items {
+                  id
+                  name
+                  price
+                  quantity
+                }
+              }
+            }
+          }
+        }
+        commuteExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            category
+            service
+            event
+            title
+            notes
+          }
+        }
+        educationExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            communityCollege {
+              id
+              program
+              university
+              school
+              title
+              notes
+              fees {
+                nextToken
+                items {
+                  id
+                  tuitionAndFees
+                  booksAndSupplies
+                  roomAndBoard
+                  transportation
+                  personal
+                  period {
+                    id
+                    billingStart
+                    billingEnd
+                  }
+                }
+              }
+            }
+            onlineCourse {
+              id
+              title
+              university
+              school
+              description
+              notes
+              platform
+              url
+              period {
                 id
                 billingStart
                 billingEnd
               }
             }
+            training {
+              id
+              title
+              notes
+              school
+              period {
+                id
+                billingStart
+                billingEnd
+              }
+            }
+            bootcamp {
+              id
+              title
+              notes
+              costDeferred
+              period {
+                id
+                billingStart
+                billingEnd
+              }
+            }
+            college {
+              id
+              program
+              university
+              school
+              title
+              notes
+              fees {
+                nextToken
+                items {
+                  id
+                  tuitionAndFees
+                  booksAndSupplies
+                  roomAndBoard
+                  transportation
+                  personal
+                }
+              }
+            }
           }
         }
-
-        _version
-        _deleted
-        _lastChangedAt
+        personalCareExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            notes
+          }
+        }
+        petExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            notes
+          }
+        }
+        entertainmentExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            notes
+          }
+        }
+        loanExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            category
+            nature
+            title
+            notes
+          }
+        }
+        taxExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            category
+            taxDebt
+            fee
+            title
+            notes
+            w2 {
+              id
+              year
+              grossPay
+              federal
+              state
+              local
+            }
+          }
+        }
+        investmentExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            account
+            dueDate
+            category
+            title
+            notes
+          }
+        }
+        gyftExpenses {
+          nextToken
+          items {
+            __typename
+            id
+            kind
+            amount
+            dueDate
+            event
+            title
+            notes
+            recipient {
+              id
+              name
+            }
+          }
+        }
         createdAt
         updatedAt
         owner
       }
       nextToken
-      startedAt
     }
   }
 `;
