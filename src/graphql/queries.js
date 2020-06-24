@@ -1059,6 +1059,7 @@ export const listBeneficiarys = /* GraphQL */ `
 export const getInsuranceExpense = /* GraphQL */ `
   query GetInsuranceExpense($id: ID!) {
     getInsuranceExpense(id: $id) {
+      __typename
       id
       kind
       amount
@@ -1079,12 +1080,26 @@ export const getInsuranceExpense = /* GraphQL */ `
       }
       beneficiaries {
         items {
+          __typename
           id
           name
           lastName
           createdAt
           updatedAt
           owner
+          address {
+            id
+            number
+            street
+            postCode
+            country
+            state
+            region
+            county
+            createdAt
+            updatedAt
+            owner
+          }
         }
         nextToken
       }

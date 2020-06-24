@@ -59,6 +59,7 @@ async function initializeExpensePart(
                 expenseId,
                 text,
                 nature,
+                hideList: false,
               }));
             } else {
               parts = [
@@ -89,6 +90,7 @@ async function initializeExpensePart(
                 expenseId,
                 text,
                 nature,
+                hideList: false,
               }));
             } else {
               parts = [
@@ -293,6 +295,8 @@ const GetExpense = (__typename, nature) => {
 
 export default function ExpensePartTable(props) {
   const [expenseParts, setExpenseParts] = useState([]);
+
+  console.log("expense parts", expenseParts);
 
   let { url } = useRouteMatch();
 
