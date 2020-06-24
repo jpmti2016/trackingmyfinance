@@ -259,9 +259,3 @@ export const categoryAsEnum = asEnumeration({
     get: handleGetInvestmentExpense,
   },
 });
-
-// const format = categoryAsEnum
-//   .fromValue(categoryEnum.housing)
-//   .format("formating");
-
-// console.log("format", format);

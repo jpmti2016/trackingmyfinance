@@ -122,7 +122,6 @@ export default function ExpenseGyftForm(props) {
         graphqlOperation(updateGyftExpense, { input: gyftToUpdate })
       );
 
-      console.log("gyft updated", gyftUpdated.data.updateGyftExpense);
       // const updateList = props.location.state.handleUpdate;
       // gyftUpdated && updateList(gyfts => gyfts.map((g) => g.id === gyftUpdated.data.updateGyftExpense.id ? gyftUpdated.data.updateGyftExpense : g))
 
@@ -137,13 +136,12 @@ export default function ExpenseGyftForm(props) {
 
   const handleCreateGyftExpense = async (formatedInputGyft) => {
     try {
-      const result = await API.graphql(
+      await API.graphql(
         graphqlOperation(createGyftExpense, {
           input: { ...formatedInputGyft, gyftExpenseClientId: clientId },
         })
       );
 
-      console.log("new added gyft", result.data.createGyftExpense);
       history.push("/expenses/gyft");
     } catch (error) {
       console.error("handle create gyft", error);
@@ -155,9 +153,9 @@ export default function ExpenseGyftForm(props) {
       const kind = "GYFT"; // 'Gyft' because each the field kind is based on the current tab position
 
       const { amount, dueDate, recipient, event, notes, title } = data;
-      console.log("duedate from data", dueDate);
-      const formatedDueDate = dayjs(dueDate).format("YYYY-MM-DDThh:mmZ");
-      console.log("formated dueDate", formatedDueDate);
+
+      const formatedDueDate = dayjs(dueDate).format("YYYY-MM-DDTHH:mmZ");
+
       const formatedAmount = Number(amount);
       const titleEmpty = title === "" ? null : title;
       const notesEmpty = notes === "" ? null : notes;
@@ -224,7 +222,9 @@ export default function ExpenseGyftForm(props) {
                 ref={register}
                 defaultValue={
                   props.location.pathname.includes("edit") &&
-                  props.location.state.expense.dueDate
+                  dayjs(props.location.state.expense.dueDate).format(
+                    "YYYY-MM-DDTHH:mm"
+                  )
                 }
               />
               {errors.dueDate && (

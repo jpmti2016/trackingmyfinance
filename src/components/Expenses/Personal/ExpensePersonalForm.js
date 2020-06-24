@@ -38,8 +38,6 @@ export default function ExpensePersonalForm(props) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [clientId, setClientId] = useState("");
 
-  console.log("props", props);
-
   let history = useHistory();
 
   useEffect(() => {
@@ -51,8 +49,6 @@ export default function ExpensePersonalForm(props) {
     setIsAdding(props.location.pathname.includes("add"));
     setIsUpdating(props.location.pathname.includes("edit"));
   }, [props]);
-
-  console.log("expense to fill", expense);
 
   const { register, handleSubmit, errors, watch, reset, control } = useForm({});
 
@@ -66,7 +62,7 @@ export default function ExpensePersonalForm(props) {
           : "",
       dueDate:
         isUpdating && expense
-          ? dayjs(expense.dueDate).format("YYYY-MM-DDThh:mm")
+          ? dayjs(expense.dueDate).format("YYYY-MM-DDTHH:mm")
           : "",
       title: isUpdating && expense ? expense.title : "",
       notes: isUpdating && expense ? expense.notes : "",
@@ -80,13 +76,13 @@ export default function ExpensePersonalForm(props) {
       housingBillingStart:
         isUpdating && expense
           ? dayjs(housingInitForm(expense).billingStart).format(
-              "YYYY-MM-DDThh:mm"
+              "YYYY-MM-DDTHH:mm"
             )
           : "",
       housingBillingEnd:
         isUpdating && expense
           ? dayjs(housingInitForm(expense).billingEnd).format(
-              "YYYY-MM-DDThh:mm"
+              "YYYY-MM-DDTHH:mm"
             )
           : "",
       housingReading:
@@ -127,11 +123,11 @@ export default function ExpensePersonalForm(props) {
           : "",
       phonePlanBillingStart:
         isUpdating && expense && expense.plan && expense.plan.billing
-          ? dayjs(expense.plan.billing.billingStart).format("YYYY-MM-DDThh:mm")
+          ? dayjs(expense.plan.billing.billingStart).format("YYYY-MM-DDTHH:mm")
           : "",
       phonePlanBillingEnd:
         isUpdating && expense && expense.plan && expense.plan.billing
-          ? dayjs(expense.plan.billing.billingEnd).format("YYYY-MM-DDThh:mm")
+          ? dayjs(expense.plan.billing.billingEnd).format("YYYY-MM-DDTHH:mm")
           : "",
       phonePlan:
         isUpdating && expense && expense.phonePlan ? expense.phonePlan : "PLAN",
@@ -139,7 +135,7 @@ export default function ExpensePersonalForm(props) {
       nature: isUpdating && expense && expense.nature ? expense.nature : "",
       startDate:
         isUpdating && expense
-          ? dayjs(expense.startDate).format("YYYY-MM-DDThh:mm")
+          ? dayjs(expense.startDate).format("YYYY-MM-DDTHH:mm")
           : "",
       coverage: isUpdating && expense ? expense.coverage : "",
       yearDeductions:
@@ -189,13 +185,13 @@ export default function ExpensePersonalForm(props) {
       edPeriodStart:
         isUpdating && expense
           ? dayjs(educationInitForm(expense).edPeriodStart).format(
-              "YYYY-MM-DDThh:mm"
+              "YYYY-MM-DDTHH:mm"
             )
           : "",
       edPeriodEnd:
         isUpdating && expense
           ? dayjs(educationInitForm(expense).edPeriodEnd).format(
-              "YYYY-MM-DDThh:mm"
+              "YYYY-MM-DDTHH:mm"
             )
           : "",
       instructors:
@@ -301,12 +297,12 @@ export default function ExpensePersonalForm(props) {
           notes: expense.utility.notes,
           billingStart: expense.utility.period
             ? dayjs(expense.utility.period.billingStart).format(
-                "YYYY-MM-DDThh:mm"
+                "YYYY-MM-DDTHH:mm"
               )
             : "",
           billingEnd: expense.utility.period
             ? dayjs(expense.utility.period.billingEnd).format(
-                "YYYY-MM-DDThh:mm"
+                "YYYY-MM-DDTHH:mm"
               )
             : "",
           reading: expense.utility.reading,
@@ -394,12 +390,12 @@ export default function ExpensePersonalForm(props) {
               : false,
           edPeriodStart: expense.onlineCourse.period
             ? dayjs(expense.onlineCourse.period.billingStart).format(
-                "YYYY-MM-DDThh:mm"
+                "YYYY-MM-DDTHH:mm"
               )
             : "",
           edPeriodEnd: expense.onlineCourse.period
             ? dayjs(expense.onlineCourse.period.billingEnd).format(
-                "YYYY-MM-DDThh:mm"
+                "YYYY-MM-DDTHH:mm"
               )
             : "",
         };
@@ -421,12 +417,12 @@ export default function ExpensePersonalForm(props) {
           school: expense.training.school,
           edPeriodStart: expense.training.period
             ? dayjs(expense.training.period.billingStart).format(
-                "YYYY-MM-DDThh:mm"
+                "YYYY-MM-DDTHH:mm"
               )
             : "",
           edPeriodEnd: expense.training.period
             ? dayjs(expense.training.period.billingEnd).format(
-                "YYYY-MM-DDThh:mm"
+                "YYYY-MM-DDTHH:mm"
               )
             : "",
         };
@@ -436,12 +432,12 @@ export default function ExpensePersonalForm(props) {
           notes: expense.bootcamp.notes,
           edPeriodStart: expense.bootcamp.period
             ? dayjs(expense.bootcamp.period.billingStart).format(
-                "YYYY-MM-DDThh:mm"
+                "YYYY-MM-DDTHH:mm"
               )
             : "",
           edPeriodEnd: expense.bootcamp.period
             ? dayjs(expense.bootcamp.period.billingEnd).format(
-                "YYYY-MM-DDThh:mm"
+                "YYYY-MM-DDTHH:mm"
               )
             : "",
           costDeferred: expense.bootcamp.costDeferred
@@ -460,7 +456,7 @@ export default function ExpensePersonalForm(props) {
   const watchPersonal = watch("personal");
 
   const watchInsurance = watch("nature");
-  const watchHousing = watch("nature");
+  const watcHHousing = watch("nature");
   const watchFood = watch("nature");
   const watchEnterMent = watch("nature");
   const watchEducation = watch("nature");
@@ -592,7 +588,7 @@ export default function ExpensePersonalForm(props) {
 
           {watchPersonal === "HOUSING" && (
             <HousingFields
-              watchHousing={watchHousing}
+              watcHHousing={watcHHousing}
               watchUtility={watchUtility}
               register={register}
               errors={errors}

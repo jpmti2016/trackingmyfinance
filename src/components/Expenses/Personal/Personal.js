@@ -131,7 +131,6 @@ export default function Personal({ client }) {
     }
   };
 
-  console.log("expenses", expenses);
   // Check if delete nested object like home in housingExpense, i gess not TODO
   const handleDeleteExpense = async (id, __typename) => {
     try {
@@ -150,7 +149,6 @@ export default function Personal({ client }) {
       console.error("handle delete personal expense", error);
     }
   };
-  // console.log('object transform flat', [expenses.legalExpenses, expenses.investmentExpenses].flat(Infinity));
 
   return (
     <>

@@ -275,7 +275,7 @@ export function Profile() {
       const userInfo = { username: data.username, ...data.attributes };
       setUser(userInfo);
     } catch (error) {
-      console.log("check user error", error);
+      console.error("check user error", error);
     }
   }
 

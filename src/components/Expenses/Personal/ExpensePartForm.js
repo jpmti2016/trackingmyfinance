@@ -19,8 +19,6 @@ export default function ExpensePartForm(props) {
   const [isAdding, setIsAdding] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  console.log("expense part to fill", expensePart);
-
   let history = useHistory();
 
   useEffect(() => {
@@ -43,13 +41,13 @@ export default function ExpensePartForm(props) {
       billingStart:
         isUpdating && expensePart
           ? expensePart.period
-            ? dayjs(expensePart.period.billingStart).format("YYYY-MM-DDThh:mm")
+            ? dayjs(expensePart.period.billingStart).format("YYYY-MM-DDTHH:mm")
             : ""
           : "",
       billingEnd:
         isUpdating && expensePart
           ? expensePart.period
-            ? dayjs(expensePart.period.billingEnd).format("YYYY-MM-DDThh:mm")
+            ? dayjs(expensePart.period.billingEnd).format("YYYY-MM-DDTHH:mm")
             : ""
           : "",
       //address
@@ -187,14 +185,6 @@ export default function ExpensePartForm(props) {
                 <h1 className="title">
                   {expensePart ? expensePart.text : "Loading"}
                 </h1>
-
-                <p> {`pathname ${props.location.pathname}`}</p>
-                <p>{`typename: ${
-                  expensePart ? expensePart.__typename : "NA"
-                }`}</p>
-                <p>{expensePart ? expensePart.nature : "NA"}</p>
-
-                <p>{`state: ${JSON.stringify(props.location.state)}`}</p>
               </div>
             </div>
           </div>

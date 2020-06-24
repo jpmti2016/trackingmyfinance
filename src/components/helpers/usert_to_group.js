@@ -70,7 +70,6 @@ function App() {
 
     if(user){
         const {signInUserSession: {idToken: {payload}}} = user;
-        console.log('payload', payload);
 
         if(payload['cognito:groups'] && payload['cognito:groups'].includes('Admins')){
             isAdmin = true;
