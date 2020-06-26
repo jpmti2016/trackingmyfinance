@@ -345,7 +345,10 @@ export default function ExpenseGyftForm(props) {
                 className="button is-link is-fullwidth"
                 type="submit"
                 onClick={handleCancel}
-                style={{ backgroundColor: "#fafafa", color: "#BAA949" }}
+                style={{
+                  backgroundColor: "#fafafa",
+                  color: "rgba(103,88,3,1)",
+                }}
               >
                 Cancel
               </button>

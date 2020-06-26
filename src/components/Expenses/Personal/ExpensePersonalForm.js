@@ -692,7 +692,7 @@ export default function ExpensePersonalForm(props) {
                 onClick={handleCancel}
                 style={{
                   backgroundColor: "#fafafa",
-                  color: "#BAA949",
+                  color: "rgba(103,88,3,1)",
                 }}
               >
                 Cancel

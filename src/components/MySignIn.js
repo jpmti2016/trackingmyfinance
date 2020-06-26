@@ -32,7 +32,7 @@ export default function MySignIn() {
     },
     a: {
       ...AmplifyTheme.a,
-      color: "#BAA949",
+      color: "rgba(103,88,3,1)",
     },
     sectionBody: {
       ...AmplifyTheme.sectionBody,
@@ -42,12 +42,12 @@ export default function MySignIn() {
       ...AmplifyTheme.sectionHeader,
       // backgroundColor: "var(--squidInk)",
       backgroundColor: "#fff",
-      color: "#baa949",
-      // border: "1px solid #baa949",
+      color: "rgba(103,88,3,1)",
+      // border: "1px solid rgba(103,88,3,1)",
     },
     button: {
       ...AmplifyTheme.button,
-      backgroundColor: "#baa949",
+      backgroundColor: "rgba(103,88,3,1)",
       color: "#fff",
     },
     // signInButtonIcon: { display: "none" },

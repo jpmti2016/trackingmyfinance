@@ -54,14 +54,14 @@
   text-transform: uppercase;
   letter-spacing: 0.025em;
   margin-bottom: 2rem;
-  background-color: #baa949;
-  border: 1px solid #baa949;
+  background-color: rgba(103, 88, 3, 1);
+  border: 1px solid rgba(103, 88, 3.1);
   border-radius: 5px;
   color: #fff;
 }
 
 .btn-start-now.cta {
-  background-color: #baa949;
+  background-color: rgba(103, 88, 3.1);
 }
 .btn-start-now.cta:hover {
   background-color: hsl(59, 76%, 45%);
@@ -71,7 +71,7 @@
 
 .btn-start-now.cta-cancel {
   background-color: #fafafa;
-  color: #baa949;
+  color: rgba(103, 88, 3.1);
 }
 .btn-start-now.cta-cancel:hover {
   background-color: hsl(0, 54%, 70%);
@@ -87,7 +87,7 @@
 .btn-start-now.login:hover {
   background-color: #fff;
   border-color: transparent;
-  color: #baa949;
+  color: rgba(103, 88, 3, 1);
   border: 1px solid;
 }
 

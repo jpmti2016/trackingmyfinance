@@ -57,40 +57,40 @@ export default function Dashboard() {
         <div className="level">
           <div className="level-item has-text-centered">
             <div className="fancy-effect">
-              <p className="heading" style={{ color: "#BAA949" }}>
+              <p className="heading" style={{ color: "rgba(103,88,3,1)" }}>
                 Change Job Budget
               </p>
-              <p className="title" style={{ color: "#BAA949" }}>
+              <p className="title" style={{ color: "rgba(103,88,3,1)" }}>
                 7500
               </p>
             </div>
           </div>
           <div className="level-item has-text-centered">
             <div className="fancy-effect">
-              <p className="heading" style={{ color: "#BAA949" }}>
+              <p className="heading" style={{ color: "rgba(103,88,3,1)" }}>
                 Year to Date
               </p>
-              <p className="title" style={{ color: "#BAA949" }}>
+              <p className="title" style={{ color: "rgba(103,88,3,1)" }}>
                 5000
               </p>
             </div>
           </div>
           <div className="level-item has-text-centered">
             <div className="fancy-effect">
-              <p className="heading" style={{ color: "#BAA949" }}>
+              <p className="heading" style={{ color: "rgba(103,88,3,1)" }}>
                 Month to Date
               </p>
-              <p className="title" style={{ color: "#BAA949" }}>
+              <p className="title" style={{ color: "rgba(103,88,3,1)" }}>
                 740
               </p>
             </div>
           </div>
           <div className="level-item has-text-centered">
             <div className="fancy-effect">
-              <p className="heading" style={{ color: "#BAA949" }}>
+              <p className="heading" style={{ color: "rgba(103,88,3,1)" }}>
                 Today
               </p>
-              <p className="title" style={{ color: "#BAA949" }}>
+              <p className="title" style={{ color: "rgba(103,88,3,1)" }}>
                 60
               </p>
             </div>
@@ -216,7 +216,7 @@ export default function Dashboard() {
           <div className="tile is-parent is-vertical">
             <div
               className="tile is-child notification"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -235,7 +235,7 @@ export default function Dashboard() {
             </div>
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -254,7 +254,7 @@ export default function Dashboard() {
             </div>
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -273,7 +273,7 @@ export default function Dashboard() {
             </div>
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -292,7 +292,7 @@ export default function Dashboard() {
             </div>
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -313,7 +313,7 @@ export default function Dashboard() {
           <div className="tile is-parent is-vertical">
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -332,7 +332,7 @@ export default function Dashboard() {
             </div>
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -351,7 +351,7 @@ export default function Dashboard() {
             </div>
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -370,7 +370,7 @@ export default function Dashboard() {
             </div>
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div
@@ -389,7 +389,7 @@ export default function Dashboard() {
             </div>
             <div
               className="tile is-child notification is-primary"
-              style={{ backgroundColor: "#BAA949", color: "#8B7E85" }}
+              style={{ backgroundColor: "rgba(103,88,3,1)", color: "#8B7E85" }}
             >
               <div className="level">
                 <div

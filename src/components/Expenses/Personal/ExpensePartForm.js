@@ -227,7 +227,7 @@ export default function ExpensePartForm(props) {
                 className="button is-link is-fullwidth cta-cancel"
                 type="submit"
                 onClick={handleCancel}
-                // style={{ backgroundColor: "#fafafa", color: "#BAA949" }}
+                // style={{ backgroundColor: "#fafafa", color: "rgba(103,88,3,1)" }}
               >
                 Cancel
               </button>

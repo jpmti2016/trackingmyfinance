@@ -15,7 +15,7 @@
 } */
 
 .button.cta {
-  background-color: #baa949;
+  background-color: rgba(103, 88, 3, 1);
 }
 .button.cta:hover {
   background-color: hsl(59, 76%, 45%);
@@ -25,7 +25,7 @@
 
 .button.cta-cancel {
   background-color: #fafafa;
-  color: #baa949;
+  color: rgba(103, 88, 3, 1);
 }
 .button.cta-cancel:hover {
   background-color: hsl(0, 54%, 70%);
@@ -55,7 +55,7 @@
 .button.login:hover {
   background-color: #fff;
   border-color: transparent;
-  color: #baa949;
+  color: rgba(103, 88, 3, 1);
   border: 1px solid;
 }
 

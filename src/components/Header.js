@@ -26,7 +26,7 @@ export default function Header({ user, handleSignOut }) {
             className="navbar-item"
             to="/"
             exact
-            style={{ color: "#BAA949" }}
+            style={{ color: "rgba(103,88,3,1)" }}
             onClick={toggleNav}
           >
             <img
@@ -61,7 +61,7 @@ export default function Header({ user, handleSignOut }) {
               className="navbar-item"
               to="/"
               exact
-              style={{ color: "#BAA949" }}
+              style={{ color: "rgba(103,88,3,1)" }}
             >
               Home
             </NavLink>
@@ -72,7 +72,7 @@ export default function Header({ user, handleSignOut }) {
                   className="navbar-item"
                   to="/expenses/personal"
                   exact
-                  style={{ color: "#BAA949" }}
+                  style={{ color: "rgba(103,88,3,1)" }}
                 >
                   Expenses
                 </NavLink>
@@ -83,7 +83,7 @@ export default function Header({ user, handleSignOut }) {
               className="navbar-item"
               to="/about"
               exact
-              style={{ color: "#BAA949" }}
+              style={{ color: "rgba(103,88,3,1)" }}
             >
               About
             </NavLink>
@@ -93,7 +93,7 @@ export default function Header({ user, handleSignOut }) {
               <>
                 <span
                   className="is-italic greeting"
-                  style={{ color: "#BAA949" }}
+                  style={{ color: "rgba(103,88,3,1)" }}
                 >
                   {message}
                 </span>
@@ -110,7 +110,7 @@ export default function Header({ user, handleSignOut }) {
               <>
                 <span
                   className="is-italic greeting"
-                  style={{ color: "#BAA949" }}
+                  style={{ color: "rgba(103,88,3,1)" }}
                 >
                   {message}
                 </span>
