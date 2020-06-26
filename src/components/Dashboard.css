@@ -99,6 +99,12 @@
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
+
+.expense-item {
+  background-color: rgba(103, 88, 3, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
 @media (min-width: 640px) {
   .move-up {
     margin-top: -18rem;
