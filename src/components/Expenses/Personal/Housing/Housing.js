@@ -13,7 +13,7 @@ export default function HousingFields({
   register,
   errors,
   expense,
-  isUpdating
+  isUpdating,
 }) {
   return (
     <>

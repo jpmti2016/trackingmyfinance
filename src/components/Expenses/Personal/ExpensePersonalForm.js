@@ -456,7 +456,7 @@ export default function ExpensePersonalForm(props) {
   const watchPersonal = watch("personal");
 
   const watchInsurance = watch("nature");
-  const watcHHousing = watch("nature");
+  const watchHousing = watch("nature");
   const watchFood = watch("nature");
   const watchEnterMent = watch("nature");
   const watchEducation = watch("nature");
@@ -588,7 +588,7 @@ export default function ExpensePersonalForm(props) {
 
           {watchPersonal === "HOUSING" && (
             <HousingFields
-              watcHHousing={watcHHousing}
+              watchHousing={watchHousing}
               watchUtility={watchUtility}
               register={register}
               errors={errors}

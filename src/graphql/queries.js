@@ -6395,6 +6395,7 @@ export const listClients = /* GraphQL */ `
             category
             title
             notes
+            amount
           }
         }
         gyftExpenses {
