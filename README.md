@@ -11,7 +11,7 @@ This project includes:
 ![GitHub last commit](https://img.shields.io/github/last-commit/jpmti2016/trackingmyfinance)
 ![GitHub top language](https://img.shields.io/github/languages/top/jpmti2016/trackingmyfinance)
 ![GitHub language count](https://img.shields.io/github/languages/count/jpmti2016/trackingmyfinance)
-![Website](https://img.shields.io/website?url=https%3A%2F%2Ftrackingmyfinance%2F)
+![Website](https://img.shields.io/website?url=https://www.trackingmyfinance.com/)
 
 ## Technologies
 
